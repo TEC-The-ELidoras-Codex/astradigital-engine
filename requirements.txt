@@ -1,0 +1,16 @@
+# Core dependencies
+openai>=1.0.0
+anthropic>=0.6.0
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+requests>=2.28.0
+pyyaml>=6.0
+colorlog>=6.7.0
+
+# WordPress
+python-wordpress-xmlrpc>=2.3
+wordpress-api>=1.0
+
+# Utils
+tqdm>=4.66.0
+tenacity>=8.2.0
