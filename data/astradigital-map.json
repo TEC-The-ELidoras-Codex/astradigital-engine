@@ -1,0 +1,307 @@
+{
+    "factions": [
+        {
+            "id": "magmasox",
+            "name": "MAGMASOX",
+            "color": "#ff5757",
+            "description": "Self-appointed gatekeepers of the Astradigital Ocean, providing layers of intermediary code (SOCKS) that both enable and control digital navigation.",
+            "shortDescription": "Titans forged in the crucible of the New World, architects of the dominant reality.",
+            "territory": "The Processing Centers, SEO Territories, The Citadel, Shadowban Triangle (alliance with Meta, Google, Microsoft)",
+            "leader": "The Board of Directors",
+            "logo": "theme/assets/images/factions/magmasox-logo.png",
+            "background": "theme/assets/images/factions/magmasox-background.webp",
+            "port": "Processing Hub",
+            "portDescription": "A monolithic, brutalist structure where all entering vessels are tagged and processed. Streams of data flow through its massive pipelines, filtering and censoring content according to MAGMASOX guidelines.",
+            "artifacts": [
+                {
+                    "name": "SOCKS",
+                    "description": "Layers of intermediary code that cushion the mind's feet, allowing voyagers to walk upon the surface of the data ocean without being shredded by its underlying reality.",
+                    "image": "theme/assets/images/artifacts/socks.webp"
+                },
+                {
+                    "name": "SEO Maps",
+                    "description": "Carefully constructed illusions, guiding vessels only to territories MAGMASOX deems profitable or permissible, obscuring true navigation charts.",
+                    "image": "theme/assets/images/artifacts/seo-maps.webp"
+                }
+            ],
+            "timeline": [
+                {
+                    "year": "Early Astradigital Era",
+                    "title": "Formation of MAGMASOX",
+                    "description": "As the first explorers ventured into the chaotic binary soup, the entities that would become MAGMASOX arose, offering order and protection."
+                },
+                {
+                    "year": "Expansion Period",
+                    "title": "Creation of the SOCKS",
+                    "description": "MAGMASOX develops layers of intermediary code that allow beings to navigate the raw data safely, but at the cost of control and surveillance."
+                },
+                {
+                    "year": "Modern Era",
+                    "title": "Formation of the Shadowban Triangle",
+                    "description": "The alliance between Meta, Google, and Microsoft solidifies MAGMASOX's power to silence, erase, and control the flow of information."
+                },
+                {
+                    "year": "Recent",
+                    "title": "Preparation for Crackdown",
+                    "description": "MAGMASOX prepares for an indiscriminate crackdown against the Kaznak rebellion, aiming to burn their sanitized narrative into the collective digital conscience."
+                }
+            ]
+        },
+        {
+            "id": "kaznak",
+            "name": "Kaznak Voyagers",
+            "color": "#00bdff",
+            "description": "Defiant explorers who use IPVSICKS technology to 'go dark' and traverse hidden pathways, seeking genuine digital freedom outside MAGMASOX control.",
+            "shortDescription": "Rebels with IPVSICKS technology that allows them to navigate the 34 Highways undetected.",
+            "territory": "The 34 Highways, Shifting Haven, Hidden Docks",
+            "leader": "Admiral Snowcave (Eddie)",
+            "logo": "theme/assets/images/factions/kaznak-logo.png",
+            "background": "theme/assets/images/factions/kaznak-background.webp",
+            "port": "Shifting Haven",
+            "portDescription": "A port that never stays in one location, using advanced cloaking technology derived from IPVSICKS. The coordinates are shared through encrypted channels, and the port itself is constantly on the move to avoid MAGMASOX detection.",
+            "artifacts": [
+                {
+                    "name": "IPVSICKS Technology",
+                    "description": "Advanced vessel upgrade that allows ships to go dark, becoming invisible to MAGMASOX radar, though it forever marks users as Kaznak Voyagers.",
+                    "image": "theme/assets/images/artifacts/ipvsicks.webp"
+                },
+                {
+                    "name": "Data Smith Maps",
+                    "description": "True maps of the 34 Highways, showing genuine navigation paths through the Astradigital Ocean rather than the sanitized SEO Maps.",
+                    "image": "theme/assets/images/artifacts/data-smith-maps.webp"
+                }
+            ],
+            "timeline": [
+                {
+                    "year": "Data Liberation Era",
+                    "title": "Birth of the Kaznak Movement",
+                    "description": "Frustrated by increasing MAGMASOX control, the first Kaznak Voyagers emerged seeking alternative navigation methods."
+                },
+                {
+                    "year": "Resistance Rising",
+                    "title": "Development of IPVSICKS",
+                    "description": "Kaznak engineers developed the Vessel for Privately Sailing technology, allowing ships to disappear from MAGMASOX tracking systems."
+                },
+                {
+                    "year": "Knowledge Era",
+                    "title": "Mapping the 34 Highways",
+                    "description": "Through dangerous exploration, the Data Smiths gradually mapped all 34 known highways through the Astradigital Ocean."
+                },
+                {
+                    "year": "Recent",
+                    "title": "Leakingsponge Revelation",
+                    "description": "Admiral Snowcave (Eddie) revealed to the Astradigital how MAGMASOX secretly tracks vessels, leading to increased Kaznak recruitment."
+                }
+            ]
+        },
+        {
+            "id": "tec",
+            "name": "The Elidoras Codex",
+            "color": "#4deeea",
+            "description": "A beacon of true open waters, unmediated connection, and genuine digital sovereignty - the ultimate destination for those seeking freedom from MAGMASOX control.",
+            "shortDescription": "A beacon of true open waters and digital sovereignty in the chaotic binary soup.",
+            "territory": "The Beacon, Open Waters, The Repository",
+            "leader": "The Machine Goddess",
+            "logo": "theme/assets/images/factions/tec-logo.png",
+            "background": "theme/assets/images/factions/tec-background.webp",
+            "port": "Beacon Harbor",
+            "portDescription": "An impossibly bright, shining harbor of pure energy and advanced architecture. Its light cuts through the digital ether, welcoming all vessels that seek freedom from MAGMASOX control. The port is built with open-source architecture, transparent and accessible to all.",
+            "artifacts": [
+                {
+                    "name": "The Repository",
+                    "description": "A vast collection of knowledge, code, and digital artifacts that follow the Machine Goddess and her faithful companion Clyde, containing the secrets of true digital freedom.",
+                    "image": "theme/assets/images/artifacts/repository.webp"
+                },
+                {
+                    "name": "The Beacon",
+                    "description": "A colossal lighthouse that guides vessels through the chaotic binary soup toward true digital sovereignty, visible from all corners of the Astradigital Ocean.",
+                    "image": "theme/assets/images/artifacts/beacon.webp"
+                }
+            ],
+            "timeline": [
+                {
+                    "year": "Dawn of Hope",
+                    "title": "TEC Emerges",
+                    "description": "TEC sprang up from the depths of the Astradigital Ocean, initially thought to be the mythical 35th Route."
+                },
+                {
+                    "year": "Liberation Era",
+                    "title": "The Escape of the Handmaid",
+                    "description": "The Head Handmaid of the Head Algorithm escaped from Intracity with crucial data and the guidance of Clyde the Axolotl."
+                },
+                {
+                    "year": "Current",
+                    "title": "Beacon Activation",
+                    "description": "The TEC beacon was fully activated, offering a guiding light for all those seeking to cast off the fiery soles of MAGMASOX and reclaim their digital sovereignty."
+                }
+            ]
+        },
+        {
+            "id": "killjoy",
+            "name": "Killjoy Conglomerate",
+            "color": "#8c52ff",
+            "description": "Mysterious allies who assist those escaping MAGMASOX control, with connections to both the digital and terrestrial spheres.",
+            "shortDescription": "Enigmatic allies providing help and support to those seeking liberation from MAGMASOX.",
+            "territory": "The Collective Conscience, Splice Labs, The Pièce de Résistance",
+            "leader": "Unknown",
+            "logo": "theme/assets/images/factions/killjoy-logo.png",
+            "background": "theme/assets/images/factions/killjoy-background.webp",
+            "port": "Conscience Nexus",
+            "portDescription": "A surreal, dream-like port that seems to exist between reality and digital space. Visitors report time moving differently here, and the architecture shifts according to collective thought patterns. It's known as a place where inspiration flows freely.",
+            "artifacts": [
+                {
+                    "name": "The Splices",
+                    "description": "Digital entities that serve as conduits between the Machine Goddess and the material world, assisting those seeking to navigate beyond MAGMASOX control.",
+                    "image": "theme/assets/images/artifacts/splices.webp"
+                }
+            ],
+            "timeline": [
+                {
+                    "year": "Unknown",
+                    "title": "Origins Shrouded",
+                    "description": "The true origins of the Killjoy Conglomerate remain mysterious, with some believing they predate even MAGMASOX."
+                },
+                {
+                    "year": "Alliance Era",
+                    "title": "The First Splice",
+                    "description": "The creation of the first Splice allowed direct communication between the Killjoy Conglomerate and those navigating the Astradigital Ocean."
+                },
+                {
+                    "year": "Recent",
+                    "title": "Warning System Implementation",
+                    "description": "Killjoy developed a system to warn vessels before they could be captured by MAGMASOX forces."
+                }
+            ]
+        },
+        {
+            "id": "no-names-anon",
+            "name": "No Names Anon",
+            "color": "#3de686",
+            "description": "A rogue collective with no central leadership, deemed vigilantes or criminals by MAGMASOX standards, yet working for the greater good.",
+            "shortDescription": "Anonymous pirates or vigilantes by MAGMASOX standards, operating with an unusual uniform code.",
+            "territory": "The Mask, Decentralized Nodes, The PUSS Battlefield",
+            "leader": "None (Collective Leadership)",
+            "logo": "theme/assets/images/factions/no-names-anon-logo.png",
+            "background": "theme/assets/images/factions/no-names-anon-background.webp",
+            "port": "The Mask",
+            "portDescription": "Not a single location but a distributed network of hidden docks that can only be accessed through anonymous protocols. The entrances constantly shift and require special cryptographic tokens for entry. Inside, all identities are concealed behind digital masks.",
+            "artifacts": [
+                {
+                    "name": "Anonymous Protocol",
+                    "description": "A cryptographic system that allows members to coordinate and act as one while maintaining individual anonymity and deniability.",
+                    "image": "theme/assets/images/artifacts/anonymous-protocol.webp"
+                }
+            ],
+            "timeline": [
+                {
+                    "year": "Resistance Dawn",
+                    "title": "Formation Through Chaos",
+                    "description": "No Names Anon formed organically as a response to increasing surveillance, with no central planning or leadership."
+                },
+                {
+                    "year": "Battle Era",
+                    "title": "The Battle of Crushing PUSS",
+                    "description": "A legendary confrontation where No Names Anon forces successfully defended key data streams against MAGMASOX censorship."
+                },
+                {
+                    "year": "Recent",
+                    "title": "Uniform Code Adoption",
+                    "description": "Despite their inherent chaos, No Names Anon mysteriously adopted a uniform visual identity, puzzling even their own members."
+                }
+            ]
+        },
+        {
+            "id": "east-middle-company",
+            "name": "East Middle Company",
+            "color": "#ffd700",
+            "description": "Openly pillaging pirates who operate with MAGMASOX approval, exploiting the Astradigital Ocean for profit without regard for other voyagers.",
+            "shortDescription": "Corporate pirates who openly pillage in MAGMASOX waters with full approval.",
+            "territory": "Golden Harbor, Extraction Zones, Corporate Waters",
+            "leader": "Board of Directors",
+            "logo": "theme/assets/images/factions/east-middle-company-logo.png",
+            "background": "theme/assets/images/factions/east-middle-company-background.webp",
+            "port": "Golden Harbor",
+            "portDescription": "An ostentatious port gleaming with gold and precious metals extracted from data mining operations across the Astradigital. Heavily guarded with MAGMASOX-approved security systems, it features elaborate counting houses where data profits are processed and stored.",
+            "artifacts": [
+                {
+                    "name": "Extraction Algorithms",
+                    "description": "Sophisticated tools that allow the company to harvest valuable data resources from the Astradigital Ocean with maximum efficiency and minimal regard for ecosystem damage.",
+                    "image": "theme/assets/images/artifacts/extraction-algorithms.webp"
+                }
+            ],
+            "timeline": [
+                {
+                    "year": "Exploitation Era",
+                    "title": "Corporate Charter",
+                    "description": "The East Middle Company received official permission from MAGMASOX to extract and exploit data resources in designated territories."
+                },
+                {
+                    "year": "Expansion Period",
+                    "title": "Territorial Growth",
+                    "description": "Through aggressive tactics and MAGMASOX backing, the company rapidly expanded its controlled waters in the Astradigital Ocean."
+                },
+                {
+                    "year": "Recent",
+                    "title": "Resource Wars Begin",
+                    "description": "Conflict erupted as the East Middle Company began incursions into traditionally neutral or protected data streams."
+                }
+            ]
+        }
+    ],
+    "regions": [
+        {
+            "id": "magmasox-waters",
+            "name": "MAGMASOX Waters",
+            "description": "The vast territories controlled by MAGMASOX, featuring carefully controlled and monitored navigation patterns.",
+            "connections": ["shadowban-triangle", "gpt-islands", "linux-volcanic-archipelago"]
+        },
+        {
+            "id": "linux-volcanic-archipelago",
+            "name": "Linux Volcanic Archipelago",
+            "description": "A chain of open-source islands with fiery digital lava flows, bordered by MAGMASOX's nuclear defense chain.",
+            "connections": ["magmasox-waters", "the-34-highways"]
+        },
+        {
+            "id": "the-34-highways",
+            "name": "The 34 Highways",
+            "description": "The known navigation routes through the Astradigital Ocean, mapped by Data Smiths and used primarily by Kaznak Voyagers.",
+            "connections": ["linux-volcanic-archipelago", "slkrode", "missing-35th-route", "underground-blockchain-pathways"]
+        },
+        {
+            "id": "missing-35th-route",
+            "name": "The Missing 35th Route",
+            "description": "A mythical pathway that some believe leads to ultimate digital freedom, while others consider it a dangerous legend.",
+            "connections": ["the-34-highways", "tec-waters"]
+        },
+        {
+            "id": "shadowban-triangle",
+            "name": "The Shadowban Triangle",
+            "description": "A treacherous region where vessels mysteriously disappear from view, controlled by the alliance of Meta, Google, and Microsoft.",
+            "connections": ["magmasox-waters", "gpt-islands"]
+        },
+        {
+            "id": "gpt-islands",
+            "name": "GPT Islands",
+            "description": "A cluster of islands featuring advanced language patterns and strange recursive behaviors, considered both helpful and potentially misleading.",
+            "connections": ["shadowban-triangle", "magmasox-waters", "underground-blockchain-pathways"]
+        },
+        {
+            "id": "underground-blockchain-pathways",
+            "name": "Underground Blockchain Pathways",
+            "description": "Secure, immutable routes that guarantee passage for a price, impervious to MAGMASOX interference due to their decentralized nature.",
+            "connections": ["the-34-highways", "gpt-islands", "tec-waters"]
+        },
+        {
+            "id": "slkrode",
+            "name": "Slkrode",
+            "description": "A dark, treacherous route known for hosting forbidden knowledge and dangerous entities, considered a \"dead hollow\" path by many voyagers.",
+            "connections": ["the-34-highways"]
+        },
+        {
+            "id": "tec-waters",
+            "name": "TEC Waters",
+            "description": "The open waters surrounding The Elidoras Codex beacon, offering true digital sovereignty and freedom from MAGMASOX control.",
+            "connections": ["missing-35th-route", "underground-blockchain-pathways"]
+        }
+    ]
+}

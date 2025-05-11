@@ -1,0 +1,279 @@
+/* Base styles for TEC Theme */
+
+/* Variables */
+:root {
+    /* Faction colors */
+    --magmasox-primary: #ff5757;
+    --magmasox-secondary: #ff8a00;
+    --magmasox-dark: #2c1c15;
+    
+    --kaznak-primary: #00bdff;
+    --kaznak-secondary: #1a5fb4;
+    --kaznak-dark: #0a2540;
+    
+    --killjoy-primary: #8c52ff;
+    --killjoy-secondary: #c061cb;
+    --killjoy-dark: #1d0a31;
+    
+    --tec-primary: #4deeea;
+    --tec-secondary: #1d81af;
+    --tec-dark: #0f293a;
+    
+    --no-names-anon-primary: #3de686;
+    --no-names-anon-secondary: #10504f;
+    --no-names-anon-dark: #0a2a29;
+    
+    --east-middle-company-primary: #ffd700;
+    --east-middle-company-secondary: #9c7c38;
+    --east-middle-company-dark: #3c2f1a;
+    
+    /* Global colors */
+    --background-dark: #121212;
+    --background-darker: #080808;
+    --background-light: #f8f9fa;
+    --text-light: #f8f9fa;
+    --text-dark: #121212;
+    --link: #4d3aff;
+    --link-hover: #3498db;
+    
+    /* Typography */
+    --font-main: 'Montserrat', sans-serif;
+    --font-heading: 'Rajdhani', sans-serif;
+    --font-code: 'Fira Code', monospace;
+}
+
+/* Base typography */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--background-dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-image: url('../images/binary-soup-texture.webp');
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Code blocks */
+code, pre {
+    font-family: var(--font-code);
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+code {
+    padding: 0.2rem 0.4rem;
+}
+
+pre {
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+/* Form elements */
+input, textarea, select, button {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    background-color: rgba(0,0,0,0.3);
+    color: var(--text-light);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--tec-primary);
+    box-shadow: 0 0 0 2px rgba(77, 238, 234, 0.2);
+}
+
+button, .button, input[type="submit"] {
+    background-color: var(--tec-primary);
+    color: var(--background-dark);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+button:hover, .button:hover, input[type="submit"]:hover {
+    background-color: var(--tec-secondary);
+    transform: translateY(-2px);
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+th {
+    background-color: rgba(0,0,0,0.3);
+    font-weight: 600;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+figure {
+    margin: 0 0 1.5rem;
+}
+
+figcaption {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+/* Accessibility */
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Utilities */
+.text-center {
+    text-align: center;
+}
+
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.my-0 { margin-top: 0; margin-bottom: 0; }
+
+.pt-0 { padding-top: 0; }
+.pb-0 { padding-bottom: 0; }
+.py-0 { padding-top: 0; padding-bottom: 0; }
+
+/* Data visualization elements */
+.data-line {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, var(--tec-primary) 50%, rgba(0,0,0,0) 100%);
+    margin: 2rem 0;
+}
+
+.data-pulse {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--tec-primary);
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(77, 238, 234, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(77, 238, 234, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(77, 238, 234, 0);
+    }
+}

@@ -1,0 +1,19 @@
+/*
+Theme Name: The Elidoras Codex
+Theme URI: https://elidorascodex.com
+Author: Polkin Rishall & The Machine Goddess
+Author URI: https://elidorascodex.com
+Description: Navigate the Astradigital Ocean with this immersive WordPress theme that brings The Elidoras Codex universe to life.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: tec-theme
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, block-editor-patterns, full-site-editing, astradigital, elidoras
+*/
+
+/* Import base styles */
+@import url('theme/assets/css/base.css');
+@import url('theme/assets/css/layout.css');
+@import url('theme/assets/css/components.css');
+@import url('theme/assets/css/factions.css');
+@import url('theme/assets/css/blog.css');

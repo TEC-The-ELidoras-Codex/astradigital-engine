@@ -1,0 +1,542 @@
+/* Components styles for TEC Theme */
+
+/* Cards */
+.tec-card {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tec-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tec-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--tec-primary), var(--tec-secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tec-card:hover::before {
+    opacity: 1;
+}
+
+.tec-card-image {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.tec-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.tec-card:hover .tec-card-image img {
+    transform: scale(1.05);
+}
+
+.tec-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tec-card-title {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.tec-card-title a {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+.tec-card-title a:hover {
+    color: var(--tec-primary);
+}
+
+.tec-card-text {
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    flex-grow: 1;
+}
+
+.tec-card-meta {
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    margin-top: auto;
+}
+
+.tec-card-meta > * {
+    margin-right: 1rem;
+}
+
+.tec-card-meta i {
+    margin-right: 0.25rem;
+}
+
+/* Featured Card */
+.tec-card-featured {
+    border: 1px solid rgba(77, 238, 234, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.tec-card-featured::before {
+    opacity: 1;
+    height: 5px;
+}
+
+/* Faction Cards */
+.tec-faction-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.tec-faction-card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+    transition: all 0.5s ease;
+}
+
+.tec-faction-card:hover .tec-faction-card-bg {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+
+.tec-faction-card-content {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+}
+
+.tec-faction-card-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,0.5));
+}
+
+.tec-faction-card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tec-faction-card-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+/* Faction-specific styling */
+.faction-magmasox .tec-faction-card-title {
+    color: var(--magmasox-primary);
+}
+
+.faction-kaznak .tec-faction-card-title {
+    color: var(--kaznak-primary);
+}
+
+.faction-killjoy .tec-faction-card-title {
+    color: var(--killjoy-primary);
+}
+
+.faction-tec .tec-faction-card-title {
+    color: var(--tec-primary);
+}
+
+.faction-no-names-anon .tec-faction-card-title {
+    color: var(--no-names-anon-primary);
+}
+
+.faction-east-middle-company .tec-faction-card-title {
+    color: var(--east-middle-company-primary);
+}
+
+/* Buttons */
+.tec-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.tec-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    transition: transform 0.5s ease;
+    z-index: -1;
+    transform: skewX(-15deg);
+}
+
+.tec-btn:hover::before {
+    transform: translateX(100%) skewX(-15deg);
+}
+
+/* Button Variants */
+.tec-btn-primary {
+    background-color: var(--tec-primary);
+    color: var(--background-dark);
+}
+
+.tec-btn-primary:hover {
+    background-color: var(--tec-secondary);
+}
+
+.tec-btn-secondary {
+    background-color: transparent;
+    color: var(--text-light);
+    border: 2px solid var(--tec-primary);
+}
+
+.tec-btn-secondary:hover {
+    background-color: var(--tec-primary);
+    color: var(--background-dark);
+}
+
+/* Faction-specific buttons */
+.tec-btn-magmasox {
+    background-color: var(--magmasox-primary);
+    color: var(--background-dark);
+}
+
+.tec-btn-magmasox:hover {
+    background-color: var(--magmasox-secondary);
+}
+
+.tec-btn-kaznak {
+    background-color: var(--kaznak-primary);
+    color: var(--background-dark);
+}
+
+.tec-btn-kaznak:hover {
+    background-color: var(--kaznak-secondary);
+}
+
+.tec-btn-killjoy {
+    background-color: var(--killjoy-primary);
+    color: var(--text-light);
+}
+
+.tec-btn-killjoy:hover {
+    background-color: var(--killjoy-secondary);
+}
+
+/* Feature Boxes */
+.tec-feature-box {
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.tec-feature-box:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.tec-feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--tec-primary);
+    position: relative;
+    display: inline-block;
+}
+
+.tec-feature-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(77, 238, 234, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+}
+
+.tec-feature-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.tec-feature-text {
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+
+/* Testimonials */
+.tec-testimonial {
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+    margin-top: 3rem;
+    transition: all 0.3s ease;
+}
+
+.tec-testimonial:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.tec-testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid var(--background-dark);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tec-testimonial-content {
+    margin-top: 3rem;
+    text-align: center;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.tec-testimonial-content::before,
+.tec-testimonial-content::after {
+    content: '"';
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    position: absolute;
+    opacity: 0.2;
+    line-height: 1;
+}
+
+.tec-testimonial-content::before {
+    top: -20px;
+    left: 0;
+}
+
+.tec-testimonial-content::after {
+    content: '"';
+    bottom: -50px;
+    right: 0;
+}
+
+.tec-testimonial-text {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.tec-testimonial-author {
+    font-weight: 600;
+}
+
+.tec-testimonial-role {
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+/* Alerts */
+.tec-alert {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--tec-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.tec-alert-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.tec-alert-text {
+    margin-bottom: 0;
+    opacity: 0.9;
+}
+
+.tec-alert-icon {
+    margin-right: 0.5rem;
+}
+
+/* Alert variants */
+.tec-alert-info {
+    border-left-color: var(--tec-primary);
+}
+
+.tec-alert-success {
+    border-left-color: var(--no-names-anon-primary);
+}
+
+.tec-alert-warning {
+    border-left-color: var(--east-middle-company-primary);
+}
+
+.tec-alert-danger {
+    border-left-color: var(--magmasox-primary);
+}
+
+/* Tabs */
+.tec-tabs {
+    margin-bottom: 2rem;
+}
+
+.tec-tabs-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.tec-tabs-nav-item {
+    margin: 0;
+}
+
+.tec-tabs-nav-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    color: var(--text-light);
+    opacity: 0.7;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+}
+
+.tec-tabs-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--tec-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tec-tabs-nav-link:hover {
+    opacity: 1;
+}
+
+.tec-tabs-nav-link.active {
+    opacity: 1;
+    color: var(--tec-primary);
+}
+
+.tec-tabs-nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.tec-tabs-content {
+    padding: 2rem 0;
+}
+
+.tec-tabs-panel {
+    display: none;
+}
+
+.tec-tabs-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Social icons */
+.tec-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tec-social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.tec-social-icon-link:hover {
+    background-color: var(--tec-primary);
+    color: var(--background-dark);
+    transform: translateY(-3px);
+}

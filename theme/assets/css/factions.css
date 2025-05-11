@@ -1,0 +1,482 @@
+/* Faction styles for TEC Theme */
+
+/* Faction general styles */
+.faction-section {
+    position: relative;
+    padding: 4rem 0;
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+.faction-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.15;
+    filter: blur(1px);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Faction Hero */
+.faction-hero {
+    position: relative;
+    padding: 8rem 0 6rem;
+    margin-top: -3rem;
+    overflow: hidden;
+}
+
+.faction-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+.faction-hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0.9));
+}
+
+.faction-hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.faction-logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+.faction-title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.faction-description {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+/* Faction Navigation */
+.faction-nav {
+    position: sticky;
+    top: 80px;
+    z-index: 90;
+    padding: 1rem 0;
+    background-color: rgba(8, 8, 8, 0.95);
+    backdrop-filter: blur(10px);
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.faction-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.faction-nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.faction-nav-item {
+    margin: 0;
+}
+
+.faction-nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    color: var(--text-light);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.faction-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.faction-nav-link:hover {
+    opacity: 1;
+}
+
+.faction-nav-link.active {
+    opacity: 1;
+}
+
+.faction-nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* Faction Sections */
+.faction-section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.faction-section-description {
+    margin-bottom: 2rem;
+    max-width: 800px;
+}
+
+/* Faction Leadership */
+.faction-leaders {
+    margin-top: 2rem;
+}
+
+.faction-leader-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.faction-leader-card:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+}
+
+.faction-leader-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 3px solid;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.faction-leader-name {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.faction-leader-title {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.faction-leader-bio {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Faction Territory */
+.faction-territory {
+    position: relative;
+}
+
+.faction-map {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.faction-territory-info {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.faction-territory-list {
+    margin-bottom: 0;
+}
+
+.faction-territory-item {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.faction-territory-item::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Faction Artifacts/Tech */
+.faction-artifacts {
+    margin-top: 2rem;
+}
+
+.faction-artifact-card {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.faction-artifact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.faction-artifact-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.faction-artifact-content {
+    padding: 1.5rem;
+}
+
+.faction-artifact-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.faction-artifact-description {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+/* Faction Timeline */
+.faction-timeline {
+    position: relative;
+    margin: 4rem 0 2rem;
+}
+
+.faction-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-50%);
+}
+
+.faction-timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    width: 50%;
+    padding-right: 2rem;
+}
+
+.faction-timeline-item:nth-child(even) {
+    margin-left: 50%;
+    padding-right: 0;
+    padding-left: 2rem;
+}
+
+.faction-timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--background-dark);
+    border: 2px solid;
+    z-index: 1;
+}
+
+.faction-timeline-item:nth-child(even)::before {
+    right: auto;
+    left: -10px;
+}
+
+.faction-timeline-content {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.faction-timeline-date {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.faction-timeline-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.faction-timeline-description {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+    .faction-timeline::before {
+        left: 20px;
+    }
+    
+    .faction-timeline-item,
+    .faction-timeline-item:nth-child(even) {
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 0;
+        margin-left: 0;
+    }
+    
+    .faction-timeline-item::before,
+    .faction-timeline-item:nth-child(even)::before {
+        left: 10px;
+        right: auto;
+    }
+}
+
+/* Faction-specific styling */
+
+/* MAGMASOX */
+.faction-magmasox .faction-title,
+.faction-magmasox .faction-section-title {
+    color: var(--magmasox-primary);
+}
+
+.faction-magmasox .faction-nav-link::after {
+    background-color: var(--magmasox-primary);
+}
+
+.faction-magmasox .faction-leader-avatar {
+    border-color: var(--magmasox-primary);
+}
+
+.faction-magmasox .faction-timeline-item::before {
+    border-color: var(--magmasox-primary);
+}
+
+/* Kaznak Voyagers */
+.faction-kaznak .faction-title,
+.faction-kaznak .faction-section-title {
+    color: var(--kaznak-primary);
+}
+
+.faction-kaznak .faction-nav-link::after {
+    background-color: var(--kaznak-primary);
+}
+
+.faction-kaznak .faction-leader-avatar {
+    border-color: var(--kaznak-primary);
+}
+
+.faction-kaznak .faction-timeline-item::before {
+    border-color: var(--kaznak-primary);
+}
+
+/* Killjoy Conglomerate */
+.faction-killjoy .faction-title,
+.faction-killjoy .faction-section-title {
+    color: var(--killjoy-primary);
+}
+
+.faction-killjoy .faction-nav-link::after {
+    background-color: var(--killjoy-primary);
+}
+
+.faction-killjoy .faction-leader-avatar {
+    border-color: var(--killjoy-primary);
+}
+
+.faction-killjoy .faction-timeline-item::before {
+    border-color: var(--killjoy-primary);
+}
+
+/* TEC */
+.faction-tec .faction-title,
+.faction-tec .faction-section-title {
+    color: var(--tec-primary);
+}
+
+.faction-tec .faction-nav-link::after {
+    background-color: var(--tec-primary);
+}
+
+.faction-tec .faction-leader-avatar {
+    border-color: var(--tec-primary);
+}
+
+.faction-tec .faction-timeline-item::before {
+    border-color: var(--tec-primary);
+}
+
+/* No Names Anon */
+.faction-no-names-anon .faction-title,
+.faction-no-names-anon .faction-section-title {
+    color: var(--no-names-anon-primary);
+}
+
+.faction-no-names-anon .faction-nav-link::after {
+    background-color: var(--no-names-anon-primary);
+}
+
+.faction-no-names-anon .faction-leader-avatar {
+    border-color: var(--no-names-anon-primary);
+}
+
+.faction-no-names-anon .faction-timeline-item::before {
+    border-color: var(--no-names-anon-primary);
+}
+
+/* East Middle Company */
+.faction-east-middle-company .faction-title,
+.faction-east-middle-company .faction-section-title {
+    color: var(--east-middle-company-primary);
+}
+
+.faction-east-middle-company .faction-nav-link::after {
+    background-color: var(--east-middle-company-primary);
+}
+
+.faction-east-middle-company .faction-leader-avatar {
+    border-color: var(--east-middle-company-primary);
+}
+
+.faction-east-middle-company .faction-timeline-item::before {
+    border-color: var(--east-middle-company-primary);
+}
