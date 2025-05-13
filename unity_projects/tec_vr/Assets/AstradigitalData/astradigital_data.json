@@ -1,0 +1,46 @@
+{
+  "worldName": "Current AstraDigital Ocean State",
+  "version": "0.1.0",
+  "description": "The digital realm of The Elidoras Codex",
+  "locations": [
+    {
+      "name": "MAGMASOX Hub",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "description": "Central hub of the MAGMASOX faction"
+    },
+    {
+      "name": "Kaznak Outpost",
+      "position": {
+        "x": 120,
+        "y": 15,
+        "z": -45
+      },
+      "description": "Forward base of the Kaznak Voyagers"
+    },
+    {
+      "name": "Data Nexus Alpha",
+      "position": {
+        "x": -85,
+        "y": 30,
+        "z": 65
+      },
+      "description": "Primary data storage facility"
+    }
+  ],
+  "factions": [
+    {
+      "name": "MAGMASOX",
+      "primaryColor": "#FF7700",
+      "description": "Keepers of the ancient digital mysteries"
+    },
+    {
+      "name": "Kaznak Voyagers",
+      "primaryColor": "#00BBFF",
+      "description": "Explorers of the furthest reaches of the Astradigital Ocean"
+    }
+  ]
+}
