@@ -28,7 +28,12 @@ This repository contains:
 
 ## 🧭 Getting Started
 
-> **New!** All test files have been reorganized into a dedicated `/tests` directory with proper pytest integration. See [Test Organization](docs/test_organization.md) for details.
+> **New!** Repository organization updates:
+> - All formal test files are organized in the dedicated `/tests` directory with proper pytest integration.
+> - Legacy test scripts are now located in `/scripts/Tests/` for reference.
+> - Instruction files for AI agents are organized in the `/Instructions` directory.
+>
+> See [Test Organization](docs/test_organization.md) for details on the testing framework.
 
 ### Prerequisites
 

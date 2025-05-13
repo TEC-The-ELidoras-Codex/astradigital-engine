@@ -1,6 +1,8 @@
 # TEC Testing Framework
 
-This directory contains all tests for The Elidoras Codex's AstraDigital Engine.
+This directory contains all formal tests for The Elidoras Codex's AstraDigital Engine.
+
+> **Note**: Legacy test scripts (older versions) have been moved to the `/scripts/Tests` directory and are kept for reference purposes only.
 
 ## Structure
 

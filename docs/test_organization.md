@@ -2,10 +2,13 @@
 
 ## What Has Been Done 🧰
 
-1. **Reorganized Test Files**: Moved test files from `scripts/` to a proper `tests/` directory structure
+1. **Reorganized Test Files**:
+   - Moved formal test files from `scripts/` to a proper `tests/` directory structure
    - Created subdirectories: `wordpress/`, `integration/`, `unit/`
    - Added `__init__.py` files to make them proper Python packages
    - Updated file imports and paths for better compatibility
+   - Preserved legacy test scripts in `scripts/Tests/` for reference
+   - Created READMEs for the test directories
 
 2. **Created Testing Framework**:
    - Added `conftest.py` with pytest fixtures
