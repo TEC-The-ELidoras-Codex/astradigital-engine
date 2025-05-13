@@ -12,6 +12,8 @@ from pathlib import Path
 logger = logging.getLogger("astradigital.unity")
 
 class UnityIntegration:
+
+class UnityIntegration:
     """Manages Unity project integration with AstraDigital Engine."""
     
     def __init__(self, project_path=None, unity_version="2022.3.16f1"):
