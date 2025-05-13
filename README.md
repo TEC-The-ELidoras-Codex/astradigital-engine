@@ -28,6 +28,8 @@ This repository contains:
 
 ## 🧭 Getting Started
 
+> **New!** All test files have been reorganized into a dedicated `/tests` directory with proper pytest integration. See [Test Organization](docs/test_organization.md) for details.
+
 ### Prerequisites
 
 - WordPress 6.0+

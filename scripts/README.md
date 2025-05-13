@@ -2,6 +2,8 @@
 
 This directory contains utility scripts for managing and testing the TEC Office Suite Docker environment.
 
+> **Note:** All test scripts (WordPress tests, integration tests) have been moved to the `/tests` directory. Please use the new pytest-based testing framework for running tests.
+
 ## Environment Setup
 
 ### `setup_env.ps1` (Windows)

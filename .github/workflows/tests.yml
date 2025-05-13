@@ -1,0 +1,63 @@
+name: TEC Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.9', '3.10', '3.11']
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pytest-cov
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      shell: bash
+    
+    - name: Create test environment file
+      run: |
+        mkdir -p config
+        echo "WP_URL=http://example.com/xmlrpc.php" > config/.env.ci
+        echo "WP_API_URL=http://example.com/wp-json" >> config/.env.ci
+        echo "WP_USERNAME=test_user" >> config/.env.ci
+        echo "WP_PASSWORD=test_password" >> config/.env.ci
+        echo "WP_SITE_URL=http://example.com/xmlrpc.php" >> config/.env.ci
+        echo "TEST_MODE=true" >> config/.env.ci
+        echo "CI_MODE=true" >> config/.env.ci
+      shell: bash
+    
+    - name: Test with pytest - Unit Tests
+      run: |
+        python -m pytest tests/unit -v --cov=src --cov-report=xml
+      env:
+        PYTHONPATH: ${{ github.workspace }}
+    
+    - name: Test with pytest - Integration Tests
+      run: |
+        python -m pytest tests/integration -v --cov=src --cov-report=xml
+      env:
+        PYTHONPATH: ${{ github.workspace }}
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        env_vars: OS,PYTHON
+        name: codecov-umbrella
+        fail_ci_if_error: false

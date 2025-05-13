@@ -1,0 +1,23 @@
+{
+    "sample_post": {
+        "title": "Test Post from AstraDigital Engine",
+        "content": "This is a test post created by the AstraDigital Engine testing framework.",
+        "status": "draft",
+        "categories": ["Test"],
+        "tags": ["test", "automation", "tec"]
+    },
+    "sample_memory": {
+        "id": "test001",
+        "type": "knowledge",
+        "timestamp": "2025-05-13T12:00:00Z",
+        "title": "Test Memory",
+        "content": "This is a test memory for the AstraDigital Engine testing framework.",
+        "emotional_signature": "neutral, technical",
+        "associated_entities": ["TEC", "Testing"],
+        "meta": {
+            "priority_level": 5,
+            "recall_frequency": "low",
+            "sensory_tags": ["code", "digital"]
+        }
+    }
+}
