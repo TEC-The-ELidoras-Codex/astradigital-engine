@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  tec-office:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tec_office
+    ports:
+      - "7860:7860"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - WP_URL=${WP_URL}
+      - WP_USERNAME=${WP_USERNAME}
+      - WP_PASSWORD=${WP_PASSWORD}
+      - WP_XMLRPC_PATH=${WP_XMLRPC_PATH:-/xmlrpc.php}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - DEBUG=${DEBUG:-false}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860"] 
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 15s

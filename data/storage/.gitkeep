@@ -1,0 +1,2 @@
+# This file exists so Git will track this otherwise empty directory.
+# Storage for persistent data like timer states, but actual data files should be gitignored.

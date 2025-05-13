@@ -1,0 +1,120 @@
+# TEC_OFFICE_REPO Configuration
+# This file contains non-sensitive configuration settings
+
+# General Settings
+app_name: TEC_Office
+version: 1.0.0
+debug: false
+log_level: INFO
+
+# Timer Settings
+timer:
+  pomodoro_work_minutes: 25
+  pomodoro_short_break_minutes: 5
+  pomodoro_long_break_minutes: 15
+  pomodoro_long_break_interval: 4
+
+# AWS Configuration
+aws:
+  use_timer_storage: false  # Set to true to enable AWS DynamoDB timer persistence
+  region: us-east-1         # Your AWS region
+
+# Agent Configuration
+agents:
+  airth:
+    enabled: true
+    personality: "helpful and insightful"
+    memory_path: data/memories/airth_memories.json
+    lore_path: data/lore/tec_lore.json
+    blog_settings:
+      default_category: "Technology"
+      default_tags: ["AI", "technology", "future"]
+      max_length: 3000
+      tone: "informative"
+    response_cache_size: 100
+  
+  budlee:
+    enabled: true
+    personality: "efficient and precise"
+    storage_path: data/storage/budlee_data
+    memory_path: data/memories/budlee_memories.json
+    task_settings:
+      max_steps: 10
+      verify_commands: true
+      timeout_seconds: 300
+    automation_tools:
+      - "git"
+      - "docker"
+      - "wordpress"
+      - "filesystem"
+  
+  sassafras:
+    enabled: true
+    personality: "creative and chaotic"
+    memory_path: data/memories/sassafras_memories.json
+    creativity_level: 8
+    chaos_factor: 0.7
+    creation_types:
+      - "story"
+      - "poem"
+      - "dialogue"
+      - "concept"
+      - "art_prompt"
+    idea_generation:
+      min_ideas: 3
+      max_ideas: 10
+
+# WordPress Configuration
+wordpress:
+  xmlrpc_path: /xmlrpc.php
+  default_category: TEC
+  default_status: draft  # Options: draft, publish
+  post_types:
+    - "post"
+    - "page"
+    - "custom_post_type"
+  taxonomies:
+    - "category"
+    - "post_tag"
+    - "custom_taxonomy"
+  featured_image_folder: data/images/wp_featured
+  cache_enabled: true
+  cache_ttl: 3600
+  # Note: Credentials should be in .env file, not here
+
+# API Settings
+api:
+  openai:
+    model: gpt-4
+    temperature: 0.7
+    max_tokens: 2048
+  anthropic:
+    model: claude-3-opus-20240229
+    temperature: 0.5
+    max_tokens: 4000
+
+# Integration Settings
+integrations:
+  github:
+    auth_type: "token"
+    default_owner: "${GITHUB_USERNAME}"
+    default_repo: "${GITHUB_REPO}"
+  
+  huggingface:
+    space_sdk: "gradio"
+    hardware: "cpu-basic"
+    private: false
+
+# Paths
+paths:
+  logs: logs/
+  data: data/
+  config: config/
+  temp: data/temp/
+
+# System Settings
+system:
+  memory_backup_interval: 3600
+  max_concurrent_tasks: 5
+  auto_update_check: true
+  update_interval_days: 7
