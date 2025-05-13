@@ -1,0 +1,7 @@
+{
+  "min_articles_per_topic": 2,
+  "max_articles_per_topic": 15,
+  "min_topic_relevance": 0.5,
+  "max_topics": 10,
+  "output_dir": "data/processed_news"
+}

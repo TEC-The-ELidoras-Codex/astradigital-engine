@@ -1,0 +1,52 @@
+{
+  "default_category": "technology_ai",
+  "min_content_length": 800,
+  "max_content_length": 1500,
+  "include_images": true,
+  "output_dir": "data/generated_content",
+  "templates": {
+    "news_roundup": {
+      "title": "{{primary_keyword}}: The Latest News and Developments",
+      "intro": "The world of {{primary_keyword}} continues to evolve at a rapid pace. In this article, we explore the latest developments and what they mean for the future.",
+      "section_format": "<h2>{{section_title}}</h2>\n<p>{{section_content}}</p>",
+      "conclusion": "As we've seen, the landscape of {{primary_keyword}} is constantly changing. Stay tuned as we continue to monitor these developments and their implications for the industry.",
+      "call_to_action": "What's your take on these recent developments in {{primary_keyword}}? Share your thoughts in the comments below!"
+    },
+    "deep_dive": {
+      "title": "Deep Dive: Understanding the Impact of {{primary_keyword}}",
+      "intro": "{{primary_keyword}} is transforming how we think about technology and its role in society. Let's explore the nuances and implications of these recent developments.",
+      "section_format": "<h2>{{section_title}}</h2>\n<p>{{section_content}}</p>",
+      "conclusion": "The evolution of {{primary_keyword}} represents a significant shift in our technological landscape. By understanding these developments, we can better prepare for what lies ahead.",
+      "call_to_action": "How do you see {{primary_keyword}} affecting your industry or daily life? Join the conversation below!"
+    },
+    "analysis": {
+      "title": "Analysis: What {{primary_keyword}} Means for the Future of Tech",
+      "intro": "Recent developments in {{primary_keyword}} have sparked important conversations about where technology is headed. In this analysis, we break down the key points and their significance.",
+      "section_format": "<h2>{{section_title}}</h2>\n<p>{{section_content}}</p>",
+      "conclusion": "While it's impossible to predict exactly how {{primary_keyword}} will evolve, the trends we're seeing suggest a fascinating path forward. The implications for technology, business, and society are profound.",
+      "call_to_action": "What aspects of {{primary_keyword}} are you most excited or concerned about? Let us know in the comments!"
+    }
+  },
+  "seo_patterns": {
+    "title_formats": [
+      "{{primary_keyword}}: {{secondary_aspect}} Explained",
+      "The Ultimate Guide to {{primary_keyword}} in {{current_year}}",
+      "How {{primary_keyword}} is Changing {{related_industry}}",
+      "{{number}} Ways {{primary_keyword}} is Revolutionizing Technology",
+      "The Future of {{primary_keyword}}: Trends and Predictions"
+    ],
+    "meta_description_formats": [
+      "Discover the latest developments in {{primary_keyword}} and how they're shaping the future of technology. Learn about {{secondary_aspect}} and more in our comprehensive analysis.",
+      "Explore how {{primary_keyword}} is transforming {{related_industry}} with innovative approaches to {{secondary_aspect}}. Stay ahead with our expert insights.",
+      "Looking to understand {{primary_keyword}}? Our analysis covers {{secondary_aspect}} and provides actionable insights for navigating this evolving landscape."
+    ],
+    "heading_patterns": [
+      "The Rise of {{primary_keyword}}",
+      "Understanding {{secondary_aspect}}",
+      "Key Developments in {{primary_keyword}}",
+      "How {{primary_keyword}} Impacts {{related_industry}}",
+      "Expert Opinions on {{primary_keyword}}",
+      "The Future of {{secondary_aspect}}"
+    ]
+  }
+}

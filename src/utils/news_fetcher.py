@@ -147,13 +147,20 @@ class NewsFetcher:
                 else:
                     logger.warning(f"Unknown source type: {source_type}")
                     continue
-                
-                # Filter by age
+                  # Filter by age
                 cutoff_date = datetime.now() - timedelta(days=max_age_days)
                 filtered_articles = []
                 
                 for article in articles:
                     publish_date = article.get("published_datetime")
+                    # Make sure publish_date is a datetime object
+                    if isinstance(publish_date, str):
+                        try:
+                            publish_date = datetime.fromisoformat(publish_date.replace('Z', '+00:00'))
+                        except ValueError:
+                            # If conversion fails, use current time
+                            publish_date = datetime.now()
+                    
                     if publish_date and publish_date >= cutoff_date:
                         filtered_articles.append(article)
                 

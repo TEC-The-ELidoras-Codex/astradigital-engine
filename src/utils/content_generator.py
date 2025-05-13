@@ -451,9 +451,8 @@ class ContentGenerator:
         start_idx = section_index * section_size
         end_idx = start_idx + section_size
         section_articles = relevant_articles[start_idx:end_idx]
-        
-        # If we have the Airth agent, use it to generate coherent content
-        if self.airth_agent:
+          # If we have the Airth agent, use it to generate coherent content
+        if self.airth_agent and hasattr(self.airth_agent, 'llm_client') and self.airth_agent.llm_client:
             # Prepare article data for the prompt
             article_data = []
             for article in section_articles:
