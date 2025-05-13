@@ -43,3 +43,25 @@ logs/
 *.swp
 *.swo
 .DS_Store
+
+# Unity specific
+TEC_AI_ENGINE/[Ll]ibrary/
+TEC_AI_ENGINE/[Tt]emp/
+TEC_AI_ENGINE/[Oo]bj/
+TEC_AI_ENGINE/[Bb]uild/
+TEC_AI_ENGINE/[Bb]uilds/
+TEC_AI_ENGINE/[Ll]ogs/
+TEC_AI_ENGINE/[Uu]ser[Ss]ettings/
+TEC_AI_ENGINE/[Mm]emoryCaptures/
+TEC_AI_ENGINE/[Rr]ecordings/
+TEC_AI_ENGINE/*.pidb.meta
+TEC_AI_ENGINE/*.pdb.meta
+TEC_AI_ENGINE/*.mdb.meta
+
+# Unity3D generated meta files
+TEC_AI_ENGINE/*.pidb.meta
+TEC_AI_ENGINE/*.pdb.meta
+TEC_AI_ENGINE/*.mdb.meta
+
+# Crashlytics generated file
+TEC_AI_ENGINE/crashlytics-build.properties
