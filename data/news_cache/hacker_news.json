@@ -1,5 +1,15 @@
 [
   {
+    "title": "Your fingers wrinkle the same way every time you're in the water too long",
+    "url": "https://www.binghamton.edu/news/story/5547/do-your-fingers-wrinkle-the-same-way-every-time-youre-in-the-water-too-long-new-research-says-yes",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 23:34:07 +0000",
+    "published_datetime": "2025-05-14T00:34:07",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Type-constrained code generation with language models",
     "url": "https://arxiv.org/abs/2504.09246",
     "source": "Hacker News",
@@ -10,7 +20,7 @@
     "content": "Comments"
   },
   {
-    "title": "Flattening Rust's Learning Curve",
+    "title": "Flattening Rust's learning curve",
     "url": "https://corrode.dev/blog/flattening-rusts-learning-curve/",
     "source": "Hacker News",
     "category": "technology",
@@ -30,32 +40,12 @@
     "content": "Comments"
   },
   {
-    "title": "Starcloud",
-    "url": "https://www.ycombinator.com/companies/starcloud",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 20:13:54 +0000",
-    "published_datetime": "2025-05-13T21:13:54",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Build real-time knowledge graph for documents with LLM",
     "url": "https://cocoindex.io/blogs/knowledge-graph-for-docs/",
     "source": "Hacker News",
     "category": "technology",
     "published": "Tue, 13 May 2025 19:48:04 +0000",
     "published_datetime": "2025-05-13T20:48:04",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Failed Soviet Venus lander Kosmos 482 crashes to Earth after 53 years in orbit",
-    "url": "https://www.space.com/space-exploration/launches-spacecraft/failed-soviet-venus-lander-kosmos-482-crashes-to-earth-after-53-years-in-orbit",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Sat, 10 May 2025 13:51:53 +0000",
-    "published_datetime": "2025-05-10T14:51:53",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -70,12 +60,12 @@
     "content": "Comments"
   },
   {
-    "title": "A tool to verify estimates, II: a flexible proof assistant",
-    "url": "https://terrytao.wordpress.com/2025/05/09/a-tool-to-verify-estimates-ii-a-flexible-proof-assistant/",
+    "title": "Failed Soviet Venus lander Kosmos 482 crashes to Earth after 53 years in orbit",
+    "url": "https://www.space.com/space-exploration/launches-spacecraft/failed-soviet-venus-lander-kosmos-482-crashes-to-earth-after-53-years-in-orbit",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Sat, 10 May 2025 10:41:21 +0000",
-    "published_datetime": "2025-05-10T11:41:21",
+    "published": "Sat, 10 May 2025 13:51:53 +0000",
+    "published_datetime": "2025-05-10T14:51:53",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -86,6 +76,36 @@
     "category": "technology",
     "published": "Tue, 13 May 2025 14:30:35 +0000",
     "published_datetime": "2025-05-13T15:30:35",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Less meat is nearly always better than sustainable meat",
+    "url": "https://ourworldindata.org/less-meat-or-sustainable-meat",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 23:53:45 +0000",
+    "published_datetime": "2025-05-14T00:53:45",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Launch HN: Miyagi (YC W25) turns YouTube videos into online, interactive courses",
+    "url": "https://news.ycombinator.com/item?id=43972425",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 12:56:42 +0000",
+    "published_datetime": "2025-05-13T13:56:42",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Map of Palaeohispanic Coins and Inscriptions",
+    "url": "http://hesperia.ucm.es/consulta_hesperia/mapas.php",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 00:10:51 +0000",
+    "published_datetime": "2025-05-14T01:10:51",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -110,12 +130,32 @@
     "content": "Comments"
   },
   {
-    "title": "Cardiac: A CARDboard Illustrative Aid to Computation [pdf]",
-    "url": "https://www.cs.drexel.edu/~bls96/museum/CARDIAC_manual.pdf",
+    "title": "When graphic design saves lives",
+    "url": "https://news.harvard.edu/gazette/story/2025/05/when-graphic-design-saves-lives/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 21:49:42 +0000",
-    "published_datetime": "2025-05-13T22:49:42",
+    "published": "Sat, 10 May 2025 19:35:14 +0000",
+    "published_datetime": "2025-05-10T20:35:14",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "A tool to verify estimates, II: a flexible proof assistant",
+    "url": "https://terrytao.wordpress.com/2025/05/09/a-tool-to-verify-estimates-ii-a-flexible-proof-assistant/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sat, 10 May 2025 10:41:21 +0000",
+    "published_datetime": "2025-05-10T11:41:21",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Coffee for people who don't like coffee",
+    "url": "https://ostwilkens.se/blog/coffee",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sat, 10 May 2025 13:46:20 +0000",
+    "published_datetime": "2025-05-10T14:46:20",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -130,32 +170,12 @@
     "content": "Comments"
   },
   {
-    "title": "Launch HN: Miyagi (YC W25) turns YouTube videos into online, interactive courses",
-    "url": "https://news.ycombinator.com/item?id=43972425",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 12:56:42 +0000",
-    "published_datetime": "2025-05-13T13:56:42",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "It Awaits Your Experiments",
     "url": "https://www.rifters.com/crawl/?p=11511",
     "source": "Hacker News",
     "category": "technology",
     "published": "Tue, 13 May 2025 15:27:47 +0000",
     "published_datetime": "2025-05-13T16:27:47",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Ask HN: How are you acquiring your first hundred users?",
-    "url": "https://news.ycombinator.com/item?id=43970837",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 08:41:25 +0000",
-    "published_datetime": "2025-05-13T09:41:25",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -170,22 +190,12 @@
     "content": "Comments"
   },
   {
-    "title": "OpenTelemetry protocol with Apache Arrow",
-    "url": "https://opentelemetry.io/blog/2025/otel-arrow-phase-2/",
+    "title": "Cardiac: A CARDboard Illustrative Aid to Computation [pdf]",
+    "url": "https://www.cs.drexel.edu/~bls96/museum/CARDIAC_manual.pdf",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 17:57:57 +0000",
-    "published_datetime": "2025-05-13T18:57:57",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Using obscure graph theory to solve programming languages problems",
-    "url": "https://reasonablypolymorphic.com/blog/solving-lcsa/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 20:09:54 +0000",
-    "published_datetime": "2025-05-13T21:09:54",
+    "published": "Tue, 13 May 2025 21:49:42 +0000",
+    "published_datetime": "2025-05-13T22:49:42",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -200,12 +210,12 @@
     "content": "Comments"
   },
   {
-    "title": "Membrane: Media Framework for Elixir",
-    "url": "https://membrane.stream/",
+    "title": "OpenTelemetry protocol with Apache Arrow",
+    "url": "https://opentelemetry.io/blog/2025/otel-arrow-phase-2/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Sat, 10 May 2025 13:33:00 +0000",
-    "published_datetime": "2025-05-10T14:33:00",
+    "published": "Tue, 13 May 2025 17:57:57 +0000",
+    "published_datetime": "2025-05-13T18:57:57",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -220,6 +230,26 @@
     "content": "Comments"
   },
   {
+    "title": "Starcloud",
+    "url": "https://www.ycombinator.com/companies/starcloud",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 20:13:54 +0000",
+    "published_datetime": "2025-05-13T21:13:54",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Using obscure graph theory to solve programming languages problems",
+    "url": "https://reasonablypolymorphic.com/blog/solving-lcsa/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 20:09:54 +0000",
+    "published_datetime": "2025-05-13T21:09:54",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Turritopsis dohrnii: Immortal jellyfish",
     "url": "https://www.nhm.ac.uk/discover/immortal-jellyfish-secret-to-cheating-death.html",
     "source": "Hacker News",
@@ -230,22 +260,22 @@
     "content": "Comments"
   },
   {
-    "title": "Y Combinator says Google is a monopolist, no comment about its OpenAI ties",
-    "url": "https://techcrunch.com/2025/05/13/y-combinator-says-google-is-a-monopolist-that-has-stunted-the-startup-ecosystem/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 21:57:54 +0000",
-    "published_datetime": "2025-05-13T22:57:54",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Insurers launch cover for losses caused by AI chatbot errors",
     "url": "https://www.ft.com/content/1d35759f-f2a9-46c4-904b-4a78ccc027df",
     "source": "Hacker News",
     "category": "technology",
     "published": "Sun, 11 May 2025 10:07:22 +0000",
     "published_datetime": "2025-05-11T11:07:22",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Membrane: Media Framework for Elixir",
+    "url": "https://membrane.stream/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sat, 10 May 2025 13:33:00 +0000",
+    "published_datetime": "2025-05-10T14:33:00",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -266,36 +296,6 @@
     "category": "technology",
     "published": "Tue, 13 May 2025 15:29:18 +0000",
     "published_datetime": "2025-05-13T16:29:18",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "TheForger's Win32 API Tutorial",
-    "url": "https://winprog.org/tutorial/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 13:44:18 +0000",
-    "published_datetime": "2025-05-13T14:44:18",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Why are banks still getting authentication so wrong?",
-    "url": "https://jamal.haba.sh/its-2025-why-are-banks-still-getting-authentication-so-wrong/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 18:56:11 +0000",
-    "published_datetime": "2025-05-13T19:56:11",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Android and Wear OS are getting a redesign",
-    "url": "https://blog.google/products/android/material-3-expressive-android-wearos-launch/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 19:19:14 +0000",
-    "published_datetime": "2025-05-13T20:19:14",
     "summary": "Comments",
     "content": "Comments"
   }
