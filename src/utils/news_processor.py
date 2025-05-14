@@ -355,9 +355,16 @@ class NewsProcessor:
         # Factor 3: Recency - average days old (0 = today, lower is better)
         days_old_sum = 0
         now = datetime.now()
-        
-        for article in topic["articles"]:
+          for article in topic["articles"]:
             pub_date = article.get("published_datetime", now)
+            
+            # Handle string datetime
+            if isinstance(pub_date, str):
+                try:
+                    pub_date = datetime.fromisoformat(pub_date.replace('Z', '+00:00'))
+                except ValueError:
+                    pub_date = now  # If conversion fails, use current time
+            
             days_old = (now - pub_date).total_seconds() / 86400  # Convert to days
             days_old_sum += days_old
             
@@ -402,9 +409,16 @@ class NewsProcessor:
         # Strategy 1: Use the title of the most recent article with some cleaning
         most_recent_date = datetime.min
         most_recent_title = ""
-        
-        for article in topic["articles"]:
+          for article in topic["articles"]:
             pub_date = article.get("published_datetime", datetime.min)
+            
+            # Handle string datetime
+            if isinstance(pub_date, str):
+                try:
+                    pub_date = datetime.fromisoformat(pub_date.replace('Z', '+00:00'))
+                except ValueError:
+                    pub_date = datetime.min  # If conversion fails, use min time
+            
             if pub_date > most_recent_date:
                 most_recent_date = pub_date
                 most_recent_title = article.get("title", "")

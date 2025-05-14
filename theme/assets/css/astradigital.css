@@ -1,0 +1,346 @@
+/**
+ * Astradigital Engine Main Styles
+ * 
+ * Core styling for the Astradigital Ocean experience
+ */
+
+/* Base Styles */
+:root {
+    --astra-primary: #1a2b4d;
+    --astra-secondary: #2c87c5;
+    --astra-accent: #e63946;
+    --astra-background: #0a0e17;
+    --astra-text: #f1faee;
+    --astra-highlight: #4cc9f0;
+    --faction-magmasox: #ff5714;
+    --faction-kaznak: #4895ef;
+}
+
+body.page-template-page-astradigital {
+    background-color: var(--astra-background);
+    color: var(--astra-text);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+/* Container Structure */
+.astradigital-container {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header Area */
+.astra-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 1rem;
+}
+
+.astra-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--astra-secondary), var(--astra-highlight));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navigation */
+.astra-nav .astra-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.astra-nav .menu-item {
+    margin: 0 1rem;
+    position: relative;
+}
+
+.astra-nav .menu-item a {
+    color: var(--astra-text);
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.astra-nav .menu-item a:hover {
+    color: var(--astra-highlight);
+}
+
+.astra-nav .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(10,14,23,0.95);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    z-index: 100;
+    min-width: 150px;
+}
+
+.astra-nav .menu-item:hover .submenu {
+    display: block;
+}
+
+.astra-nav .submenu li {
+    list-style: none;
+}
+
+.astra-nav .submenu a {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+/* Main Content Area */
+.astra-main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+/* Ocean Visualization Area */
+.astra-ocean-visual {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.ocean-backdrop {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/backgrounds/astradigital-ocean.jpg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.interactive-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+/* Faction Styles */
+.astra-factions, .astra-characters {
+    margin-bottom: 3rem;
+}
+
+.astra-factions h2, .astra-characters h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+}
+
+.faction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.faction-card {
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.faction-logo {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.3);
+    padding: 1rem;
+}
+
+.faction-logo img {
+    max-height: 100px;
+    max-width: 100%;
+}
+
+.faction-info {
+    padding: 1.5rem;
+}
+
+.faction-name {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.faction-description {
+    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.faction-explore-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--astra-secondary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.faction-explore-btn:hover {
+    background-color: var(--astra-highlight);
+}
+
+/* MAGMASOX specific styling */
+#faction-magmasox .faction-logo {
+    background-color: rgba(255, 87, 20, 0.2);
+}
+
+#faction-magmasox .faction-name {
+    color: var(--faction-magmasox);
+}
+
+/* Kaznak specific styling */
+#faction-kaznak .faction-logo {
+    background-color: rgba(72, 149, 239, 0.2);
+}
+
+#faction-kaznak .faction-name {
+    color: var(--faction-kaznak);
+}
+
+/* Character Styles */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.character-card {
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+}
+
+.character-avatar {
+    height: 200px;
+    background-color: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-avatar img {
+    max-height: 180px;
+    max-width: 100%;
+}
+
+.character-info {
+    padding: 1.5rem;
+}
+
+.character-name {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.character-faction {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.faction-tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--faction-magmasox);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.character-description {
+    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.character-profile-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--astra-accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.character-profile-btn:hover {
+    background-color: #ff8c94;
+}
+
+/* Footer Area */
+.astra-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-navigation {
+    margin-bottom: 2rem;
+}
+
+.footer-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.footer-menu .menu-item {
+    margin: 0 1rem;
+}
+
+.footer-menu .menu-item a {
+    color: var(--astra-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-menu .menu-item a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+}

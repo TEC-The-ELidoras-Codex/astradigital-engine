@@ -107,8 +107,17 @@ function tec_scripts() {
     // Enqueue main stylesheet
     wp_enqueue_style('tec-style', get_stylesheet_uri(), array(), TEC_VERSION);
     
+    // Enqueue Google Fonts
+    wp_enqueue_style('tec-google-fonts', 'https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap', array(), TEC_VERSION);
+    
+    // Enqueue Astradigital specific CSS for the page template
+    if (is_page_template('templates/page-astradigital.php')) {
+        wp_enqueue_style('tec-astradigital', TEC_THEME_URI . '/assets/css/astradigital.css', array(), TEC_VERSION);
+        wp_enqueue_script('tec-astradigital-js', TEC_THEME_URI . '/assets/js/astradigital.js', array('jquery'), TEC_VERSION, true);
+    }
+    
     // Enqueue custom scripts
-    wp_enqueue_script('tec-navigation', TEC_THEME_URI . '/theme/assets/js/main.js', array('jquery'), TEC_VERSION, true);
+    wp_enqueue_script('tec-navigation', TEC_THEME_URI . '/assets/js/main.js', array('jquery'), TEC_VERSION, true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');

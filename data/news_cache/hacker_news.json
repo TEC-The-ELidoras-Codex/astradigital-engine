@@ -1,5 +1,25 @@
 [
   {
+    "title": "Type-constrained code generation with language models",
+    "url": "https://arxiv.org/abs/2504.09246",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 22:15:30 +0000",
+    "published_datetime": "2025-05-13T23:15:30",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Flattening Rust's Learning Curve",
+    "url": "https://corrode.dev/blog/flattening-rusts-learning-curve/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 22:25:29 +0000",
+    "published_datetime": "2025-05-13T23:25:29",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Branch Privilege Injection: Exploiting branch predictor race conditions",
     "url": "https://comsec.ethz.ch/research/microarch/branch-privilege-injection/",
     "source": "Hacker News",
@@ -20,12 +40,12 @@
     "content": "Comments"
   },
   {
-    "title": "Show HN: HelixDB \u2013 Open-source vector-graph database for AI applications (Rust)",
-    "url": "https://github.com/HelixDB/helix-db/",
+    "title": "Build real-time knowledge graph for documents with LLM",
+    "url": "https://cocoindex.io/blogs/knowledge-graph-for-docs/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 17:26:38 +0000",
-    "published_datetime": "2025-05-13T18:26:38",
+    "published": "Tue, 13 May 2025 19:48:04 +0000",
+    "published_datetime": "2025-05-13T20:48:04",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -40,12 +60,32 @@
     "content": "Comments"
   },
   {
-    "title": "Build real-time knowledge graph for documents with LLM",
-    "url": "https://cocoindex.io/blogs/knowledge-graph-for-docs/",
+    "title": "Show HN: HelixDB \u2013 Open-source vector-graph database for AI applications (Rust)",
+    "url": "https://github.com/HelixDB/helix-db/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 19:48:04 +0000",
-    "published_datetime": "2025-05-13T20:48:04",
+    "published": "Tue, 13 May 2025 17:26:38 +0000",
+    "published_datetime": "2025-05-13T18:26:38",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "A tool to verify estimates, II: a flexible proof assistant",
+    "url": "https://terrytao.wordpress.com/2025/05/09/a-tool-to-verify-estimates-ii-a-flexible-proof-assistant/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sat, 10 May 2025 10:41:21 +0000",
+    "published_datetime": "2025-05-10T11:41:21",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Google is building its own DeX: First look at Android's Desktop Mode",
+    "url": "https://www.androidauthority.com/android-desktop-mode-leak-3550321/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 14:30:35 +0000",
+    "published_datetime": "2025-05-13T15:30:35",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -66,6 +106,16 @@
     "category": "technology",
     "published": "Tue, 13 May 2025 11:28:49 +0000",
     "published_datetime": "2025-05-13T12:28:49",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Cardiac: A CARDboard Illustrative Aid to Computation [pdf]",
+    "url": "https://www.cs.drexel.edu/~bls96/museum/CARDIAC_manual.pdf",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 21:49:42 +0000",
+    "published_datetime": "2025-05-13T22:49:42",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -100,16 +150,6 @@
     "content": "Comments"
   },
   {
-    "title": "Google is building its own DeX: First look at Android's Desktop Mode",
-    "url": "https://www.androidauthority.com/android-desktop-mode-leak-3550321/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 14:30:35 +0000",
-    "published_datetime": "2025-05-13T15:30:35",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Ask HN: How are you acquiring your first hundred users?",
     "url": "https://news.ycombinator.com/item?id=43970837",
     "source": "Hacker News",
@@ -120,12 +160,12 @@
     "content": "Comments"
   },
   {
-    "title": "Cardiac: A CARDboard Illustrative Aid to Computation [pdf]",
-    "url": "https://www.cs.drexel.edu/~bls96/museum/CARDIAC_manual.pdf",
+    "title": "How (memory) safe is Zig? (2021)",
+    "url": "https://www.scattered-thoughts.net/writing/how-safe-is-zig/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 21:49:42 +0000",
-    "published_datetime": "2025-05-13T22:49:42",
+    "published": "Tue, 13 May 2025 22:12:11 +0000",
+    "published_datetime": "2025-05-13T23:12:11",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -136,6 +176,26 @@
     "category": "technology",
     "published": "Tue, 13 May 2025 17:57:57 +0000",
     "published_datetime": "2025-05-13T18:57:57",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Using obscure graph theory to solve programming languages problems",
+    "url": "https://reasonablypolymorphic.com/blog/solving-lcsa/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 20:09:54 +0000",
+    "published_datetime": "2025-05-13T21:09:54",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "The world could run on older hardware if software optimization was a priority",
+    "url": "https://twitter.com/ID_AA_Carmack/status/1922100771392520710",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 10:31:09 +0000",
+    "published_datetime": "2025-05-13T11:31:09",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -160,16 +220,6 @@
     "content": "Comments"
   },
   {
-    "title": "The world could run on older hardware if software optimization was a priority",
-    "url": "https://twitter.com/ID_AA_Carmack/status/1922100771392520710",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 10:31:09 +0000",
-    "published_datetime": "2025-05-13T11:31:09",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Turritopsis dohrnii: Immortal jellyfish",
     "url": "https://www.nhm.ac.uk/discover/immortal-jellyfish-secret-to-cheating-death.html",
     "source": "Hacker News",
@@ -180,32 +230,12 @@
     "content": "Comments"
   },
   {
-    "title": "Android and Wear OS are getting a redesign",
-    "url": "https://blog.google/products/android/material-3-expressive-android-wearos-launch/",
+    "title": "Y Combinator says Google is a monopolist, no comment about its OpenAI ties",
+    "url": "https://techcrunch.com/2025/05/13/y-combinator-says-google-is-a-monopolist-that-has-stunted-the-startup-ecosystem/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 19:19:14 +0000",
-    "published_datetime": "2025-05-13T20:19:14",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Using Obscure Graph Theory to Solve Programming Languages Problems",
-    "url": "https://reasonablypolymorphic.com/blog/solving-lcsa/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 20:09:54 +0000",
-    "published_datetime": "2025-05-13T21:09:54",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Why are banks still getting authentication so wrong?",
-    "url": "https://jamal.haba.sh/its-2025-why-are-banks-still-getting-authentication-so-wrong/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 18:56:11 +0000",
-    "published_datetime": "2025-05-13T19:56:11",
+    "published": "Tue, 13 May 2025 21:57:54 +0000",
+    "published_datetime": "2025-05-13T22:57:54",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -220,26 +250,6 @@
     "content": "Comments"
   },
   {
-    "title": "Coffee for people who don't like coffee",
-    "url": "https://ostwilkens.se/blog/coffee",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Sat, 10 May 2025 13:46:20 +0000",
-    "published_datetime": "2025-05-10T14:46:20",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Mill as a direct style build tool",
-    "url": "https://mill-build.org/blog/12-direct-style-build-tool.html",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Sat, 10 May 2025 07:10:41 +0000",
-    "published_datetime": "2025-05-10T08:10:41",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "In a high-stress work environment, prioritize relationships",
     "url": "https://wqtz.bearblog.dev/high-stress-job-relationships/",
     "source": "Hacker News",
@@ -250,12 +260,12 @@
     "content": "Comments"
   },
   {
-    "title": "The Battle to Bottle Palm Wine (2021)",
-    "url": "https://www.atlasobscura.com/articles/palm-wine-in-united-states",
+    "title": "A Taxonomy of Bugs",
+    "url": "https://ruby0x1.github.io/machinery_blog_archive/post/a-taxonomy-of-bugs/index.html",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Sat, 10 May 2025 14:05:24 +0000",
-    "published_datetime": "2025-05-10T15:05:24",
+    "published": "Tue, 13 May 2025 15:29:18 +0000",
+    "published_datetime": "2025-05-13T16:29:18",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -270,32 +280,22 @@
     "content": "Comments"
   },
   {
-    "title": "PyPI Organizations (2023)",
-    "url": "https://blog.pypi.org/posts/2023-04-23-introducing-pypi-organizations/",
+    "title": "Why are banks still getting authentication so wrong?",
+    "url": "https://jamal.haba.sh/its-2025-why-are-banks-still-getting-authentication-so-wrong/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 17:37:58 +0000",
-    "published_datetime": "2025-05-13T18:37:58",
+    "published": "Tue, 13 May 2025 18:56:11 +0000",
+    "published_datetime": "2025-05-13T19:56:11",
     "summary": "Comments",
     "content": "Comments"
   },
   {
-    "title": "One hundred and one rules of effective living",
-    "url": "https://mitchhorowitz.substack.com/p/101-rules-of-effective-living",
+    "title": "Android and Wear OS are getting a redesign",
+    "url": "https://blog.google/products/android/material-3-expressive-android-wearos-launch/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 11:41:42 +0000",
-    "published_datetime": "2025-05-13T12:41:42",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Don't unwrap options: There are better ways (2024)",
-    "url": "https://corrode.dev/blog/rust-option-handling-best-practices/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 17:58:27 +0000",
-    "published_datetime": "2025-05-13T18:58:27",
+    "published": "Tue, 13 May 2025 19:19:14 +0000",
+    "published_datetime": "2025-05-13T20:19:14",
     "summary": "Comments",
     "content": "Comments"
   }
