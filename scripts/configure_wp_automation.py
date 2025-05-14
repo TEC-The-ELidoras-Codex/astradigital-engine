@@ -100,7 +100,8 @@ def test_wp_connection(wp_url=None, wp_username=None, wp_password=None):
     
     headers = {
         'Authorization': f'Basic {auth_encoded}',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
     
     try:
