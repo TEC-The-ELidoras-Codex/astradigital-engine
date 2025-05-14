@@ -1,31 +1,11 @@
 [
   {
-    "title": "Your fingers wrinkle the same way every time you're in the water too long",
-    "url": "https://www.binghamton.edu/news/story/5547/do-your-fingers-wrinkle-the-same-way-every-time-youre-in-the-water-too-long-new-research-says-yes",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 23:34:07 +0000",
-    "published_datetime": "2025-05-14T00:34:07",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Type-constrained code generation with language models",
     "url": "https://arxiv.org/abs/2504.09246",
     "source": "Hacker News",
     "category": "technology",
     "published": "Tue, 13 May 2025 22:15:30 +0000",
     "published_datetime": "2025-05-13T23:15:30",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Flattening Rust's learning curve",
-    "url": "https://corrode.dev/blog/flattening-rusts-learning-curve/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 22:25:29 +0000",
-    "published_datetime": "2025-05-13T23:25:29",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -40,62 +20,22 @@
     "content": "Comments"
   },
   {
+    "title": "Flattening Rust's learning curve",
+    "url": "https://corrode.dev/blog/flattening-rusts-learning-curve/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 22:25:29 +0000",
+    "published_datetime": "2025-05-13T23:25:29",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Build real-time knowledge graph for documents with LLM",
     "url": "https://cocoindex.io/blogs/knowledge-graph-for-docs/",
     "source": "Hacker News",
     "category": "technology",
     "published": "Tue, 13 May 2025 19:48:04 +0000",
     "published_datetime": "2025-05-13T20:48:04",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Show HN: HelixDB \u2013 Open-source vector-graph database for AI applications (Rust)",
-    "url": "https://github.com/HelixDB/helix-db/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 17:26:38 +0000",
-    "published_datetime": "2025-05-13T18:26:38",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Failed Soviet Venus lander Kosmos 482 crashes to Earth after 53 years in orbit",
-    "url": "https://www.space.com/space-exploration/launches-spacecraft/failed-soviet-venus-lander-kosmos-482-crashes-to-earth-after-53-years-in-orbit",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Sat, 10 May 2025 13:51:53 +0000",
-    "published_datetime": "2025-05-10T14:51:53",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Google is building its own DeX: First look at Android's Desktop Mode",
-    "url": "https://www.androidauthority.com/android-desktop-mode-leak-3550321/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 14:30:35 +0000",
-    "published_datetime": "2025-05-13T15:30:35",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Less meat is nearly always better than sustainable meat",
-    "url": "https://ourworldindata.org/less-meat-or-sustainable-meat",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 23:53:45 +0000",
-    "published_datetime": "2025-05-14T00:53:45",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Launch HN: Miyagi (YC W25) turns YouTube videos into online, interactive courses",
-    "url": "https://news.ycombinator.com/item?id=43972425",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 12:56:42 +0000",
-    "published_datetime": "2025-05-13T13:56:42",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -110,22 +50,12 @@
     "content": "Comments"
   },
   {
-    "title": "PDF to Text, a challenging problem",
-    "url": "https://www.marginalia.nu/log/a_119_pdf/",
+    "title": "Google is building its own DeX: First look at Android's Desktop Mode",
+    "url": "https://www.androidauthority.com/android-desktop-mode-leak-3550321/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 15:01:09 +0000",
-    "published_datetime": "2025-05-13T16:01:09",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Multiple security issues in GNU Screen",
-    "url": "https://www.openwall.com/lists/oss-security/2025/05/12/1",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 11:28:49 +0000",
-    "published_datetime": "2025-05-13T12:28:49",
+    "published": "Tue, 13 May 2025 14:30:35 +0000",
+    "published_datetime": "2025-05-13T15:30:35",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -140,32 +70,82 @@
     "content": "Comments"
   },
   {
-    "title": "A tool to verify estimates, II: a flexible proof assistant",
-    "url": "https://terrytao.wordpress.com/2025/05/09/a-tool-to-verify-estimates-ii-a-flexible-proof-assistant/",
+    "title": "Failed Soviet Venus lander Kosmos 482 crashes to Earth after 53 years in orbit",
+    "url": "https://www.space.com/space-exploration/launches-spacecraft/failed-soviet-venus-lander-kosmos-482-crashes-to-earth-after-53-years-in-orbit",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Sat, 10 May 2025 10:41:21 +0000",
-    "published_datetime": "2025-05-10T11:41:21",
+    "published": "Sat, 10 May 2025 13:51:53 +0000",
+    "published_datetime": "2025-05-10T14:51:53",
     "summary": "Comments",
     "content": "Comments"
   },
   {
-    "title": "Coffee for people who don't like coffee",
-    "url": "https://ostwilkens.se/blog/coffee",
+    "title": "Launch HN: Miyagi (YC W25) turns YouTube videos into online, interactive courses",
+    "url": "https://news.ycombinator.com/item?id=43972425",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Sat, 10 May 2025 13:46:20 +0000",
-    "published_datetime": "2025-05-10T14:46:20",
+    "published": "Tue, 13 May 2025 12:56:42 +0000",
+    "published_datetime": "2025-05-13T13:56:42",
     "summary": "Comments",
     "content": "Comments"
   },
   {
-    "title": "Garbage collection of object storage at scale",
-    "url": "https://www.warpstream.com/blog/taking-out-the-trash-garbage-collection-of-object-storage-at-massive-scale",
+    "title": "DeepSeek\u2019s founder is threatening US dominance in AI race",
+    "url": "https://www.bloomberg.com/news/features/2025-05-13/deepseek-races-after-chatgpt-as-china-s-ai-industry-soars",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Sat, 10 May 2025 13:23:35 +0000",
-    "published_datetime": "2025-05-10T14:23:35",
+    "published": "Wed, 14 May 2025 01:07:23 +0000",
+    "published_datetime": "2025-05-14T02:07:23",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Show HN: HelixDB \u2013 Open-source vector-graph database for AI applications (Rust)",
+    "url": "https://github.com/HelixDB/helix-db/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 17:26:38 +0000",
+    "published_datetime": "2025-05-13T18:26:38",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Fingers wrinkle the same way every time they\u2019re in the water too long",
+    "url": "https://www.binghamton.edu/news/story/5547/do-your-fingers-wrinkle-the-same-way-every-time-youre-in-the-water-too-long-new-research-says-yes",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 23:34:07 +0000",
+    "published_datetime": "2025-05-14T00:34:07",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "PDF to Text, a challenging problem",
+    "url": "https://www.marginalia.nu/log/a_119_pdf/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 15:01:09 +0000",
+    "published_datetime": "2025-05-13T16:01:09",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "I\u2019ve built an IoT device to let my family know when I\u2019m in a meeting",
+    "url": "https://nullonerror.org/2025/05/11/i-have-built-an-iot-device-to-let-my-family-know-when-i-am-in-a-meeting/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sun, 11 May 2025 14:22:49 +0000",
+    "published_datetime": "2025-05-11T15:22:49",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Multiple security issues in GNU Screen",
+    "url": "https://www.openwall.com/lists/oss-security/2025/05/12/1",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 11:28:49 +0000",
+    "published_datetime": "2025-05-13T12:28:49",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -180,6 +160,36 @@
     "content": "Comments"
   },
   {
+    "title": "Coffee for people who don't like coffee",
+    "url": "https://ostwilkens.se/blog/coffee",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sat, 10 May 2025 13:46:20 +0000",
+    "published_datetime": "2025-05-10T14:46:20",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "A visual history of the safety pin",
+    "url": "https://museumofeverydaylife.org/current-exhibitions/a-visual-history-of-the-safety-pin",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sun, 11 May 2025 17:22:45 +0000",
+    "published_datetime": "2025-05-11T18:22:45",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Garbage collection of object storage at scale",
+    "url": "https://www.warpstream.com/blog/taking-out-the-trash-garbage-collection-of-object-storage-at-massive-scale",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sat, 10 May 2025 13:23:35 +0000",
+    "published_datetime": "2025-05-10T14:23:35",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "How (memory) safe is Zig? (2021)",
     "url": "https://www.scattered-thoughts.net/writing/how-safe-is-zig/",
     "source": "Hacker News",
@@ -190,12 +200,12 @@
     "content": "Comments"
   },
   {
-    "title": "Cardiac: A CARDboard Illustrative Aid to Computation [pdf]",
-    "url": "https://www.cs.drexel.edu/~bls96/museum/CARDIAC_manual.pdf",
+    "title": "A tool to verify estimates, II: a flexible proof assistant",
+    "url": "https://terrytao.wordpress.com/2025/05/09/a-tool-to-verify-estimates-ii-a-flexible-proof-assistant/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 21:49:42 +0000",
-    "published_datetime": "2025-05-13T22:49:42",
+    "published": "Sat, 10 May 2025 10:41:21 +0000",
+    "published_datetime": "2025-05-10T11:41:21",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -210,12 +220,22 @@
     "content": "Comments"
   },
   {
-    "title": "OpenTelemetry protocol with Apache Arrow",
-    "url": "https://opentelemetry.io/blog/2025/otel-arrow-phase-2/",
+    "title": "Cardiac: A CARDboard Illustrative Aid to Computation [pdf]",
+    "url": "https://www.cs.drexel.edu/~bls96/museum/CARDIAC_manual.pdf",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 17:57:57 +0000",
-    "published_datetime": "2025-05-13T18:57:57",
+    "published": "Tue, 13 May 2025 21:49:42 +0000",
+    "published_datetime": "2025-05-13T22:49:42",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Using obscure graph theory to solve programming languages problems",
+    "url": "https://reasonablypolymorphic.com/blog/solving-lcsa/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 20:09:54 +0000",
+    "published_datetime": "2025-05-13T21:09:54",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -230,22 +250,22 @@
     "content": "Comments"
   },
   {
-    "title": "Starcloud",
-    "url": "https://www.ycombinator.com/companies/starcloud",
+    "title": "OpenTelemetry protocol with Apache Arrow",
+    "url": "https://opentelemetry.io/blog/2025/otel-arrow-phase-2/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 20:13:54 +0000",
-    "published_datetime": "2025-05-13T21:13:54",
+    "published": "Tue, 13 May 2025 17:57:57 +0000",
+    "published_datetime": "2025-05-13T18:57:57",
     "summary": "Comments",
     "content": "Comments"
   },
   {
-    "title": "Using obscure graph theory to solve programming languages problems",
-    "url": "https://reasonablypolymorphic.com/blog/solving-lcsa/",
+    "title": "Membrane: Media Framework for Elixir",
+    "url": "https://membrane.stream/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 20:09:54 +0000",
-    "published_datetime": "2025-05-13T21:09:54",
+    "published": "Sat, 10 May 2025 13:33:00 +0000",
+    "published_datetime": "2025-05-10T14:33:00",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -270,32 +290,12 @@
     "content": "Comments"
   },
   {
-    "title": "Membrane: Media Framework for Elixir",
-    "url": "https://membrane.stream/",
+    "title": "Starcloud",
+    "url": "https://www.ycombinator.com/companies/starcloud",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Sat, 10 May 2025 13:33:00 +0000",
-    "published_datetime": "2025-05-10T14:33:00",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "In a high-stress work environment, prioritize relationships",
-    "url": "https://wqtz.bearblog.dev/high-stress-job-relationships/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 13:08:52 +0000",
-    "published_datetime": "2025-05-13T14:08:52",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "A Taxonomy of Bugs",
-    "url": "https://ruby0x1.github.io/machinery_blog_archive/post/a-taxonomy-of-bugs/index.html",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 15:29:18 +0000",
-    "published_datetime": "2025-05-13T16:29:18",
+    "published": "Tue, 13 May 2025 20:13:54 +0000",
+    "published_datetime": "2025-05-13T21:13:54",
     "summary": "Comments",
     "content": "Comments"
   }
