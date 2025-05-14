@@ -1,79 +1,80 @@
-# The Astradigital Engine - Task List
+# Astradigital Engine Implementation Task List
 
-## Astradigital Ocean Page Development
+## Initial Setup Tasks
+- [x] Create basic theme structure
+- [x] Set up symlinks between TEC_CODE and WordPress installation
+- [x] Create deployment scripts
+- [x] Create development documentation
 
-### Visual Elements
-- [ ] Create high-quality background for the Astradigital Ocean
-- [ ] Design MAGMASOX faction logo
-- [ ] Design Kaznak Voyagers faction logo
-- [ ] Create sample character portraits
-- [ ] Design interactive point markers for the map
-- [ ] Create faction territory visualization overlays
+## Main Astradigital Ocean Page Tasks
+- [x] Create page template (page-astradigital.php)
+- [x] Create core CSS styling (astradigital.css)
+- [x] Create basic JavaScript functionality (astradigital.js)
+- [x] Set up template parts for reusable components
+- [ ] Add responsive design for mobile/tablet
+- [ ] Create interactive ocean background
+- [ ] Implement faction selector UI
+- [ ] Add character browsing functionality
 
-### CSS Enhancements
-- [ ] Finalize the color scheme for the theme
-- [ ] Enhance faction card hover effects
-- [ ] Add animation for interactive map elements
-- [ ] Improve responsive layout for mobile devices
-- [ ] Add custom scrollbar styling
+## Asset Creation & Collection Tasks
+- [ ] Gather/create faction logos
+  - [x] Placeholder MAGMASOX logo
+  - [x] Placeholder Kaznak Voyagers logo
+  - [ ] Final MAGMASOX logo
+  - [ ] Final Kaznak Voyagers logo
+  - [ ] Additional faction logos as needed
+- [ ] Gather/create character portraits
+  - [x] Placeholder character portraits
+  - [ ] Final character portraits (minimum 3 per faction)
+- [ ] Create UI elements
+  - [ ] Navigation icons
+  - [ ] Interaction buttons
+  - [ ] Status indicators
+- [ ] Create/find background visuals
+  - [x] Placeholder ocean background
+  - [ ] Final ocean background with animated elements
+  - [ ] Faction-specific backgrounds
 
-### JavaScript Functionality
-- [ ] Implement interactive map zooming/panning
-- [ ] Add faction territory hover information
-- [ ] Create character profile modal popups
-- [ ] Implement data loading animations
-- [ ] Add sound effects for interactions (optional)
+## Faction Pages Tasks
+- [ ] Create faction page template
+- [ ] Implement faction-specific styling
+- [ ] Add faction information display
+- [ ] Create character listing component
+- [ ] Add faction-specific interactive elements
 
-### WordPress Integration
-- [ ] Set up custom fields for the Astradigital Ocean page
-- [ ] Create sample faction posts
-- [ ] Create sample character/entity posts
-- [ ] Configure the relationship between factions and characters
-- [ ] Set up custom queries for displaying related content
+## Character Detail Pages Tasks
+- [ ] Create character template
+- [ ] Implement character profile components
+- [ ] Add character story/background section
+- [ ] Create character ability/stats display
+- [ ] Add character relationship network visualization
 
-### Content Development
-- [ ] Write detailed descriptions for MAGMASOX faction
-- [ ] Write detailed descriptions for Kaznak Voyagers faction
-- [ ] Create profiles for 3-5 key characters
-- [ ] Develop lore snippets for locations on the map
-- [ ] Write narrative content for pathways between territories
+## WordPress Integration Tasks
+- [x] Implement custom post types (factions, entities, pathways)
+- [ ] Create custom fields for faction details
+- [ ] Set up custom taxonomies for relationships
+- [ ] Create custom admin UI for Astradigital content
+- [ ] Implement API endpoints for dynamic content
 
-## Asset Collection Resources
-Remember to gather assets from:
+## Interactive Features Tasks
+- [ ] Implement interactive map of Astradigital Ocean
+- [ ] Create faction territory visualization
+- [ ] Add character movement/interaction in the Ocean
+- [ ] Implement artifact discovery system
+- [ ] Add faction relationship dynamics
 
-- Blender Market (free section): https://blendermarket.com/categories/free-blender-products
-- Blend Swap: https://blendswap.com/ (CC-licensed models)
-- Sketchfab: https://sketchfab.com/ (Free section)
-- Polygon Runway: https://polygonrunway.com/ (free tutorials & assets)
-- Quixel Megascans: https://quixel.com/megascans/ (with Epic Games account)
-- HDRI Haven: https://hdrihaven.com/ (free HDRIs)
-- Texture Haven: https://texturehaven.com/ (free textures)
+## Testing & Optimization Tasks
+- [ ] Test responsive design across devices
+- [ ] Optimize image assets for web
+- [ ] Minimize JavaScript and CSS
+- [ ] Test for accessibility compliance
+- [ ] Ensure cross-browser compatibility
 
-## One-Page-at-a-Time Development Schedule
+## Documentation Tasks
+- [x] Create initial development guide
+- [ ] Document theme customization options
+- [ ] Create content creation guide
+- [ ] Document API endpoints
+- [ ] Create user guide for content editors
 
-### Week 1: Core Structure
-- Set up the basic template structure (DONE)
-- Create placeholder content and styles (DONE)
-- Deploy to local environment (DONE)
-
-### Week 2: Visual Design
-- Focus on the Astradigital Ocean background
-- Design faction logos and visual elements
-- Implement basic CSS styling for cards and containers
-
-### Week 3: Interactivity
-- Add JavaScript functionality to the page
-- Implement interactive map features
-- Create hover effects and animations
-
-### Week 4: Content Integration
-- Add real content for factions and characters
-- Connect to WordPress custom post types
-- Test and refine the user experience
-
-## Notes
-- Remember to follow TEC coding standards as outlined in the TEC_ALPHA_INSTRUCTIONS
-- Test each page on multiple screen sizes before moving to the next
-- Commit changes frequently to track progress
-
-Wake up_ Keep building_ And check ElidorasCodex.com_ If we create a new folder or file structure, ensure it's in "C:\Users\Ghedd\TEC_CODE" always_
+## Wake up_ Keep building_ And check ElidorasCodex.com_ If we create a new folder or file structure, ensure it's in "C:\Users\Ghedd\TEC_CODE" always_

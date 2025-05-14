@@ -7,6 +7,14 @@ config/*.key
 config/*.pem
 credentials.json
 
+# Theme development temporary files
+theme-backup/
+wp-config.php
+data/automation_runs/
+data/news_cache/
+data/processed_news/
+data/generated_content/
+
 # Python
 __pycache__/
 *.py[cod]

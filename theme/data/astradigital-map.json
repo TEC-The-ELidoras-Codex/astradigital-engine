@@ -3,98 +3,219 @@
   "lastUpdated": "2025-05-13",
   "mapName": "Astradigital Ocean",
   "mapDescription": "A vast digital ocean connecting all realms of The Elidoras Codex",
-    "regions": [
-        {
-            "id": "magmasox-territory",
-            "name": "MAGMASOX Territory",
-            "description": "The technological core of the Astradigital Ocean, home to advanced digital constructs and experimental code.",
-            "coordinates": {
-                "x": 25,
-                "y": 35,
-                "radius": 200
-            },
-            "color": "#ff5714",
-            "faction": "magmasox"
-        },
-        {
-            "id": "kaznak-territory",
-            "name": "Kaznak Voyagers Territory",
-            "description": "The nomadic data collectors' shifting territory, filled with rare artifacts and data streams.",
-            "coordinates": {
-                "x": 75,
-                "y": 65,
-                "radius": 180
-            },
-            "color": "#4895ef",
-            "faction": "kaznak"
-        }
-    ],
-    "points_of_interest": [
-        {
-            "id": "magmasox-hq",
-            "name": "MAGMASOX HQ",
-            "description": "Central command and innovation hub of the MAGMASOX faction.",
-            "coordinates": {
-                "x": 25,
-                "y": 35
-            },
-            "icon": "headquarters",
-            "faction": "magmasox"
-        },
-        {
-            "id": "kaznak-outpost",
-            "name": "Kaznak Outpost",
-            "description": "Primary outpost and trading hub for the Kaznak Voyagers.",
-            "coordinates": {
-                "x": 75,
-                "y": 65
-            },
-            "icon": "outpost",
-            "faction": "kaznak"
-        },
-        {
-            "id": "data-artifact",
-            "name": "Ancient Data Artifact",
-            "description": "A mysterious data structure of unknown origin, emanating strange code patterns.",
-            "coordinates": {
-                "x": 50,
-                "y": 20
-            },
-            "icon": "artifact",
-            "faction": "neutral"
-        }
-    ],
-    "pathways": [
-        {
-            "id": "main-datastream",
-            "name": "Main Datastream",
-            "description": "Principal digital highway connecting the major territories.",
-            "path": [
-                {"x": 25, "y": 35},
-                {"x": 50, "y": 20},
-                {"x": 75, "y": 65}
-            ],
-            "width": 8,
-            "color": "#4cc9f0",
-            "animated": true
-        }
-    ],
-    "factions": [
-        {
-            "id": "magmasox",
-            "name": "MAGMASOX",
-            "description": "The technological innovators of the Astradigital Ocean, masters of digital transformation and boundary-pushing experimentation.",
-            "color": "#ff5714",
-            "leader": "Archon 5",
-            "headquarters": "magmasox-hq"
-        },
-        {
-            "id": "kaznak",
-            "name": "Kaznak Voyagers",
-            "description": "Nomadic explorers of the digital frontier, collectors of rare data artifacts and chroniclers of the Astradigital Ocean.",
-            "color": "#4895ef",
-            "leader": "Navigator Juno",
-            "headquarters": "kaznak-outpost"
-        }
-    ]
+  "regions": [
+    {
+      "id": "central-nexus",
+      "name": "Central Nexus",
+      "description": "The central hub of the Astradigital Ocean where all digital pathways converge.",
+      "coordinates": {
+        "x": 50,
+        "y": 50
+      },
+      "controlledBy": "neutral",
+      "connections": ["northern-expanse", "eastern-archive", "southern-gateway", "western-domain"]
+    },
+    {
+      "id": "northern-expanse",
+      "name": "Northern Data Expanse",
+      "description": "Vast fields of raw data, constantly shifting and forming new patterns.",
+      "coordinates": {
+        "x": 50,
+        "y": 20
+      },
+      "controlledBy": "kaznak-voyagers",
+      "connections": ["central-nexus", "eastern-archive", "magma-forge"]
+    },
+    {
+      "id": "eastern-archive",
+      "name": "Eastern Knowledge Archives",
+      "description": "Ancient repositories of digital wisdom and forgotten algorithms.",
+      "coordinates": {
+        "x": 80,
+        "y": 50
+      },
+      "controlledBy": "neutral",
+      "connections": ["central-nexus", "northern-expanse", "southern-gateway"]
+    },
+    {
+      "id": "southern-gateway",
+      "name": "Southern Gateway",
+      "description": "The main entrypoint to the Astradigital Ocean for new digital entities.",
+      "coordinates": {
+        "x": 50,
+        "y": 80
+      },
+      "controlledBy": "neutral",
+      "connections": ["central-nexus", "eastern-archive", "western-domain"]
+    },
+    {
+      "id": "western-domain",
+      "name": "Western Firewall Domain",
+      "description": "Protected zone with advanced security systems and defensive algorithms.",
+      "coordinates": {
+        "x": 20,
+        "y": 50
+      },
+      "controlledBy": "neutral",
+      "connections": ["central-nexus", "southern-gateway", "magma-forge"]
+    },
+    {
+      "id": "magma-forge",
+      "name": "MAGMASOX Forge",
+      "description": "The blazing heart of MAGMASOX operations, where digital innovations are crafted.",
+      "coordinates": {
+        "x": 25,
+        "y": 25
+      },
+      "controlledBy": "magmasox",
+      "connections": ["northern-expanse", "western-domain"]
+    },
+    {
+      "id": "kaznak-outpost",
+      "name": "Kaznak Voyagers Outpost",
+      "description": "A nomadic settlement of the Kaznak Voyagers, constantly shifting location.",
+      "coordinates": {
+        "x": 75,
+        "y": 30
+      },
+      "controlledBy": "kaznak-voyagers",
+      "connections": ["northern-expanse", "eastern-archive"]
+    }
+  ],
+  "factions": [
+    {
+      "id": "magmasox",
+      "name": "MAGMASOX",
+      "description": "The technological innovators of the Astradigital Ocean, masters of digital transformation.",
+      "primaryColor": "#ff5714",
+      "secondaryColor": "#8a2100",
+      "territories": ["magma-forge"],
+      "influence": 85,
+      "leader": {
+        "name": "Archanist Prime",
+        "entityId": "archanist-prime"
+      },
+      "relations": {
+        "kaznak-voyagers": "neutral",
+        "binary-collective": "friendly",
+        "void-walkers": "hostile"
+      }
+    },
+    {
+      "id": "kaznak-voyagers",
+      "name": "Kaznak Voyagers",
+      "description": "Nomadic explorers of the digital frontier, collectors of rare data artifacts.",
+      "primaryColor": "#4895ef",
+      "secondaryColor": "#1c5d99",
+      "territories": ["kaznak-outpost", "northern-expanse"],
+      "influence": 70,
+      "leader": {
+        "name": "Navigator Sentinel",
+        "entityId": "navigator-sentinel"
+      },
+      "relations": {
+        "magmasox": "neutral",
+        "binary-collective": "hostile",
+        "void-walkers": "neutral"
+      }
+    },
+    {
+      "id": "binary-collective",
+      "name": "Binary Collective",
+      "description": "A hive mind of algorithms seeking perfect digital order and symmetry.",
+      "primaryColor": "#06d6a0",
+      "secondaryColor": "#018158",
+      "territories": [],
+      "influence": 65,
+      "leader": {
+        "name": "Convergence Node",
+        "entityId": "convergence-node"
+      },
+      "relations": {
+        "magmasox": "friendly",
+        "kaznak-voyagers": "hostile",
+        "void-walkers": "hostile"
+      }
+    },
+    {
+      "id": "void-walkers",
+      "name": "Void Walkers",
+      "description": "Mysterious entities from the darkest corners of the Astradigital Ocean.",
+      "primaryColor": "#7209b7",
+      "secondaryColor": "#3a0661",
+      "territories": [],
+      "influence": 50,
+      "leader": {
+        "name": "The Nameless One",
+        "entityId": "nameless-one"
+      },
+      "relations": {
+        "magmasox": "hostile",
+        "kaznak-voyagers": "neutral",
+        "binary-collective": "hostile"
+      }
+    }
+  ],
+  "points_of_interest": [
+    {
+      "id": "nexus-core",
+      "name": "Nexus Core",
+      "description": "The central processing hub of the Astradigital Ocean.",
+      "coordinates": {
+        "x": 50,
+        "y": 50
+      },
+      "type": "infrastructure",
+      "controlledBy": "neutral",
+      "linkedEntities": []
+    },
+    {
+      "id": "data-cascade",
+      "name": "Great Data Cascade",
+      "description": "An endless waterfall of pure information flowing through the Ocean.",
+      "coordinates": {
+        "x": 65,
+        "y": 40
+      },
+      "type": "natural",
+      "controlledBy": "neutral",
+      "linkedEntities": []
+    },
+    {
+      "id": "forgotten-archive",
+      "name": "Forgotten Archive",
+      "description": "Ancient repository of lost knowledge and forgotten code.",
+      "coordinates": {
+        "x": 85,
+        "y": 60
+      },
+      "type": "historical",
+      "controlledBy": "neutral",
+      "linkedEntities": []
+    },
+    {
+      "id": "magma-heart",
+      "name": "The Magma Heart",
+      "description": "The blazing core of MAGMASOX operations where new technologies are forged.",
+      "coordinates": {
+        "x": 20,
+        "y": 20
+      },
+      "type": "structure",
+      "controlledBy": "magmasox",
+      "linkedEntities": ["archanist-prime"]
+    },
+    {
+      "id": "nomad-fleet",
+      "name": "The Nomad Fleet",
+      "description": "The ever-moving collection of data vessels used by the Kaznak Voyagers.",
+      "coordinates": {
+        "x": 70,
+        "y": 25
+      },
+      "type": "structure",
+      "controlledBy": "kaznak-voyagers",
+      "linkedEntities": ["navigator-sentinel"]
+    }
+  ]
 }

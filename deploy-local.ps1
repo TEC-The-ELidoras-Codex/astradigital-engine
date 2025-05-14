@@ -1,29 +1,59 @@
-# Deploy Astradigital Engine Theme to Local WordPress
-# Copies the theme files to the local WordPress themes directory
+# Astradigital Engine Local Deployment Script
+# This script updates the Astradigital Engine theme in your Local WordPress installation
 
-# Configuration
-$sourceDir = "C:\Users\Ghedd\TEC_CODE\astradigital-engine\theme"
-$destinationDir = "C:\Users\Ghedd\Local Sites\teclocal\app\public\wp-content\themes\astradigital-engine"
+Write-Output "Deploying Astradigital Engine theme to Local WordPress..."
 
-# Ensure the destination directory exists
-Write-Host "Creating destination directory if it doesn't exist..."
-New-Item -Path $destinationDir -ItemType Directory -Force | Out-Null
+$themeDir = "C:\Users\Ghedd\TEC_CODE\astradigital-engine\theme"
+$targetDir = "C:\Users\Ghedd\Local Sites\teclocal\app\public\wp-content\themes\astradigital-engine"
 
-# Copy all theme files to the destination
-Write-Host "Copying theme files to local WordPress installation..."
-Copy-Item -Path "$sourceDir\*" -Destination $destinationDir -Recurse -Force
+# Check if symlink exists
+if (Test-Path $targetDir) {
+    # If it's a symlink, we don't need to do anything
+    if ((Get-Item $targetDir).Attributes -match "ReparsePoint") {
+        Write-Output "Symlink already exists - no need to copy files"
+    } else {
+        # If it's a regular directory, remove it and create symlink
+        Remove-Item -Path $targetDir -Force -Recurse
+        New-Item -Path $targetDir -ItemType SymbolicLink -Value $themeDir -Force
+        Write-Output "Created symlink for theme"
+    }
+} else {
+    # Create symlink if target directory doesn't exist
+    New-Item -Path $targetDir -ItemType SymbolicLink -Value $themeDir -Force
+    Write-Output "Created symlink for theme"
+}
 
-# Create a page for the Astradigital Ocean if it doesn't exist
-Write-Host "Checking for Astradigital Ocean page..."
-$wpCliPath = "C:\Users\Ghedd\Local Sites\teclocal\app\public\wp-cli.phar"
+# Create placeholder images if needed
+$assetsDir = "$themeDir\assets\images"
+$backgroundsDir = "$assetsDir\backgrounds"
+$logosDir = "$assetsDir\logos"
+$charactersDir = "$assetsDir\characters"
 
-# This is just informational - the actual page creation would require WP-CLI
-Write-Host "To create the Astradigital Ocean page, run this command in your WordPress directory:"
-Write-Host "php wp-cli.phar post create --post_type=page --post_title='Astradigital Ocean' --post_status=publish --page_template='templates/page-astradigital.php'"
+# Create placeholder images if they don't exist
+If (-not (Test-Path "$backgroundsDir\astradigital-ocean.jpg")) {
+    Write-Output "Creating placeholder images for the theme..."
+    
+    # Create directories if they don't exist
+    if (-not (Test-Path $backgroundsDir)) { New-Item -Path $backgroundsDir -ItemType Directory -Force }
+    if (-not (Test-Path $logosDir)) { New-Item -Path $logosDir -ItemType Directory -Force }
+    if (-not (Test-Path $charactersDir)) { New-Item -Path $charactersDir -ItemType Directory -Force }
+    
+    # Download placeholder images
+    Invoke-WebRequest -Uri "https://picsum.photos/1920/800" -OutFile "$backgroundsDir\astradigital-ocean.jpg"
+    Invoke-WebRequest -Uri "https://picsum.photos/500/500" -OutFile "$logosDir\magmasox-logo.png"
+    Invoke-WebRequest -Uri "https://picsum.photos/500/501" -OutFile "$logosDir\kaznak-logo.png"
+    Invoke-WebRequest -Uri "https://picsum.photos/400/600" -OutFile "$charactersDir\character-sample.png"
+    
+    Write-Output "Placeholder images created"
+}
 
-Write-Host "`nDeployment complete! The Astradigital Engine theme is now available in your local WordPress installation."
-Write-Host "You can activate it from the WordPress admin panel: Appearance > Themes"
-Write-Host "Remember to set up the Astradigital Ocean page with the page-astradigital.php template."
-
-# Show link to open the local site
-Write-Host "`nLocal site URL: http://teclocal.local/"
+Write-Output "Deployment complete!"
+Write-Output "------------------------------------------------"
+Write-Output "The astradigital-engine theme is now available in your WordPress installation."
+Write-Output "You can activate it from the WordPress admin dashboard."
+Write-Output "To add the Astradigital Ocean page:"
+Write-Output "1. Go to WordPress admin"
+Write-Output "2. Create a new page"
+Write-Output "3. Set template to 'Astradigital Ocean'"
+Write-Output "4. Publish the page"
+Write-Output "------------------------------------------------"
