@@ -351,7 +351,8 @@ class NewsProcessor:
         # Factor 2: Sentiment intensity
         sentiment = topic["sentiment"]
         sentiment_intensity = abs(sentiment["compound"])
-          # Factor 3: Recency - average days old (0 = today, lower is better)
+        
+        # Factor 3: Recency - average days old (0 = today, lower is better)
         days_old_sum = 0
         now = datetime.now()
         for article in topic["articles"]:

@@ -1,7 +1,8 @@
 {
-    "map_title": "The Astradigital Ocean",
-    "map_description": "A visualization of the digital frontier known as the Astradigital Ocean",
-    "map_version": "1.0.0",
+  "version": "1.0.0",
+  "lastUpdated": "2025-05-13",
+  "mapName": "Astradigital Ocean",
+  "mapDescription": "A vast digital ocean connecting all realms of The Elidoras Codex",
     "regions": [
         {
             "id": "magmasox-territory",
