@@ -404,10 +404,11 @@ class NewsProcessor:
             
         Returns:
             Suggested title string
-        """        # Strategy 1: Use the title of the most recent article with some cleaning
+        """
+        # Strategy 1: Use the title of the most recent article with some cleaning
         most_recent_date = datetime.min
         most_recent_title = ""
-        for article in topic["articles"]:
+          for article in topic["articles"]:
             pub_date = article.get("published_datetime", datetime.min)
             
             # Handle string datetime
