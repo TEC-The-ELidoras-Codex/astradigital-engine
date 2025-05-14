@@ -1,6 +1,6 @@
 # The Astradigital Engine 🌌
 
-[![Patreon](https://img.shields.io/badge/Support-Patreon-f96854.svg?style=flat-square)](https://www.patreon.com/ElidorasCodex)
+[![Patreon](https://img.shields.io/badge/Support-Patreon-f96854.svg?style=flat-square)](https://www.pataeon.com/ElidorasCodex)
 [![Ko-fi](https://img.shields.io/badge/Support-Ko--fi-FF5E5B.svg?style=flat-square)](https://ko-fi.com/elidorascodex)
 [![Website](https://img.shields.io/badge/Visit-ElidorasCodex.com-8C52FF.svg?style=flat-square)](https://elidorascodex.com)
 

@@ -351,11 +351,10 @@ class NewsProcessor:
         # Factor 2: Sentiment intensity
         sentiment = topic["sentiment"]
         sentiment_intensity = abs(sentiment["compound"])
-        
-        # Factor 3: Recency - average days old (0 = today, lower is better)
+          # Factor 3: Recency - average days old (0 = today, lower is better)
         days_old_sum = 0
         now = datetime.now()
-          for article in topic["articles"]:
+        for article in topic["articles"]:
             pub_date = article.get("published_datetime", now)
             
             # Handle string datetime
@@ -405,11 +404,10 @@ class NewsProcessor:
             
         Returns:
             Suggested title string
-        """
-        # Strategy 1: Use the title of the most recent article with some cleaning
+        """        # Strategy 1: Use the title of the most recent article with some cleaning
         most_recent_date = datetime.min
         most_recent_title = ""
-          for article in topic["articles"]:
+        for article in topic["articles"]:
             pub_date = article.get("published_datetime", datetime.min)
             
             # Handle string datetime

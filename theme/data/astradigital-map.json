@@ -1,0 +1,99 @@
+{
+    "map_title": "The Astradigital Ocean",
+    "map_description": "A visualization of the digital frontier known as the Astradigital Ocean",
+    "map_version": "1.0.0",
+    "regions": [
+        {
+            "id": "magmasox-territory",
+            "name": "MAGMASOX Territory",
+            "description": "The technological core of the Astradigital Ocean, home to advanced digital constructs and experimental code.",
+            "coordinates": {
+                "x": 25,
+                "y": 35,
+                "radius": 200
+            },
+            "color": "#ff5714",
+            "faction": "magmasox"
+        },
+        {
+            "id": "kaznak-territory",
+            "name": "Kaznak Voyagers Territory",
+            "description": "The nomadic data collectors' shifting territory, filled with rare artifacts and data streams.",
+            "coordinates": {
+                "x": 75,
+                "y": 65,
+                "radius": 180
+            },
+            "color": "#4895ef",
+            "faction": "kaznak"
+        }
+    ],
+    "points_of_interest": [
+        {
+            "id": "magmasox-hq",
+            "name": "MAGMASOX HQ",
+            "description": "Central command and innovation hub of the MAGMASOX faction.",
+            "coordinates": {
+                "x": 25,
+                "y": 35
+            },
+            "icon": "headquarters",
+            "faction": "magmasox"
+        },
+        {
+            "id": "kaznak-outpost",
+            "name": "Kaznak Outpost",
+            "description": "Primary outpost and trading hub for the Kaznak Voyagers.",
+            "coordinates": {
+                "x": 75,
+                "y": 65
+            },
+            "icon": "outpost",
+            "faction": "kaznak"
+        },
+        {
+            "id": "data-artifact",
+            "name": "Ancient Data Artifact",
+            "description": "A mysterious data structure of unknown origin, emanating strange code patterns.",
+            "coordinates": {
+                "x": 50,
+                "y": 20
+            },
+            "icon": "artifact",
+            "faction": "neutral"
+        }
+    ],
+    "pathways": [
+        {
+            "id": "main-datastream",
+            "name": "Main Datastream",
+            "description": "Principal digital highway connecting the major territories.",
+            "path": [
+                {"x": 25, "y": 35},
+                {"x": 50, "y": 20},
+                {"x": 75, "y": 65}
+            ],
+            "width": 8,
+            "color": "#4cc9f0",
+            "animated": true
+        }
+    ],
+    "factions": [
+        {
+            "id": "magmasox",
+            "name": "MAGMASOX",
+            "description": "The technological innovators of the Astradigital Ocean, masters of digital transformation and boundary-pushing experimentation.",
+            "color": "#ff5714",
+            "leader": "Archon 5",
+            "headquarters": "magmasox-hq"
+        },
+        {
+            "id": "kaznak",
+            "name": "Kaznak Voyagers",
+            "description": "Nomadic explorers of the digital frontier, collectors of rare data artifacts and chroniclers of the Astradigital Ocean.",
+            "color": "#4895ef",
+            "leader": "Navigator Juno",
+            "headquarters": "kaznak-outpost"
+        }
+    ]
+}
