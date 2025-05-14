@@ -216,6 +216,9 @@ def main():
     
     parser.add_argument("--test-connection", action="store_true", 
                         help="Test WordPress connection")
+    # Add an argument to directly pass the password for testing
+    parser.add_argument("--test-password",
+                        help="Directly provide password for connection test, bypassing .env for the test")
     
     parser.add_argument("--update-automation", action="store_true",
                         help="Update news automation configuration")
@@ -266,7 +269,9 @@ def main():
     
     # Test WordPress connection if requested
     if args.test_connection:
-        if test_wp_connection(args.url, args.username, args.app_password):
+        # If test_password is provided, use it directly for the test
+        password_to_test = args.test_password if args.test_password else None
+        if test_wp_connection(args.url, args.username, password_to_test):
             logger.info("WordPress connection test succeeded")
         else:
             logger.error("WordPress connection test failed")
