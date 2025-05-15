@@ -378,14 +378,15 @@ class WordPressAgent(BaseAgent):
                 post_status = response_data.get("status", status)
                 post_title = response_data.get("title", {}).get("rendered", title)
                 
-                self.logger.info(f"Created post with ID {post_id}: {post_title}")
-                return {
-                    "success": True,
-                    "post_id": post_id,
-                    "title": post_title,
-                    "url": post_url,
-                    "status": post_status
-                }
+                if post_id:
+                    self.logger.info(f"Created post with ID {post_id}: {post_title}")
+                    
+                    # Return the response data with success flag
+                    response_data["success"] = True
+                    return response_data
+                else:
+                    self.logger.error(f"Failed to create post: {title}")
+                    return {"success": False, "error": "Failed to get post ID from response"}
             else:
                 status_code = response.status_code if response else "No response"
                 error_message = response.text if response else "No response"

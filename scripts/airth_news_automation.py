@@ -163,10 +163,10 @@ class AirthNewsAutomation:
 
                         # Format the result to match expected structure
                         return {
-                            "success": result.get("id") is not None, 
+                            "success": result.get("success", False), 
                             "post_id": result.get("id", "0"), 
                             "url": result.get("link", ""), 
-                            "error": None if result.get("id") else "Failed to create post"
+                            "error": None if result.get("success", False) else "Failed to create post"
                         }
                     except Exception as e:
                         logger.error(f"Error posting to WordPress: {e}")

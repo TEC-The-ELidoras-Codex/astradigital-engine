@@ -10,6 +10,16 @@
     "content": "Comments"
   },
   {
+    "title": "Migrating to Postgres",
+    "url": "https://engineering.usemotion.com/migrating-to-postgres-3c93dff9c65d",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 21:39:45 +0000",
+    "published_datetime": "2025-05-14T22:39:45",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Show HN: Muscle-Mem, a behavior cache for AI agents",
     "url": "https://github.com/pig-dot-dev/muscle-mem",
     "source": "Hacker News",
@@ -26,16 +36,6 @@
     "category": "technology",
     "published": "Wed, 14 May 2025 12:46:39 +0000",
     "published_datetime": "2025-05-14T13:46:39",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Migrating to Postgres",
-    "url": "https://engineering.usemotion.com/migrating-to-postgres-3c93dff9c65d",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Wed, 14 May 2025 21:39:45 +0000",
-    "published_datetime": "2025-05-14T22:39:45",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -70,12 +70,32 @@
     "content": "Comments"
   },
   {
-    "title": "LLMs are making me dumber",
-    "url": "https://vvvincent.me/llms-are-making-me-dumber/",
+    "title": "Getting Started with Celtic Coins \u2013 Crude and Barbarous, or Just Different?",
+    "url": "https://collectingancientcoins.co.uk/getting-started-with-celtic-coins-crude-and-barbarous-or-just-different/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Wed, 14 May 2025 22:52:34 +0000",
-    "published_datetime": "2025-05-14T23:52:34",
+    "published": "Sun, 11 May 2025 04:26:01 +0000",
+    "published_datetime": "2025-05-11T05:26:01",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Hegel 2.0: The imaginary history of ternary computing (2018)",
+    "url": "https://www.cabinetmagazine.org/issues/65/weatherby.php",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Mon, 12 May 2025 20:59:10 +0000",
+    "published_datetime": "2025-05-12T21:59:10",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Copaganda: How Police and the Media Manipulate Our News",
+    "url": "https://www.teenvogue.com/story/copaganda-when-the-police-and-the-media-manipulate-our-news",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 23:39:09 +0000",
+    "published_datetime": "2025-05-15T00:39:09",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -90,12 +110,12 @@
     "content": "Comments"
   },
   {
-    "title": "Getting Started with Celtic Coins \u2013 Crude and Barbarous, or Just Different?",
-    "url": "https://collectingancientcoins.co.uk/getting-started-with-celtic-coins-crude-and-barbarous-or-just-different/",
+    "title": "Our narrative prison",
+    "url": "https://aeon.co/essays/why-does-every-film-and-tv-series-seem-to-have-the-same-plot",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Sun, 11 May 2025 04:26:01 +0000",
-    "published_datetime": "2025-05-11T05:26:01",
+    "published": "Wed, 14 May 2025 16:27:48 +0000",
+    "published_datetime": "2025-05-14T17:27:48",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -120,12 +140,12 @@
     "content": "Comments"
   },
   {
-    "title": "Our narrative prison",
-    "url": "https://aeon.co/essays/why-does-every-film-and-tv-series-seem-to-have-the-same-plot",
+    "title": "Changes since congestion pricing started in New York",
+    "url": "https://www.nytimes.com/interactive/2025/05/11/upshot/congestion-pricing.html",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Wed, 14 May 2025 16:27:48 +0000",
-    "published_datetime": "2025-05-14T17:27:48",
+    "published": "Tue, 13 May 2025 10:43:20 +0000",
+    "published_datetime": "2025-05-13T11:43:20",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -140,52 +160,12 @@
     "content": "Comments"
   },
   {
-    "title": "Changes since congestion pricing started in New York",
-    "url": "https://www.nytimes.com/interactive/2025/05/11/upshot/congestion-pricing.html",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 10:43:20 +0000",
-    "published_datetime": "2025-05-13T11:43:20",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Hegel 2.0: The imaginary history of ternary computing (2018)",
-    "url": "https://www.cabinetmagazine.org/issues/65/weatherby.php",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Mon, 12 May 2025 20:59:10 +0000",
-    "published_datetime": "2025-05-12T21:59:10",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Databricks and Neon",
     "url": "https://www.databricks.com/blog/databricks-neon",
     "source": "Hacker News",
     "category": "technology",
     "published": "Wed, 14 May 2025 10:10:00 +0000",
     "published_datetime": "2025-05-14T11:10:00",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "The AUCTUS A6: the chip enabling inexpensive DMR Radio (2021)",
-    "url": "https://jhart99.com/auctus-a6/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Sun, 11 May 2025 02:36:47 +0000",
-    "published_datetime": "2025-05-11T03:36:47",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Bus stops here: Shanghai lets riders design their own routes",
-    "url": "https://www.sixthtone.com/news/1017072",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Wed, 14 May 2025 04:33:21 +0000",
-    "published_datetime": "2025-05-14T05:33:21",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -200,22 +180,12 @@
     "content": "Comments"
   },
   {
-    "title": "Perverse incentives of vibe coding",
-    "url": "https://fredbenenson.medium.com/the-perverse-incentives-of-vibe-coding-23efbaf75aee",
+    "title": "Updated rate limits for unauthenticated requests",
+    "url": "https://github.blog/changelog/2025-05-08-updated-rate-limits-for-unauthenticated-requests/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Wed, 14 May 2025 19:29:38 +0000",
-    "published_datetime": "2025-05-14T20:29:38",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "The recently lost file upload feature in the Nextcloud app for Android",
-    "url": "https://nextcloud.com/blog/nextcloud-android-file-upload-issue-google/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Wed, 14 May 2025 05:38:00 +0000",
-    "published_datetime": "2025-05-14T06:38:00",
+    "published": "Fri, 09 May 2025 14:11:05 +0000",
+    "published_datetime": "2025-05-09T15:11:05",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -230,16 +200,6 @@
     "content": "Comments"
   },
   {
-    "title": "Updated rate limits for unauthenticated requests",
-    "url": "https://github.blog/changelog/2025-05-08-updated-rate-limits-for-unauthenticated-requests/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Fri, 09 May 2025 14:11:05 +0000",
-    "published_datetime": "2025-05-09T15:11:05",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Launch HN: Jazzberry (YC X25) \u2013 AI agent for finding bugs",
     "url": "https://news.ycombinator.com/item?id=43985994",
     "source": "Hacker News",
@@ -250,22 +210,12 @@
     "content": "Comments"
   },
   {
-    "title": "An accessibility update \u2013 GTK Development Blog",
-    "url": "https://blog.gtk.org/2025/05/12/an-accessibility-update/",
+    "title": "NASA Stennis Releases First Open-Source Software",
+    "url": "https://www.nasa.gov/centers-and-facilities/stennis/stennis-first-open-source-software/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 11:22:28 +0000",
-    "published_datetime": "2025-05-13T12:22:28",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Interferometer Device Sees Text from a Mile Away",
-    "url": "https://physics.aps.org/articles/v18/99",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Sat, 10 May 2025 14:05:14 +0000",
-    "published_datetime": "2025-05-10T15:05:14",
+    "published": "Tue, 13 May 2025 12:02:53 +0000",
+    "published_datetime": "2025-05-13T13:02:53",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -280,6 +230,16 @@
     "content": "Comments"
   },
   {
+    "title": "Interferometer Device Sees Text from a Mile Away",
+    "url": "https://physics.aps.org/articles/v18/99",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sat, 10 May 2025 14:05:14 +0000",
+    "published_datetime": "2025-05-10T15:05:14",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Show HN: Lumier \u2013 Run macOS VMs in a Docker",
     "url": "https://github.com/trycua/cua/tree/main/libs/lumier",
     "source": "Hacker News",
@@ -290,12 +250,52 @@
     "content": "Comments"
   },
   {
-    "title": "We Made CUDA Optimization Suck Less",
-    "url": "https://www.rightnowai.co/",
+    "title": "Perverse incentives of vibe coding",
+    "url": "https://fredbenenson.medium.com/the-perverse-incentives-of-vibe-coding-23efbaf75aee",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 14:43:46 +0000",
-    "published_datetime": "2025-05-13T15:43:46",
+    "published": "Wed, 14 May 2025 19:29:38 +0000",
+    "published_datetime": "2025-05-14T20:29:38",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Writing that changed how I think about programming languages",
+    "url": "https://bernsteinbear.com/blog/pl-writing/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 04:19:00 +0000",
+    "published_datetime": "2025-05-14T05:19:00",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Uber to introduce fixed-route shuttles in major US cities",
+    "url": "https://techcrunch.com/2025/05/14/uber-to-introduce-fixed-route-shuttles-in-major-us-cities-other-ways-to-save/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 15:40:17 +0000",
+    "published_datetime": "2025-05-14T16:40:17",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Various Things in MetaPost (2019)",
+    "url": "https://habr.com/en/articles/454376/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 18:37:32 +0000",
+    "published_datetime": "2025-05-14T19:37:32",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "David Hilbert's radio address (2014)",
+    "url": "https://old.maa.org/press/periodicals/convergence/david-hilberts-radio-address",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 19:04:41 +0000",
+    "published_datetime": "2025-05-14T20:04:41",
     "summary": "Comments",
     "content": "Comments"
   }

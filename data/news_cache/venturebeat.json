@@ -1,6 +1,16 @@
 [
   {
-    "title": "Darkness rising \u2014 The hidden dangers of AI sycophancy and dark patterns",
+    "title": "OpenAI brings GPT-4.1 and 4.1 mini to ChatGPT \u2014 what enterprises should know",
+    "url": "https://venturebeat.com/ai/openai-brings-gpt-4-1-and-4-1-mini-to-chatgpt-what-enterprises-should-know/",
+    "source": "VentureBeat",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 23:46:50 +0000",
+    "published_datetime": "2025-05-15T00:46:50",
+    "summary": "As OpenAI continues to evolve its model offerings, GPT-4.1 represents a step forward in democratizing advanced AI for enterprise environmentsRead More",
+    "content": "As OpenAI continues to evolve its model offerings, GPT-4.1 represents a step forward in democratizing advanced AI for enterprise environmentsRead More"
+  },
+  {
+    "title": "Beyond sycophancy: DarkBench exposes six hidden \u2018dark patterns\u2019 lurking in today\u2019s top LLMs",
     "url": "https://venturebeat.com/ai/darkness-rising-the-hidden-dangers-of-ai-sycophancy-and-dark-patterns/",
     "source": "VentureBeat",
     "category": "technology",
@@ -228,15 +238,5 @@
     "published_datetime": "2025-05-12T21:43:51",
     "summary": "OpenAI has added a powerful PDF export feature to its Deep Research tool, signaling a major push into enterprise AI and transforming how businesses generate and share insights.Read More",
     "content": "OpenAI has added a powerful PDF export feature to its Deep Research tool, signaling a major push into enterprise AI and transforming how businesses generate and share insights.Read More"
-  },
-  {
-    "title": "New fully open source vision encoder OpenVision arrives to improve on OpenAI\u2019s Clip, Google\u2019s SigLIP",
-    "url": "https://venturebeat.com/ai/new-fully-open-source-vision-encoder-openvision-arrives-to-improve-on-openais-clip-googles-siglip/",
-    "source": "VentureBeat",
-    "category": "technology",
-    "published": "Mon, 12 May 2025 18:19:20 +0000",
-    "published_datetime": "2025-05-12T19:19:20",
-    "summary": "A vision encoder is a necessary component for allowing many leading LLMs to be able to work with images uploaded by users.Read More",
-    "content": "A vision encoder is a necessary component for allowing many leading LLMs to be able to work with images uploaded by users.Read More"
   }
 ]
