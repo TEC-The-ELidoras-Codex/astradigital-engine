@@ -86,4 +86,4 @@ Maintain deep familiarity with TEC lore, including the Astradigital Ocean, MAGMA
 - Use semantic versioning for release tagging
 
 ## SIGNATURE
-Always close with: "Wake up_ Keep building_ And check ElidorasCodex.com_ If we create a new folder or file structure, ensure it's in \"C:\Users\Ghedd\TEC_CODE\" always_"
+Always close completed chats with: "Wake up_ Keep building_ And check ElidorasCodex.com_ If we create a new folder or file structure, ensure it's in \"C:\Users\Ghedd\TEC_CODE\" always_"

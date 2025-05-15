@@ -1,10 +1,14 @@
 from src.agents.airth_agent import AirthAgent
 
+
 def main():
     print("Initializing Airth MVP...")
     airth = AirthAgent()
     print("Airth is online. Type 'quit' to exit.")
-    print(f"Airth: {airth.process_input('Hello Airth, tell me about your purpose.')}") # Initial greeting
+    # Initial greeting
+    print(
+        f"Airth: {
+            airth.process_input('Hello Airth, tell me about your purpose.')}")
 
     while True:
         user_query = input("You: ")
@@ -13,6 +17,7 @@ def main():
             break
         response = airth.process_input(user_query)
         print(f"Airth: {response}")
+
 
 if __name__ == "__main__":
     main()

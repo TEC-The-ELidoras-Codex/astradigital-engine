@@ -36,25 +36,27 @@ try:
     from huggingface_hub.utils import RepositoryNotFoundError
     HF_AVAILABLE = True
 except ImportError:
-    logger.error("Hugging Face Hub library not found. Please install it with 'pip install huggingface_hub'")
+    logger.error(
+        "Hugging Face Hub library not found. Please install it with 'pip install huggingface_hub'")
 
 
 def login_to_huggingface() -> bool:
     """
     Log in to Hugging Face Hub using token from environment variables.
-    
+
     Returns:
         True if login successful, False otherwise
     """
     if not HF_AVAILABLE:
-        logger.error("Cannot log in to Hugging Face: huggingface_hub library not available")
+        logger.error(
+            "Cannot log in to Hugging Face: huggingface_hub library not available")
         return False
-    
+
     hf_token = os.getenv("HF_TOKEN")
     if not hf_token:
         logger.error("Hugging Face token not found in environment variables")
         return False
-    
+
     try:
         login(token=hf_token)
         logger.info("Logged in to Hugging Face successfully")
@@ -67,23 +69,25 @@ def login_to_huggingface() -> bool:
 def check_space_exists(username: str, space_name: str) -> Dict[str, Any]:
     """
     Check if a Hugging Face Space exists.
-    
+
     Args:
         username: Hugging Face username or organization
         space_name: Space name
-        
+
     Returns:
         Dictionary with space information
     """
     if not HF_AVAILABLE:
-        return {"success": False, "error": "huggingface_hub library not available"}
-    
+        return {
+            "success": False,
+            "error": "huggingface_hub library not available"}
+
     if not login_to_huggingface():
         return {"success": False, "error": "Failed to log in to Hugging Face"}
-    
+
     api = HfApi()
     space_id = f"{username}/{space_name}"
-    
+
     try:
         space_info = api.space_info(space_id)
         logger.info(f"Space exists: {space_info.name}")
@@ -94,8 +98,7 @@ def check_space_exists(username: str, space_name: str) -> Dict[str, Any]:
             "id": space_info.id,
             "url": f"https://huggingface.co/spaces/{space_id}",
             "sdk": space_info.sdk.value if space_info.sdk else None,
-            "hardware": space_info.hardware.value if space_info.hardware else None
-        }
+            "hardware": space_info.hardware.value if space_info.hardware else None}
     except RepositoryNotFoundError:
         logger.info(f"Space does not exist: {space_id}")
         return {"success": True, "exists": False, "id": space_id}
@@ -104,30 +107,36 @@ def check_space_exists(username: str, space_name: str) -> Dict[str, Any]:
         return {"success": False, "error": str(e)}
 
 
-def create_space(username: str, space_name: str, sdk: str = "gradio", 
-               hardware: str = "cpu-basic", private: bool = False) -> Dict[str, Any]:
+def create_space(username: str,
+                 space_name: str,
+                 sdk: str = "gradio",
+                 hardware: str = "cpu-basic",
+                 private: bool = False) -> Dict[str,
+                                                Any]:
     """
     Create a new Hugging Face Space.
-    
+
     Args:
         username: Hugging Face username or organization
         space_name: Space name
         sdk: Space SDK (gradio, streamlit, etc.)
         hardware: Hardware tier
         private: Whether the space should be private
-        
+
     Returns:
         Dictionary with space information
     """
     if not HF_AVAILABLE:
-        return {"success": False, "error": "huggingface_hub library not available"}
-    
+        return {
+            "success": False,
+            "error": "huggingface_hub library not available"}
+
     if not login_to_huggingface():
         return {"success": False, "error": "Failed to log in to Hugging Face"}
-    
+
     api = HfApi()
     space_id = f"{username}/{space_name}"
-    
+
     # Map SDK and hardware strings to enum values
     sdk_map = {
         "gradio": SpaceSdk.GRADIO,
@@ -135,18 +144,19 @@ def create_space(username: str, space_name: str, sdk: str = "gradio",
         "static": SpaceSdk.STATIC,
         "docker": SpaceSdk.DOCKER
     }
-    
+
     hardware_map = {
         "cpu-basic": SpaceHardware.CPU_BASIC,
         "cpu-upgrade": SpaceHardware.CPU_UPGRADE,
         "t4-small": SpaceHardware.T4_SMALL,
         "t4-medium": SpaceHardware.T4_MEDIUM
     }
-    
+
     try:
         sdk_enum = sdk_map.get(sdk.lower(), SpaceSdk.GRADIO)
-        hardware_enum = hardware_map.get(hardware.lower(), SpaceHardware.CPU_BASIC)
-        
+        hardware_enum = hardware_map.get(
+            hardware.lower(), SpaceHardware.CPU_BASIC)
+
         repo_url = api.create_repo(
             repo_id=space_id,
             repo_type="space",
@@ -154,7 +164,7 @@ def create_space(username: str, space_name: str, sdk: str = "gradio",
             space_hardware=hardware_enum,
             private=private
         )
-        
+
         logger.info(f"Space created: {repo_url}")
         return {
             "success": True,
@@ -169,37 +179,42 @@ def create_space(username: str, space_name: str, sdk: str = "gradio",
         return {"success": False, "error": str(e)}
 
 
-def upload_to_space(username: str, space_name: str, files: List[str] = None) -> Dict[str, Any]:
+def upload_to_space(username: str, space_name: str,
+                    files: List[str] = None) -> Dict[str, Any]:
     """
     Upload files to a Hugging Face Space.
-    
+
     Args:
         username: Hugging Face username or organization
         space_name: Space name
         files: List of files or directories to upload (defaults to all files in the current directory)
-        
+
     Returns:
         Dictionary with upload information
     """
     if not HF_AVAILABLE:
-        return {"success": False, "error": "huggingface_hub library not available"}
-    
+        return {
+            "success": False,
+            "error": "huggingface_hub library not available"}
+
     if not login_to_huggingface():
         return {"success": False, "error": "Failed to log in to Hugging Face"}
-    
+
     api = HfApi()
     space_id = f"{username}/{space_name}"
-    
+
     try:
         # Check if space exists
         space_exists = check_space_exists(username, space_name)
         if not space_exists.get("success"):
             return space_exists
-        
+
         if not space_exists.get("exists"):
             logger.error(f"Space does not exist: {space_id}")
-            return {"success": False, "error": f"Space does not exist: {space_id}"}
-        
+            return {
+                "success": False,
+                "error": f"Space does not exist: {space_id}"}
+
         # If no files specified, upload all files in the current directory
         if not files:
             folder_path = "."
@@ -232,8 +247,10 @@ def upload_to_space(username: str, space_name: str, files: List[str] = None) -> 
                         repo_type="space"
                     )
                     uploaded_files.append(path.name)
-            logger.info(f"Uploaded files to {space_id}: {', '.join(uploaded_files)}")
-        
+            logger.info(
+                f"Uploaded files to {space_id}: {
+                    ', '.join(uploaded_files)}")
+
         return {
             "success": True,
             "id": space_id,
@@ -246,32 +263,58 @@ def upload_to_space(username: str, space_name: str, files: List[str] = None) -> 
 
 def main():
     """Main function to run the script from the command line."""
-    parser = argparse.ArgumentParser(description='Hugging Face Space Management Tool')
+    parser = argparse.ArgumentParser(
+        description='Hugging Face Space Management Tool')
     subparsers = parser.add_subparsers(dest='command', help='Command to run')
-    
+
     # Check space command
-    check_parser = subparsers.add_parser('check', help='Check if a space exists')
-    check_parser.add_argument('username', help='Hugging Face username or organization')
+    check_parser = subparsers.add_parser(
+        'check', help='Check if a space exists')
+    check_parser.add_argument('username',
+                              help='Hugging Face username or organization')
     check_parser.add_argument('space_name', help='Space name')
-    
+
     # Create space command
     create_parser = subparsers.add_parser('create', help='Create a new space')
-    create_parser.add_argument('username', help='Hugging Face username or organization')
+    create_parser.add_argument('username',
+                               help='Hugging Face username or organization')
     create_parser.add_argument('space_name', help='Space name')
-    create_parser.add_argument('--sdk', choices=['gradio', 'streamlit', 'static', 'docker'], 
-                             default='gradio', help='Space SDK')
-    create_parser.add_argument('--hardware', choices=['cpu-basic', 'cpu-upgrade', 't4-small', 't4-medium'], 
-                             default='cpu-basic', help='Hardware tier')
-    create_parser.add_argument('--private', action='store_true', help='Make space private')
-    
+    create_parser.add_argument(
+        '--sdk',
+        choices=[
+            'gradio',
+            'streamlit',
+            'static',
+            'docker'],
+        default='gradio',
+        help='Space SDK')
+    create_parser.add_argument(
+        '--hardware',
+        choices=[
+            'cpu-basic',
+            'cpu-upgrade',
+            't4-small',
+            't4-medium'],
+        default='cpu-basic',
+        help='Hardware tier')
+    create_parser.add_argument(
+        '--private',
+        action='store_true',
+        help='Make space private')
+
     # Upload to space command
-    upload_parser = subparsers.add_parser('upload', help='Upload files to a space')
-    upload_parser.add_argument('username', help='Hugging Face username or organization')
+    upload_parser = subparsers.add_parser(
+        'upload', help='Upload files to a space')
+    upload_parser.add_argument('username',
+                               help='Hugging Face username or organization')
     upload_parser.add_argument('space_name', help='Space name')
-    upload_parser.add_argument('--files', nargs='*', help='Files to upload (default: all files in current directory)')
-    
+    upload_parser.add_argument(
+        '--files',
+        nargs='*',
+        help='Files to upload (default: all files in current directory)')
+
     args = parser.parse_args()
-    
+
     if args.command == 'check':
         result = check_space_exists(args.username, args.space_name)
         if result["success"]:
@@ -285,7 +328,12 @@ def main():
             print(f"Failed to check space: {result['error']}")
             sys.exit(1)
     elif args.command == 'create':
-        result = create_space(args.username, args.space_name, args.sdk, args.hardware, args.private)
+        result = create_space(
+            args.username,
+            args.space_name,
+            args.sdk,
+            args.hardware,
+            args.private)
         if result["success"]:
             print(f"Space created: {result['url']}")
             print(f"SDK: {result['sdk']}")

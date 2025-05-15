@@ -31,60 +31,75 @@ else:
     logger.error(f"Could not find .env file at {env_path}")
     sys.exit(1)
 
+
 def check_app_password(wp_url=None, wp_username=None, wp_password=None):
     """Test WordPress application password with REST API."""
     # Use provided values or fall back to env vars
     wp_url = wp_url or os.getenv("WP_URL")
     wp_username = wp_username or os.getenv("WP_USERNAME")
     wp_password = wp_password or os.getenv("WP_PASSWORD")
-    
+
     if not all([wp_url, wp_username, wp_password]):
         logger.error("Missing required WordPress credentials")
         return False
-        
+
     # Make sure URL doesn't end with a slash
     wp_url = wp_url.rstrip('/')
-    
+
     # REST API endpoint
     api_url = f"{wp_url}/wp-json/wp/v2/users/me"
-    
+
     # Try application password with spaces
     auth_string = f"{wp_username}:{wp_password}"
     auth_encoded = base64.b64encode(auth_string.encode()).decode()
-    
+
     headers = {
         'Authorization': f'Basic {auth_encoded}',
         'Content-Type': 'application/json'
     }
-    
+
     try:
         logger.info(f"Testing application password against {api_url}")
         response = requests.get(api_url, headers=headers, timeout=10)
-        
+
         if response.status_code == 200:
             user_data = response.json()
-            logger.info(f"✅ Authentication successful! Logged in as: {user_data.get('name', 'Unknown')}")
-            logger.info(f"User role(s): {', '.join(user_data.get('roles', ['unknown']))}")
+            logger.info(
+                f"✅ Authentication successful! Logged in as: {
+                    user_data.get(
+                        'name', 'Unknown')}")
+            logger.info(
+                f"User role(s): {
+                    ', '.join(
+                        user_data.get(
+                            'roles',
+                            ['unknown']))}")
             return True
         else:
-            logger.error(f"❌ Authentication failed with status {response.status_code}")
+            logger.error(
+                f"❌ Authentication failed with status {
+                    response.status_code}")
             logger.error(f"Response: {response.text}")
             return False
     except Exception as e:
         logger.error(f"❌ Connection error: {str(e)}")
         return False
 
+
 def main():
     """Main function with argument parsing."""
-    parser = argparse.ArgumentParser(description="Check WordPress application password")
+    parser = argparse.ArgumentParser(
+        description="Check WordPress application password")
     parser.add_argument("--url", help="WordPress site URL")
     parser.add_argument("--user", help="WordPress username")
     parser.add_argument("--password", help="WordPress application password")
-    parser.add_argument("--generate-instructions", action="store_true", 
-                       help="Show instructions for generating a new application password")
-    
+    parser.add_argument(
+        "--generate-instructions",
+        action="store_true",
+        help="Show instructions for generating a new application password")
+
     args = parser.parse_args()
-    
+
     if args.generate_instructions:
         print("=" * 80)
         print("HOW TO GENERATE A WORDPRESS APPLICATION PASSWORD")
@@ -102,9 +117,10 @@ def main():
         print("      your site may not be using HTTPS or the feature might be disabled.")
         print("=" * 80)
         return
-    
+
     # Run the check with provided args or env values
     check_app_password(args.url, args.user, args.password)
+
 
 if __name__ == "__main__":
     main()

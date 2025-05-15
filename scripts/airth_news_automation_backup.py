@@ -42,9 +42,10 @@ logging.basicConfig(
         logging.StreamHandler(),
         logging.FileHandler(
             os.path.join(
-                log_dir,
-                f"airth_news_automation_{
-                    datetime.now().strftime('%Y%m%d')}.log"))])
+                log_dir, f"airth_news_automation_{
+                    datetime.now().strftime('%Y%m%d')}.log"))
+    ]
+)
 logger = logging.getLogger("AirthNewsAutomation")
 
 # Import required modules
@@ -82,10 +83,11 @@ class AirthNewsAutomation:
         Args:
             config_path: Path to configuration directory or file
         """
-        self.config_path = config_path or os.path.join(os.path.dirname(
-            os.path.dirname(os.path.abspath(__file__))), 'config')
-
-        # Track statistics
+        self.config_path = config_path or os.path.join(
+            os.path.dirname(
+                os.path.dirname(
+                    os.path.abspath(__file__))),
+            'config')  # Track statistics
         self.stats = {
             "articles_fetched": 0,
             "topics_generated": 0,
@@ -249,10 +251,10 @@ class AirthNewsAutomation:
                     f"Generating article for topic: {
                         topic.get(
                             'suggested_title',
-                            'Topic ' + str(
+                            f'Topic {
                                 topic.get(
                                     'id',
-                                    0)))}")
+                                    0)}')}")
                 try:
                     result = self.content_generator.generate_article_from_topic(
                         topic)
@@ -265,8 +267,7 @@ class AirthNewsAutomation:
                     else:
                         logger.error(
                             f"Failed to generate article: {
-                                result.get('error')}")
-                        self.stats["errors"] += 1
+                                result.get('error')}")                        self.stats["errors"] += 1
                 except Exception as e:
                     logger.error(f"Error generating article content: {e}")
                     self.stats["errors"] += 1
@@ -312,170 +313,227 @@ class AirthNewsAutomation:
 
                             if result.get("success"):
                                 self.stats["articles_published"] += 1
+                                post_id = result.get("post_id", "unknown")
+                                post_url = result.get("url", "")
                                 logger.info(
-                                    f"Article published successfully: {result.get('post_id')} - {result.get('url')}")
+                                    f"Successfully published article to WordPress (ID: {post_id})")
+
+                                # Add WordPress info to article data
+                                article["wordpress"] = {
+                                    "post_id": post_id,
+                                    "url": post_url,
+                                    "status": publish_status
+                                }
                             else:
                                 logger.error(
                                     f"Failed to publish article: {
                                         result.get('error')}")
                                 self.stats["errors"] += 1
+
+                            # Add a small delay between publishing to prevent
+                            # overloading the WordPress site
+                            time.sleep(2)
+
                         except Exception as e:
                             logger.error(f"Error publishing article: {e}")
                             self.stats["errors"] += 1
                 else:
                     logger.warning(
-                        "WordPress posting capability not available. Skipping publishing.")
+                        "WordPress publishing capability not available in Airth agent")
+                    logger.info(
+                        "Articles are generated but not published. They can be found in the output directory.")
 
-            # Calculate runtime and success rate
-            end_time = time.time()
-            runtime_seconds = end_time - start_time
-            success_rate = 0 if self.stats["articles_created"] == 0 else self.stats["articles_published"] / \
-                self.stats["articles_created"]
+            elif enable_publishing:
+                logger.warning("No articles to publish")
+            else:
+                logger.info(
+                    "Publishing disabled. Skipping WordPress publishing step.")
 
+            # Save run results
+            self._save_run_results(generated_articles)
+
+            # Calculate runtime
+            runtime = time.time() - start_time
             logger.info(
-                f"Automation workflow completed in {
-                    runtime_seconds:.2f} seconds")
-            logger.info(f"Success rate: {success_rate:.2%}")
-            logger.info(f"Stats: {json.dumps(self.stats, indent=2)}")
+                f"Airth News Automation workflow completed in {
+                    runtime:.2f} seconds")
+            logger.info(f"Stats: {json.dumps(self.stats)}")
+
+            # Send notification
+            self.send_notification(success=True, run_stats=self.stats)
 
             return self.stats
 
         except Exception as e:
-            logger.error(f"Error in automation workflow: {e}")
+            logger.error(f"Error in Airth News Automation workflow: {e}")
             self.stats["errors"] += 1
+
+            # Send notification
+            self.send_notification(
+                success=False,
+                run_stats=self.stats,
+                error_message=str(e))
+
             return self.stats
+
+    def _save_run_results(self, generated_articles: List[Dict[str, Any]]):
+        """Save the results of this run to a file."""
+        try:
+            # Create output directory if it doesn't exist
+            output_dir = os.path.join(
+                os.path.dirname(
+                    os.path.dirname(
+                        os.path.abspath(__file__))),
+                'data',
+                'automation_runs')
+            os.makedirs(output_dir, exist_ok=True)
+
+            # Create results file with timestamp
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = os.path.join(
+                output_dir, f"automation_run_{timestamp}.json")
+
+            # Prepare results data
+            results = {
+                "timestamp": datetime.now().isoformat(),
+                "stats": self.stats,
+                "articles": generated_articles
+            }
+
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump(results, f, indent=2)
+
+            logger.info(f"Saved run results to {filename}")
+
+        except Exception as e:
+            logger.error(f"Error saving run results: {e}")
 
     def send_notification(self,
                           success: bool,
                           run_stats: Dict[str,
-                                          Any],
-                          error_message: Optional[str] = None):
-        """Send an email notification about the automation run."""
+                                          int],
+                          error_message: Optional[str] = None) -> bool:
+        """
+        Send email notification about the automation run.
+
+        Args:
+            success: Whether the run was successful
+            run_stats: Statistics about the run
+            error_message: Error message if any
+
+        Returns:
+            bool: Whether the notification was sent successfully
+        """
+        # Check if email notifications are enabled
+        smtp_server = os.getenv("SMTP_SERVER")
+        smtp_port = os.getenv("SMTP_PORT")
+        smtp_username = os.getenv("SMTP_USERNAME")
+        smtp_password = os.getenv("SMTP_PASSWORD")
+        notification_email = os.getenv("NOTIFICATION_EMAIL")
+
+        if not all([smtp_server, smtp_port, smtp_username,
+                   smtp_password, notification_email]):
+            logger.info(
+                "Email notifications not configured. Skipping notification.")
+            return False
+
         try:
-            # Check if SMTP settings are available
-            smtp_host = os.environ.get("SMTP_HOST")
-            smtp_port = os.environ.get("SMTP_PORT")
-            smtp_user = os.environ.get("SMTP_USER")
-            smtp_pass = os.environ.get("SMTP_PASSWORD")
-            recipient = os.environ.get("NOTIFICATION_EMAIL")
-
-            if not all([smtp_host,
-                        smtp_port,
-                        smtp_user,
-                        smtp_pass,
-                        recipient]):
-                logger.warning(
-                    "SMTP settings not configured. Skipping notification.")
-                return
-
-            # Create the email message
+            # Create message
             msg = MIMEMultipart()
-            msg['Subject'] = f"Airth News Automation {
-                'Succeeded' if success else 'Failed'}"
-            msg['From'] = smtp_user
-            msg['To'] = recipient
 
-            # Build the email body
-            body_parts = [
-                f"Airth News Automation Run: {
-                    'Success' if success else 'Failure'}",
-                f"Timestamp: {
-                    datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
-                "",
-                "Statistics:",
-                f"  Articles fetched: {
-                    run_stats.get(
-                        'articles_fetched',
-                        0)}",
-                f"  Topics generated: {
-                    run_stats.get(
-                        'topics_generated',
-                        0)}",
-                f"  Articles created: {
-                    run_stats.get(
-                        'articles_created',
-                        0)}",
-                f"  Articles published: {
-                    run_stats.get(
-                        'articles_published',
-                        0)}",
-                f"  Errors: {
-                    run_stats.get(
-                        'errors',
-                        0)}",
-                "",
-            ]
+            if success:
+                msg['Subject'] = f"Airth News Automation: Successful Run ({
+                    datetime.now().strftime('%Y-%m-%d')})"
+                body = f"""
+                <h2>Airth News Automation Run Successful</h2>
+                <p>The news automation system completed successfully on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}.</p>
 
-            if error_message:
-                body_parts.extend([
-                    "Error details:",
-                    error_message
-                ])
+                <h3>Statistics:</h3>
+                <ul>
+                    <li>Articles Fetched: {run_stats.get('articles_fetched', 0)}</li>
+                    <li>Topics Generated: {run_stats.get('topics_generated', 0)}</li>
+                    <li>Articles Created: {run_stats.get('articles_created', 0)}</li>
+                    <li>Articles Published: {run_stats.get('articles_published', 0)}</li>
+                    <li>Errors Encountered: {run_stats.get('errors', 0)}</li>
+                </ul>
+                """
+            else:
+                msg['Subject'] = f"Airth News Automation: Failed Run ({
+                    datetime.now().strftime('%Y-%m-%d')})"
+                body = f"""
+                <h2>Airth News Automation Run Failed</h2>
+                <p>The news automation system encountered an error on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}.</p>
 
-            msg.attach(MIMEText("\n".join(body_parts), 'plain'))
+                <h3>Error Message:</h3>
+                <pre>{error_message or "Unknown error"}</pre>
 
-            # Send the email
-            with smtplib.SMTP(smtp_host, int(smtp_port)) as server:
+                <h3>Statistics:</h3>
+                <ul>
+                    <li>Articles Fetched: {run_stats.get('articles_fetched', 0)}</li>
+                    <li>Topics Generated: {run_stats.get('topics_generated', 0)}</li>
+                    <li>Articles Created: {run_stats.get('articles_created', 0)}</li>
+                    <li>Articles Published: {run_stats.get('articles_published', 0)}</li>
+                    <li>Errors Encountered: {run_stats.get('errors', 0)}</li>
+                </ul>
+                """
+
+            msg['From'] = smtp_username
+            msg['To'] = notification_email
+
+            msg.attach(MIMEText(body, 'html'))
+
+            # Send email
+            with smtplib.SMTP(smtp_server, int(smtp_port)) as server:
                 server.starttls()
-                server.login(smtp_user, smtp_pass)
+                server.login(smtp_username, smtp_password)
                 server.send_message(msg)
 
-            logger.info(f"Notification email sent to {recipient}")
+            logger.info(f"Notification email sent to {notification_email}")
+            return True
 
         except Exception as e:
-            logger.error(f"Failed to send notification: {e}")
-
-    def __str__(self) -> str:
-        """String representation of the automation system."""
-        return f"AirthNewsAutomation(articles_fetched={
-            self.stats['articles_fetched']}, " + f"articles_published={
-            self.stats['articles_published']}, " + f"errors={
-            self.stats['errors']})"
+            logger.error(f"Failed to send notification email: {e}")
+            return False
 
 
 def main():
-    """Main entry point for the script."""
+    """Main function for running the automation from the command line."""
     parser = argparse.ArgumentParser(
-        description="Airth News Automation System")
+        description='Airth News Automation System')
     parser.add_argument(
-        "--max-age",
+        '--max-age',
         type=int,
         default=1,
-        help="Maximum age of news articles in days")
+        help='Maximum age of news articles in days')
     parser.add_argument(
-        "--max-topics",
+        '--max-topics',
         type=int,
         default=3,
-        help="Maximum number of topics to process")
+        help='Maximum number of topics to process')
     parser.add_argument(
-        "--status",
+        '--status',
         choices=[
-            "draft",
-            "publish"],
-        default="draft",
-        help="Publication status")
+            'draft',
+            'publish'],
+        default='draft',
+        help='WordPress publication status (default: draft)')
     parser.add_argument(
-        "--no-publish",
-        action="store_true",
-        help="Skip publishing to WordPress")
+        '--no-publish',
+        action='store_true',
+        help='Skip publishing to WordPress')
     parser.add_argument(
-        "--notify",
-        action="store_true",
-        help="Send email notification after run")
-    parser.add_argument(
-        "--config",
-        type=str,
-        help="Path to configuration directory")
+        '--notify',
+        action='store_true',
+        help='Send email notifications for success/failure')
+    parser.add_argument('--config', help='Path to configuration directory')
 
     args = parser.parse_args()
 
     try:
-        # Initialize the automation system
-        print(f"\nInitializing Airth News Automation System...")
+        # Create automation system
         automation = AirthNewsAutomation(config_path=args.config)
 
-        # Run the automation
-        print(f"Running automation workflow...")
+        # Run the workflow
         stats = automation.run(
             max_age_days=args.max_age,
             max_topics=args.max_topics,
@@ -483,13 +541,13 @@ def main():
             enable_publishing=not args.no_publish
         )
 
-        # Display summary
-        print(f"\nAutomation run completed:")
-        print(f"- Articles fetched: {stats['articles_fetched']}")
-        print(f"- Topics generated: {stats['topics_generated']}")
-        print(f"- Articles created: {stats['articles_created']}")
-        print(f"- Articles published: {stats['articles_published']}")
-        print(f"- Errors: {stats['errors']}")
+        # Show stats summary
+        print("\n===== Airth News Automation Summary =====")
+        print(f"Articles fetched: {stats['articles_fetched']}")
+        print(f"Topics generated: {stats['topics_generated']}")
+        print(f"Articles created: {stats['articles_created']}")
+        print(f"Articles published: {stats['articles_published']}")
+        print(f"Errors encountered: {stats['errors']}")
 
         # Send notification if requested
         if args.notify:
