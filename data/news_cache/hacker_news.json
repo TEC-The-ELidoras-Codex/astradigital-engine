@@ -10,22 +10,22 @@
     "content": "Comments"
   },
   {
-    "title": "Migrating to Postgres",
-    "url": "https://engineering.usemotion.com/migrating-to-postgres-3c93dff9c65d",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Wed, 14 May 2025 21:39:45 +0000",
-    "published_datetime": "2025-05-14T22:39:45",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Show HN: Muscle-Mem, a behavior cache for AI agents",
     "url": "https://github.com/pig-dot-dev/muscle-mem",
     "source": "Hacker News",
     "category": "technology",
     "published": "Wed, 14 May 2025 19:38:26 +0000",
     "published_datetime": "2025-05-14T20:38:26",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Migrating to Postgres",
+    "url": "https://engineering.usemotion.com/migrating-to-postgres-3c93dff9c65d",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 21:39:45 +0000",
+    "published_datetime": "2025-05-14T22:39:45",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -40,12 +40,22 @@
     "content": "Comments"
   },
   {
-    "title": "Show HN: Semantic Calculator (king-man+woman=?)",
-    "url": "https://calc.datova.ai",
+    "title": "Copaganda: How Police and the Media Manipulate Our News",
+    "url": "https://www.teenvogue.com/story/copaganda-when-the-police-and-the-media-manipulate-our-news",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Wed, 14 May 2025 19:54:31 +0000",
-    "published_datetime": "2025-05-14T20:54:31",
+    "published": "Wed, 14 May 2025 23:39:09 +0000",
+    "published_datetime": "2025-05-15T00:39:09",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Show HN: YapCards (iOS) \u2013 Voice-driven flashcards with AI feedback",
+    "url": "https://news.ycombinator.com/item?id=43990868",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 15 May 2025 01:14:44 +0000",
+    "published_datetime": "2025-05-15T02:14:44",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -60,22 +70,22 @@
     "content": "Comments"
   },
   {
+    "title": "Show HN: Semantic Calculator (king-man+woman=?)",
+    "url": "https://calc.datova.ai",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 19:54:31 +0000",
+    "published_datetime": "2025-05-14T20:54:31",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Git Bug: Distributed, Offline-First Bug Tracker Embedded in Git, with Bridges",
     "url": "https://github.com/git-bug/git-bug",
     "source": "Hacker News",
     "category": "technology",
     "published": "Tue, 13 May 2025 11:07:29 +0000",
     "published_datetime": "2025-05-13T12:07:29",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Getting Started with Celtic Coins \u2013 Crude and Barbarous, or Just Different?",
-    "url": "https://collectingancientcoins.co.uk/getting-started-with-celtic-coins-crude-and-barbarous-or-just-different/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Sun, 11 May 2025 04:26:01 +0000",
-    "published_datetime": "2025-05-11T05:26:01",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -90,22 +100,32 @@
     "content": "Comments"
   },
   {
-    "title": "Copaganda: How Police and the Media Manipulate Our News",
-    "url": "https://www.teenvogue.com/story/copaganda-when-the-police-and-the-media-manipulate-our-news",
+    "title": "Getting Started with Celtic Coins \u2013 Crude and Barbarous, or Just Different?",
+    "url": "https://collectingancientcoins.co.uk/getting-started-with-celtic-coins-crude-and-barbarous-or-just-different/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Wed, 14 May 2025 23:39:09 +0000",
-    "published_datetime": "2025-05-15T00:39:09",
+    "published": "Sun, 11 May 2025 04:26:01 +0000",
+    "published_datetime": "2025-05-11T05:26:01",
     "summary": "Comments",
     "content": "Comments"
   },
   {
-    "title": "Variadic Switch",
-    "url": "https://pydong.org/posts/variadic-switch/",
+    "title": "Changes since congestion pricing started in New York",
+    "url": "https://www.nytimes.com/interactive/2025/05/11/upshot/congestion-pricing.html",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 20:45:53 +0000",
-    "published_datetime": "2025-05-13T21:45:53",
+    "published": "Tue, 13 May 2025 10:43:20 +0000",
+    "published_datetime": "2025-05-13T11:43:20",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "isc.ro",
+    "url": "https://isc.ro/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sun, 11 May 2025 23:34:12 +0000",
+    "published_datetime": "2025-05-12T00:34:12",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -130,6 +150,16 @@
     "content": "Comments"
   },
   {
+    "title": "Variadic Switch",
+    "url": "https://pydong.org/posts/variadic-switch/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Tue, 13 May 2025 20:45:53 +0000",
+    "published_datetime": "2025-05-13T21:45:53",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Smalltalk-78 Xerox NoteTaker in-browser emulator",
     "url": "https://smalltalkzoo.thechm.org/users/bert/Smalltalk-78.html",
     "source": "Hacker News",
@@ -140,12 +170,12 @@
     "content": "Comments"
   },
   {
-    "title": "Changes since congestion pricing started in New York",
-    "url": "https://www.nytimes.com/interactive/2025/05/11/upshot/congestion-pricing.html",
+    "title": "NASA Stennis Releases First Open-Source Software",
+    "url": "https://www.nasa.gov/centers-and-facilities/stennis/stennis-first-open-source-software/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Tue, 13 May 2025 10:43:20 +0000",
-    "published_datetime": "2025-05-13T11:43:20",
+    "published": "Tue, 13 May 2025 12:02:53 +0000",
+    "published_datetime": "2025-05-13T13:02:53",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -170,16 +200,6 @@
     "content": "Comments"
   },
   {
-    "title": "UK's Ancient Tree Inventory",
-    "url": "https://ati.woodlandtrust.org.uk/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Wed, 14 May 2025 10:11:56 +0000",
-    "published_datetime": "2025-05-14T11:11:56",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Updated rate limits for unauthenticated requests",
     "url": "https://github.blog/changelog/2025-05-08-updated-rate-limits-for-unauthenticated-requests/",
     "source": "Hacker News",
@@ -200,22 +220,22 @@
     "content": "Comments"
   },
   {
+    "title": "UK's Ancient Tree Inventory",
+    "url": "https://ati.woodlandtrust.org.uk/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Wed, 14 May 2025 10:11:56 +0000",
+    "published_datetime": "2025-05-14T11:11:56",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Launch HN: Jazzberry (YC X25) \u2013 AI agent for finding bugs",
     "url": "https://news.ycombinator.com/item?id=43985994",
     "source": "Hacker News",
     "category": "technology",
     "published": "Wed, 14 May 2025 15:52:21 +0000",
     "published_datetime": "2025-05-14T16:52:21",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "NASA Stennis Releases First Open-Source Software",
-    "url": "https://www.nasa.gov/centers-and-facilities/stennis/stennis-first-open-source-software/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Tue, 13 May 2025 12:02:53 +0000",
-    "published_datetime": "2025-05-13T13:02:53",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -250,26 +270,6 @@
     "content": "Comments"
   },
   {
-    "title": "Perverse incentives of vibe coding",
-    "url": "https://fredbenenson.medium.com/the-perverse-incentives-of-vibe-coding-23efbaf75aee",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Wed, 14 May 2025 19:29:38 +0000",
-    "published_datetime": "2025-05-14T20:29:38",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Writing that changed how I think about programming languages",
-    "url": "https://bernsteinbear.com/blog/pl-writing/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Wed, 14 May 2025 04:19:00 +0000",
-    "published_datetime": "2025-05-14T05:19:00",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Uber to introduce fixed-route shuttles in major US cities",
     "url": "https://techcrunch.com/2025/05/14/uber-to-introduce-fixed-route-shuttles-in-major-us-cities-other-ways-to-save/",
     "source": "Hacker News",
@@ -280,22 +280,22 @@
     "content": "Comments"
   },
   {
-    "title": "Various Things in MetaPost (2019)",
-    "url": "https://habr.com/en/articles/454376/",
+    "title": "Perverse incentives of vibe coding",
+    "url": "https://fredbenenson.medium.com/the-perverse-incentives-of-vibe-coding-23efbaf75aee",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Wed, 14 May 2025 18:37:32 +0000",
-    "published_datetime": "2025-05-14T19:37:32",
+    "published": "Wed, 14 May 2025 19:29:38 +0000",
+    "published_datetime": "2025-05-14T20:29:38",
     "summary": "Comments",
     "content": "Comments"
   },
   {
-    "title": "David Hilbert's radio address (2014)",
-    "url": "https://old.maa.org/press/periodicals/convergence/david-hilberts-radio-address",
+    "title": "Ash Framework \u2013 Model your domain, derive the rest",
+    "url": "https://ash-hq.org/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Wed, 14 May 2025 19:04:41 +0000",
-    "published_datetime": "2025-05-14T20:04:41",
+    "published": "Sat, 10 May 2025 13:32:00 +0000",
+    "published_datetime": "2025-05-10T14:32:00",
     "summary": "Comments",
     "content": "Comments"
   }

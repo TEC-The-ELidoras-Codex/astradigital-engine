@@ -108,6 +108,30 @@ class AirthNewsAutomation:
                     # Import what we need for WordPress posting
                     from src.agents.wp_poster import WordPressAgent
 
+                    # Check if OpenAI is available
+                    self.openai_available = False
+                    try:
+                        import openai
+                        from openai import OpenAI
+                        self.openai_available = True
+                        self.logger.info("OpenAI module loaded successfully")
+                    except ImportError as e:
+                        self.logger.error(f"OpenAI module not found. Error: {e}")
+                        self.openai_available = False
+
+                    # Initialize OpenAI client
+                    self.llm_client = None
+                    if self.openai_available:
+                        try:
+                            openai_api_key = os.getenv("OPENAI_API_KEY")
+                            if not openai_api_key:
+                                self.logger.error("OpenAI API key not found in environment variables.")
+                            else:
+                                self.llm_client = OpenAI(api_key=openai_api_key)
+                                self.logger.info("OpenAI client initialized successfully.")
+                        except Exception as e:
+                            self.logger.error(f"Failed to initialize OpenAI client: {e}")
+                    
                     # Load config from the same place as AirthAgent would
                     config_path = os.path.join(
                         os.path.dirname(
@@ -119,10 +143,30 @@ class AirthNewsAutomation:
                         "WordPress Agent initialized directly with config path")
 
                 def _interact_llm(self, prompt, max_tokens=None):
-                    """Simple content generation without requiring OpenAI."""
-                    logger.info(
-                        f"Simple content generation for prompt: {prompt[:50]}...")
-                    return f"Generated content based on the topic."
+                    """Generate content using OpenAI API."""
+                    if not max_tokens:
+                        max_tokens = 1000  # Default max tokens
+                    
+                    if not self.llm_client:
+                        self.logger.warning("LLM client not available. Using fallback content generation.")
+                        return f"Generated content based on {prompt[:30]}... [OpenAI API not available]"
+                    
+                    try:
+                        # Using similar parameters to AirthAgent implementation
+                        response = self.llm_client.completions.create(
+                            model="gpt-3.5-turbo-instruct",  # Using a standard model
+                            prompt=prompt,
+                            max_tokens=max_tokens,
+                            n=1,
+                            stop=None,
+                            temperature=0.7,
+                        )
+                        
+                        self.logger.info(f"OpenAI API call successful, generated content of length: {len(response.choices[0].text)}")
+                        return response.choices[0].text.strip()
+                    except Exception as e:
+                        self.logger.error(f"OpenAI API call failed: {e}")
+                        return f"Error: OpenAI API call failed: {e}"
 
                 def post_to_wordpress(
                         self,
@@ -175,10 +219,8 @@ class AirthNewsAutomation:
             # Use our adapter with WordPress capabilities
             self.airth = AirthWPAdapter()
             logger.info(
-                "Created AirthWPAdapter with WordPress publishing capabilities")
-
-            # For compatibility with any code that might check these
-            self.airth.llm_client = "dummy"
+                "Created AirthWPAdapter with WordPress publishing capabilities")            # Ensure proper LLM client status is tracked for compatibility
+            # No need to set a dummy value since we have a real client now
 
             # Initialize news fetcher
             self.news_fetcher = NewsFetcher(self.config_path)
