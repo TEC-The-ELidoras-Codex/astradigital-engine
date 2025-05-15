@@ -56,6 +56,13 @@
 - [ ] Create custom admin UI for Astradigital content
 - [ ] Implement API endpoints for dynamic content
 
+## News Automation & API Integration Tasks
+- [x] Fix Airth News Automation to use OpenAI API correctly
+- [x] Create proper WordPress posting integration
+- [ ] Implement category-specific content generation
+- [ ] Add image generation capability
+- [ ] Create automated SEO metadata generation
+
 ## Interactive Features Tasks
 - [ ] Implement interactive map of Astradigital Ocean
 - [ ] Create faction territory visualization
