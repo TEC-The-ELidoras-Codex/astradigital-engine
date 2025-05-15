@@ -280,6 +280,55 @@ class WordPressAgent(BaseAgent):
             # Style 2: Dictionary parameter contains all the post details
             post_data = title_or_data.copy()  # Make a copy to avoid modifying the original
             title = post_data.get('title', '')
+            
+            # Handle categories conversion from strings to IDs if needed
+            if 'categories' in post_data and post_data['categories']:
+                category_ids = []
+                for cat in post_data['categories']:
+                    # If it's already an integer ID, use it directly
+                    if isinstance(cat, int):
+                        category_ids.append(cat)
+                    # If it's a string (slug name), try to convert it to an ID
+                    elif isinstance(cat, str):
+                        # Try to get the category ID
+                        cat_id = self.categories.get(cat)
+                        if cat_id is None:
+                            # Try refreshing categories
+                            self.get_categories()
+                            cat_id = self.categories.get(cat)
+                            
+                        # Add the ID if found, otherwise skip it
+                        if cat_id:
+                            category_ids.append(cat_id)
+                            self.logger.debug(f"Converted category '{cat}' to ID {cat_id}")
+                        else:
+                            self.logger.warning(f"Category '{cat}' not found. Make sure it exists in WordPress.")
+                
+                # Update the post data with IDs
+                if category_ids:
+                    post_data['categories'] = category_ids
+                else:
+                    # If no valid categories found, use uncategorized
+                    uncategorized_id = self.categories.get("uncategorized")
+                    if uncategorized_id:
+                        post_data['categories'] = [uncategorized_id]
+                        self.logger.debug(f"Using uncategorized (ID: {uncategorized_id}) as fallback")
+            
+            # Handle tags conversion if needed
+            if 'tags' in post_data and post_data['tags']:
+                tag_ids = []
+                for tag in post_data['tags']:
+                    # If it's a string, create or get the tag ID
+                    if isinstance(tag, str):
+                        tag_id = self._create_or_get_tag(tag)
+                        if tag_id:
+                            tag_ids.append(tag_id)
+                    # If it's already an ID, use it directly
+                    elif isinstance(tag, int):
+                        tag_ids.append(tag)
+                
+                if tag_ids:
+                    post_data['tags'] = tag_ids
         else:
             # Style 1: Separate parameters
             title = title_or_data
@@ -351,49 +400,107 @@ class WordPressAgent(BaseAgent):
             self.logger.error(f"Error creating post: {e}")
             return {"success": False, "error": str(e)}
     
-    def _create_or_get_tag(self, tag: str) -> Optional[int]:
+    def create_category(self, name: str, slug: str = None) -> Optional[int]:
         """
-        Create a tag if it doesn't exist, or get its ID if it does.
+        Create a new category in WordPress if it doesn't exist.
         
         Args:
-            tag: The tag name/slug
+            name: The category name
+            slug: Optional slug (will be auto-generated from name if not provided)
+            
+        Returns:
+            The category ID if successful, None otherwise
+        """
+        if not self.api_base_url:
+            self.logger.error("Cannot create category: API base URL not set")
+            return None
+            
+        slug = slug or name.lower().replace(' ', '-')
+        
+        # First check if the category already exists
+        self.get_categories()
+        if slug in self.categories and self.categories[slug]:
+            self.logger.info(f"Category '{name}' (slug: {slug}) already exists with ID {self.categories[slug]}")
+            return self.categories[slug]
+            
+        # Create the category
+        try:
+            url = f"{self.api_base_url}/categories"
+            category_data = {
+                "name": name,
+                "slug": slug
+            }
+            
+            response = self._try_multiple_auth_methods("POST", url, category_data)
+            
+            if response and response.status_code in [200, 201]:
+                category_id = response.json().get("id")
+                if category_id:
+                    # Update our local cache
+                    self.categories[slug] = category_id
+                    self.logger.info(f"Created category '{name}' with ID {category_id}")
+                    return category_id
+                else:
+                    self.logger.error(f"Failed to extract category ID from response")
+                    return None
+            else:
+                status_code = response.status_code if response else "No response"
+                self.logger.error(f"Failed to create category: Status {status_code}")
+                return None
+                
+        except Exception as e:
+            self.logger.error(f"Error creating category: {e}")
+            return None
+    
+    def _create_or_get_tag(self, tag_name: str) -> Optional[int]:
+        """
+        Create a tag if it doesn't exist or get its ID if it does.
+        
+        Args:
+            tag_name: The tag name
             
         Returns:
             The tag ID if successful, None otherwise
         """
         if not self.api_base_url:
-            self.logger.error("Cannot create tag: API base URL not set")
+            self.logger.error("Cannot create/get tag: API base URL not set")
             return None
             
+        # First check if the tag exists
         try:
-            # First check if the tag exists
-            search_url = f"{self.api_base_url}/tags?search={tag}"
-            search_response = self._try_multiple_auth_methods("GET", search_url)
+            # Create slug from tag name
+            tag_slug = tag_name.lower().replace(' ', '-')
+            url = f"{self.api_base_url}/tags?slug={tag_slug}"
+            response = self._try_multiple_auth_methods("GET", url)
             
-            if search_response and search_response.status_code == 200:
-                tags = search_response.json()
-                if tags:
-                    # Check for exact match
-                    for tag_data in tags:
-                        if tag_data.get("name").lower() == tag.lower():
-                            return tag_data.get("id")
+            if response and response.status_code == 200:
+                tags = response.json()
+                if tags and len(tags) > 0:
+                    tag_id = tags[0].get("id")
+                    self.logger.debug(f"Found existing tag '{tag_name}' with ID {tag_id}")
+                    return tag_id
                     
-            # Tag doesn't exist, create it
-            create_url = f"{self.api_base_url}/tags"
-            create_data = {
-                "name": tag
+            # If we get here, the tag doesn't exist or we couldn't retrieve it
+            # Create it
+            url = f"{self.api_base_url}/tags"
+            tag_data = {
+                "name": tag_name,
+                "slug": tag_slug
             }
-            create_response = self._try_multiple_auth_methods("POST", create_url, create_data)
+            
+            create_response = self._try_multiple_auth_methods("POST", url, tag_data)
             
             if create_response and create_response.status_code in [200, 201]:
-                tag_data = create_response.json()
-                return tag_data.get("id")
+                tag_id = create_response.json().get("id")
+                self.logger.debug(f"Created tag '{tag_name}' with ID {tag_id}")
+                return tag_id
             else:
-                self.logger.error(f"Failed to create tag: {tag}")
+                status_code = create_response.status_code if create_response else "No response"
+                self.logger.error(f"Failed to create tag: Status {status_code}")
                 return None
                 
         except Exception as e:
-            self.logger.error(f"Error working with tag {tag}: {e}")
+            self.logger.error(f"Error creating/getting tag: {e}")
             return None
     
     def upload_media(self, file_path: str, title: str = None) -> Dict[str, Any]:

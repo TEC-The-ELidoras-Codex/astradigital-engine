@@ -140,24 +140,34 @@ class AirthNewsAutomation:
                     logger.info(f"Posting article to WordPress: {title}")
 
                     try:
-                        # Create a post data dictionary to match the expected
-                        # format
+                        # Create a post data dictionary to match the expected format
+                        # Important: For categories, we pass the slug name as a string, and wp_agent.create_post 
+                        # will handle the conversion to category ID internally
                         post_data = {
                             'title': title,
                             'content': content,
-                            'categories': [category] if category else [],
-                            'tags': tags or [],
                             'status': status
                         }
+                        
+                        # Pass category as a separate parameter to let create_post handle ID lookup
+                        if category:
+                            # The category is passed as a separate parameter now, not in the dict
+                            pass
+                            
+                        # Handle tags
+                        if tags:
+                            post_data['tags'] = tags
 
-                        # Pass the dictionary as the first argument
-                        result = self.wp_agent.create_post(post_data)
+                        # Pass the dictionary and category separately to allow category ID lookup
+                        result = self.wp_agent.create_post(post_data, category=category)
 
                         # Format the result to match expected structure
                         return {
-                            "success": result.get("id") is not None, "post_id": result.get(
-                                "id", "0"), "url": result.get(
-                                "link", ""), "error": None if result.get("id") else "Failed to create post"}
+                            "success": result.get("id") is not None, 
+                            "post_id": result.get("id", "0"), 
+                            "url": result.get("link", ""), 
+                            "error": None if result.get("id") else "Failed to create post"
+                        }
                     except Exception as e:
                         logger.error(f"Error posting to WordPress: {e}")
                         return {"success": False, "error": str(e)}
