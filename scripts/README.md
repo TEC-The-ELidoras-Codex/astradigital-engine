@@ -73,3 +73,31 @@ Runs a minimal viable product version of Airth for testing.
 
 ### `deploy_to_hf_space.bat` (Windows) / `deploy_to_hf_space.sh` (Linux/macOS)
 Scripts for deploying the TEC Office Suite to a Hugging Face Space.
+
+# Scripts
+
+## Purpose
+
+The `scripts` folder contains all scripts used for automation, data processing, and other functionalities in TEC.
+
+## Subfolder Structure
+
+- **airth_blog_post.py**: Script for automating blog posts.
+- **airth_news_automation.py**: Main script for news automation.
+- **fix_indentation.ps1**: PowerShell script for fixing indentation issues.
+- **run_tests.py**: Python script for running tests.
+
+## Naming Conventions
+
+- Use descriptive names with snake_case for Python scripts (e.g., `data_processor.py`).
+- Use Verb-Noun naming convention for PowerShell scripts (e.g., `Fix-Indentation.ps1`).
+
+## Metadata Standards
+
+- Include docstrings in Python scripts to describe functionality.
+- Use comment-based help in PowerShell scripts.
+
+## Notes
+
+- Test all scripts in a development environment before deploying.
+- Follow coding standards outlined in the TEC AI Directive.
