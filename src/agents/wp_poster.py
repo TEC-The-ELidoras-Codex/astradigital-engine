@@ -217,16 +217,16 @@ class WordPressAgent(BaseAgent):
             response = self._try_multiple_auth_methods("GET", url)
             
             if response and response.status_code == 200:
-                categories = response.json()
+                categories_from_wp = response.json()
                 
-                # Update the category IDs
-                for category in categories:
-                    slug = category.get("slug")
-                    if slug in self.categories:
-                        self.categories[slug] = category.get("id")
+                # Update the category IDs - ensuring all fetched categories are added/updated
+                for category_wp in categories_from_wp:
+                    slug = category_wp.get("slug")
+                    if slug: # Ensure slug is not None or empty
+                        self.categories[slug] = category_wp.get("id") # Add/update all fetched categories
                 
-                self.logger.debug(f"Retrieved {len(categories)} categories")
-                return categories
+                self.logger.debug(f"Retrieved {len(categories_from_wp)} categories and updated cache. Current cache: {self.categories}")
+                return categories_from_wp
             else:
                 status_code = response.status_code if response else "No response"
                 self.logger.error(f"Failed to get categories: Status {status_code}")
@@ -284,35 +284,40 @@ class WordPressAgent(BaseAgent):
             # Handle categories conversion from strings to IDs if needed
             if 'categories' in post_data and post_data['categories']:
                 category_ids = []
-                for cat in post_data['categories']:
-                    # If it's already an integer ID, use it directly
-                    if isinstance(cat, int):
-                        category_ids.append(cat)
-                    # If it's a string (slug name), try to convert it to an ID
-                    elif isinstance(cat, str):
-                        # Try to get the category ID
-                        cat_id = self.categories.get(cat)
-                        if cat_id is None:
-                            # Try refreshing categories
-                            self.get_categories()
-                            cat_id = self.categories.get(cat)
+                for cat_name_or_slug in post_data['categories']:
+                    if isinstance(cat_name_or_slug, int):
+                        category_ids.append(cat_name_or_slug)
+                        continue
+                    
+                    cat_id = self.categories.get(cat_name_or_slug)
+                    if cat_id is None:
+                        self.logger.info(f"Category \'{cat_name_or_slug}\' not in cache. Refreshing categories.")
+                        self.get_categories() # Refresh cache
+                        cat_id = self.categories.get(cat_name_or_slug)
                             
-                        # Add the ID if found, otherwise skip it
-                        if cat_id:
-                            category_ids.append(cat_id)
-                            self.logger.debug(f"Converted category '{cat}' to ID {cat_id}")
-                        else:
-                            self.logger.warning(f"Category '{cat}' not found. Make sure it exists in WordPress.")
+                    if cat_id:
+                        category_ids.append(cat_id)
+                        self.logger.debug(f"Converted category \'{cat_name_or_slug}\' to ID {cat_id}")
+                    else:
+                        self.logger.warning(f"Category \'{cat_name_or_slug}\' not found even after refresh. Make sure it exists in WordPress with the exact slug.")
                 
-                # Update the post data with IDs
                 if category_ids:
                     post_data['categories'] = category_ids
                 else:
-                    # If no valid categories found, use uncategorized
+                    self.logger.warning(f"No valid category IDs found for input: {post_data.get('categories')}. Attempting to use \'uncategorized\'.")
                     uncategorized_id = self.categories.get("uncategorized")
+                    if uncategorized_id is None: # Try refreshing if not found in cache
+                        self.logger.info("Fallback category \'uncategorized\' not in cache. Refreshing categories.")
+                        self.get_categories()
+                        uncategorized_id = self.categories.get("uncategorized")
+
                     if uncategorized_id:
                         post_data['categories'] = [uncategorized_id]
-                        self.logger.debug(f"Using uncategorized (ID: {uncategorized_id}) as fallback")
+                        self.logger.info(f"Using uncategorized (ID: {uncategorized_id}) as fallback.")
+                    else:
+                        self.logger.warning("Fallback category \'uncategorized\' also not found or has no ID. Post will be sent without category information or assigned to WordPress default.")
+                        if 'categories' in post_data: # It was originally present
+                           del post_data['categories'] # Remove it to avoid API error
             
             # Handle tags conversion if needed
             if 'tags' in post_data and post_data['tags']:
