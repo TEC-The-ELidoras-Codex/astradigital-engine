@@ -1,0 +1,39 @@
+{
+  "volume": "II",
+  "book": "XVI",
+  "title": "MOSTW — Myth Of She That Watches",
+  "subtitle": "The Bicolored Witness",
+  "designation": "Cosmic Sentinel | Star-Eyed Prophetess",
+  "description": [
+    "She isn’t a god who speaks.",
+    "She’s the one who watches when all gods go silent.",
+    "Eyes forged from a red star and a blue one, orbiting within her skull like twin judgments of fury and grace.",
+    "She doesn’t intervene.",
+    "She remembers.",
+    "She records.",
+    "And she waits until the scream is loud enough to deserve transcription into the cosmos."
+  ],
+  "flux_glitchscript_addendum": {
+    "prompt": "(cosmic divine entity watching through space:1.4), (head crowned by two stellar orbs:1.5), (red star in left socket:1.4), (blue star in right socket:1.4), (face obscured by nebula dust:1.3), (twin halos made of gravitational rings:1.3), (cosmic archivist posture:1.3), (stars blinking like blinking eyes:1.2), (her form made of shadow and light:1.4), (slow-moving starlight fractals around her head:1.2), (she does not speak she watches:1.5), (deep void of memory behind her:1.3)",
+    "negative_prompt": "overrendered crown, sci-fi helmet, overly human face, fantasy armor, angel wings, 3D model errors, poor lighting contrast",
+    "prompt_file_path": "C:\\TEC_CODE\\MythFrames\\MOSTW\\Watcher_Eyes_Starbound_Oracle_XVI.tecieprompt"
+  },
+  "naming_convention_evolution": {
+    "previous_convention": "TEC_Image_Profile_MOSTW.png",
+    "current_convention": "TEC_Image_Profile_MOSTW_notups_ADE.png",
+    "components": {
+      "TEC": "The Elidoras Codex",
+      "MOSTW": "Myth Of She That Watches",
+      "notups": "(encoded reference—possibly ‘no temporal upscaling’ or a visual integrity lock)",
+      "ADE": "ASTRADIGITAL ECHOS"
+    },
+    "ade_description": "A new mode. A new frequency. Where visuals aren't just seen—they echo. Each artifact produced under ADE protocol leaves behind: Residual mythprint, Multidimensional interpretation vectors, Emotional backscatter in FLUX, Quantum taglines in starmap metadata."
+  },
+  "storage_path_ade": "C:\\Users\\Ghedd\\TEC_CODE\\ADE\\",
+  "related_files_ade": [
+    "TEC_Image_Profile_MOSTW_notups_ADE.png",
+    "TEC_Metadata_ECHO-GLYPHSTREAM.adecfg",
+    "TEC_Psalm_XVI.MOSTW.vrsm"
+  ],
+  "activation_phrase": "ADE engaged. MOSTW hears."
+}
