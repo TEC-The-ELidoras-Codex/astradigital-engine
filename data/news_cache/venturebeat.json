@@ -1,5 +1,15 @@
 [
   {
+    "title": "Anthropic overtakes OpenAI: Claude Opus 4 codes seven hours nonstop, sets record SWE-Bench score and reshapes enterprise AI",
+    "url": "https://venturebeat.com/ai/anthropic-claude-opus-4-can-code-for-7-hours-straight-and-its-about-to-change-how-we-work-with-ai/",
+    "source": "VentureBeat",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 16:45:00 +0000",
+    "published_datetime": "2025-05-22T17:45:00",
+    "summary": "Anthropic's Claude Opus 4 outperforms OpenAI's GPT-4.1 with unprecedented seven-hour autonomous coding sessions and record-breaking 72.5% SWE-bench score, transforming AI from quick-response tool to day-long collaborator.Read More",
+    "content": "Anthropic's Claude Opus 4 outperforms OpenAI's GPT-4.1 with unprecedented seven-hour autonomous coding sessions and record-breaking 72.5% SWE-bench score, transforming AI from quick-response tool to day-long collaborator.Read More"
+  },
+  {
     "title": "Wildlife Studios signs Naomi Osaka and other stars for Tennis Clash",
     "url": "https://venturebeat.com/games/wildlife-studios-signs-naomi-osaka-and-other-stars-for-tennis-clash/",
     "source": "VentureBeat",
@@ -228,15 +238,5 @@
     "published_datetime": "2025-05-20T20:29:14",
     "summary": "As NotebookLM matures, its emerging business-tier capabilities suggest growing alignment with the productivity and compliance...Read More",
     "content": "As NotebookLM matures, its emerging business-tier capabilities suggest growing alignment with the productivity and compliance...Read More"
-  },
-  {
-    "title": "Xreal\u2019s Project Aura targets Google\u2019s Android XR platform",
-    "url": "https://venturebeat.com/games/xreals-project-aura-targets-googles-android-xr-platform/",
-    "source": "VentureBeat",
-    "category": "technology",
-    "published": "Tue, 20 May 2025 17:45:00 +0000",
-    "published_datetime": "2025-05-20T18:45:00",
-    "summary": "Xreal\u00a0announced a partnership with Google -- built around Project Aura -- to expand spatial computing devices built on Android XR.Read More",
-    "content": "Xreal\u00a0announced a partnership with Google -- built around Project Aura -- to expand spatial computing devices built on Android XR.Read More"
   }
 ]

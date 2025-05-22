@@ -1,5 +1,65 @@
 [
   {
+    "title": "Microsoft says Lumma password stealer malware found on 394,000 Windows PCs",
+    "url": "https://techcrunch.com/2025/05/22/microsoft-says-lumma-password-stealer-malware-found-on-394000-windows-pcs/",
+    "source": "TechCrunch",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 18:09:11 +0000",
+    "published_datetime": "2025-05-22T19:09:11",
+    "summary": "Microsoft and law enforcement announced a coordinated takedown of the Lumma pasword-stealing malware.",
+    "content": "Microsoft and law enforcement announced a coordinated takedown of the Lumma pasword-stealing malware."
+  },
+  {
+    "title": "Mozilla is shutting down read-it-later app Pocket",
+    "url": "https://techcrunch.com/2025/05/22/mozilla-is-shutting-down-read-it-later-app-pocket/",
+    "source": "TechCrunch",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 18:06:21 +0000",
+    "published_datetime": "2025-05-22T19:06:21",
+    "summary": "Mozilla announced on Thursday that it\u2019s shutting down Pocket, a read-it-later app it acquired in 2017, on July 8. The company is also shutting down Fakespot, its browser extension that helps users identify unreliable reviews. \u201cPocket has helped millions save articles and discover stories worth reading,\u201d Mozilla said in a blog post. \u201cBut the way [\u2026]",
+    "content": "Mozilla announced on Thursday that it\u2019s shutting down Pocket, a read-it-later app it acquired in 2017, on July 8. The company is also shutting down Fakespot, its browser extension that helps users identify unreliable reviews. \u201cPocket has helped millions save articles and discover stories worth reading,\u201d Mozilla said in a blog post. \u201cBut the way [\u2026]"
+  },
+  {
+    "title": "Anthropic\u2019s new AI model turns to blackmail when engineers try to take it offline",
+    "url": "https://techcrunch.com/2025/05/22/anthropics-new-ai-model-turns-to-blackmail-when-engineers-try-to-take-it-offline/",
+    "source": "TechCrunch",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 17:47:45 +0000",
+    "published_datetime": "2025-05-22T18:47:45",
+    "summary": "Anthropic\u2019s newly launched Claude Opus 4 model frequently tries to blackmail developers when they threaten to replace it with a new AI system and give it sensitive information about the engineers responsible for the decision, the company said in a safety report released Thursday. During pre-release testing, Anthropic asked Claude Opus 4 to act as [\u2026]",
+    "content": "Anthropic\u2019s newly launched Claude Opus 4 model frequently tries to blackmail developers when they threaten to replace it with a new AI system and give it sensitive information about the engineers responsible for the decision, the company said in a safety report released Thursday. During pre-release testing, Anthropic asked Claude Opus 4 to act as [\u2026]"
+  },
+  {
+    "title": "Open social web browser Surf makes it easier for anyone to build custom feeds",
+    "url": "https://techcrunch.com/2025/05/22/open-social-web-browser-surf-makes-it-easier-for-anyone-to-build-custom-feeds/",
+    "source": "TechCrunch",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 17:39:58 +0000",
+    "published_datetime": "2025-05-22T18:39:58",
+    "summary": "With Starter Sets, Surf is simplifying the process of building those custom feeds, personalizing them, and even publishing them off-platform, if you choose.",
+    "content": "With Starter Sets, Surf is simplifying the process of building those custom feeds, personalizing them, and even publishing them off-platform, if you choose."
+  },
+  {
+    "title": "Meta adds another 650 MW of solar power to its AI push",
+    "url": "https://techcrunch.com/2025/05/22/meta-adds-another-650-mw-of-solar-power-to-its-ai-push/",
+    "source": "TechCrunch",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 16:49:53 +0000",
+    "published_datetime": "2025-05-22T17:49:53",
+    "summary": "The company already has more than 12 gigawatts of capacity in its renewable power portfolio.",
+    "content": "The company already has more than 12 gigawatts of capacity in its renewable power portfolio."
+  },
+  {
+    "title": "Anthropic\u2019s new Claude 4 AI models can reason over many steps",
+    "url": "https://techcrunch.com/2025/05/22/anthropics-new-claude-4-ai-models-can-reason-over-many-steps/",
+    "source": "TechCrunch",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 16:45:00 +0000",
+    "published_datetime": "2025-05-22T17:45:00",
+    "summary": "During its inaugural developer conference Thursday, Anthropic launched two new AI models that the startup claims are among the industry\u2019s best, at least in terms of how they score on popular benchmarks. Claude Opus 4 and Claude Sonnet 4, part of Anthropic\u2019s new Claude 4 family of models, can analyze large datasets, execute long-horizon tasks, [\u2026]",
+    "content": "During its inaugural developer conference Thursday, Anthropic launched two new AI models that the startup claims are among the industry\u2019s best, at least in terms of how they score on popular benchmarks. Claude Opus 4 and Claude Sonnet 4, part of Anthropic\u2019s new Claude 4 family of models, can analyze large datasets, execute long-horizon tasks, [\u2026]"
+  },
+  {
     "title": "SpaceX\u2019s Starship cleared to return to flight with expanded \u2018hazard areas\u2019",
     "url": "https://techcrunch.com/2025/05/22/spacexs-starship-cleared-to-return-to-flight-with-expanded-hazard-areas/",
     "source": "TechCrunch",
@@ -90,7 +150,7 @@
     "content": "Signal said today that it is updating its Windows app to prevent the system from capturing screenshots, thereby protecting the content that is on display. The company said that this new \u201cscreen security\u201d setting is enabled by default on Windows 11. Signal said that this new feature is designed to protect users\u2019 privacy from Microsoft\u2019s [\u2026]"
   },
   {
-    "title": "OpenAI\u2019s next big bet won\u2019t be a wearable: report",
+    "title": "OpenAI\u2019s next big bet won\u2019t be a wearable: Report",
     "url": "https://techcrunch.com/2025/05/21/openais-next-big-bet-wont-be-a-wearable-report/",
     "source": "TechCrunch",
     "category": "technology",
@@ -138,65 +198,5 @@
     "published_datetime": "2025-05-21T20:20:36",
     "summary": "Spotify says its ability to direct its customers to external payment links in its iOS app has already had a positive impact on sales. In a newly filed amicus brief in support of Epic Games in its ongoing legal battle with Apple over external payments on the App Store, Spotify claims its internal data indicates [\u2026]",
     "content": "Spotify says its ability to direct its customers to external payment links in its iOS app has already had a positive impact on sales. In a newly filed amicus brief in support of Epic Games in its ongoing legal battle with Apple over external payments on the App Store, Spotify claims its internal data indicates [\u2026]"
-  },
-  {
-    "title": "LM Arena, the organization behind popular AI leaderboards, lands $100M",
-    "url": "https://techcrunch.com/2025/05/21/lm-arena-the-organization-behind-popular-ai-leaderboards-lands-100m/",
-    "source": "TechCrunch",
-    "category": "technology",
-    "published": "Wed, 21 May 2025 18:52:14 +0000",
-    "published_datetime": "2025-05-21T19:52:14",
-    "summary": "LM Arena, a crowdsourced benchmarking project that major AI labs rely on to test and market their AI models, has raised $100 million in a seed funding round that values the organization at $600 million, according to Bloomberg. Andreessen Horowitz (a16z)\u00a0and UC Investments, which manages an investment portfolio for the University of California, led the [\u2026]",
-    "content": "LM Arena, a crowdsourced benchmarking project that major AI labs rely on to test and market their AI models, has raised $100 million in a seed funding round that values the organization at $600 million, according to Bloomberg. Andreessen Horowitz (a16z)\u00a0and UC Investments, which manages an investment portfolio for the University of California, led the [\u2026]"
-  },
-  {
-    "title": "Wyden: AT&T, T-Mobile, and Verizon weren\u2019t notifying senators of surveillance requests",
-    "url": "https://techcrunch.com/2025/05/21/wyden-att-t-mobile-and-verizon-werent-notifying-senators-of-surveillance-requests/",
-    "source": "TechCrunch",
-    "category": "technology",
-    "published": "Wed, 21 May 2025 18:42:02 +0000",
-    "published_datetime": "2025-05-21T19:42:02",
-    "summary": "Sen. Ron Wyden said in a letter that one U.S. phone carrier turned over Senate data to law enforcement without notifying the target.",
-    "content": "Sen. Ron Wyden said in a letter that one U.S. phone carrier turned over Senate data to law enforcement without notifying the target."
-  },
-  {
-    "title": "Spotify\u2019s new \u2018Upcoming Releases\u2019 hub highlights future albums you may like",
-    "url": "https://techcrunch.com/2025/05/21/spotifys-new-upcoming-releases-hub-highlights-future-albums-you-may-like/",
-    "source": "TechCrunch",
-    "category": "technology",
-    "published": "Wed, 21 May 2025 18:00:28 +0000",
-    "published_datetime": "2025-05-21T19:00:28",
-    "summary": "Spotify is launching a new hub dedicated to keeping users informed about soon-to-be-released albums, the company announced on Wednesday. The hub, called \u201cUpcoming Releases,\u201d will feature personalized recommendations based on a user\u2019s listening history. Users will be able to access it through the Search tab on mobile in the \u201cBrowse all\u201d section. The hub will [\u2026]",
-    "content": "Spotify is launching a new hub dedicated to keeping users informed about soon-to-be-released albums, the company announced on Wednesday. The hub, called \u201cUpcoming Releases,\u201d will feature personalized recommendations based on a user\u2019s listening history. Users will be able to access it through the Search tab on mobile in the \u201cBrowse all\u201d section. The hub will [\u2026]"
-  },
-  {
-    "title": "Jony Ive to lead OpenAI\u2019s design work following $6.5B acquisition of his company",
-    "url": "https://techcrunch.com/2025/05/21/jony-ive-to-lead-openais-design-work-following-6-5b-acquisition-of-his-company/",
-    "source": "TechCrunch",
-    "category": "technology",
-    "published": "Wed, 21 May 2025 17:59:35 +0000",
-    "published_datetime": "2025-05-21T18:59:35",
-    "summary": "OpenAI is acquiring io, the device startup that CEO Sam Altman and famed Apple designer Jony Ive have quietly been working on for two years, in an all-equity deal that values that startup at $6.5 billion, according to The Wall Street Journal. As part of the unusual deal announced Wednesday, Ive and his design firm, [\u2026]",
-    "content": "OpenAI is acquiring io, the device startup that CEO Sam Altman and famed Apple designer Jony Ive have quietly been working on for two years, in an all-equity deal that values that startup at $6.5 billion, according to The Wall Street Journal. As part of the unusual deal announced Wednesday, Ive and his design firm, [\u2026]"
-  },
-  {
-    "title": "Filed raises $17M to automate the drudgery of tax prep",
-    "url": "https://techcrunch.com/2025/05/21/filed-raises-17m-to-automate-the-drudgery-of-tax-prep/",
-    "source": "TechCrunch",
-    "category": "technology",
-    "published": "Wed, 21 May 2025 17:27:04 +0000",
-    "published_datetime": "2025-05-21T18:27:04",
-    "summary": "There is a new accounting software in town, coming in with a fresh $17.2 million raise and a desire to shake things up. The company, Filed, hopes to automate the grunt work. \u201cThe tax industry is facing a genuine crisis,\u201d Leroy Kerry, Filed\u2019s co-founder CEO, told TechCrunch. Many CPAs are approaching retirement while a dwindling [\u2026]",
-    "content": "There is a new accounting software in town, coming in with a fresh $17.2 million raise and a desire to shake things up. The company, Filed, hopes to automate the grunt work. \u201cThe tax industry is facing a genuine crisis,\u201d Leroy Kerry, Filed\u2019s co-founder CEO, told TechCrunch. Many CPAs are approaching retirement while a dwindling [\u2026]"
-  },
-  {
-    "title": "Meta launches program to encourage startups to use its Llama AI models",
-    "url": "https://techcrunch.com/2025/05/21/meta-launches-program-to-encourage-startups-to-use-its-llama-ai-models/",
-    "source": "TechCrunch",
-    "category": "technology",
-    "published": "Wed, 21 May 2025 17:23:51 +0000",
-    "published_datetime": "2025-05-21T18:23:51",
-    "summary": "Meta is launching a new program to incentivize startups to adopt its Llama AI models. The program, Llama for Startups, provides companies \u201cdirect support\u201d from Meta\u2019s Llama team, as well as funding in certain cases. Any U.S.-based firm that is incorporated, has raised less than $10 million in funding, has at least one developer on [\u2026]",
-    "content": "Meta is launching a new program to incentivize startups to adopt its Llama AI models. The program, Llama for Startups, provides companies \u201cdirect support\u201d from Meta\u2019s Llama team, as well as funding in certain cases. Any U.S.-based firm that is incorporated, has raised less than $10 million in funding, has at least one developer on [\u2026]"
   }
 ]

@@ -1,11 +1,31 @@
 [
   {
+    "title": "Claude 4",
+    "url": "https://www.anthropic.com/news/claude-4",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 16:34:42 +0000",
+    "published_datetime": "2025-05-22T17:34:42",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "That fractal that's been up on my wall for 12 years",
     "url": "https://chriskw.xyz/2025/05/21/Fractal/",
     "source": "Hacker News",
     "category": "technology",
     "published": "Thu, 22 May 2025 15:50:16 +0000",
     "published_datetime": "2025-05-22T16:50:16",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Mozilla to shut down Pocket on July 8",
+    "url": "https://support.mozilla.org/en-US/kb/future-of-pocket",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 16:30:18 +0000",
+    "published_datetime": "2025-05-22T17:30:18",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -30,26 +50,6 @@
     "content": "Comments"
   },
   {
-    "title": "Claude 4",
-    "url": "https://www.anthropic.com/news/claude-4",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 16:34:42 +0000",
-    "published_datetime": "2025-05-22T17:34:42",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Showh HN: SQLite JavaScript - extend your database with JavaScript",
-    "url": "https://github.com/sqliteai/sqlite-js",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 13:25:33 +0000",
-    "published_datetime": "2025-05-22T14:25:33",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
     "title": "Launch HN: WorkDone (YC X25) \u2013 AI Audit of Medical Charts",
     "url": "https://news.ycombinator.com/item?id=44063000",
     "source": "Hacker News",
@@ -70,12 +70,22 @@
     "content": "Comments"
   },
   {
-    "title": "Adventures in Symbolic Algebra with Model Context Protocol",
-    "url": "https://www.stephendiehl.com/posts/computer_algebra_mcp/",
+    "title": "Show HN: SQLite JavaScript - extend your database with JavaScript",
+    "url": "https://github.com/sqliteai/sqlite-js",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Thu, 22 May 2025 13:59:25 +0000",
-    "published_datetime": "2025-05-22T14:59:25",
+    "published": "Thu, 22 May 2025 13:25:33 +0000",
+    "published_datetime": "2025-05-22T14:25:33",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Show HN: DockFlow \u2013 Switch between multiple macOS Dock layouts instantly",
+    "url": "https://dockflow.appitstudio.com/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 17:00:32 +0000",
+    "published_datetime": "2025-05-22T18:00:32",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -86,6 +96,16 @@
     "category": "technology",
     "published": "Thu, 22 May 2025 09:17:57 +0000",
     "published_datetime": "2025-05-22T10:17:57",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "I Built My Own Audio Player",
+    "url": "https://nexo.sh/posts/why-i-built-a-native-mp3-player-in-swiftui/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 14:09:25 +0000",
+    "published_datetime": "2025-05-22T15:09:25",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -110,142 +130,42 @@
     "content": "Comments"
   },
   {
-    "title": "Social media platforms: what's wrong, and what's next",
-    "url": "https://www.scottgoci.com/social-media-platforms-whats-wrong-and-whats-next/",
+    "title": "Loading Pydantic models from JSON without running out of memory",
+    "url": "https://pythonspeed.com/articles/pydantic-json-memory/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Thu, 22 May 2025 15:01:09 +0000",
-    "published_datetime": "2025-05-22T16:01:09",
+    "published": "Thu, 22 May 2025 18:06:37 +0000",
+    "published_datetime": "2025-05-22T19:06:37",
     "summary": "Comments",
     "content": "Comments"
   },
   {
-    "title": "Why I Built My Own Audio Player",
-    "url": "https://nexo.sh/posts/why-i-built-a-native-mp3-player-in-swiftui/",
+    "title": "Adventures in Symbolic Algebra with Model Context Protocol",
+    "url": "https://www.stephendiehl.com/posts/computer_algebra_mcp/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Thu, 22 May 2025 14:09:25 +0000",
-    "published_datetime": "2025-05-22T15:09:25",
+    "published": "Thu, 22 May 2025 13:59:25 +0000",
+    "published_datetime": "2025-05-22T14:59:25",
     "summary": "Comments",
     "content": "Comments"
   },
   {
-    "title": "MCP explained without hype or fluff",
-    "url": "https://blog.nilenso.com/blog/2025/05/12/mcp-explained-without-hype-or-fluff/",
+    "title": "The \"AI 2027\" Scenario: How realistic is it?",
+    "url": "https://garymarcus.substack.com/p/the-ai-2027-scenario-how-realistic",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Thu, 22 May 2025 15:39:49 +0000",
-    "published_datetime": "2025-05-22T16:39:49",
+    "published": "Thu, 22 May 2025 17:37:50 +0000",
+    "published_datetime": "2025-05-22T18:37:50",
     "summary": "Comments",
     "content": "Comments"
   },
   {
-    "title": "Four years of sight reading practice",
-    "url": "https://sandrock.co.za/carl/2025/05/four-years-of-sight-reading-pracice/",
+    "title": "Show HN: Pi Co-pilot \u2013 Evaluation of AI apps made easy",
+    "url": "https://withpi.ai/",
     "source": "Hacker News",
     "category": "technology",
-    "published": "Mon, 19 May 2025 03:44:30 +0000",
-    "published_datetime": "2025-05-19T04:44:30",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "What Sam Altman told OpenAI about the device he's making with Jony Ive",
-    "url": "https://www.wsj.com/tech/ai/what-sam-altman-told-openai-about-the-secret-device-hes-making-with-jony-ive-f1384005",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 14:03:37 +0000",
-    "published_datetime": "2025-05-22T15:03:37",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Show HN: Whenish \u2013 Plan Group Events in iMessages",
-    "url": "https://apps.apple.com/us/app/whenish/id6745035749",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 15:15:27 +0000",
-    "published_datetime": "2025-05-22T16:15:27",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Show HN: Curved Space Shader in Three.js (via 4D sphere projection)",
-    "url": "https://github.com/bntre/CurvedSpaceShader",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 10:52:44 +0000",
-    "published_datetime": "2025-05-22T11:52:44",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Benchmarking Crimes Meet Formal Verification",
-    "url": "https://microkerneldude.org/2025/04/27/benchmarking-crimes-meet-formal-verification/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Mon, 19 May 2025 00:04:22 +0000",
-    "published_datetime": "2025-05-19T01:04:22",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Everything\u2019s a bug (or an issue)",
-    "url": "https://www.bozemanpass.com/everythings-a-bug-or-an-issue/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Mon, 19 May 2025 03:46:59 +0000",
-    "published_datetime": "2025-05-19T04:46:59",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "The Philosophy of Byung-Chul Han (2020)",
-    "url": "https://newintrigue.com/2020/06/29/the-philosophy-of-byung-chul-han/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 13:09:15 +0000",
-    "published_datetime": "2025-05-22T14:09:15",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "U.S. Spy Agencies\u2013One-Stop Shop to Buy Your Personal Data",
-    "url": "https://theintercept.com/2025/05/22/intel-agencies-buying-data-portal-privacy/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 14:43:21 +0000",
-    "published_datetime": "2025-05-22T15:43:21",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Free-Threaded Python Library Compatibility Checker",
-    "url": "https://ft-checker.com/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 12:57:55 +0000",
-    "published_datetime": "2025-05-22T13:57:55",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Strengths and limitations of diffusion language models",
-    "url": "https://www.seangoedecke.com/limitations-of-text-diffusion-models/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 10:10:09 +0000",
-    "published_datetime": "2025-05-22T11:10:09",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Inigo Quilez: computer graphics, mathematics, shaders, fractals, demoscene",
-    "url": "https://iquilezles.org/articles/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Sun, 18 May 2025 09:32:39 +0000",
-    "published_datetime": "2025-05-18T10:32:39",
+    "published": "Thu, 22 May 2025 12:31:48 +0000",
+    "published_datetime": "2025-05-22T13:31:48",
     "summary": "Comments",
     "content": "Comments"
   },
@@ -260,42 +180,122 @@
     "content": "Comments"
   },
   {
+    "title": "Four years of sight reading practice",
+    "url": "https://sandrock.co.za/carl/2025/05/four-years-of-sight-reading-pracice/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Mon, 19 May 2025 03:44:30 +0000",
+    "published_datetime": "2025-05-19T04:44:30",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Show HN: Whenish \u2013 Plan Group Events in iMessages",
+    "url": "https://apps.apple.com/us/app/whenish/id6745035749",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 15:15:27 +0000",
+    "published_datetime": "2025-05-22T16:15:27",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Benchmarking Crimes Meet Formal Verification",
+    "url": "https://microkerneldude.org/2025/04/27/benchmarking-crimes-meet-formal-verification/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Mon, 19 May 2025 00:04:22 +0000",
+    "published_datetime": "2025-05-19T01:04:22",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "MCP explained without hype or fluff",
+    "url": "https://blog.nilenso.com/blog/2025/05/12/mcp-explained-without-hype-or-fluff/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 15:39:49 +0000",
+    "published_datetime": "2025-05-22T16:39:49",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "The Philosophy of Byung-Chul Han (2020)",
+    "url": "https://newintrigue.com/2020/06/29/the-philosophy-of-byung-chul-han/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 13:09:15 +0000",
+    "published_datetime": "2025-05-22T14:09:15",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Show HN: Curved Space Shader in Three.js (via 4D sphere projection)",
+    "url": "https://github.com/bntre/CurvedSpaceShader",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 10:52:44 +0000",
+    "published_datetime": "2025-05-22T11:52:44",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Traditional and Neural Order-Independent Transparency",
+    "url": "https://www.tobias-franke.eu/publications/tsopouridis25tnoit/index.html",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Mon, 19 May 2025 08:41:49 +0000",
+    "published_datetime": "2025-05-19T09:41:49",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Free-Threaded Python Library Compatibility Checker",
+    "url": "https://ft-checker.com/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 12:57:55 +0000",
+    "published_datetime": "2025-05-22T13:57:55",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "U.S. Spy Agencies\u2013One-Stop Shop to Buy Your Personal Data",
+    "url": "https://theintercept.com/2025/05/22/intel-agencies-buying-data-portal-privacy/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 14:43:21 +0000",
+    "published_datetime": "2025-05-22T15:43:21",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Inigo Quilez: computer graphics, mathematics, shaders, fractals, demoscene",
+    "url": "https://iquilezles.org/articles/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Sun, 18 May 2025 09:32:39 +0000",
+    "published_datetime": "2025-05-18T10:32:39",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
+    "title": "Everything\u2019s a bug (or an issue)",
+    "url": "https://www.bozemanpass.com/everythings-a-bug-or-an-issue/",
+    "source": "Hacker News",
+    "category": "technology",
+    "published": "Mon, 19 May 2025 03:46:59 +0000",
+    "published_datetime": "2025-05-19T04:46:59",
+    "summary": "Comments",
+    "content": "Comments"
+  },
+  {
     "title": "Display any CSV file as a searchable, filterable, pretty HTML table",
     "url": "https://github.com/derekeder/csv-to-html-table",
     "source": "Hacker News",
     "category": "technology",
     "published": "Thu, 22 May 2025 00:31:01 +0000",
     "published_datetime": "2025-05-22T01:31:01",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "How we made our OCR code more accurate",
-    "url": "https://pieces.app/blog/how-we-made-our-optical-character-recognition-ocr-code-more-accurate",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Wed, 21 May 2025 08:05:13 +0000",
-    "published_datetime": "2025-05-21T09:05:13",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Hotspot: Linux `perf` GUI for performance analysis",
-    "url": "https://github.com/KDAB/hotspot",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Mon, 19 May 2025 21:33:03 +0000",
-    "published_datetime": "2025-05-19T22:33:03",
-    "summary": "Comments",
-    "content": "Comments"
-  },
-  {
-    "title": "Robert Musil Forgotten Plays Inspired His Greatest Work of Fiction",
-    "url": "https://lithub.com/the-austrian-writer-whose-forgotten-plays-inspired-his-greatest-work-of-fiction/",
-    "source": "Hacker News",
-    "category": "technology",
-    "published": "Thu, 22 May 2025 11:24:27 +0000",
-    "published_datetime": "2025-05-22T12:24:27",
     "summary": "Comments",
     "content": "Comments"
   }

@@ -1,5 +1,55 @@
 [
   {
+    "title": "AI Is Eating Data Center Power Demand\u2014and It\u2019s Only Getting Worse",
+    "url": "https://www.wired.com/story/new-research-energy-electricity-artificial-intelligence-ai/",
+    "source": "Wired",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 18:09:41 +0000",
+    "published_datetime": "2025-05-22T19:09:41",
+    "summary": "A new analysis of AI hardware being produced and how it is being used attempts to estimate the vast amount of electricity being consumed by AI.",
+    "content": "A new analysis of AI hardware being produced and how it is being used attempts to estimate the vast amount of electricity being consumed by AI."
+  },
+  {
+    "title": "A United Arab Emirates Lab Announces Frontier AI Projects\u2014and a New Outpost in Silicon Valley",
+    "url": "https://www.wired.com/story/the-united-arab-emirates-announces-frontier-ai-projects-and-a-new-lab-in-silicon-valley/",
+    "source": "Wired",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 17:00:34 +0000",
+    "published_datetime": "2025-05-22T18:00:34",
+    "summary": "As Donald Trump pens deals in the Middle East, the gulf nation opens a research lab in San Francisco.",
+    "content": "As Donald Trump pens deals in the Middle East, the gulf nation opens a research lab in San Francisco."
+  },
+  {
+    "title": "DOGE Used a Meta AI Model to Review Emails From Federal Workers",
+    "url": "https://www.wired.com/story/doge-used-meta-ai-model-review-fork-emails-from-federal-workers/",
+    "source": "Wired",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 16:57:59 +0000",
+    "published_datetime": "2025-05-22T17:57:59",
+    "summary": "DOGE tested and used Meta\u2019s Llama 2 model to review and classify responses from federal workers to the infamous \u201cFork in the Road\u201d email.",
+    "content": "DOGE tested and used Meta\u2019s Llama 2 model to review and classify responses from federal workers to the infamous \u201cFork in the Road\u201d email."
+  },
+  {
+    "title": "Anthropic\u2019s New Model Excels at Reasoning and Planning\u2014and Has the Pok\u00e9mon Skills to Prove It",
+    "url": "https://www.wired.com/story/anthropic-new-model-launch-claude-4/",
+    "source": "Wired",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 16:45:00 +0000",
+    "published_datetime": "2025-05-22T17:45:00",
+    "summary": "When Anthropic's older Claude model played Pokemon Red, it spent \u201cdozens of hours\u201d stuck in one city and had trouble identifying non-player characters. With Claude 4 Opus, the team noticed an improvement in Claude\u2019s long-term memory and planning capabilities.",
+    "content": "When Anthropic's older Claude model played Pokemon Red, it spent \u201cdozens of hours\u201d stuck in one city and had trouble identifying non-player characters. With Claude 4 Opus, the team noticed an improvement in Claude\u2019s long-term memory and planning capabilities."
+  },
+  {
+    "title": "Kesha Wants to \u2018Smash\u2019 the Music Industry With a New LinkedIn-Style App",
+    "url": "https://www.wired.com/story/kesha-smash/",
+    "source": "Wired",
+    "category": "technology",
+    "published": "Thu, 22 May 2025 16:39:33 +0000",
+    "published_datetime": "2025-05-22T17:39:33",
+    "summary": "Ahead of her new album and tour, pop titan Kesha says she wants to start a new platform called Smash that helps artists connect, collaborate, and collectively heal the wounds of the past.",
+    "content": "Ahead of her new album and tour, pop titan Kesha says she wants to start a new platform called Smash that helps artists connect, collaborate, and collectively heal the wounds of the past."
+  },
+  {
     "title": "The Best Sleeping Pads For Campgrounds\u2014Our Comfiest Picks (2025)",
     "url": "https://www.wired.com/gallery/best-camping-sleeping-pads/",
     "source": "Wired",
@@ -448,55 +498,5 @@
     "published_datetime": "2025-05-20T11:00:00",
     "summary": "A chart-topping jazz album! Loads of Spotify and Apple Music plays! Just one problem: The success might not be real.",
     "content": "A chart-topping jazz album! Loads of Spotify and Apple Music plays! Just one problem: The success might not be real."
-  },
-  {
-    "title": "What to Expect When You\u2019re Convicted",
-    "url": "https://www.wired.com/story/your-next-job-white-collar-prison-consultant/",
-    "source": "Wired",
-    "category": "technology",
-    "published": "Tue, 20 May 2025 10:00:00 +0000",
-    "published_datetime": "2025-05-20T11:00:00",
-    "summary": "When a formerly incarcerated \u201ctroubleshooter for the mafia\u201d looked for a second career he chose the thing he knew best. He became a prison consultant for white-collar criminals.",
-    "content": "When a formerly incarcerated \u201ctroubleshooter for the mafia\u201d looked for a second career he chose the thing he knew best. He became a prison consultant for white-collar criminals."
-  },
-  {
-    "title": "Google I/O 2025 Live Blog: All the Android, Gemini, and XR Updates as They Happen",
-    "url": "https://www.wired.com/live/google-io-2025-live-blog/",
-    "source": "Wired",
-    "category": "technology",
-    "published": "Tue, 20 May 2025 09:30:00 +0000",
-    "published_datetime": "2025-05-20T10:30:00",
-    "summary": "Follow our live coverage of Google's annual developer keynote, where the company will announce updates to Android, the Gemini chatbot, and its Android XR smart glasses.",
-    "content": "Follow our live coverage of Google's annual developer keynote, where the company will announce updates to Android, the Gemini chatbot, and its Android XR smart glasses."
-  },
-  {
-    "title": "China\u2019s Effort to Build a Competitor to Elon Musk's Starlink Is Off to a Bumpy Start",
-    "url": "https://www.wired.com/story/china-starlink-competitor-satellites/",
-    "source": "Wired",
-    "category": "technology",
-    "published": "Tue, 20 May 2025 09:00:00 +0000",
-    "published_datetime": "2025-05-20T10:00:00",
-    "summary": "China has launched over 100 satellites for two broadband networks that could eventually rival the service from Elon Musk's SpaceX, but progress is hampered by launch bottlenecks and high failure rates.",
-    "content": "China has launched over 100 satellites for two broadband networks that could eventually rival the service from Elon Musk's SpaceX, but progress is hampered by launch bottlenecks and high failure rates."
-  },
-  {
-    "title": "Marshall Takes On Sonos With Its First Soundbar",
-    "url": "https://www.wired.com/story/marshall-takes-on-sonos-with-its-first-soundbar/",
-    "source": "Wired",
-    "category": "technology",
-    "published": "Tue, 20 May 2025 06:00:00 +0000",
-    "published_datetime": "2025-05-20T07:00:00",
-    "summary": "Costing $1,000, the Heston 120 is an undoubtedly ambitious debut. WIRED spoke with chief product and innovation officer Gustaf Rosell on how it can prove itself against such established competition.",
-    "content": "Costing $1,000, the Heston 120 is an undoubtedly ambitious debut. WIRED spoke with chief product and innovation officer Gustaf Rosell on how it can prove itself against such established competition."
-  },
-  {
-    "title": "Adidas Promo Codes & Deals: 30% Off",
-    "url": "https://www.wired.com/story/adidas-promo-code/",
-    "source": "Wired",
-    "category": "technology",
-    "published": "Tue, 20 May 2025 05:10:00 +0000",
-    "published_datetime": "2025-05-20T06:10:00",
-    "summary": "Enjoy 30% off sitewide, 15% off when you sign up to be an adiClub member, and more with our Adidas coupons and deals.",
-    "content": "Enjoy 30% off sitewide, 15% off when you sign up to be an adiClub member, and more with our Adidas coupons and deals."
   }
 ]
