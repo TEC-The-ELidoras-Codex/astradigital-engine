@@ -66,9 +66,34 @@ The Astradigital Engine is organized into key components:
 
 - `/theme/` - Core WordPress theme files
 - `/api/` - External API integrations
-- `/assets/` - Images, styles & scripts
+- `/assets/` - Optimized multimedia assets for multiple platforms
+  - `/assets/source/` - Original high-quality assets
+  - `/assets/optimized/` - Platform-specific optimized assets
+  - `/assets/deployment/` - Deployment-ready asset packages
 - `/factions/` - Faction-specific templates & styles
 - `/data/` - JSON data structures for the Astradigital Ocean
+
+## 🖼️ Asset Management System
+
+The Astradigital Engine features a comprehensive asset management system optimized for multiple deployment targets:
+
+- **Organized Structure**: Assets are categorized by type and purpose
+- **Platform Optimization**: Assets are automatically optimized for:
+  - WordPress (featured images, thumbnails, content)
+  - HuggingFace Spaces (compact, web-optimized formats)
+  - Docker containers (deployment-ready packages)
+- **Automation Scripts**: Ready-to-use tools for asset processing
+  - WordPress post preparation
+  - HuggingFace Space deployment
+  - Batch optimization
+
+To set up the asset system:
+```powershell
+# Run the complete asset system setup
+.\scripts\setup_asset_system.ps1
+```
+
+For detailed usage instructions, see the [Asset System Guide](docs/asset_system_guide.md).
 
 ## 🤝 Contributing
 

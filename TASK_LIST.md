@@ -21,7 +21,7 @@
   - [x] Placeholder MAGMASOX logo
   - [x] Placeholder Kaznak Voyagers logo
   - [ ] Final MAGMASOX logo
-  - [ ] Final Kaznak Voyagers logo
+  - [ ] Final Kaznak Knockoffs logo
   - [ ] Additional faction logos as needed
 - [ ] Gather/create character portraits
   - [x] Placeholder character portraits
