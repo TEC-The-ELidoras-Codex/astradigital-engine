@@ -215,6 +215,74 @@ class AirthNewsAutomation:
                     except Exception as e:
                         logger.error(f"Error posting to WordPress: {e}")
                         return {"success": False, "error": str(e)}
+                
+                def check_for_duplicate_article(self, title, content=None, similarity_threshold=0.8):
+                    """
+                    Check if a similar article already exists in WordPress.
+                    
+                    Args:
+                        title: Title of the new article
+                        content: Optional content of the new article
+                        similarity_threshold: Threshold for title similarity (0.0 to 1.0)
+                        
+                    Returns:
+                        Tuple (is_duplicate, existing_post_info) where:
+                        - is_duplicate: Boolean indicating if a duplicate was found
+                        - existing_post_info: Dict with info about the matching post if found, None otherwise
+                    """
+                    if not self.wp_agent:
+                        logger.error("WordPress agent not initialized")
+                        return False, None
+                    
+                    try:
+                        # Get recent posts from WordPress
+                        existing_posts = self.wp_agent.get_posts(per_page=50)
+                        
+                        if not existing_posts:
+                            logger.info("No existing posts found in WordPress")
+                            return False, None
+                        
+                        # Normalize the new title for comparison (lowercase, strip punctuation)
+                        import re
+                        from difflib import SequenceMatcher
+                        
+                        def normalize_title(title_text):
+                            # Convert to lowercase, remove punctuation, and extra spaces
+                            return re.sub(r'[^\w\s]', '', title_text.lower()).strip()
+                        
+                        def calculate_similarity(text1, text2):
+                            # Use SequenceMatcher to calculate similarity between strings
+                            return SequenceMatcher(None, text1, text2).ratio()
+                        
+                        normalized_new_title = normalize_title(title)
+                        
+                        # Check each existing post for similarity
+                        for post in existing_posts:
+                            existing_title = post.get("title", {}).get("rendered", "")
+                            if not existing_title:
+                                continue
+                                
+                            # Compare normalized titles
+                            normalized_existing_title = normalize_title(existing_title)
+                            similarity = calculate_similarity(normalized_new_title, normalized_existing_title)
+                            
+                            # If similarity exceeds threshold, consider it a duplicate
+                            if similarity > similarity_threshold:
+                                logger.info(f"Duplicate article found: '{existing_title}' (similarity: {similarity:.2f})")
+                                return True, {
+                                    "id": post.get("id"),
+                                    "title": existing_title,
+                                    "link": post.get("link"),
+                                    "similarity": similarity
+                                }
+                        
+                        logger.info("No duplicate articles found")
+                        return False, None
+                        
+                    except Exception as e:
+                        logger.error(f"Error checking for duplicate articles: {e}")
+                        # If there's an error in checking, default to allowing the post
+                        return False, None
 
             # Use our adapter with WordPress capabilities
             self.airth = AirthWPAdapter()
@@ -350,6 +418,23 @@ class AirthNewsAutomation:
                                 logger.error(
                                     "Cannot publish article: missing title or content")
                                 self.stats["errors"] += 1
+                                continue                            # Check for duplicates before publishing
+                            is_duplicate, existing_post_info = self.airth.check_for_duplicate_article(
+                                title=title,
+                                content=content,
+                                similarity_threshold=0.7)  # Adjust threshold for more strict duplicate detection
+
+                            if is_duplicate:
+                                # Track skipped duplicates in their own stat counter
+                                if "duplicates_skipped" not in self.stats:
+                                    self.stats["duplicates_skipped"] = 0
+                                self.stats["duplicates_skipped"] += 1
+                                
+                                # Provide detailed log with similarity score
+                                similarity = existing_post_info.get('similarity', 0)
+                                logger.warning(
+                                    f"DUPLICATE DETECTED: '{title}' matches existing post: '{existing_post_info.get('title')}' "
+                                    f"(similarity: {similarity:.2%}). Skipping publication.")
                                 continue
 
                             # Publish to WordPress
@@ -376,9 +461,7 @@ class AirthNewsAutomation:
                             self.stats["errors"] += 1
                 else:
                     logger.warning(
-                        "WordPress posting capability not available. Skipping publishing.")
-
-            # Calculate runtime and success rate
+                        "WordPress posting capability not available. Skipping publishing.")            # Calculate runtime and success rate
             end_time = time.time()
             runtime_seconds = end_time - start_time
             success_rate = 0 if self.stats["articles_created"] == 0 else self.stats["articles_published"] / \
@@ -388,6 +471,12 @@ class AirthNewsAutomation:
                 f"Automation workflow completed in {
                     runtime_seconds:.2f} seconds")
             logger.info(f"Success rate: {success_rate:.2%}")
+            
+            # Add information about duplicates to the log summary
+            duplicates_skipped = self.stats.get("duplicates_skipped", 0)
+            if duplicates_skipped > 0:
+                logger.info(f"Duplicate articles skipped: {duplicates_skipped}")
+                
             logger.info(f"Stats: {json.dumps(self.stats, indent=2)}")
 
             return self.stats
@@ -446,10 +535,13 @@ class AirthNewsAutomation:
                 f"  Articles created: {
                     run_stats.get(
                         'articles_created',
-                        0)}",
-                f"  Articles published: {
+                        0)}",                f"  Articles published: {
                     run_stats.get(
                         'articles_published',
+                        0)}",
+                f"  Duplicates skipped: {
+                    run_stats.get(
+                        'duplicates_skipped',
                         0)}",
                 f"  Errors: {
                     run_stats.get(
@@ -533,14 +625,15 @@ def main():
             max_topics=args.max_topics,
             publish_status=args.status,
             enable_publishing=not args.no_publish
-        )
-
-        # Display summary
+        )        # Display summary
         print(f"\nAutomation run completed:")
         print(f"- Articles fetched: {stats['articles_fetched']}")
         print(f"- Topics generated: {stats['topics_generated']}")
         print(f"- Articles created: {stats['articles_created']}")
         print(f"- Articles published: {stats['articles_published']}")
+        # Display duplicate information if any duplicates were detected
+        if "duplicates_skipped" in stats and stats["duplicates_skipped"] > 0:
+            print(f"- Duplicates skipped: {stats['duplicates_skipped']}")
         print(f"- Errors: {stats['errors']}")
 
         # Send notification if requested

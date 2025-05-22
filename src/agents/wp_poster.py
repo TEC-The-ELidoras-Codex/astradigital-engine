@@ -525,6 +525,50 @@ class WordPressAgent(BaseAgent):
         self.logger.warning("Media upload not yet implemented")
         return {"success": False, "error": "Media upload not implemented"}
     
+    def get_posts(self, search_params: Dict[str, Any] = None, per_page: int = 20) -> List[Dict[str, Any]]:
+        """
+        Get posts from WordPress with optional search parameters.
+        
+        Args:
+            search_params: Optional dictionary with parameters for filtering posts
+                Options include: search, author, category, tag, status
+            per_page: Number of posts to return per page (default: 20, max: 100)
+            
+        Returns:
+            List of posts matching the search criteria
+        """
+        if not self.api_base_url:
+            self.logger.error("Cannot fetch posts: API base URL not set")
+            return []
+            
+        # Start with default parameters
+        params = {
+            "per_page": min(per_page, 100)  # WP API max is 100
+        }
+        
+        # Add any provided search parameters
+        if search_params:
+            params.update(search_params)
+            
+        try:
+            url = f"{self.api_base_url}/posts"
+            
+            # Make the request
+            response = self._try_multiple_auth_methods("GET", url)
+            
+            if response and response.status_code == 200:
+                posts = response.json()
+                self.logger.info(f"Retrieved {len(posts)} posts from WordPress")
+                return posts
+            else:
+                status_code = response.status_code if response else "No response"
+                self.logger.error(f"Failed to get posts: Status {status_code}")
+                return []
+                
+        except Exception as e:
+            self.logger.error(f"Error retrieving posts: {e}")
+            return []
+    
     def run(self) -> Dict[str, Any]:
         """
         Run a test post to verify WordPress connectivity.

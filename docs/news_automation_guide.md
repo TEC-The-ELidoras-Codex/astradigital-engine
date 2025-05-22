@@ -2,6 +2,14 @@
 
 This guide explains how to set up and configure the Airth News Automation system for scheduled operation. The system automatically fetches news articles, processes them into topics, generates SEO-optimized content, and publishes to WordPress on a regular schedule.
 
+## Features
+
+- **News Aggregation**: Fetches news from multiple configured sources
+- **Topic Clustering**: Groups similar articles into coherent topics
+- **Content Generation**: Creates SEO-optimized articles with a consistent structure
+- **WordPress Publishing**: Posts generated content to WordPress with proper categories and tags
+- **Duplicate Detection**: Prevents duplicate articles from being published
+
 ## Prerequisites
 
 - Python 3.8 or higher
@@ -114,6 +122,38 @@ Edit `config/news_sources.json` to add your own news sources. Each source can be
 - RSS Feed
 - REST API
 - Web Scraping
+
+## Duplicate Article Detection
+
+The system includes a built-in duplicate detection feature that prevents posting redundant content to WordPress. This helps maintain content quality and prevents clutter in your blog.
+
+### How Duplicate Detection Works
+
+1. Before publishing each generated article, the system queries WordPress for existing posts
+2. The new article's title is compared against existing post titles using string similarity algorithms
+3. If a match exceeding the similarity threshold (default: 70%) is found, the article is skipped
+4. Skipped duplicates are counted separately and reported in logs and summaries
+
+### Testing the Duplicate Detection
+
+You can test this feature with the included test script:
+
+```powershell
+.\run_duplicate_test.ps1
+```
+
+This will show you the similarity scores between a test title and existing WordPress posts.
+
+### Adjusting Sensitivity
+
+You can fine-tune how aggressively the system detects duplicates by adjusting the similarity threshold:
+
+- Higher threshold (e.g., 0.8): Only very similar titles will be considered duplicates
+- Lower threshold (e.g., 0.6): More aggressive duplicate detection, may catch more variations
+
+The threshold is set in `scripts/airth_news_automation.py` in the `check_for_duplicate_article` method call.
+
+For more details about duplicate detection, see the [full documentation](duplicate_detection.md).
 
 ### Content Templates
 
