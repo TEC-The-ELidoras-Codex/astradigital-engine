@@ -59,8 +59,11 @@ def airth_interface(prompt, history):  # Added history parameter
         agent_response = f"Airth, the AI oracle, contemplates: {prompt}\\n\\nResponse will be integrated when agent implementation is complete."
     else:
         try:
-            # Future: airth_agent.respond could take history: agent_response = airth_agent.respond(prompt, history)
-            agent_response = airth_agent.respond(prompt) # Current agent only takes prompt
+            # Convert history format from Gradio's [[user, bot], ...] to what Airth expects
+            conversation_history = history if history else []
+            
+            # Pass the history to Airth's respond method
+            agent_response = airth_agent.respond(prompt, conversation_history)
             logger.info(f"Airth response generated successfully: {len(agent_response)} characters")
         except Exception as e:
             logger.error(f"Error in Airth agent: {e}")
