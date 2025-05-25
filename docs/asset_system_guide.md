@@ -268,85 +268,18 @@ The `assets/scripts` directory contains Python tools for optimizing assets:
 - `optimize.py` - Main script for optimizing assets for different platforms
 - `wordpress.py` - WordPress-specific optimization
 - `huggingface.py` - HuggingFace-specific optimization
-- `prepare_wp_assets.py` - Creates asset packages for WordPress posts
-- `prepare_hf_assets.py` - Creates asset packages for HuggingFace Spaces
 
-### Main Optimization Script
-
-The `optimize.py` script is the central tool for handling asset optimization:
+### Script Usage Examples
 
 ```powershell
-# Basic optimization for WordPress
+# Basic optimization
 python assets\scripts\optimize.py --source assets\source\images\characters --target wordpress
 
-# Optimize for multiple platforms at once
-python assets\scripts\optimize.py --source assets\source\images --target wordpress,huggingface,web
-
-# Specify quality level (0-100)
-python assets\scripts\optimize.py --source assets\source\images --target wordpress --quality 85
-
-# Generate WebP versions in addition to standard formats
-python assets\scripts\optimize.py --source assets\source\images --target wordpress --webp
-
-# Recursively process all subdirectories
-python assets\scripts\optimize.py --source assets\source --target wordpress --recursive
-
-# Dry run (report only, no actual processing)
-python assets\scripts\optimize.py --source assets\source\images --target huggingface --dry-run
-```
-
-### WordPress Asset Preparation
-
-The `prepare_wp_assets.py` script creates WordPress-ready asset packages:
-
-```powershell
-# Basic usage - prepare assets for a specific post
-python assets\scripts\prepare_wp_assets.py --post "Character Introduction: Airth" --source assets\source\images\characters\airth
-
-# Create a draft WordPress post with the assets
-python assets\scripts\prepare_wp_assets.py --post "Character Introduction: Airth" --source assets\source\images\characters\airth --create-post
-
-# Specify custom dimensions for featured image
-python assets\scripts\prepare_wp_assets.py --post "World Map" --source assets\source\images\maps --featured-width 1600 --featured-height 900
-
-# Add metadata tags to assets
-python assets\scripts\prepare_wp_assets.py --post "Character Gallery" --source assets\source\images\characters --tags "fantasy,character,tec-lore"
-```
-
-### HuggingFace Asset Preparation
-
-The `prepare_hf_assets.py` script prepares assets for HuggingFace Spaces:
-
-```powershell
-# Basic usage - prepare assets for a specific Space
-python assets\scripts\prepare_hf_assets.py --name "tec-character-explorer" --source assets\source\images
-
-# Optimize assets for a specific Space type
-python assets\scripts\prepare_hf_assets.py --name "tec-generator" --source assets\source\images --space-type gradio
-
-# Enable aggressive optimization for better space efficiency
-python assets\scripts\prepare_hf_assets.py --name "tec-generator" --source assets\source\images --aggressive
-
-# Organize assets by type automatically
-python assets\scripts\prepare_hf_assets.py --name "tec-explorer" --source assets\source --auto-categorize
-
-# Generate deployment package with Space template
-python assets\scripts\prepare_hf_assets.py --name "tec-explorer" --source assets\source\images --create-template
-```
-
-### Platform-Specific Scripts
-
-For more granular control, you can use the platform-specific scripts:
-
-```powershell
-# WordPress specific optimization for a single image
+# WordPress optimization options
 python assets\scripts\wordpress.py --image assets\source\images\characters\airth-portrait.png --type featured
 
-# HuggingFace specific optimization for UI elements
+# HuggingFace optimization
 python assets\scripts\huggingface.py --asset assets\source\images\ui\logo.png --type ui
-
-# Process an entire directory of UI elements
-python assets\scripts\huggingface.py --directory assets\source\images\ui --type ui --output assets\optimized\huggingface\ui
 ```
 
 ## Troubleshooting
