@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astradigital Ocean Map - The Elidoras Codex</title>
+    <link rel="stylesheet" href="../theme/style.css">
+    <link rel="stylesheet" href="../theme/assets/css/astradigital.css">
+    <link rel="stylesheet" href="../theme/assets/css/map.css">
+</head>
+<body class="page-template-page-astradigital map-page">
+    <header class="site-header">
+        <!-- Header content will be included dynamically -->
+    </header>
+
+    <main class="site-main">
+        <div class="astradigital-container">
+            <h1 class="page-title">Astradigital Ocean Map</h1>
+            
+            <div class="map-container">
+                <div class="map-controls">
+                    <button id="zoom-in" title="Zoom In">+</button>
+                    <button id="zoom-out" title="Zoom Out">-</button>
+                    <button id="reset-view" title="Reset View">↺</button>
+                </div>
+                
+                <div id="astradigital-map">
+                    <!-- SVG map will be loaded here -->
+                </div>
+            </div>
+            
+            <div class="map-legend">
+                <h2>Map Legend</h2>
+                <div class="legend-content">
+                    <div class="legend-section">
+                        <h3>Factions</h3>
+                        <div class="legend-items faction-legend">
+                            <!-- Faction legend items will be generated dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div class="legend-section">
+                        <h3>Location Types</h3>
+                        <div class="legend-items location-legend">
+                            <div class="legend-item">
+                                <div class="legend-marker marker-location"></div>
+                                <span>Location</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker marker-stronghold"></div>
+                                <span>Stronghold</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker marker-resource"></div>
+                                <span>Resource</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker marker-event"></div>
+                                <span>Event</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-marker marker-mystery"></div>
+                                <span>Mystery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="details-panel" id="details-panel">
+                <h3 id="details-title">Selected Location Details</h3>
+                <div class="details-content">
+                    <div class="details-image">
+                        <img id="details-image" src="" alt="Location image">
+                    </div>
+                    <div class="details-text">
+                        <p id="details-description"></p>
+                        <div id="details-faction"></div>
+                        <div id="details-connections"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <!-- Footer content will be included dynamically -->
+    </footer>    <script src="../data/astradigital-map.json"></script>
+    <script src="../theme/assets/js/astradigital.js"></script>
+    <script src="../theme/assets/js/main.js"></script>
+    <script src="../theme/assets/js/territory-generator.js"></script>
+    <script src="../theme/assets/js/map.js"></script>
+</body>
+</html>

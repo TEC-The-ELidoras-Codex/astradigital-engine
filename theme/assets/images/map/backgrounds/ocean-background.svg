@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Ocean background -->
+    <rect x="0" y="0" width="1200" height="800" fill="#0a0e17" />
+    
+    <!-- Ocean texture - subtle waves -->
+    <pattern id="ocean-pattern" width="100" height="100" patternUnits="userSpaceOnUse">
+        <path d="M0,25 Q25,0 50,25 T100,25" stroke="rgba(76, 201, 240, 0.1)" fill="none" />
+        <path d="M0,50 Q25,25 50,50 T100,50" stroke="rgba(76, 201, 240, 0.1)" fill="none" />
+        <path d="M0,75 Q25,50 50,75 T100,75" stroke="rgba(76, 201, 240, 0.1)" fill="none" />
+    </pattern>
+    
+    <rect x="0" y="0" width="1200" height="800" fill="url(#ocean-pattern)" />
+    
+    <!-- Subtle glow effects -->
+    <radialGradient id="center-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        <stop offset="0%" stop-color="rgba(76, 201, 240, 0.2)" />
+        <stop offset="100%" stop-color="rgba(76, 201, 240, 0)" />
+    </radialGradient>
+    
+    <rect x="0" y="0" width="1200" height="800" fill="url(#center-glow)" />
+    
+    <!-- Digital grid lines -->
+    <pattern id="grid-pattern" width="50" height="50" patternUnits="userSpaceOnUse">
+        <path d="M50,0 L50,50 M0,50 L50,50" stroke="rgba(255, 255, 255, 0.05)" stroke-width="0.5" fill="none" />
+    </pattern>
+    
+    <rect x="0" y="0" width="1200" height="800" fill="url(#grid-pattern)" />
+</svg>

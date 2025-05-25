@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Elidoras Codex - Astradigital Ocean</title>
+    <link rel="stylesheet" href="theme/style.css">
+    <link rel="stylesheet" href="theme/assets/css/astradigital.css">
+    <link rel="stylesheet" href="theme/assets/css/map.css">
+</head>
+<body class="page-template-page-astradigital">
+    <header class="site-header">
+        <div class="header-content">
+            <div class="site-branding">
+                <h1 class="site-title">The Elidoras Codex</h1>
+                <p class="site-description">Exploring the Astradigital Ocean</p>
+            </div>
+            
+            <nav class="primary-navigation">
+                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</button>
+                <div class="primary-menu-container">
+                    <ul id="primary-menu" class="primary-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="theme/map.html" class="active">Astradigital Map</a></li>
+                        <li><a href="#">Factions</a></li>
+                        <li><a href="#">Lore</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="astradigital-container">
+            <section class="hero-section">
+                <h1 class="page-title">The Elidoras Codex</h1>
+                <p class="hero-description">Welcome to the Astradigital Ocean - a realm of digital exploration, factions, and hidden truths.</p>
+                <a href="theme/map.html" class="cta-button">Explore the Map</a>
+            </section>
+            
+            <section class="faction-previews">
+                <h2>Discover the Factions</h2>
+                <div class="faction-grid">
+                    <!-- Faction previews will be generated dynamically -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2025 The Elidoras Codex. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-navigation">
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="theme/map.html">Astradigital Map</a></li>
+                    <li><a href="#">Factions</a></li>
+                    <li><a href="#">Lore</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="theme/assets/js/astradigital.js"></script>
+    <script src="theme/assets/js/main.js"></script>
+    <script>
+        // Simple script to populate faction previews from the map data
+        document.addEventListener('DOMContentLoaded', function() {
+            const factionGrid = document.querySelector('.faction-grid');
+            
+            // Fetch the map data
+            fetch('data/astradigital-map.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Create a preview card for each faction
+                    data.factions.forEach(faction => {
+                        const factionCard = document.createElement('div');
+                        factionCard.className = 'faction-card';
+                        factionCard.style.borderColor = faction.color;
+                        
+                        const factionHeader = document.createElement('div');
+                        factionHeader.className = 'faction-header';
+                        factionHeader.style.backgroundColor = faction.color;
+                        
+                        const factionName = document.createElement('h3');
+                        factionName.textContent = faction.name;
+                        factionHeader.appendChild(factionName);
+                        
+                        const factionContent = document.createElement('div');
+                        factionContent.className = 'faction-content';
+                        
+                        const factionDesc = document.createElement('p');
+                        factionDesc.textContent = faction.shortDescription;
+                        factionContent.appendChild(factionDesc);
+                        
+                        factionCard.appendChild(factionHeader);
+                        factionCard.appendChild(factionContent);
+                        factionGrid.appendChild(factionCard);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading faction data:', error);
+                    factionGrid.innerHTML = '<p>Error loading faction data.</p>';
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+/**
+ * Map Styles for The Elidoras Codex
+ * Interactive Astradigital Ocean Map
+ */
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--astra-background);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(76, 201, 240, 0.3);
+}
+
+/* Map SVG */
+.astradigital-map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Map Controls */
+.map-controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(10, 14, 23, 0.8);
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.map-controls button {
+    background: var(--astra-primary);
+    color: var(--astra-text);
+    border: 1px solid var(--astra-highlight);
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.map-controls button:hover {
+    background: var(--astra-secondary);
+}
+
+/* Map Legend */
+.map-legend {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    background: rgba(10, 14, 23, 0.8);
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+/* Faction Colors */
+.faction-magmasox { fill: var(--faction-magmasox); }
+.faction-kaznak { fill: var(--faction-kaznak); }
+.faction-tec { fill: var(--faction-tec); }
+.faction-killjoy { fill: var(--faction-killjoy); }
+.faction-no-names-anon { fill: var(--faction-no-names-anon); }
+.faction-east-middle-company { fill: var(--faction-east-middle-company); }
+
+/* Map Territory Styles */
+.territory {
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 1;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, stroke-width 0.3s ease;
+}
+
+.territory:hover {
+    opacity: 0.85;
+    stroke-width: 2;
+    cursor: pointer;
+}
+
+/* Map Markers */
+.map-marker {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.map-marker:hover {
+    transform: scale(1.2);
+}
+
+/* Location Types */
+.marker-location { fill: #ffffff; }
+.marker-stronghold { fill: #ff9900; }
+.marker-resource { fill: #33cc33; }
+.marker-event { fill: #ff3399; }
+.marker-mystery { fill: #9966ff; }
+
+/* Details Panel */
+.details-panel {
+    margin-top: 20px;
+    background: rgba(10, 14, 23, 0.9);
+    border: 1px solid var(--astra-highlight);
+    border-radius: 4px;
+    padding: 20px;
+    display: none;
+}
+
+.details-panel.active {
+    display: block;
+}
+
+.details-panel h3 {
+    color: var(--astra-highlight);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(76, 201, 240, 0.3);
+    padding-bottom: 8px;
+}
+
+.details-content {
+    display: flex;
+    gap: 20px;
+}
+
+.details-image {
+    flex: 0 0 200px;
+}
+
+.details-image img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.details-text {
+    flex: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .map-container {
+        height: 500px;
+    }
+    
+    .details-content {
+        flex-direction: column;
+    }
+    
+    .details-image {
+        flex: 0 0 auto;
+    }
+}

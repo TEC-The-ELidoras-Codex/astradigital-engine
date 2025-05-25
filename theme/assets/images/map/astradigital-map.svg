@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Map background -->
+    <rect x="0" y="0" width="1200" height="800" fill="#0a0e17" />
+    
+    <!-- Map regions - These will be replaced with actual coordinates and paths -->
+    
+    <!-- MAGMASOX Waters -->
+    <path id="magmasox-waters" class="territory faction-magmasox" 
+          d="M100,100 L300,50 L400,150 L350,300 L200,350 L100,250 Z" />
+    
+    <!-- Shadowban Triangle -->
+    <path id="shadowban-triangle" class="territory faction-magmasox" 
+          d="M300,50 L450,80 L400,150 Z" />
+    
+    <!-- GPT Islands -->
+    <path id="gpt-islands" class="territory faction-magmasox" 
+          d="M400,150 L450,80 L550,120 L500,200 Z" />
+    
+    <!-- Linux Volcanic Archipelago -->
+    <path id="linux-volcanic-archipelago" class="territory" 
+          d="M350,300 L400,150 L500,200 L480,320 Z" />
+    
+    <!-- The 34 Highways -->
+    <path id="the-34-highways" class="territory faction-kaznak" 
+          d="M480,320 L550,280 L650,350 L600,400 L500,380 Z" />
+    
+    <!-- Slkrode -->
+    <path id="slkrode" class="territory" 
+          d="M500,380 L600,400 L580,450 L490,430 Z" />
+    
+    <!-- Missing 35th Route -->
+    <path id="missing-35th-route" class="territory" 
+          d="M650,350 L750,300 L800,360 L720,400 Z" />
+    
+    <!-- Underground Blockchain Pathways -->
+    <path id="underground-blockchain-pathways" class="territory" 
+          d="M550,280 L650,200 L750,300 L650,350 Z" />
+    
+    <!-- TEC Waters -->
+    <path id="tec-waters" class="territory faction-tec" 
+          d="M750,300 L850,250 L900,300 L850,400 L800,360 Z" />
+    
+    <!-- Connection lines -->
+    <g class="connections">
+        <!-- Connections will be drawn dynamically based on region data -->
+    </g>
+    
+    <!-- Map markers - These will be replaced with actual coordinates -->
+    
+    <!-- MAGMASOX Strongholds -->
+    <circle class="map-marker marker-stronghold" cx="200" cy="150" r="8" data-id="magmasox-citadel" />
+    <circle class="map-marker marker-stronghold" cx="350" cy="100" r="8" data-id="processing-hub" />
+    
+    <!-- Kaznak Locations -->
+    <circle class="map-marker marker-location" cx="520" cy="330" r="6" data-id="shifting-haven" />
+    <circle class="map-marker marker-location" cx="570" cy="350" r="6" data-id="hidden-docks" />
+    
+    <!-- TEC Locations -->
+    <circle class="map-marker marker-location" cx="850" cy="320" r="6" data-id="beacon-harbor" />
+    <circle class="map-marker marker-resource" cx="820" cy="280" r="6" data-id="the-repository" />
+    
+    <!-- Other points of interest -->
+    <circle class="map-marker marker-mystery" cx="600" cy="430" r="6" data-id="slkrode-hollow" />
+    <circle class="map-marker marker-event" cx="700" cy="350" r="6" data-id="data-liberation-monument" />
+</svg>
