@@ -46,18 +46,20 @@ except Exception as e:
 wp_url = os.getenv("WP_URL")
 wp_username = os.getenv("WP_USERNAME")
 wp_password = os.getenv("WP_PASSWORD")
-if not all([wp_url, wp_username, wp_password]):
-    logger.warning("WordPress credentials not fully configured in .env file.")
-    config_error = True
-else:
+if all([wp_url, wp_username, wp_password]):
+    logger.info("WordPress credentials found in .env file.")
     config_error = False
+else:
+    config_error = True
     missing = []
     if not wp_url: missing.append("WP_URL")
     if not wp_username: missing.append("WP_USERNAME")
     if not wp_password: missing.append("WP_PASSWORD")
     print(f"\n❌ Missing environment variables: {', '.join(missing)}")
     print("Please update your .env file with the required credentials.\n")
-    sys.exit(1)
+    if __name__ == "__main__":
+        sys.exit(1)
+    # Don't exit during test collection - this allows pytest to still run other tests
 
 # Import WordPress agent
 try:
