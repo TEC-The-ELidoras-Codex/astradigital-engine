@@ -150,3 +150,4 @@ Write-Host "  1. Activate the environment: & '$scriptDir\activate_env.ps1'" -For
 Write-Host "  2. Optimize images: python $scriptDir\optimize.py --help" -ForegroundColor Yellow
 Write-Host "  3. Prepare WordPress assets: python $scriptDir\prepare_wp_assets.py --help" -ForegroundColor Yellow
 Write-Host "  4. Prepare HuggingFace assets: python $scriptDir\prepare_hf_assets.py --help" -ForegroundColor Yellow
+Write-Host "  5. Prepare Docker assets: python $scriptDir\prepare_docker_assets.py --help" -ForegroundColor Yellow

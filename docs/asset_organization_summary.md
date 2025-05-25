@@ -22,6 +22,10 @@ assets/
 │   │   ├── ui/        # UI elements for HF Spaces
 │   │   ├── images/    # WebP-optimized images
 │   │   └── icons/     # Icons and logos
+│   ├── docker/        # Docker-optimized assets
+│   │   ├── static/    # Static web files (HTML, CSS, JS)
+│   │   ├── images/    # WebP-optimized images
+│   │   └── config/    # Configuration files
 │   └── web/           # General web-optimized assets
 ├── deployment/        # Platform-specific deployment assets
 │   ├── wordpress/     # Ready for WordPress upload
@@ -40,8 +44,10 @@ assets/
 1. **optimize.py**: Main optimization script for creating platform-specific assets with various size and format options
 2. **wordpress.py**: WordPress-specific asset optimization (featured images, thumbnails, content) with WordPress media library requirements
 3. **huggingface.py**: HuggingFace-specific asset optimization (web-optimized, size-sensitive) for optimal Space performance
-4. **prepare_wp_assets.py**: Creates asset packages ready for WordPress posts with appropriate metadata
-5. **prepare_hf_assets.py**: Creates asset packages ready for HuggingFace Space deployment with size optimization
+4. **docker.py**: Docker-specific asset optimization to minimize container size while preserving quality
+5. **prepare_wp_assets.py**: Creates asset packages ready for WordPress posts with appropriate metadata
+6. **prepare_hf_assets.py**: Creates asset packages ready for HuggingFace Space deployment with size optimization
+7. **prepare_docker_assets.py**: Creates asset packages ready for Docker container deployment with Dockerfile integration
 
 ### Documentation
 1. **docs/asset_system_guide.md**: Comprehensive guide on how to use the asset system with detailed instructions for each platform
@@ -49,6 +55,7 @@ assets/
 3. **README.md**: Main project README updated with asset system information
 4. **docs/asset_organization_notebook.ipynb**: Jupyter notebook with detailed code samples and optimization techniques
 5. **docs/asset_organization_summary.md**: This summary document of implementation details
+6. **docs/docker_asset_integration.md**: Detailed guide for Docker asset integration
 
 ## Key Features
 

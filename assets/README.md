@@ -35,9 +35,13 @@ assets/
 │   └── huggingface/   # Assets ready for HuggingFace deployment
 │
 └── scripts/           # Asset processing and optimization scripts
-    ├── optimize.py    # Batch optimization script
-    ├── wordpress.py   # WordPress-specific processing
-    └── huggingface.py # HuggingFace-specific processing
+    ├── optimize.py           # Batch optimization script
+    ├── wordpress.py          # WordPress-specific processing
+    ├── huggingface.py        # HuggingFace-specific processing
+    ├── docker.py             # Docker-specific processing
+    ├── prepare_wp_assets.py  # WordPress deployment preparation
+    ├── prepare_hf_assets.py  # HuggingFace deployment preparation
+    └── prepare_docker_assets.py # Docker deployment preparation
 ```
 
 ## Asset Categories
@@ -98,6 +102,54 @@ Examples:
 - Use volume mounts for large assets in development
 - Bundle optimized assets in production containers
 - Consider CDN for large media files
+- Images: WebP format, 800px max width
+- Static web files: Minified
+- Config files: Preserved in original format
+
+## Using the Asset System Scripts
+
+### Setting Up the Asset System
+
+To initialize the complete asset organization system:
+
+```powershell
+# Navigate to the project directory
+cd "C:\Users\Ghedd\TEC_CODE\astradigital-engine"
+
+# Run the master setup script
+.\assets\scripts\setup_asset_system.ps1
+```
+
+This will create the directory structure, install necessary tools, and set up Python dependencies.
+
+### Preparing WordPress Assets
+
+```powershell
+# Prepare assets for a WordPress post
+python assets/scripts/prepare_wp_assets.py --post "New Airth Update" --source "assets/source/images/posts/airth-update"
+```
+
+### Preparing HuggingFace Assets
+
+```powershell
+# Prepare assets for a HuggingFace Space
+python assets/scripts/prepare_hf_assets.py --name "tec-interactive-map" --source "assets/source/images/maps"
+```
+
+### Preparing Docker Assets
+
+```powershell
+# Prepare assets for a Docker container
+python assets/scripts/prepare_docker_assets.py --name "tec-api-server" --source "assets/source/images/logos"
+```
+
+## Documentation
+
+For more detailed information, see:
+
+- [Asset System Guide](../docs/asset_system_guide.md) - Complete usage documentation
+- [Asset Organization Summary](../docs/asset_organization_summary.md) - Implementation details
+- [Asset Organization Notebook](../docs/asset_organization_notebook.ipynb) - Jupyter notebook with examples
 
 ## Metadata Standards
 Include `metadata.json` files in asset directories with:

@@ -172,6 +172,57 @@ with gr.Blocks(theme="huggingface", title="TEC Office - The Elidoras Codex") as 
 
 ## Docker Integration
 
+The Docker integration allows you to prepare and optimize assets for Docker container deployment. This ensures minimal container size while preserving asset quality.
+
+### Preparing Assets for Docker
+
+```powershell
+# Navigate to the project directory
+cd "C:\Users\Ghedd\TEC_CODE\astradigital-engine"
+
+# Prepare assets for a specific Docker container
+python assets/scripts/prepare_docker_assets.py --name "tec-container" --source "assets/source/images/logo"
+```
+
+### Docker Asset Package Structure
+
+The Docker asset preparation script creates a deployment package with:
+
+1. **Optimized images**: Converted to WebP format with reduced size
+2. **Configuration files**: Preserved in their original format
+3. **Static files**: Web assets for use in containers
+4. **Docker integration files**: Dockerfile snippets and Docker Compose examples
+
+### Using Docker Assets in Containers
+
+Each Docker asset package includes:
+
+1. `Dockerfile.snippet`: Copy-paste these commands into your Dockerfile
+2. `docker-compose.snippet.yml`: Example configuration for Docker Compose
+3. `README.md`: Specific instructions for this asset package
+
+Example Dockerfile integration:
+
+```dockerfile
+# Base image
+FROM python:3.9-slim
+
+# Application setup
+WORKDIR /app
+COPY . /app/
+
+# Copy assets into container
+COPY ./assets/static/ /app/static/
+COPY ./assets/images/ /app/images/
+COPY ./assets/config/ /app/config/
+
+# Environment variables for asset paths
+ENV ASSET_PATH=/app
+ENV STATIC_PATH=/app/static
+ENV IMAGES_PATH=/app/images
+ENV CONFIG_PATH=/app/config
+```
+
 ### Including Assets in Docker Containers
 
 1. **Add to Dockerfile**:
