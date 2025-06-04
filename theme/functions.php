@@ -122,9 +122,11 @@ function tec_scripts() {
         wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', array(), '6.4.0');
         wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap', array(), null);
     }
-    
-    // Enqueue JavaScript for theme functionality
+      // Enqueue JavaScript for theme functionality
     wp_enqueue_script('tec-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0.0', true);
+    
+    // Enqueue mobile menu JavaScript
+    wp_enqueue_script('tec-mobile-menu', get_template_directory_uri() . '/assets/js/mobile-menu.js', array('jquery'), '1.0.0', true);
     
     // Localize script for AJAX
     wp_localize_script('tec-main', 'tec_ajax', array(
@@ -331,17 +333,20 @@ function handle_tec_cartel_signup() {
     $existing_signups = get_option('tec_cartel_signups', array());
     $existing_signups[] = $signup_data;
     update_option('tec_cartel_signups', $existing_signups);
-    
-    // Option 2: Send notification email to admin
-    $admin_email = get_option('admin_email');
-    $subject = 'New TEC Cartel Signup: ' . $user_name;
-    $message = "New Cartel signup received:\n\n";
-    $message .= "Name: " . $user_name . "\n";
-    $message .= "Email: " . $user_email . "\n";
-    $message .= "Faction: " . $faction_allegiance . "\n";
-    $message .= "Date: " . current_time('mysql') . "\n";
-    
-    wp_mail($admin_email, $subject, $message);
+      // Option 2: Send notification email to admin (if enabled)
+    if (get_option('tec_enable_signup_notifications', true)) {
+        $admin_email = get_option('tec_notification_email', get_option('admin_email'));
+        $subject = 'New TEC Cartel Signup: ' . $user_name;
+        $message = "New Cartel signup received:\n\n";
+        $message .= "Name: " . $user_name . "\n";
+        $message .= "Email: " . $user_email . "\n";
+        $message .= "Faction: " . $faction_allegiance . "\n";
+        $message .= "Date: " . current_time('mysql') . "\n";
+        $message .= "IP: " . $_SERVER['REMOTE_ADDR'] . "\n\n";
+        $message .= "View all signups: " . admin_url('admin.php?page=tec-cartel-signups');
+        
+        wp_mail($admin_email, $subject, $message);
+    }
     
     // Redirect with success message
     wp_redirect(home_url('/?signup=success'));
@@ -349,6 +354,244 @@ function handle_tec_cartel_signup() {
 }
 add_action('admin_post_tec_cartel_signup', 'handle_tec_cartel_signup');
 add_action('admin_post_nopriv_tec_cartel_signup', 'handle_tec_cartel_signup');
+
+/**
+ * Add admin menu for TEC Cartel signups
+ */
+function tec_admin_menu() {
+    add_menu_page(
+        'TEC Cartel Signups',
+        'TEC Cartel',
+        'manage_options',
+        'tec-cartel-signups',
+        'tec_cartel_signups_page',
+        'dashicons-groups',
+        30
+    );
+    
+    add_submenu_page(
+        'tec-cartel-signups',
+        'TEC Settings',
+        'Settings',
+        'manage_options',
+        'tec-settings',
+        'tec_settings_page'
+    );
+}
+add_action('admin_menu', 'tec_admin_menu');
+
+/**
+ * TEC Cartel signups admin page
+ */
+function tec_cartel_signups_page() {
+    $signups = get_option('tec_cartel_signups', array());
+    $faction_data = get_tec_faction_data();
+    
+    // Handle actions
+    if (isset($_POST['action']) && $_POST['action'] === 'delete_signup' && isset($_POST['signup_id'])) {
+        if (wp_verify_nonce($_POST['_wpnonce'], 'delete_signup')) {
+            $signup_id = intval($_POST['signup_id']);
+            if (isset($signups[$signup_id])) {
+                unset($signups[$signup_id]);
+                $signups = array_values($signups); // Re-index array
+                update_option('tec_cartel_signups', $signups);
+                echo '<div class="notice notice-success"><p>Signup deleted successfully.</p></div>';
+            }
+        }
+    }
+    
+    if (isset($_POST['action']) && $_POST['action'] === 'clear_all_signups') {
+        if (wp_verify_nonce($_POST['_wpnonce'], 'clear_all_signups')) {
+            update_option('tec_cartel_signups', array());
+            $signups = array();
+            echo '<div class="notice notice-success"><p>All signups cleared successfully.</p></div>';
+        }
+    }
+    
+    ?>
+    <div class="wrap">
+        <h1>TEC Cartel Signups</h1>
+        
+        <div class="tec-admin-stats" style="display: flex; gap: 20px; margin: 20px 0;">
+            <div class="tec-stat-box" style="background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid #0073aa; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                <h3 style="margin: 0 0 10px 0; color: #0073aa;">Total Signups</h3>
+                <span style="font-size: 24px; font-weight: bold;"><?php echo count($signups); ?></span>
+            </div>
+            
+            <?php
+            // Count signups by faction
+            $faction_counts = array();
+            foreach ($signups as $signup) {
+                $faction = $signup['faction'] ?? 'Unknown';
+                $faction_counts[$faction] = ($faction_counts[$faction] ?? 0) + 1;
+            }
+            arsort($faction_counts);
+            
+            if (!empty($faction_counts)) {
+                $top_faction = array_key_first($faction_counts);
+                ?>
+                <div class="tec-stat-box" style="background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid #00a32a; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <h3 style="margin: 0 0 10px 0; color: #00a32a;">Most Popular Faction</h3>
+                    <span style="font-size: 18px; font-weight: bold;"><?php echo esc_html($top_faction); ?></span><br>
+                    <small>(<?php echo $faction_counts[$top_faction]; ?> signups)</small>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        
+        <?php if (!empty($signups)): ?>
+            <div style="margin: 20px 0;">
+                <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to clear ALL signups? This cannot be undone.');">
+                    <?php wp_nonce_field('clear_all_signups'); ?>
+                    <input type="hidden" name="action" value="clear_all_signups">
+                    <button type="submit" class="button button-secondary">Clear All Signups</button>
+                </form>
+                
+                <button onclick="exportSignups()" class="button button-primary" style="margin-left: 10px;">Export to CSV</button>
+            </div>
+            
+            <table class="wp-list-table widefat fixed striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Faction</th>
+                        <th>Date</th>
+                        <th>IP Address</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($signups as $index => $signup): ?>
+                        <tr>
+                            <td><strong><?php echo esc_html($signup['name']); ?></strong></td>
+                            <td>
+                                <a href="mailto:<?php echo esc_attr($signup['email']); ?>">
+                                    <?php echo esc_html($signup['email']); ?>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="faction-badge" style="display: inline-block; padding: 4px 8px; background: #f0f0f1; border-radius: 12px; font-size: 12px;">
+                                    <?php echo esc_html($signup['faction'] ?? 'Unknown'); ?>
+                                </span>
+                            </td>
+                            <td><?php echo esc_html(date('M j, Y g:i A', strtotime($signup['date']))); ?></td>
+                            <td><code><?php echo esc_html($signup['ip'] ?? 'Unknown'); ?></code></td>
+                            <td>
+                                <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this signup?');">
+                                    <?php wp_nonce_field('delete_signup'); ?>
+                                    <input type="hidden" name="action" value="delete_signup">
+                                    <input type="hidden" name="signup_id" value="<?php echo $index; ?>">
+                                    <button type="submit" class="button button-small">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            
+            <script>
+            function exportSignups() {
+                const signups = <?php echo json_encode($signups); ?>;
+                let csv = 'Name,Email,Faction,Date,IP Address\n';
+                
+                signups.forEach(signup => {
+                    csv += `"${signup.name}","${signup.email}","${signup.faction || 'Unknown'}","${signup.date}","${signup.ip || 'Unknown'}"\n`;
+                });
+                
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'tec-cartel-signups-' + new Date().toISOString().split('T')[0] + '.csv';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }
+            </script>
+            
+        <?php else: ?>
+            <div class="notice notice-info">
+                <p>No Cartel signups yet. Share the TEC homepage to start building your faction!</p>
+            </div>
+        <?php endif; ?>
+        
+        <h2>Faction Statistics</h2>
+        <?php if (!empty($faction_counts)): ?>
+            <div class="tec-faction-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 20px 0;">
+                <?php foreach ($faction_counts as $faction => $count): ?>
+                    <div style="background: #fff; padding: 15px; border-radius: 8px; border-left: 4px solid #646970; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        <h4 style="margin: 0 0 8px 0;"><?php echo esc_html($faction); ?></h4>
+                        <div style="font-size: 24px; font-weight: bold; color: #0073aa;"><?php echo $count; ?></div>
+                        <div style="font-size: 12px; color: #646970;">
+                            <?php echo round(($count / count($signups)) * 100, 1); ?>% of total
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+    <?php
+}
+
+/**
+ * TEC Settings admin page
+ */
+function tec_settings_page() {
+    if (isset($_POST['submit'])) {
+        if (wp_verify_nonce($_POST['_wpnonce'], 'tec_settings')) {
+            update_option('tec_notification_email', sanitize_email($_POST['notification_email']));
+            update_option('tec_enable_signup_notifications', isset($_POST['enable_notifications']));
+            update_option('tec_cartel_welcome_message', wp_kses_post($_POST['welcome_message']));
+            echo '<div class="notice notice-success"><p>Settings saved successfully!</p></div>';
+        }
+    }
+    
+    $notification_email = get_option('tec_notification_email', get_option('admin_email'));
+    $enable_notifications = get_option('tec_enable_signup_notifications', true);
+    $welcome_message = get_option('tec_cartel_welcome_message', 'Welcome to the Cartel! You\'ll receive transmissions from the TEC Block-Nexus soon.');
+    ?>
+    <div class="wrap">
+        <h1>TEC Settings</h1>
+        
+        <form method="post">
+            <?php wp_nonce_field('tec_settings'); ?>
+            
+            <table class="form-table">
+                <tr>
+                    <th scope="row">Notification Email</th>
+                    <td>
+                        <input type="email" name="notification_email" value="<?php echo esc_attr($notification_email); ?>" class="regular-text" />
+                        <p class="description">Email address to receive Cartel signup notifications.</p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th scope="row">Enable Notifications</th>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="enable_notifications" <?php checked($enable_notifications); ?> />
+                            Send email notifications for new signups
+                        </label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th scope="row">Welcome Message</th>
+                    <td>
+                        <textarea name="welcome_message" rows="3" cols="50" class="large-text"><?php echo esc_textarea($welcome_message); ?></textarea>
+                        <p class="description">Message shown to users after successful signup.</p>
+                    </td>
+                </tr>
+            </table>
+            
+            <?php submit_button(); ?>
+        </form>
+    </div>
+    <?php
+}
 
 /**
  * Get faction data from JSON file
@@ -371,9 +614,10 @@ function get_tec_faction_data() {
 function display_signup_messages() {
     if (isset($_GET['signup'])) {
         if ($_GET['signup'] === 'success') {
+            $welcome_message = get_option('tec_cartel_welcome_message', 'Welcome to the Cartel! You\'ll receive transmissions from the TEC Block-Nexus soon.');
             echo '<div class="tec-message tec-success fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg">
                 <i class="fas fa-check-circle mr-2"></i>
-                Welcome to the Cartel! You\'ll receive transmissions from the TEC Block-Nexus soon.
+                ' . esc_html($welcome_message) . '
             </div>';
         } elseif ($_GET['signup'] === 'error') {
             $error_msg = isset($_GET['msg']) && $_GET['msg'] === 'missing_fields' 

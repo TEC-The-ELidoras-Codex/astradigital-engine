@@ -17,8 +17,7 @@ if (!defined('ABSPATH')) {
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php bloginfo('name'); ?> - <?php bloginfo('description'); ?></title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title><?php bloginfo('name'); ?> - <?php bloginfo('description'); ?></title>    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -136,6 +135,94 @@ if (!defined('ABSPATH')) {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(rgba(17, 0, 28, 0.7), rgba(26, 10, 46, 0.9)), url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1794') center/cover no-repeat;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .faction-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .faction-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(74, 0, 224, 0.4);
+        }
+        
+        .post-card {
+            transition: all 0.3s ease;
+            background: rgba(26, 10, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(122, 0, 255, 0.3);
+            overflow: hidden;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(156, 137, 184, 0.3);
+            border-color: rgba(122, 0, 255, 0.6);
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px rgba(249, 168, 38, 0.8);
+        }
+        
+        .faction-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .faction-icon:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+        }
+        
+        .faction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 90vh;
+            }
+            
+            .faction-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
     </style>
     <?php wp_head(); ?>
 </head>
@@ -162,14 +249,100 @@ if (!defined('ABSPATH')) {
                 <a href="<?php echo home_url('/eldora-studios'); ?>" class="text-gray-300 hover:text-white transition">Eldora Studios</a>
                 <a href="<?php echo home_url('/community'); ?>" class="text-gray-300 hover:text-white transition">Community</a>
             </div>
-            
-            <div class="flex items-center space-x-4">
+              <div class="flex items-center space-x-4">
                 <button class="bg-tecAccent hover:bg-purple-700 text-white py-2 px-4 rounded-md transition">
                     Join Cartel
                 </button>
-                <button class="md:hidden text-gray-300">
+                <button class="mobile-menu-toggle md:hidden text-gray-300 hover:text-white transition" aria-expanded="false" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+        
+        <!-- Mobile Menu -->
+        <nav class="mobile-menu fixed top-0 right-0 h-full w-80 bg-tecPrimary transform translate-x-full transition-transform duration-300 z-50 border-l border-tecSecondary/30">
+            <div class="flex flex-col h-full">
+                <!-- Mobile Menu Header -->
+                <div class="flex items-center justify-between p-6 border-b border-tecSecondary/30">
+                    <div class="flex items-center space-x-2">
+                        <div class="bg-tecGold p-2 rounded-md">
+                            <i class="fas fa-cubes text-tecDark text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white tracking-wider">TEC</span>
+                    </div>
+                    <button class="mobile-menu-close text-gray-300 hover:text-white" aria-label="Close mobile menu">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Content -->
+                <div class="flex-1 overflow-y-auto">
+                    <div class="p-6">
+                        <!-- Main Navigation -->
+                        <div class="space-y-4 mb-8">
+                            <a href="<?php echo home_url('/factions'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
+                                <i class="fas fa-users mr-3"></i>Factions
+                            </a>
+                            <a href="<?php echo home_url('/lore'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
+                                <i class="fas fa-book mr-3"></i>Lore
+                            </a>
+                            <a href="<?php echo home_url('/tec3'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
+                                <i class="fas fa-cube mr-3"></i>TEC3
+                            </a>
+                            <a href="<?php echo home_url('/eldora-studios'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
+                                <i class="fas fa-music mr-3"></i>Eldora Studios
+                            </a>
+                            <a href="<?php echo home_url('/community'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
+                                <i class="fas fa-comments mr-3"></i>Community
+                            </a>
+                        </div>
+                        
+                        <!-- Quick Actions -->
+                        <div class="bg-tecDark/50 rounded-lg p-4 mb-6">
+                            <h4 class="text-tecGold font-bold mb-3">Quick Access</h4>
+                            <div class="space-y-2">
+                                <a href="<?php echo home_url('/blog'); ?>" class="block text-gray-300 hover:text-white transition text-sm">
+                                    <i class="fas fa-rss mr-2"></i>Latest Dispatches
+                                </a>
+                                <a href="<?php echo home_url('/search'); ?>" class="block text-gray-300 hover:text-white transition text-sm">
+                                    <i class="fas fa-search mr-2"></i>Search Archives
+                                </a>
+                                <a href="<?php echo home_url('/about'); ?>" class="block text-gray-300 hover:text-white transition text-sm">
+                                    <i class="fas fa-info-circle mr-2"></i>About TEC
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Links -->
+                        <div class="bg-tecDark/50 rounded-lg p-4">
+                            <h4 class="text-tecGold font-bold mb-3">Connect</h4>
+                            <div class="grid grid-cols-4 gap-3">
+                                <a href="https://discord.gg/elidoras_codex" class="text-gray-400 hover:text-tecGold transition text-center">
+                                    <i class="fab fa-discord text-xl"></i>
+                                </a>
+                                <a href="https://x.com/ElidorasCodex" class="text-gray-400 hover:text-tecGold transition text-center">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                                <a href="https://youtube.com/@Elidorascodex713" class="text-gray-400 hover:text-tecGold transition text-center">
+                                    <i class="fab fa-youtube text-xl"></i>
+                                </a>
+                                <a href="https://instagram.com/Polkin713" class="text-gray-400 hover:text-tecGold transition text-center">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Footer -->
+                <div class="p-6 border-t border-tecSecondary/30">
+                    <button class="w-full bg-tecAccent hover:bg-purple-700 text-white py-3 px-4 rounded-lg transition">
+                        <i class="fas fa-user-plus mr-2"></i>Join the Cartel
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
@@ -260,26 +433,36 @@ if (!defined('ABSPATH')) {
                         $factions = array_slice($data['factions'], 0, 6); // Show first 6 factions
                     }
                 }
-                
-                // Fallback faction data with icons
+                  // Fallback faction data with enhanced descriptions and icons
                 if (empty($factions)) {
                     $factions = array(
-                        array('name' => 'Kaznak', 'shortDescription' => 'Voyager Rebels', 'color' => '#00bdff'),
-                        array('name' => 'MAGMASOX', 'shortDescription' => 'Digital Gatekeepers', 'color' => '#ff5757'),
-                        array('name' => 'TEC', 'shortDescription' => 'Beacon of Freedom', 'color' => '#4deeea'),
-                        array('name' => 'Killjoy', 'shortDescription' => 'Mysterious Allies', 'color' => '#8c52ff'),
-                        array('name' => 'No Names Anon', 'shortDescription' => 'Anonymous Collective', 'color' => '#3de686'),
+                        array('name' => 'The Knockoffs', 'shortDescription' => 'Authentic soul of digital rebellion', 'color' => '#f9a826'),
+                        array('name' => 'The MagmaSoX Gate', 'shortDescription' => 'Oversees all factions', 'color' => '#9c27b0'),
+                        array('name' => 'Quantum Architects', 'shortDescription' => 'Build the infrastructure', 'color' => '#ff9800'),
+                        array('name' => 'The Archivists', 'shortDescription' => 'Keepers of historical records', 'color' => '#2196f3'),
+                        array('name' => 'Civet Goons', 'shortDescription' => 'Keep the digital underworld functioning', 'color' => '#4caf50'),
+                        array('name' => 'Echo Collective', 'shortDescription' => 'Transform concepts into narratives', 'color' => '#f44336')
                     );
                 }
                 
-                // Icon mapping for factions
+                // Enhanced icon mapping for factions
                 $faction_icons = array(
+                    'the-knockoffs' => 'fas fa-skull',
+                    'knockoffs' => 'fas fa-skull',
+                    'the-magmasox-gate' => 'fas fa-brain',
+                    'magmasox' => 'fas fa-brain',
+                    'quantum-architects' => 'fas fa-wrench',
+                    'architects' => 'fas fa-wrench',
+                    'the-archivists' => 'fas fa-book',
+                    'archivists' => 'fas fa-book',
+                    'civet-goons' => 'fas fa-lock',
+                    'goons' => 'fas fa-lock',
+                    'echo-collective' => 'fas fa-cogs',
+                    'echo' => 'fas fa-cogs',
                     'kaznak' => 'fas fa-anchor',
-                    'magmasox' => 'fas fa-fire',
                     'tec' => 'fas fa-lightbulb',
                     'killjoy' => 'fas fa-brain',
-                    'no-names-anon' => 'fas fa-mask',
-                    'east-middle-company' => 'fas fa-building'
+                    'no-names-anon' => 'fas fa-mask'
                 );
                 
                 foreach ($factions as $faction):
@@ -412,8 +595,7 @@ if (!defined('ABSPATH')) {
                         <input type="email" name="user_email" placeholder="Your Email" required class="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white">
                     </div>
                       <div>
-                        <select name="faction_allegiance" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white">
-                            <option disabled selected>Choose Your Faction Allegiance</option>
+                        <select name="faction_allegiance" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white">                            <option disabled selected>Choose Your Faction Allegiance</option>
                             <?php
                             // Get faction data for dropdown
                             if (file_exists($faction_data_file)) {
@@ -425,20 +607,22 @@ if (!defined('ABSPATH')) {
                                         echo '<option value="' . esc_attr($faction_id) . '">' . esc_html($faction['name'] ?? 'Unknown') . '</option>';
                                     }
                                 } else {
-                                    // Fallback options
-                                    echo '<option value="kaznak">Kaznak Voyagers</option>';
-                                    echo '<option value="magmasox">MAGMASOX</option>';
-                                    echo '<option value="tec">The Elidoras Codex</option>';
-                                    echo '<option value="killjoy">Killjoy Conglomerate</option>';
-                                    echo '<option value="no-names-anon">No Names Anon</option>';
+                                    // Enhanced fallback options
+                                    echo '<option value="the-knockoffs">The Knockoffs</option>';
+                                    echo '<option value="the-magmasox-gate">The MagmaSoX Gate</option>';
+                                    echo '<option value="quantum-architects">Quantum Architects</option>';
+                                    echo '<option value="the-archivists">The Archivists</option>';
+                                    echo '<option value="civet-goons">Civet Goons</option>';
+                                    echo '<option value="echo-collective">Echo Collective</option>';
                                 }
                             } else {
-                                // Fallback options
-                                echo '<option value="kaznak">Kaznak Voyagers</option>';
-                                echo '<option value="magmasox">MAGMASOX</option>';
-                                echo '<option value="tec">The Elidoras Codex</option>';
-                                echo '<option value="killjoy">Killjoy Conglomerate</option>';
-                                echo '<option value="no-names-anon">No Names Anon</option>';
+                                // Enhanced fallback options
+                                echo '<option value="the-knockoffs">The Knockoffs</option>';
+                                echo '<option value="the-magmasox-gate">The MagmaSoX Gate</option>';
+                                echo '<option value="quantum-architects">Quantum Architects</option>';
+                                echo '<option value="the-archivists">The Archivists</option>';
+                                echo '<option value="civet-goons">Civet Goons</option>';
+                                echo '<option value="echo-collective">Echo Collective</option>';
                             }
                             ?>
                             <option value="observer">Observer</option>
@@ -461,33 +645,41 @@ if (!defined('ABSPATH')) {
     <!-- Global Footer -->
     <footer class="bg-tecDark border-t border-tecSecondary/20">
         <div class="container mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">                <div>
                     <div class="flex items-center mb-6">
                         <div class="bg-tecGold p-2 rounded-md mr-2">
                             <i class="fas fa-cubes text-tecDark text-xl"></i>
                         </div>
                         <span class="text-2xl font-bold text-white tracking-wider">TEC</span>
                     </div>
-                    <p class="text-gray-400 mb-6">
+                    <p class="text-gray-400 mb-4">
                         Exploring the boundaries between digital consciousness and narrative reality.
                     </p>
+                    <p class="text-gray-400 mb-4">
+                        <i class="fas fa-envelope mr-2"></i> kaznakalpha@elidorascodex.com<br>
+                        <i class="fas fa-globe mr-2"></i> <a href="https://elidorascodex.com" class="hover:text-tecGold">elidorascodex.com</a>
+                    </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-tecGold transition"><i class="fab fa-discord text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-tecGold transition"><i class="fab fa-twitter text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-tecGold transition"><i class="fab fa-youtube text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-tecGold transition"><i class="fab fa-github text-xl"></i></a>
+                        <a href="https://discord.gg/elidoras_codex" class="text-gray-400 hover:text-tecGold transition" title="Discord"><i class="fab fa-discord text-xl"></i></a>
+                        <a href="https://x.com/ElidorasCodex" class="text-gray-400 hover:text-tecGold transition" title="X/Twitter"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="https://youtube.com/@Elidorascodex713" class="text-gray-400 hover:text-tecGold transition" title="YouTube"><i class="fab fa-youtube text-xl"></i></a>
+                        <a href="https://instagram.com/Polkin713" class="text-gray-400 hover:text-tecGold transition" title="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="https://www.tiktok.com/@Polkin.Rishall" class="text-gray-400 hover:text-tecGold transition" title="TikTok"><i class="fab fa-tiktok text-xl"></i></a>
+                        <a href="https://facebook.com/TheElidorasCodex" class="text-gray-400 hover:text-tecGold transition" title="Facebook"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="https://www.linkedin.com/in/polkin-rishall" class="text-gray-400 hover:text-tecGold transition" title="LinkedIn"><i class="fab fa-linkedin text-xl"></i></a>
+                        <a href="https://mastodon.social/@elidorascodex" class="text-gray-400 hover:text-tecGold transition" title="Mastodon"><i class="fab fa-mastodon text-xl"></i></a>
+                        <a href="https://medium.com/@ElidorasCodex" class="text-gray-400 hover:text-tecGold transition" title="Medium"><i class="fab fa-medium text-xl"></i></a>
+                        <a href="https://substack.com/@elidorascodex" class="text-gray-400 hover:text-tecGold transition" title="Substack"><i class="fas fa-book-open text-xl"></i></a>
+                        <a href="https://twitch.tv/PolkinRishall713" class="text-gray-400 hover:text-tecGold transition" title="Twitch"><i class="fab fa-twitch text-xl"></i></a>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold text-white mb-4">The Universe</h4>
+                    <h4 class="text-lg font-bold text-white mb-4">Community & Support</h4>
                     <ul class="space-y-2">
-                        <li><a href="<?php echo home_url('/astradigital-ocean'); ?>" class="text-gray-400 hover:text-white transition">Astradigital Ocean</a></li>
-                        <li><a href="<?php echo home_url('/tec3'); ?>" class="text-gray-400 hover:text-white transition">TEC3 Block-Nexus</a></li>
-                        <li><a href="<?php echo home_url('/eldora-studios'); ?>" class="text-gray-400 hover:text-white transition">Eldora Studios</a></li>
-                        <li><a href="<?php echo home_url('/archives'); ?>" class="text-gray-400 hover:text-white transition">The Codex Archives</a></li>
-                        <li><a href="<?php echo home_url('/multiverse'); ?>" class="text-gray-400 hover:text-white transition">Multiverse Guide</a></li>
+                        <li><a href="https://patreon.com/ElidorasCodex" class="text-gray-400 hover:text-white transition">Patreon Support</a></li>
+                        <li><a href="<?php echo home_url('/contribute'); ?>" class="text-gray-400 hover:text-white transition">Contribute Ideas</a></li>
+                        <li><a href="<?php echo home_url('/collaborate'); ?>" class="text-gray-400 hover:text-white transition">Collaborate</a></li>
                     </ul>
                 </div>
                 
