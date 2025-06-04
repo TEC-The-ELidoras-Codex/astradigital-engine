@@ -25,8 +25,16 @@ function tec_setup() {
      */
     load_theme_textdomain('tec-theme', TEC_THEME_DIR . '/languages');
 
-    // Add default posts and comments RSS feed links to head.
-    add_theme_support('automatic-feed-links');
+    /*
+     * Register navigation menus
+     */
+    register_nav_menus(array(
+        'primary' => esc_html__('Primary Menu', 'tec-theme'),
+        'footer-universe' => esc_html__('Footer Universe Menu', 'tec-theme'),
+        'footer-participate' => esc_html__('Footer Participate Menu', 'tec-theme'),
+        'footer-explore' => esc_html__('Footer Explore Menu', 'tec-theme'),
+        'mobile' => esc_html__('Mobile Menu', 'tec-theme'),
+    ));
 
     /*
      * Let WordPress manage the document title.
@@ -42,17 +50,6 @@ function tec_setup() {
     add_image_size('faction-hero', 1920, 800, true);
     add_image_size('faction-logo', 500, 500, false);
     add_image_size('entity-portrait', 400, 600, true);
-
-    /*
-     * Register navigation menus
-     */
-    register_nav_menus(
-        array(
-            'primary' => esc_html__('Primary Menu', 'tec-theme'),
-            'factions' => esc_html__('Factions Menu', 'tec-theme'),
-            'footer' => esc_html__('Footer Menu', 'tec-theme'),
-        )
-    );
 
     /*
      * Switch default core markup to output valid HTML5.
@@ -118,6 +115,23 @@ function tec_scripts() {
     
     // Enqueue custom scripts
     wp_enqueue_script('tec-navigation', TEC_THEME_URI . '/assets/js/main.js', array('jquery'), TEC_VERSION, true);
+
+    // Enqueue Tailwind CSS for front page
+    if (is_front_page()) {
+        wp_enqueue_script('tailwind-css', 'https://cdn.tailwindcss.com', array(), null, false);
+        wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', array(), '6.4.0');
+        wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap', array(), null);
+    }
+    
+    // Enqueue JavaScript for theme functionality
+    wp_enqueue_script('tec-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0.0', true);
+    
+    // Localize script for AJAX
+    wp_localize_script('tec-main', 'tec_ajax', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('tec_nonce'),
+        'home_url' => home_url(),
+    ));
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -282,6 +296,119 @@ function tec_save_faction_meta($post_id) {
     }
 }
 add_action('save_post_faction', 'tec_save_faction_meta');
+
+/**
+ * Handle TEC Cartel signup form submission
+ */
+function handle_tec_cartel_signup() {
+    // Verify nonce
+    if (!wp_verify_nonce($_POST['tec_signup_nonce'], 'tec_cartel_signup_nonce')) {
+        wp_die('Security check failed');
+    }
+    
+    // Sanitize form data
+    $user_name = sanitize_text_field($_POST['user_name']);
+    $user_email = sanitize_email($_POST['user_email']);
+    $faction_allegiance = sanitize_text_field($_POST['faction_allegiance']);
+    $terms_agreement = isset($_POST['terms_agreement']) ? true : false;
+    
+    // Validate required fields
+    if (empty($user_name) || empty($user_email) || !$terms_agreement) {
+        wp_redirect(home_url('/?signup=error&msg=missing_fields'));
+        exit;
+    }
+    
+    // Store signup data (you can integrate with your preferred email service here)
+    $signup_data = array(
+        'name' => $user_name,
+        'email' => $user_email,
+        'faction' => $faction_allegiance,
+        'date' => current_time('mysql'),
+        'ip' => $_SERVER['REMOTE_ADDR']
+    );
+    
+    // Option 1: Store in WordPress database
+    $existing_signups = get_option('tec_cartel_signups', array());
+    $existing_signups[] = $signup_data;
+    update_option('tec_cartel_signups', $existing_signups);
+    
+    // Option 2: Send notification email to admin
+    $admin_email = get_option('admin_email');
+    $subject = 'New TEC Cartel Signup: ' . $user_name;
+    $message = "New Cartel signup received:\n\n";
+    $message .= "Name: " . $user_name . "\n";
+    $message .= "Email: " . $user_email . "\n";
+    $message .= "Faction: " . $faction_allegiance . "\n";
+    $message .= "Date: " . current_time('mysql') . "\n";
+    
+    wp_mail($admin_email, $subject, $message);
+    
+    // Redirect with success message
+    wp_redirect(home_url('/?signup=success'));
+    exit;
+}
+add_action('admin_post_tec_cartel_signup', 'handle_tec_cartel_signup');
+add_action('admin_post_nopriv_tec_cartel_signup', 'handle_tec_cartel_signup');
+
+/**
+ * Get faction data from JSON file
+ */
+function get_tec_faction_data() {
+    $faction_file = get_template_directory() . '/data/astradigital-map.json';
+    
+    if (file_exists($faction_file)) {
+        $json_content = file_get_contents($faction_file);
+        $faction_data = json_decode($json_content, true);
+        return $faction_data['factions'] ?? array();
+    }
+    
+    return array();
+}
+
+/**
+ * Display signup status messages
+ */
+function display_signup_messages() {
+    if (isset($_GET['signup'])) {
+        if ($_GET['signup'] === 'success') {
+            echo '<div class="tec-message tec-success fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg">
+                <i class="fas fa-check-circle mr-2"></i>
+                Welcome to the Cartel! You\'ll receive transmissions from the TEC Block-Nexus soon.
+            </div>';
+        } elseif ($_GET['signup'] === 'error') {
+            $error_msg = isset($_GET['msg']) && $_GET['msg'] === 'missing_fields' 
+                ? 'Please fill in all required fields.' 
+                : 'An error occurred. Please try again.';
+            
+            echo '<div class="tec-message tec-error fixed top-20 left-1/2 transform -translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                ' . $error_msg . '
+            </div>';
+        }
+        
+        // Add JavaScript to hide message after 5 seconds
+        echo '<script>
+            setTimeout(function() {
+                const message = document.querySelector(".tec-message");
+                if (message) {
+                    message.style.opacity = "0";
+                    setTimeout(() => message.remove(), 300);
+                }
+            }, 5000);
+        </script>';
+    }
+}
+add_action('wp_footer', 'display_signup_messages');
+
+/**
+ * Enqueue additional styles for TEC front page
+ */
+function tec_front_page_styles() {
+    if (is_front_page()) {
+        wp_enqueue_style('tec-front-page', get_template_directory_uri() . '/assets/css/front-page.css', array(), '1.0.0');
+    }
+}
+add_action('wp_enqueue_scripts', 'tec_front_page_styles');
 
 /**
  * Include template files
