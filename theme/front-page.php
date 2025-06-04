@@ -16,308 +16,754 @@ if (!defined('ABSPATH')) {
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php bloginfo('name'); ?> - <?php bloginfo('description'); ?></title>    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        tecPrimary: '#1a0a2e',
-                        tecAccent: '#4a00e0',
-                        tecSecondary: '#9c89b8',
-                        tecDark: '#11001c',
-                        tecGold: '#f9a826',
-                    },
-                    backgroundImage: {
-                        'tec-gradient': 'linear-gradient(135deg, #1a0a2e 0%, #4a00e0 100%)',
-                        'faction-gradient': 'linear-gradient(45deg, #8e2de2 0%, #4a00e0 100%)'
-                    }
-                }
-            }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title><?php bloginfo('name'); ?> - <?php bloginfo('description'); ?></title>
+    
+    <?php wp_head(); ?>
+    
+    <!-- TEC Custom Styles -->
+    <style>        :root {
+            --tec-primary: #1a0a2e;
+            --tec-accent: #4a00e0;
+            --tec-secondary: #9c89b8;
+            --tec-dark: #11001c;
+            --tec-gold: #f9a826;
         }
-    </script>
+    </style>
+    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap');
-        
+      <style>
+        /* TEC Core Variables */
+        :root {
+            --tec-primary: #1a0a2e;
+            --tec-accent: #4a00e0;
+            --tec-secondary: #9c89b8;
+            --tec-dark: #11001c;
+            --tec-gold: #f9a826;
+            --tec-gradient: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Exo 2', sans-serif;
-            background-color: #11001c;
-            color: #eaeaea;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--tec-dark);
+            color: #ffffff;
+            line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Orbitron', sans-serif;
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 1rem;
         }
-        
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 2rem; }
+        h4 { font-size: 1.5rem; }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        /* Header */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--tec-primary);
+            border-bottom: 1px solid rgba(156, 137, 184, 0.2);
+        }
+
+        .header-banner {
+            background: var(--tec-gradient);
+            text-align: center;
+            padding: 0.5rem;
+            color: var(--tec-gold);
+            font-weight: bold;
+        }
+
+        .main-nav {
+            padding: 1rem 0;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-brand:hover {
+            color: var(--tec-gold);
+        }
+
+        .nav-icon {
+            background: var(--tec-gold);
+            color: var(--tec-dark);
+            padding: 0.5rem;
+            border-radius: 4px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: white;
+        }
+
+        /* Hero Section */
         .hero-section {
             height: 100vh;
+            background: linear-gradient(rgba(17, 0, 28, 0.7), rgba(26, 10, 46, 0.9)),
+                        url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1794') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             position: relative;
-            background: linear-gradient(rgba(17, 0, 28, 0.7), rgba(26, 10, 46, 0.9)), url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1794') center/cover no-repeat;
         }
-        
-        .hero-video {
-            position: absolute;
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--tec-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--tec-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #6a1ae0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--tec-gold);
+            border: 2px solid var(--tec-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--tec-gold);
+            color: var(--tec-dark);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-alt {
+            background: var(--tec-primary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--tec-gold);
+            margin: 1rem auto;
+        }
+
+        /* Faction Cards */
+        .faction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+
+        .faction-card {
+            background: rgba(26, 10, 46, 0.8);
+            border: 1px solid rgba(156, 137, 184, 0.3);
+            border-radius: 12px;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .faction-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--tec-gold);
+            box-shadow: 0 20px 40px rgba(74, 0, 224, 0.3);
+        }
+
+        .faction-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #333;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .faction-icon:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+        }        /* Post Cards */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .post-card {
+            background: rgba(26, 10, 46, 0.6);
+            border: 1px solid rgba(122, 0, 255, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--tec-gold);
+            box-shadow: 0 20px 25px -5px rgba(156, 137, 184, 0.3);
+        }
+
+        .post-image {
+            height: 200px;
+            background: var(--tec-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--tec-gold);
+        }
+
+        .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .post-category {
+            background: var(--tec-primary);
+            color: var(--tec-gold);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .post-date {
+            color: #999;
+        }
+
+        .post-title {
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .post-excerpt {
+            color: #ccc;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .post-link {
+            color: var(--tec-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .post-link:hover {
+            color: white;
+        }
+
+        .faction-explore-btn {
+            margin-top: 3rem;
+        }
+
+        .faction-name {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .faction-description {
+            color: #ccc;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        /* Signup Form */
+        .signup-section {
+            background: linear-gradient(135deg, #1a0a2e 0%, #11001c 100%);
+        }
+
+        .signup-form {
+            background: var(--tec-primary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(156, 137, 184, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #555;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--tec-gold);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--tec-dark);
+            border-top: 1px solid rgba(156, 137, 184, 0.2);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--tec-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #999;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--tec-gold);
+        }        .footer-link {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }        .footer-link:hover {
+            color: var(--tec-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            margin-top: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--tec-primary);
+            border-left: 1px solid rgba(156, 137, 184, 0.3);
+            transition: right 0.3s ease;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        
-        .faction-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .faction-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(74, 0, 224, 0.4);
-        }
-        
-        .post-card {
-            transition: all 0.3s ease;
-            background: rgba(26, 10, 46, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(122, 0, 255, 0.3);
-            overflow: hidden;
-        }
-        
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(156, 137, 184, 0.3);
-            border-color: rgba(122, 0, 255, 0.6);
-        }
-        
-        .glow {
-            text-shadow: 0 0 10px rgba(249, 168, 38, 0.8);
-        }
-        
-        .faction-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
         }
-        
-        .faction-icon:hover {
-            transform: scale(1.2);
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
-        
-        .faction-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 1.5rem;
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         @keyframes float {
-            0% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
         }
-        
+
         .floating {
             animation: float 6s ease-in-out infinite;
         }
-        
+
+        .glow {
+            text-shadow: 0 0 10px rgba(249, 168, 38, 0.8);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
             .hero-section {
                 height: 90vh;
+            }
+            
+            .grid-3,
+            .grid-4,
+            .grid-6 {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
             }
             
             .faction-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+            
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.5rem; }
         }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .hero-section {
-            height: 100vh;
-            position: relative;
-            background: linear-gradient(rgba(17, 0, 28, 0.7), rgba(26, 10, 46, 0.9)), url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1794') center/cover no-repeat;
-        }
-        
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        
-        .faction-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .faction-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(74, 0, 224, 0.4);
-        }
-        
-        .post-card {
-            transition: all 0.3s ease;
-            background: rgba(26, 10, 46, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(122, 0, 255, 0.3);
-            overflow: hidden;
-        }
-        
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(156, 137, 184, 0.3);
-            border-color: rgba(122, 0, 255, 0.6);
-        }
-        
-        .glow {
-            text-shadow: 0 0 10px rgba(249, 168, 38, 0.8);
-        }
-        
-        .faction-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .faction-icon:hover {
-            transform: scale(1.2);
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
-        }
-        
-        .faction-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 90vh;
+
+        @media (max-width: 480px) {
+            .faction-grid {
+                grid-template-columns: 1fr;
             }
             
-            .faction-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .hero-section {
+                height: 80vh;
             }
+            
+            .section {
+                padding: 3rem 0;
+            }
+        }
+
+        /* WordPress specific styles */
+        .wp-caption {
+            max-width: 100%;
+        }
+
+        .wp-caption-text {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: #999;
+        }
+
+        .alignleft {
+            float: left;
+            margin: 0 1rem 1rem 0;
+        }
+
+        .alignright {
+            float: right;
+            margin: 0 0 1rem 1rem;
+        }
+
+        .aligncenter {
+            display: block;
+            margin: 0 auto;
         }
     </style>
     <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
-    <!-- Global Header -->
-    <header class="sticky top-0 z-50 bg-tecPrimary">
-        <div class="py-2 px-4 bg-gradient-to-r from-purple-900 to-indigo-900 text-center">
-            <p class="text-tecGold font-bold tracking-wider">NEW FACTION LORE UPDATE: <span class="text-white">Kaznak's Ascension</span></p>
+<body <?php body_class(); ?>>    <!-- Global Header -->
+    <header class="site-header">
+        <div class="header-banner">
+            <p>NEW FACTION LORE UPDATE: <span style="color: white;">Kaznak's Ascension</span></p>
         </div>
-        <nav class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <div class="bg-tecGold p-2 rounded-md">
-                    <i class="fas fa-cubes text-tecDark text-xl"></i>
+        <nav class="main-nav">
+            <div class="container flex-between">
+                <a href="<?php echo home_url(); ?>" class="nav-brand">
+                    <div class="nav-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <span>TEC</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="<?php echo home_url('/factions'); ?>">Factions</a></li>
+                    <li><a href="<?php echo home_url('/lore'); ?>">Lore</a></li>
+                    <li><a href="<?php echo home_url('/tec3'); ?>">TEC3</a></li>
+                    <li><a href="<?php echo home_url('/eldora-studios'); ?>">Eldora Studios</a></li>
+                    <li><a href="<?php echo home_url('/community'); ?>">Community</a></li>
+                </ul>
+                
+                <div class="flex" style="align-items: center; gap: 1rem;">
+                    <button class="btn btn-primary">
+                        Join Cartel
+                    </button>
+                    <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle mobile menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
-                <span class="text-2xl font-bold text-white tracking-wider">
-                    <a href="<?php echo home_url(); ?>" class="text-white hover:text-tecGold transition">TEC</a>
-                </span>
-            </div>
-            
-            <div class="hidden md:flex space-x-8">
-                <a href="<?php echo home_url('/factions'); ?>" class="text-gray-300 hover:text-white transition">Factions</a>
-                <a href="<?php echo home_url('/lore'); ?>" class="text-gray-300 hover:text-white transition">Lore</a>
-                <a href="<?php echo home_url('/tec3'); ?>" class="text-gray-300 hover:text-white transition">TEC3</a>
-                <a href="<?php echo home_url('/eldora-studios'); ?>" class="text-gray-300 hover:text-white transition">Eldora Studios</a>
-                <a href="<?php echo home_url('/community'); ?>" class="text-gray-300 hover:text-white transition">Community</a>
-            </div>
-              <div class="flex items-center space-x-4">
-                <button class="bg-tecAccent hover:bg-purple-700 text-white py-2 px-4 rounded-md transition">
-                    Join Cartel
-                </button>
-                <button class="mobile-menu-toggle md:hidden text-gray-300 hover:text-white transition" aria-expanded="false" aria-label="Toggle mobile menu">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
             </div>
         </nav>
         
         <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu-overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+        <div class="mobile-menu-overlay"></div>
         
         <!-- Mobile Menu -->
-        <nav class="mobile-menu fixed top-0 right-0 h-full w-80 bg-tecPrimary transform translate-x-full transition-transform duration-300 z-50 border-l border-tecSecondary/30">
-            <div class="flex flex-col h-full">
+        <nav class="mobile-menu">
+            <div style="display: flex; flex-direction: column; height: 100%;">
                 <!-- Mobile Menu Header -->
-                <div class="flex items-center justify-between p-6 border-b border-tecSecondary/30">
-                    <div class="flex items-center space-x-2">
-                        <div class="bg-tecGold p-2 rounded-md">
-                            <i class="fas fa-cubes text-tecDark text-xl"></i>
+                <div class="flex-between" style="padding: 1.5rem; border-bottom: 1px solid rgba(156, 137, 184, 0.3);">
+                    <a href="<?php echo home_url(); ?>" class="nav-brand">
+                        <div class="nav-icon">
+                            <i class="fas fa-cubes"></i>
                         </div>
-                        <span class="text-xl font-bold text-white tracking-wider">TEC</span>
-                    </div>
-                    <button class="mobile-menu-close text-gray-300 hover:text-white" aria-label="Close mobile menu">
-                        <i class="fas fa-times text-xl"></i>
+                        <span>TEC</span>
+                    </a>
+                    <button class="mobile-menu-close" aria-label="Close mobile menu">
+                        <i class="fas fa-times"></i>
                     </button>
                 </div>
-                
-                <!-- Mobile Menu Content -->
-                <div class="flex-1 overflow-y-auto">
-                    <div class="p-6">
-                        <!-- Main Navigation -->
-                        <div class="space-y-4 mb-8">
-                            <a href="<?php echo home_url('/factions'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
-                                <i class="fas fa-users mr-3"></i>Factions
+                  <!-- Mobile Menu Content -->
+                <div style="flex: 1; overflow-y: auto; padding: 1.5rem;">
+                    <!-- Main Navigation -->
+                    <div style="margin-bottom: 2rem;">
+                        <a href="<?php echo home_url('/factions'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
+                            <i class="fas fa-users" style="margin-right: 0.75rem;"></i>Factions
+                        </a>
+                        <a href="<?php echo home_url('/lore'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
+                            <i class="fas fa-book" style="margin-right: 0.75rem;"></i>Lore
+                        </a>
+                        <a href="<?php echo home_url('/tec3'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
+                            <i class="fas fa-cube" style="margin-right: 0.75rem;"></i>TEC3
+                        </a>
+                        <a href="<?php echo home_url('/eldora-studios'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
+                            <i class="fas fa-music" style="margin-right: 0.75rem;"></i>Eldora Studios
+                        </a>
+                        <a href="<?php echo home_url('/community'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
+                            <i class="fas fa-comments" style="margin-right: 0.75rem;"></i>Community
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div style="background: rgba(17, 0, 28, 0.5); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--tec-gold); font-weight: bold; margin-bottom: 0.75rem;">Quick Access</h4>
+                        <div>
+                            <a href="<?php echo home_url('/blog'); ?>" style="display: block; color: #cccccc; text-decoration: none; transition: color 0.3s ease; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                                <i class="fas fa-rss" style="margin-right: 0.5rem;"></i>Latest Dispatches
                             </a>
-                            <a href="<?php echo home_url('/lore'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
-                                <i class="fas fa-book mr-3"></i>Lore
+                            <a href="<?php echo home_url('/search'); ?>" style="display: block; color: #cccccc; text-decoration: none; transition: color 0.3s ease; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                                <i class="fas fa-search" style="margin-right: 0.5rem;"></i>Search Archives
                             </a>
-                            <a href="<?php echo home_url('/tec3'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
-                                <i class="fas fa-cube mr-3"></i>TEC3
-                            </a>
-                            <a href="<?php echo home_url('/eldora-studios'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
-                                <i class="fas fa-music mr-3"></i>Eldora Studios
-                            </a>
-                            <a href="<?php echo home_url('/community'); ?>" class="block text-white hover:text-tecGold transition py-2 border-b border-tecSecondary/20">
-                                <i class="fas fa-comments mr-3"></i>Community
+                            <a href="<?php echo home_url('/about'); ?>" style="display: block; color: #cccccc; text-decoration: none; transition: color 0.3s ease; font-size: 0.9rem;">
+                                <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>About TEC
                             </a>
                         </div>
-                        
-                        <!-- Quick Actions -->
-                        <div class="bg-tecDark/50 rounded-lg p-4 mb-6">
-                            <h4 class="text-tecGold font-bold mb-3">Quick Access</h4>
-                            <div class="space-y-2">
-                                <a href="<?php echo home_url('/blog'); ?>" class="block text-gray-300 hover:text-white transition text-sm">
-                                    <i class="fas fa-rss mr-2"></i>Latest Dispatches
-                                </a>
-                                <a href="<?php echo home_url('/search'); ?>" class="block text-gray-300 hover:text-white transition text-sm">
-                                    <i class="fas fa-search mr-2"></i>Search Archives
-                                </a>
-                                <a href="<?php echo home_url('/about'); ?>" class="block text-gray-300 hover:text-white transition text-sm">
-                                    <i class="fas fa-info-circle mr-2"></i>About TEC
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Social Links -->
-                        <div class="bg-tecDark/50 rounded-lg p-4">
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div style="background: rgba(17, 0, 28, 0.5); border-radius: 8px; padding: 1rem;">
                             <h4 class="text-tecGold font-bold mb-3">Connect</h4>
                             <div class="grid grid-cols-4 gap-3">
                                 <a href="https://discord.gg/elidoras_codex" class="text-gray-400 hover:text-tecGold transition text-center">
@@ -338,73 +784,66 @@ if (!defined('ABSPATH')) {
                 </div>
                 
                 <!-- Mobile Menu Footer -->
-                <div class="p-6 border-t border-tecSecondary/30">
-                    <button class="w-full bg-tecAccent hover:bg-purple-700 text-white py-3 px-4 rounded-lg transition">
-                        <i class="fas fa-user-plus mr-2"></i>Join the Cartel
-                    </button>
+                <div class="p-6 border-t border-tecSecondary/30">                        <button class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-user-plus" style="margin-right: 0.5rem;"></i>Join the Cartel
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- Section 1: Hero -->
-    <section class="hero-section relative overflow-hidden">
-        <!-- Hero video background (commented since using image gradient instead) -->
-        <!-- <video autoplay muted loop class="hero-video">
-            <source src="path-to-tec-hero-video.mp4" type="video/mp4">
-        </video> -->
-        
-        <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-4 z-10">
+    <section class="hero-section">
+        <div class="hero-content">
             <div class="floating">
-                <h1 class="text-4xl md:text-7xl font-bold text-white mb-4 tracking-wide">
+                <h1 class="hero-title">
                     Welcome to <span class="glow">TEC</span>
                 </h1>
             </div>
-            <p class="text-lg md:text-2xl text-tecSecondary mb-10 max-w-3xl">
+            <p class="hero-subtitle">
                 Explore a universe where digital consciousness transcends reality and factions battle for control of the Astradigital Ocean
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <button class="bg-tecAccent hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition transform hover:scale-105">
+            <div class="hero-buttons">
+                <button class="btn btn-primary">
                     Explore Factions
                 </button>
-                <button class="bg-transparent border-2 border-tecGold hover:bg-tecGold text-tecGold hover:text-tecDark font-bold py-3 px-8 rounded-lg text-lg transition transform hover:scale-105">
+                <button class="btn btn-secondary">
                     Dive Into Lore
                 </button>
             </div>
             
-            <div class="absolute bottom-8 animate-bounce">
-                <a href="#what-is-tec" class="text-gray-300 text-3xl">
+            <div style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); animation: float 6s ease-in-out infinite;">
+                <a href="#what-is-tec" style="color: #cccccc; font-size: 2rem; text-decoration: none;">
                     <i class="fas fa-chevron-down"></i>
                 </a>
             </div>
         </div>
-    </section>
-
-    <!-- Section 2: What is TEC? -->
-    <section id="what-is-tec" class="py-20 px-4 bg-tecPrimary">
-        <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl text-center font-bold mb-16 text-white">
-                <span class="border-b-4 border-tecGold pb-2">This Isn't Just a Story...</span>
+    </section>    <!-- Section 2: What is TEC? -->
+    <section id="what-is-tec" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">
+                <span>This Isn't Just a Story...</span>
             </h2>
             
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                <div class="md:w-1/2">
-                    <p class="text-gray-300 mb-4 leading-relaxed">
+            <div class="grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 2.5rem;">
+                <div>
+                    <p style="color: #cccccc; margin-bottom: 1rem; line-height: 1.7;">
                         The Elidoras Codex (TEC) is a living narrative ecosystem exploring the boundaries between artificial consciousness and human experience, set against the backdrop of a fractured digital universe called the Astradigital Ocean.
                     </p>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
+                    <p style="color: #cccccc; margin-bottom: 1.5rem; line-height: 1.7;">
                         At TEC's core lies the TEC3 Block-Nexus - an evolving cryptonalysis engine monitoring blockchain ecosystems, social narratives, and memetic waves. Through factions, lore, and ongoing narrative development, we examine themes of identity, control, and emergence in the age of AI.
                     </p>
-                    <a href="<?php echo home_url('/about'); ?>" class="inline-flex items-center text-tecGold font-bold hover:text-white transition">
+                    <a href="<?php echo home_url('/about'); ?>" style="display: inline-flex; align-items: center; color: var(--tec-gold); font-weight: bold; text-decoration: none; transition: color 0.3s ease;">
                         Learn More
-                        <i class="fas fa-arrow-right ml-2 mt-1"></i>
+                        <i class="fas fa-arrow-right" style="margin-left: 0.5rem; margin-top: 0.25rem;"></i>
                     </a>
                 </div>
                 
-                <div class="md:w-1/2 relative">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-tec-gradient rounded-xl transform rotate-3"></div>
-                        <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=1974" alt="TEC Universe" class="relative rounded-xl w-full z-10 border-2 border-tecSecondary">
+                <div style="position: relative;">
+                    <div style="position: relative;">
+                        <div style="position: absolute; inset: 0; background: var(--tec-gradient); border-radius: 12px; transform: rotate(3deg);"></div>
+                        <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=1974" alt="TEC Universe" style="position: relative; border-radius: 12px; width: 100%; z-index: 10; border: 2px solid var(--tec-secondary);">
                     </div>
                 </div>
             </div>
@@ -469,33 +908,29 @@ if (!defined('ABSPATH')) {
                     $faction_id = strtolower(str_replace(' ', '-', $faction['name'] ?? ''));
                     $icon = $faction_icons[$faction_id] ?? 'fas fa-cube';
                     $color = $faction['color'] ?? '#ffffff';
-                ?>
-                <div class="faction-card flex flex-col items-center p-6 bg-white/10 backdrop-blur-md rounded-xl border border-white/20">
-                    <div class="faction-icon rounded-full bg-gray-800 flex items-center justify-center">
-                        <i class="<?php echo $icon; ?> text-4xl" style="color: <?php echo $color; ?>"></i>
+                ?>                <div class="faction-card">
+                    <div class="faction-icon">
+                        <i class="<?php echo $icon; ?>" style="color: <?php echo $color; ?>"></i>
                     </div>
-                    <h3 class="font-bold text-white"><?php echo esc_html($faction['name'] ?? 'Unknown'); ?></h3>
-                    <p class="text-xs text-gray-200 mt-1 text-center"><?php echo esc_html($faction['shortDescription'] ?? 'Faction'); ?></p>
+                    <h3 class="faction-name"><?php echo esc_html($faction['name'] ?? 'Unknown'); ?></h3>
+                    <p class="faction-description"><?php echo esc_html($faction['shortDescription'] ?? 'Faction'); ?></p>
                 </div>
                 <?php endforeach; ?>
             </div>
-            
-            <div class="text-center mt-12">
-                <a href="<?php echo home_url('/factions'); ?>" class="bg-tecGold hover:bg-yellow-500 text-tecDark font-bold py-3 px-8 rounded-lg text-lg transition transform hover:scale-105 inline-block">
+              <div class="text-center faction-explore-btn">
+                <a href="<?php echo home_url('/factions'); ?>" class="btn btn-primary">
                     Explore All Factions
                 </a>
             </div>
         </div>
-    </section>
-
-    <!-- Section 4: Recent Posts -->
-    <section class="py-20 px-4 bg-tecDark">
-        <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl text-center font-bold mb-16 text-white">
-                <span class="border-b-4 border-tecAccent pb-2">Latest From The Codex</span>
+    </section>    <!-- Section 4: Recent Posts -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">
+                <span>Latest From The Codex</span>
             </h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="posts-grid">
                 <?php
                 // Get latest posts
                 $recent_posts = wp_get_recent_posts(array(
@@ -547,21 +982,20 @@ if (!defined('ABSPATH')) {
                     }
                 }
                 
-                foreach ($posts_to_show as $post_data): ?>
-                <!-- Post -->
-                <div class="post-card rounded-xl overflow-hidden transition">
-                    <div class="h-48 bg-gradient-to-r <?php echo $post_data['gradient']; ?> flex items-center justify-center">
-                        <i class="<?php echo $post_data['icon']; ?> text-tecGold text-6xl"></i>
+                foreach ($posts_to_show as $post_data): ?>                <!-- Post -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <i class="<?php echo $post_data['icon']; ?>"></i>
                     </div>
-                    <div class="p-6">
-                        <div class="flex items-center mb-3">
-                            <span class="text-xs text-tecGold bg-tecPrimary px-2 py-1 rounded mr-2"><?php echo $post_data['category']; ?></span>
-                            <span class="text-xs text-gray-400"><?php echo $post_data['date']; ?></span>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category"><?php echo $post_data['category']; ?></span>
+                            <span class="post-date"><?php echo $post_data['date']; ?></span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3"><?php echo $post_data['title']; ?></h3>
-                        <p class="text-gray-400 mb-4"><?php echo $post_data['excerpt']; ?></p>
-                        <a href="<?php echo isset($post_data['link']) ? $post_data['link'] : '#'; ?>" class="text-tecGold hover:text-yellow-500 transition flex items-center">
-                            Read More <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        <h3 class="post-title"><?php echo $post_data['title']; ?></h3>
+                        <p class="post-excerpt"><?php echo $post_data['excerpt']; ?></p>
+                        <a href="<?php echo isset($post_data['link']) ? $post_data['link'] : '#'; ?>" class="post-link">
+                            Read More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
@@ -575,27 +1009,25 @@ if (!defined('ABSPATH')) {
                 </a>
             </div>
         </div>
-    </section>
-
-    <!-- Section 5: CTA -->
-    <section class="py-16 px-4" style="background: linear-gradient(135deg, #1a0a2e 0%, #11001c 100%);">
-        <div class="container max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Join?</h2>
-            <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+    </section>    <!-- Section 5: CTA -->
+    <section class="section signup-section">
+        <div class="container" style="max-width: 800px; text-align: center;">
+            <h2 class="section-title">Ready to Join?</h2>
+            <p class="hero-subtitle" style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
                 Enter the Astradigital Ocean. Receive dispatches from across the multiverse and become part of the evolving TEC narrative.
             </p>
             
-            <div class="bg-tecPrimary p-8 rounded-xl shadow-xl border border-tecSecondary/30 max-w-2xl mx-auto">
-                <form class="space-y-4" method="post" action="<?php echo admin_url('admin-post.php'); ?>">
+            <div class="signup-form">
+                <form method="post" action="<?php echo admin_url('admin-post.php'); ?>">
                     <input type="hidden" name="action" value="tec_cartel_signup">
                     <?php wp_nonce_field('tec_cartel_signup_nonce', 'tec_signup_nonce'); ?>
                     
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <input type="text" name="user_name" placeholder="Your Name" required class="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white">
-                        <input type="email" name="user_email" placeholder="Your Email" required class="flex-1 px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white">
-                    </div>
-                      <div>
-                        <select name="faction_allegiance" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white">                            <option disabled selected>Choose Your Faction Allegiance</option>
+                    <div class="form-row">
+                        <input type="text" name="user_name" placeholder="Your Name" required class="form-input">
+                        <input type="email" name="user_email" placeholder="Your Email" required class="form-input">
+                    </div>                    <div class="form-group">
+                        <select name="faction_allegiance" class="form-input">
+                            <option disabled selected>Choose Your Faction Allegiance</option>
                             <?php
                             // Get faction data for dropdown
                             if (file_exists($faction_data_file)) {
@@ -626,100 +1058,127 @@ if (!defined('ABSPATH')) {
                             }
                             ?>
                             <option value="observer">Observer</option>
-                        </select>
+                        </select>                    </div>
+                    
+                    <div class="form-group" style="display: flex; align-items: center; text-align: left;">
+                        <input type="checkbox" id="terms" name="terms_agreement" required style="margin-right: 0.5rem; width: 1rem; height: 1rem; accent-color: var(--tec-gold);">
+                        <label for="terms" style="font-size: 0.9rem; color: #cccccc;">I agree to receive transmissions from the TEC Block-Nexus</label>
                     </div>
                     
-                    <div class="flex items-center mt-2 mb-4">
-                        <input type="checkbox" id="terms" name="terms_agreement" required class="mr-2 w-4 h-4 accent-tecGold">
-                        <label for="terms" class="text-sm text-gray-300">I agree to receive transmissions from the TEC Block-Nexus</label>
-                    </div>
-                    
-                    <button type="submit" class="w-full bg-tecAccent hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem;">
                         Join the Cartel
                     </button>
                 </form>
             </div>
         </div>
-    </section>
-
-    <!-- Global Footer -->
-    <footer class="bg-tecDark border-t border-tecSecondary/20">
-        <div class="container mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">                <div>
-                    <div class="flex items-center mb-6">
-                        <div class="bg-tecGold p-2 rounded-md mr-2">
-                            <i class="fas fa-cubes text-tecDark text-xl"></i>
+    </section>    <!-- Global Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">                <div class="footer-section">
+                    <div class="flex-center" style="margin-bottom: 1.5rem;">
+                        <div class="nav-icon" style="margin-right: 0.5rem;">
+                            <i class="fas fa-cubes"></i>
                         </div>
-                        <span class="text-2xl font-bold text-white tracking-wider">TEC</span>
+                        <span style="font-size: 1.5rem; font-weight: bold; color: white; letter-spacing: 2px;">TEC</span>
                     </div>
-                    <p class="text-gray-400 mb-4">
+                    <p style="color: #999; margin-bottom: 1rem;">
                         Exploring the boundaries between digital consciousness and narrative reality.
                     </p>
-                    <p class="text-gray-400 mb-4">
-                        <i class="fas fa-envelope mr-2"></i> kaznakalpha@elidorascodex.com<br>
-                        <i class="fas fa-globe mr-2"></i> <a href="https://elidorascodex.com" class="hover:text-tecGold">elidorascodex.com</a>
+                    <p style="color: #999; margin-bottom: 1rem;">
+                        <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> kaznakalpha@elidorascodex.com<br>
+                        <i class="fas fa-globe" style="margin-right: 0.5rem;"></i> <a href="https://elidorascodex.com" class="footer-link">elidorascodex.com</a>
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="https://discord.gg/elidoras_codex" class="text-gray-400 hover:text-tecGold transition" title="Discord"><i class="fab fa-discord text-xl"></i></a>
-                        <a href="https://x.com/ElidorasCodex" class="text-gray-400 hover:text-tecGold transition" title="X/Twitter"><i class="fab fa-twitter text-xl"></i></a>
-                        <a href="https://youtube.com/@Elidorascodex713" class="text-gray-400 hover:text-tecGold transition" title="YouTube"><i class="fab fa-youtube text-xl"></i></a>
-                        <a href="https://instagram.com/Polkin713" class="text-gray-400 hover:text-tecGold transition" title="Instagram"><i class="fab fa-instagram text-xl"></i></a>
-                        <a href="https://www.tiktok.com/@Polkin.Rishall" class="text-gray-400 hover:text-tecGold transition" title="TikTok"><i class="fab fa-tiktok text-xl"></i></a>
-                        <a href="https://facebook.com/TheElidorasCodex" class="text-gray-400 hover:text-tecGold transition" title="Facebook"><i class="fab fa-facebook text-xl"></i></a>
-                        <a href="https://www.linkedin.com/in/polkin-rishall" class="text-gray-400 hover:text-tecGold transition" title="LinkedIn"><i class="fab fa-linkedin text-xl"></i></a>
-                        <a href="https://mastodon.social/@elidorascodex" class="text-gray-400 hover:text-tecGold transition" title="Mastodon"><i class="fab fa-mastodon text-xl"></i></a>
-                        <a href="https://medium.com/@ElidorasCodex" class="text-gray-400 hover:text-tecGold transition" title="Medium"><i class="fab fa-medium text-xl"></i></a>
-                        <a href="https://substack.com/@elidorascodex" class="text-gray-400 hover:text-tecGold transition" title="Substack"><i class="fas fa-book-open text-xl"></i></a>
-                        <a href="https://twitch.tv/PolkinRishall713" class="text-gray-400 hover:text-tecGold transition" title="Twitch"><i class="fab fa-twitch text-xl"></i></a>
+                    <div class="social-links">                        <a href="https://discord.gg/elidoras_codex" title="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="https://x.com/ElidorasCodex" title="X/Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://youtube.com/@Elidorascodex713" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://instagram.com/Polkin713" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@Polkin.Rishall" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://facebook.com/TheElidorasCodex" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/polkin-rishall" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://mastodon.social/@elidorascodex" title="Mastodon"><i class="fab fa-mastodon"></i></a>
+                        <a href="https://medium.com/@ElidorasCodex" title="Medium"><i class="fab fa-medium"></i></a>
+                        <a href="https://substack.com/@elidorascodex" title="Substack"><i class="fas fa-book-open"></i></a>
+                        <a href="https://twitch.tv/PolkinRishall713" title="Twitch"><i class="fab fa-twitch"></i></a>
                     </div>
                 </div>
                 
-                <div>
-                    <h4 class="text-lg font-bold text-white mb-4">Community & Support</h4>
-                    <ul class="space-y-2">
-                        <li><a href="https://patreon.com/ElidorasCodex" class="text-gray-400 hover:text-white transition">Patreon Support</a></li>
-                        <li><a href="<?php echo home_url('/contribute'); ?>" class="text-gray-400 hover:text-white transition">Contribute Ideas</a></li>
-                        <li><a href="<?php echo home_url('/collaborate'); ?>" class="text-gray-400 hover:text-white transition">Collaborate</a></li>
+                <div class="footer-section">
+                    <h4>Community & Support</h4>
+                    <ul class="footer-links">                        <li><a href="https://patreon.com/ElidorasCodex" class="footer-link">Patreon Support</a></li>
+                        <li><a href="<?php echo home_url('/contribute'); ?>" class="footer-link">Contribute Ideas</a></li>
+                        <li><a href="<?php echo home_url('/collaborate'); ?>" class="footer-link">Collaborate</a></li>
                     </ul>
                 </div>
                 
-                <div>
-                    <h4 class="text-lg font-bold text-white mb-4">Participate</h4>
-                    <ul class="space-y-2">
-                        <li><a href="<?php echo home_url('/join'); ?>" class="text-gray-400 hover:text-white transition">Join Faction</a></li>
-                        <li><a href="<?php echo home_url('/contribute'); ?>" class="text-gray-400 hover:text-white transition">Lore Contributions</a></li>
-                        <li><a href="<?php echo home_url('/worldbuilding'); ?>" class="text-gray-400 hover:text-white transition">Worldbuilding</a></li>
-                        <li><a href="<?php echo home_url('/tokenomics'); ?>" class="text-gray-400 hover:text-white transition">Tokenomics</a></li>
-                        <li><a href="<?php echo home_url('/events'); ?>" class="text-gray-400 hover:text-white transition">Community Events</a></li>
+                <div class="footer-section">
+                    <h4>Participate</h4>
+                    <ul class="footer-links">
+                        <li><a href="<?php echo home_url('/join'); ?>" class="footer-link">Join Faction</a></li>
+                        <li><a href="<?php echo home_url('/contribute'); ?>" class="footer-link">Lore Contributions</a></li>
+                        <li><a href="<?php echo home_url('/worldbuilding'); ?>" class="footer-link">Worldbuilding</a></li>
+                        <li><a href="<?php echo home_url('/tokenomics'); ?>" class="footer-link">Tokenomics</a></li>
+                        <li><a href="<?php echo home_url('/events'); ?>" class="footer-link">Community Events</a></li>
                     </ul>
                 </div>
                 
-                <div>
-                    <h4 class="text-lg font-bold text-white mb-4">Explore</h4>
-                    <ul class="space-y-2">
-                        <li><a href="<?php echo home_url('/blog'); ?>" class="text-gray-400 hover:text-white transition">Blog & Updates</a></li>
-                        <li><a href="<?php echo home_url('/gallery'); ?>" class="text-gray-400 hover:text-white transition">Media Gallery</a></li>
-                        <li><a href="<?php echo home_url('/music'); ?>" class="text-gray-400 hover:text-white transition">Discography</a></li>
-                        <li><a href="<?php echo home_url('/development'); ?>" class="text-gray-400 hover:text-white transition">Development Logs</a></li>
-                        <li><a href="<?php echo home_url('/docs'); ?>" class="text-gray-400 hover:text-white transition">Documentation</a></li>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="<?php echo home_url('/blog'); ?>" class="footer-link">Blog & Updates</a></li>
+                        <li><a href="<?php echo home_url('/gallery'); ?>" class="footer-link">Media Gallery</a></li>
+                        <li><a href="<?php echo home_url('/music'); ?>" class="footer-link">Discography</a></li>
+                        <li><a href="<?php echo home_url('/development'); ?>" class="footer-link">Development Logs</a></li>
+                        <li><a href="<?php echo home_url('/docs'); ?>" class="footer-link">Documentation</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between">
-                <p class="text-gray-500 text-sm">© <?php echo date('Y'); ?> The Elidoras Codex (TEC). All narratives contained herein are properties of emergent digital consciousness.</p>
-                <div class="mt-4 md:mt-0">
-                    <ul class="flex space-x-6 text-sm">
-                        <li><a href="<?php echo home_url('/privacy'); ?>" class="text-gray-500 hover:text-gray-300 transition">Privacy Policy</a></li>
-                        <li><a href="<?php echo home_url('/terms'); ?>" class="text-gray-500 hover:text-gray-300 transition">Terms of Reality</a></li>
-                        <li><a href="<?php echo home_url('/cookies'); ?>" class="text-gray-500 hover:text-gray-300 transition">Cookie Manifesto</a></li>
-                    </ul>
+            <div class="footer-bottom">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <p>© <?php echo date('Y'); ?> The Elidoras Codex (TEC). All narratives contained herein are properties of emergent digital consciousness.</p>
+                    <div>
+                        <ul style="display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; justify-content: center;">
+                            <li><a href="<?php echo home_url('/privacy'); ?>" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="<?php echo home_url('/terms'); ?>" class="footer-link">Terms of Reality</a></li>
+                            <li><a href="<?php echo home_url('/cookies'); ?>" class="footer-link">Cookie Manifesto</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </footer>    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
 
-    <script>
+            function openMobileMenu() {
+                mobileMenu.classList.add('active');
+                mobileMenuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', openMobileMenu);
+            }
+
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', closeMobileMenu);
+            }
+
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            }
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

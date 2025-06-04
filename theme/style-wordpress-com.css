@@ -55,40 +55,15 @@ h4 { font-size: 1.5rem; }
     padding: 0 1rem;
 }
 
-.section {
-    padding: 5rem 0;
-}
-
-.section-alt {
-    background: var(--tec-primary);
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: var(--tec-gold);
-    margin: 1rem auto;
-}
-
-/* Grid System */
 .grid {
     display: grid;
     gap: 2rem;
 }
 
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-6 { grid-template-columns: repeat(6, 1fr); }
 
-/* Flexbox Utilities */
 .flex {
     display: flex;
 }
@@ -103,6 +78,10 @@ h4 { font-size: 1.5rem; }
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
 }
 
 .flex-col {
@@ -172,40 +151,6 @@ h4 { font-size: 1.5rem; }
     color: white;
 }
 
-/* Buttons */
-.btn {
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background: var(--tec-accent);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: #6a1ae0;
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--tec-gold);
-    border: 2px solid var(--tec-gold);
-}
-
-.btn-secondary:hover {
-    background: var(--tec-gold);
-    color: var(--tec-dark);
-}
-
 /* Hero Section */
 .hero-section {
     height: 100vh;
@@ -244,11 +189,68 @@ h4 { font-size: 1.5rem; }
     animation: fadeInUp 1s ease 0.6s both;
 }
 
+/* Buttons */
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--tec-accent);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #6a1ae0;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--tec-gold);
+    border: 2px solid var(--tec-gold);
+}
+
+.btn-secondary:hover {
+    background: var(--tec-gold);
+    color: var(--tec-dark);
+}
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+}
+
+.section-alt {
+    background: var(--tec-primary);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: var(--tec-gold);
+    margin: 1rem auto;
+}
+
 /* Faction Cards */
 .faction-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
     padding: 2rem 0;
 }
 
@@ -263,7 +265,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .faction-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-10px);
     border-color: var(--tec-gold);
     box-shadow: 0 20px 40px rgba(74, 0, 224, 0.3);
 }
@@ -278,33 +280,10 @@ h4 { font-size: 1.5rem; }
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    transition: all 0.3s ease;
-}
-
-.faction-icon:hover {
-    transform: scale(1.2);
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
-}
-
-.faction-name {
-    color: white;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.faction-description {
-    color: #ccc;
-    font-size: 0.8rem;
-    text-align: center;
-}
-
-.faction-explore-btn {
-    margin-top: 3rem;
-    text-align: center;
 }
 
 /* Post Cards */
-.posts-grid {
+.post-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
@@ -316,16 +295,14 @@ h4 { font-size: 1.5rem; }
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
 .post-card:hover {
     transform: translateY(-5px);
     border-color: var(--tec-gold);
-    box-shadow: 0 20px 25px -5px rgba(156, 137, 184, 0.3);
 }
 
-.post-image {
+.post-header {
     height: 200px;
     background: var(--tec-gradient);
     display: flex;
@@ -344,47 +321,20 @@ h4 { font-size: 1.5rem; }
     gap: 1rem;
     margin-bottom: 1rem;
     font-size: 0.8rem;
-}
-
-.post-category {
-    background: var(--tec-primary);
-    color: var(--tec-gold);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-.post-date {
     color: #999;
 }
 
 .post-title {
     margin-bottom: 1rem;
     color: white;
-    font-size: 1.25rem;
-    font-weight: bold;
 }
 
 .post-excerpt {
     color: #ccc;
     margin-bottom: 1rem;
-    line-height: 1.5;
 }
 
-.post-link {
-    color: var(--tec-gold);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color 0.3s ease;
-}
-
-.post-link:hover {
-    color: white;
-}
-
-/* Forms */
+/* Signup Form */
 .signup-section {
     background: linear-gradient(135deg, #1a0a2e 0%, #11001c 100%);
 }
@@ -449,22 +399,14 @@ h4 { font-size: 1.5rem; }
     margin-bottom: 0.5rem;
 }
 
-.footer-link {
+.footer-links a {
     color: #999;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.footer-link:hover {
+.footer-links a:hover {
     color: var(--tec-gold);
-}
-
-.footer-bottom {
-    border-top: 1px solid #333;
-    padding-top: 1rem;
-    margin-top: 2rem;
-    color: #666;
-    font-size: 0.9rem;
 }
 
 .social-links {
@@ -481,6 +423,14 @@ h4 { font-size: 1.5rem; }
 
 .social-links a:hover {
     color: var(--tec-gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
 }
 
 /* Mobile Menu */
@@ -528,14 +478,6 @@ h4 { font-size: 1.5rem; }
     visibility: visible;
 }
 
-.mobile-menu-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -555,37 +497,6 @@ h4 { font-size: 1.5rem; }
 
 .floating {
     animation: float 6s ease-in-out infinite;
-}
-
-.glow {
-    text-shadow: 0 0 10px rgba(249, 168, 38, 0.8);
-}
-
-/* WordPress Specific */
-.wp-caption {
-    max-width: 100%;
-}
-
-.wp-caption-text {
-    text-align: center;
-    margin-top: 0.5rem;
-    font-style: italic;
-    color: #999;
-}
-
-.alignleft {
-    float: left;
-    margin: 0 1rem 1rem 0;
-}
-
-.alignright {
-    float: right;
-    margin: 0 0 1rem 1rem;
-}
-
-.aligncenter {
-    display: block;
-    margin: 0 auto;
 }
 
 /* Responsive Design */
@@ -615,13 +526,9 @@ h4 { font-size: 1.5rem; }
         align-items: center;
     }
     
-    .hero-section {
-        height: 90vh;
-    }
-    
-    .grid-2,
     .grid-3,
-    .grid-4 {
+    .grid-4,
+    .grid-6 {
         grid-template-columns: 1fr;
     }
     
@@ -630,7 +537,7 @@ h4 { font-size: 1.5rem; }
     }
     
     .faction-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
     
     h1 { font-size: 2rem; }
@@ -649,5 +556,62 @@ h4 { font-size: 1.5rem; }
     
     .section {
         padding: 3rem 0;
+    }
+}
+
+/* WordPress specific styles */
+.wp-caption {
+    max-width: 100%;
+}
+
+.wp-caption-text {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #999;
+}
+
+.alignleft {
+    float: left;
+    margin: 0 1rem 1rem 0;
+}
+
+.alignright {
+    float: right;
+    margin: 0 0 1rem 1rem;
+}
+
+.aligncenter {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Form validation states */
+.form-input:invalid {
+    border-color: #ff4444;
+}
+
+.form-input:valid {
+    border-color: #44ff44;
+}
+
+/* Loading states */
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Print styles */
+@media print {
+    .site-header,
+    .mobile-menu,
+    .signup-section,
+    .site-footer {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
     }
 }
