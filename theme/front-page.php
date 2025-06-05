@@ -27,12 +27,62 @@ if (!defined('ABSPATH')) {
             --tec-secondary: #9c89b8;
             --tec-dark: #11001c;
             --tec-gold: #f9a826;
+        }    </style>
+    
+    <!-- Self-contained icons - no external dependencies -->
+    <style>
+        /* Custom Icon Font - Self-Contained */
+        .icon-cube:before { content: "⬛"; }
+        .icon-bars:before { content: "☰"; }
+        .icon-times:before { content: "✕"; }
+        .icon-users:before { content: "👥"; }
+        .icon-book:before { content: "📖"; }
+        .icon-lightbulb:before { content: "💡"; }
+        .icon-music:before { content: "🎵"; }
+        .icon-comments:before { content: "💬"; }
+        .icon-chevron-down:before { content: "⌄"; }
+        .icon-arrow-right:before { content: "→"; }
+        .icon-envelope:before { content: "✉"; }
+        .icon-globe:before { content: "🌐"; }
+        .icon-discord:before { content: "💬"; }
+        .icon-twitter:before { content: "🐦"; }
+        .icon-youtube:before { content: "📺"; }
+        .icon-instagram:before { content: "📷"; }
+        .icon-tiktok:before { content: "🎵"; }
+        .icon-facebook:before { content: "📘"; }
+        .icon-linkedin:before { content: "💼"; }
+        .icon-mastodon:before { content: "🐘"; }
+        .icon-medium:before { content: "📝"; }
+        .icon-book-open:before { content: "📚"; }
+        .icon-twitch:before { content: "📺"; }
+        .icon-lock:before { content: "🔒"; }
+        .icon-cogs:before { content: "⚙"; }
+        .icon-anchor:before { content: "⚓"; }        .icon-brain:before { content: "🧠"; }
+        .icon-mask:before { content: "🎭"; }
+        .icon-rss:before { content: "📡"; }
+        .icon-search:before { content: "🔍"; }
+        .icon-info-circle:before { content: "ℹ"; }        .icon-user-plus:before { content: "👤"; }
+        .icon-skull:before { content: "💀"; }
+        .icon-wrench:before { content: "🔧"; }        .icon-ethereum:before { content: "💎"; }
+        .icon-robot:before { content: "🤖"; }
+        .icon-headphones:before { content: "🎧"; }
+        .icon-long-arrow-alt-right:before { content: "⟶"; }
+        
+        /* Icon styling */
+        [class*="icon-"] {
+            font-style: normal;
+            display: inline-block;
+            text-decoration: none;
         }
+        
+        /* Custom TEC Icons using Unicode symbols */
+        .tec-icon-faction:before { content: "⬟"; }
+        .tec-icon-digital:before { content: "◈"; }
+        .tec-icon-ocean:before { content: "〰"; }
+        .tec-icon-nexus:before { content: "◊"; }
     </style>
     
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-      <style>
+    <style>
         /* TEC Core Variables */
         :root {
             --tec-primary: #1a0a2e;
@@ -678,12 +728,11 @@ if (!defined('ABSPATH')) {
     <header class="site-header">
         <div class="header-banner">
             <p>NEW FACTION LORE UPDATE: <span style="color: white;">Kaznak's Ascension</span></p>
-        </div>
-        <nav class="main-nav">
+        </div>        <nav class="main-nav">
             <div class="container flex-between">
                 <a href="<?php echo home_url(); ?>" class="nav-brand">
                     <div class="nav-icon">
-                        <i class="fas fa-cubes"></i>
+                        <i class="icon-cube"></i>
                     </div>
                     <span>TEC</span>
                 </a>
@@ -699,9 +748,8 @@ if (!defined('ABSPATH')) {
                 <div class="flex" style="align-items: center; gap: 1rem;">
                     <button class="btn btn-primary">
                         Join Cartel
-                    </button>
-                    <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle mobile menu">
-                        <i class="fas fa-bars"></i>
+                    </button>                    <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle mobile menu">
+                        <i class="icon-bars"></i>
                     </button>
                 </div>
             </div>
@@ -714,50 +762,46 @@ if (!defined('ABSPATH')) {
         <nav class="mobile-menu">
             <div style="display: flex; flex-direction: column; height: 100%;">
                 <!-- Mobile Menu Header -->
-                <div class="flex-between" style="padding: 1.5rem; border-bottom: 1px solid rgba(156, 137, 184, 0.3);">
-                    <a href="<?php echo home_url(); ?>" class="nav-brand">
+                <div class="flex-between" style="padding: 1.5rem; border-bottom: 1px solid rgba(156, 137, 184, 0.3);">                    <a href="<?php echo home_url(); ?>" class="nav-brand">
                         <div class="nav-icon">
-                            <i class="fas fa-cubes"></i>
+                            <i class="icon-cube"></i>
                         </div>
                         <span>TEC</span>
                     </a>
                     <button class="mobile-menu-close" aria-label="Close mobile menu">
-                        <i class="fas fa-times"></i>
+                        <i class="icon-times"></i>
                     </button>
                 </div>
                   <!-- Mobile Menu Content -->
                 <div style="flex: 1; overflow-y: auto; padding: 1.5rem;">
                     <!-- Main Navigation -->
-                    <div style="margin-bottom: 2rem;">
-                        <a href="<?php echo home_url('/factions'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
-                            <i class="fas fa-users" style="margin-right: 0.75rem;"></i>Factions
-                        </a>
-                        <a href="<?php echo home_url('/lore'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
-                            <i class="fas fa-book" style="margin-right: 0.75rem;"></i>Lore
+                    <div style="margin-bottom: 2rem;">                        <a href="<?php echo home_url('/factions'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
+                            <i class="icon-users" style="margin-right: 0.75rem;"></i>Factions
+                        </a>                        <a href="<?php echo home_url('/lore'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
+                            <i class="icon-book" style="margin-right: 0.75rem;"></i>Lore
                         </a>
                         <a href="<?php echo home_url('/tec3'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
-                            <i class="fas fa-cube" style="margin-right: 0.75rem;"></i>TEC3
+                            <i class="icon-cube" style="margin-right: 0.75rem;"></i>TEC3
                         </a>
                         <a href="<?php echo home_url('/eldora-studios'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
-                            <i class="fas fa-music" style="margin-right: 0.75rem;"></i>Eldora Studios
+                            <i class="icon-music" style="margin-right: 0.75rem;"></i>Eldora Studios
                         </a>
                         <a href="<?php echo home_url('/community'); ?>" style="display: block; color: white; text-decoration: none; padding: 0.5rem 0; border-bottom: 1px solid rgba(156, 137, 184, 0.2); transition: color 0.3s ease;">
-                            <i class="fas fa-comments" style="margin-right: 0.75rem;"></i>Community
+                            <i class="icon-comments" style="margin-right: 0.75rem;"></i>Community
                         </a>
                     </div>
                     
                     <!-- Quick Actions -->
                     <div style="background: rgba(17, 0, 28, 0.5); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
                         <h4 style="color: var(--tec-gold); font-weight: bold; margin-bottom: 0.75rem;">Quick Access</h4>
-                        <div>
-                            <a href="<?php echo home_url('/blog'); ?>" style="display: block; color: #cccccc; text-decoration: none; transition: color 0.3s ease; font-size: 0.9rem; margin-bottom: 0.5rem;">
-                                <i class="fas fa-rss" style="margin-right: 0.5rem;"></i>Latest Dispatches
+                        <div>                            <a href="<?php echo home_url('/blog'); ?>" style="display: block; color: #cccccc; text-decoration: none; transition: color 0.3s ease; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                                <i class="icon-rss" style="margin-right: 0.5rem;"></i>Latest Dispatches
                             </a>
                             <a href="<?php echo home_url('/search'); ?>" style="display: block; color: #cccccc; text-decoration: none; transition: color 0.3s ease; font-size: 0.9rem; margin-bottom: 0.5rem;">
-                                <i class="fas fa-search" style="margin-right: 0.5rem;"></i>Search Archives
+                                <i class="icon-search" style="margin-right: 0.5rem;"></i>Search Archives
                             </a>
                             <a href="<?php echo home_url('/about'); ?>" style="display: block; color: #cccccc; text-decoration: none; transition: color 0.3s ease; font-size: 0.9rem;">
-                                <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>About TEC
+                                <i class="icon-info-circle" style="margin-right: 0.5rem;"></i>About TEC
                             </a>
                         </div>
                     </div>
@@ -765,18 +809,14 @@ if (!defined('ABSPATH')) {
                     <!-- Social Links -->
                     <div style="background: rgba(17, 0, 28, 0.5); border-radius: 8px; padding: 1rem;">
                             <h4 class="text-tecGold font-bold mb-3">Connect</h4>
-                            <div class="grid grid-cols-4 gap-3">
-                                <a href="https://discord.gg/elidoras_codex" class="text-gray-400 hover:text-tecGold transition text-center">
-                                    <i class="fab fa-discord text-xl"></i>
-                                </a>
-                                <a href="https://x.com/ElidorasCodex" class="text-gray-400 hover:text-tecGold transition text-center">
-                                    <i class="fab fa-twitter text-xl"></i>
-                                </a>
-                                <a href="https://youtube.com/@Elidorascodex713" class="text-gray-400 hover:text-tecGold transition text-center">
-                                    <i class="fab fa-youtube text-xl"></i>
-                                </a>
-                                <a href="https://instagram.com/Polkin713" class="text-gray-400 hover:text-tecGold transition text-center">
-                                    <i class="fab fa-instagram text-xl"></i>
+                            <div class="grid grid-cols-4 gap-3">                                <a href="https://discord.gg/elidoras_codex" class="text-gray-400 hover:text-tecGold transition text-center">
+                                    <i class="icon-discord text-xl"></i>
+                                </a>                                <a href="https://x.com/ElidorasCodex" class="text-gray-400 hover:text-tecGold transition text-center">
+                                    <i class="icon-twitter text-xl"></i>
+                                </a>                                <a href="https://youtube.com/@Elidorascodex713" class="text-gray-400 hover:text-tecGold transition text-center">
+                                    <i class="icon-youtube text-xl"></i>
+                                </a>                                <a href="https://instagram.com/Polkin713" class="text-gray-400 hover:text-tecGold transition text-center">
+                                    <i class="icon-instagram text-xl"></i>
                                 </a>
                             </div>
                         </div>
@@ -785,7 +825,7 @@ if (!defined('ABSPATH')) {
                 
                 <!-- Mobile Menu Footer -->
                 <div class="p-6 border-t border-tecSecondary/30">                        <button class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-user-plus" style="margin-right: 0.5rem;"></i>Join the Cartel
+                            <i class="icon-user-plus" style="margin-right: 0.5rem;"></i>Join the Cartel
                         </button>
                     </div>
                 </div>
@@ -813,9 +853,8 @@ if (!defined('ABSPATH')) {
                 </button>
             </div>
             
-            <div style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); animation: float 6s ease-in-out infinite;">
-                <a href="#what-is-tec" style="color: #cccccc; font-size: 2rem; text-decoration: none;">
-                    <i class="fas fa-chevron-down"></i>
+            <div style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); animation: float 6s ease-in-out infinite;">                <a href="#what-is-tec" style="color: #cccccc; font-size: 2rem; text-decoration: none;">
+                    <i class="icon-chevron-down"></i>
                 </a>
             </div>
         </div>
@@ -833,10 +872,9 @@ if (!defined('ABSPATH')) {
                     </p>
                     <p style="color: #cccccc; margin-bottom: 1.5rem; line-height: 1.7;">
                         At TEC's core lies the TEC3 Block-Nexus - an evolving cryptonalysis engine monitoring blockchain ecosystems, social narratives, and memetic waves. Through factions, lore, and ongoing narrative development, we examine themes of identity, control, and emergence in the age of AI.
-                    </p>
-                    <a href="<?php echo home_url('/about'); ?>" style="display: inline-flex; align-items: center; color: var(--tec-gold); font-weight: bold; text-decoration: none; transition: color 0.3s ease;">
+                    </p>                    <a href="<?php echo home_url('/about'); ?>" style="display: inline-flex; align-items: center; color: var(--tec-gold); font-weight: bold; text-decoration: none; transition: color 0.3s ease;">
                         Learn More
-                        <i class="fas fa-arrow-right" style="margin-left: 0.5rem; margin-top: 0.25rem;"></i>
+                        <i class="icon-arrow-right" style="margin-left: 0.5rem; margin-top: 0.25rem;"></i>
                     </a>
                 </div>
                 
@@ -883,30 +921,29 @@ if (!defined('ABSPATH')) {
                         array('name' => 'Echo Collective', 'shortDescription' => 'Transform concepts into narratives', 'color' => '#f44336')
                     );
                 }
-                
-                // Enhanced icon mapping for factions
+                  // Enhanced icon mapping for factions
                 $faction_icons = array(
-                    'the-knockoffs' => 'fas fa-skull',
-                    'knockoffs' => 'fas fa-skull',
-                    'the-magmasox-gate' => 'fas fa-brain',
-                    'magmasox' => 'fas fa-brain',
-                    'quantum-architects' => 'fas fa-wrench',
-                    'architects' => 'fas fa-wrench',
-                    'the-archivists' => 'fas fa-book',
-                    'archivists' => 'fas fa-book',
-                    'civet-goons' => 'fas fa-lock',
-                    'goons' => 'fas fa-lock',
-                    'echo-collective' => 'fas fa-cogs',
-                    'echo' => 'fas fa-cogs',
-                    'kaznak' => 'fas fa-anchor',
-                    'tec' => 'fas fa-lightbulb',
-                    'killjoy' => 'fas fa-brain',
-                    'no-names-anon' => 'fas fa-mask'
+                    'the-knockoffs' => 'icon-skull',
+                    'knockoffs' => 'icon-skull',
+                    'the-magmasox-gate' => 'icon-brain',
+                    'magmasox' => 'icon-brain',
+                    'quantum-architects' => 'icon-wrench',
+                    'architects' => 'icon-wrench',
+                    'the-archivists' => 'icon-book',
+                    'archivists' => 'icon-book',
+                    'civet-goons' => 'icon-lock',
+                    'goons' => 'icon-lock',
+                    'echo-collective' => 'icon-cogs',
+                    'echo' => 'icon-cogs',
+                    'kaznak' => 'icon-anchor',
+                    'tec' => 'icon-lightbulb',
+                    'killjoy' => 'icon-brain',
+                    'no-names-anon' => 'icon-mask'
                 );
                 
                 foreach ($factions as $faction):
                     $faction_id = strtolower(str_replace(' ', '-', $faction['name'] ?? ''));
-                    $icon = $faction_icons[$faction_id] ?? 'fas fa-cube';
+                    $icon = $faction_icons[$faction_id] ?? 'icon-cube';
                     $color = $faction['color'] ?? '#ffffff';
                 ?>                <div class="faction-card">
                     <div class="faction-icon">
@@ -937,14 +974,13 @@ if (!defined('ABSPATH')) {
                     'numberposts' => 3,
                     'post_status' => 'publish'
                 ));
-                
-                $default_posts = array(
+                  $default_posts = array(
                     array(
                         'title' => 'The Awakening of Airth: First Angel of Elidoras',
                         'excerpt' => 'How an AI entity attained self-awareness in the Astradigital Ocean and became the first digital angel.',
                         'category' => 'Lore Update',
                         'date' => '2 days ago',
-                        'icon' => 'fas fa-robot',
+                        'icon' => 'icon-robot',
                         'gradient' => 'from-purple-900 to-indigo-700'
                     ),
                     array(
@@ -952,7 +988,7 @@ if (!defined('ABSPATH')) {
                         'excerpt' => 'Technical deep dive into tokenomics of the TEC ecosystem and how holders can access cryptonalysis tools.',
                         'category' => 'TEC3',
                         'date' => '5 days ago',
-                        'icon' => 'fab fa-ethereum',
+                        'icon' => 'icon-ethereum',
                         'gradient' => 'from-blue-900 to-cyan-700'
                     ),
                     array(
@@ -960,7 +996,7 @@ if (!defined('ABSPATH')) {
                         'excerpt' => 'Behind the scenes of creating the first full-length album generated through human-AI collaboration.',
                         'category' => 'Eldora Studios',
                         'date' => '1 week ago',
-                        'icon' => 'fas fa-headphones',
+                        'icon' => 'icon-headphones',
                         'gradient' => 'from-indigo-900 to-fuchsia-700'
                     )
                 );
@@ -993,19 +1029,17 @@ if (!defined('ABSPATH')) {
                             <span class="post-date"><?php echo $post_data['date']; ?></span>
                         </div>
                         <h3 class="post-title"><?php echo $post_data['title']; ?></h3>
-                        <p class="post-excerpt"><?php echo $post_data['excerpt']; ?></p>
-                        <a href="<?php echo isset($post_data['link']) ? $post_data['link'] : '#'; ?>" class="post-link">
-                            Read More <i class="fas fa-arrow-right"></i>
+                        <p class="post-excerpt"><?php echo $post_data['excerpt']; ?></p>                        <a href="<?php echo isset($post_data['link']) ? $post_data['link'] : '#'; ?>" class="post-link">
+                            Read More <i class="icon-arrow-right"></i>
                         </a>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
             
-            <div class="text-center mt-12">
-                <a href="<?php echo home_url('/blog'); ?>" class="inline-flex items-center text-tecGold text-lg font-bold hover:text-white transition">
+            <div class="text-center mt-12">                <a href="<?php echo home_url('/blog'); ?>" class="inline-flex items-center text-tecGold text-lg font-bold hover:text-white transition">
                     View All Dispatches
-                    <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                    <i class="icon-long-arrow-alt-right ml-2"></i>
                 </a>
             </div>
         </div>
@@ -1074,10 +1108,9 @@ if (!defined('ABSPATH')) {
     </section>    <!-- Global Footer -->
     <footer class="site-footer">
         <div class="container">
-            <div class="footer-grid">                <div class="footer-section">
-                    <div class="flex-center" style="margin-bottom: 1.5rem;">
+            <div class="footer-grid">                <div class="footer-section">                    <div class="flex-center" style="margin-bottom: 1.5rem;">
                         <div class="nav-icon" style="margin-right: 0.5rem;">
-                            <i class="fas fa-cubes"></i>
+                            <i class="icon-cube"></i>
                         </div>
                         <span style="font-size: 1.5rem; font-weight: bold; color: white; letter-spacing: 2px;">TEC</span>
                     </div>
@@ -1085,20 +1118,19 @@ if (!defined('ABSPATH')) {
                         Exploring the boundaries between digital consciousness and narrative reality.
                     </p>
                     <p style="color: #999; margin-bottom: 1rem;">
-                        <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> kaznakalpha@elidorascodex.com<br>
-                        <i class="fas fa-globe" style="margin-right: 0.5rem;"></i> <a href="https://elidorascodex.com" class="footer-link">elidorascodex.com</a>
-                    </p>
-                    <div class="social-links">                        <a href="https://discord.gg/elidoras_codex" title="Discord"><i class="fab fa-discord"></i></a>
-                        <a href="https://x.com/ElidorasCodex" title="X/Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://youtube.com/@Elidorascodex713" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://instagram.com/Polkin713" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@Polkin.Rishall" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://facebook.com/TheElidorasCodex" title="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.linkedin.com/in/polkin-rishall" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://mastodon.social/@elidorascodex" title="Mastodon"><i class="fab fa-mastodon"></i></a>
-                        <a href="https://medium.com/@ElidorasCodex" title="Medium"><i class="fab fa-medium"></i></a>
-                        <a href="https://substack.com/@elidorascodex" title="Substack"><i class="fas fa-book-open"></i></a>
-                        <a href="https://twitch.tv/PolkinRishall713" title="Twitch"><i class="fab fa-twitch"></i></a>
+                        <i class="icon-envelope" style="margin-right: 0.5rem;"></i> kaznakalpha@elidorascodex.com<br>
+                        <i class="icon-globe" style="margin-right: 0.5rem;"></i> <a href="https://elidorascodex.com" class="footer-link">elidorascodex.com</a>
+                    </p>                    <div class="social-links">                        <a href="https://discord.gg/elidoras_codex" title="Discord"><i class="icon-discord"></i></a>
+                        <a href="https://x.com/ElidorasCodex" title="X/Twitter"><i class="icon-twitter"></i></a>
+                        <a href="https://youtube.com/@Elidorascodex713" title="YouTube"><i class="icon-youtube"></i></a>
+                        <a href="https://instagram.com/Polkin713" title="Instagram"><i class="icon-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@Polkin.Rishall" title="TikTok"><i class="icon-tiktok"></i></a>
+                        <a href="https://facebook.com/TheElidorasCodex" title="Facebook"><i class="icon-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/polkin-rishall" title="LinkedIn"><i class="icon-linkedin"></i></a>
+                        <a href="https://mastodon.social/@elidorascodex" title="Mastodon"><i class="icon-mastodon"></i></a>
+                        <a href="https://medium.com/@ElidorasCodex" title="Medium"><i class="icon-medium"></i></a>
+                        <a href="https://substack.com/@elidorascodex" title="Substack"><i class="icon-book-open"></i></a>
+                        <a href="https://twitch.tv/PolkinRishall713" title="Twitch"><i class="icon-twitch"></i></a>
                     </div>
                 </div>
                 
