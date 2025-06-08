@@ -22,9 +22,8 @@ if (post_password_required()) {
 ?>
 
 <div id="comments" class="comments-area">
-    <?php if (have_comments()): ?>
-        <h3 class="comments-title text-2xl font-bold text-white mb-8 font-orbitron uppercase">
-            <i class="fas fa-comments mr-2 text-tecGold"></i>
+    <?php if (have_comments()): ?>        <h3 class="tec-comments-title">
+            <i class="icon-comments"></i>
             <?php
             $comments_number = get_comments_number();
             if ($comments_number == 1) {
@@ -51,26 +50,24 @@ if (post_password_required()) {
         $prev_link = get_previous_comments_link('← Previous Transmissions');
         $next_link = get_next_comments_link('Next Transmissions →');
         
-        if ($prev_link || $next_link): ?>
-            <nav class="comment-navigation flex justify-between items-center py-6 border-t border-tecSecondary/20">
-                <div class="nav-previous">
+        if ($prev_link || $next_link): ?>            <nav class="tec-comment-navigation">
+                <div class="tec-nav-previous">
                     <?php if ($prev_link): ?>
-                        <?php echo str_replace('<a ', '<a class="text-tecGold hover:text-white transition" ', $prev_link); ?>
+                        <?php echo str_replace('<a ', '<a class="tec-nav-link" ', $prev_link); ?>
                     <?php endif; ?>
                 </div>
-                <div class="nav-next">
+                <div class="tec-nav-next">
                     <?php if ($next_link): ?>
-                        <?php echo str_replace('<a ', '<a class="text-tecGold hover:text-white transition" ', $next_link); ?>
+                        <?php echo str_replace('<a ', '<a class="tec-nav-link" ', $next_link); ?>
                     <?php endif; ?>
                 </div>
             </nav>
         <?php endif;
     endif; ?>
 
-    <?php if (!comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')): ?>
-        <div class="no-comments bg-tecPrimary/60 backdrop-blur-md rounded-xl p-6 border border-tecSecondary/30">
-            <i class="fas fa-lock text-tecGold text-2xl mb-4"></i>
-            <p class="text-gray-400">Transmission channels are currently closed for this dispatch.</p>
+    <?php if (!comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')): ?>        <div class="tec-no-comments">
+            <i class="icon-lock"></i>
+            <p class="tec-no-comments-text">Transmission channels are currently closed for this dispatch.</p>
         </div>
     <?php endif; ?>
 
@@ -80,38 +77,37 @@ if (post_password_required()) {
         $commenter = wp_get_current_commenter();
         $req = get_option('require_name_email');
         $aria_req = ($req ? ' aria-required="true"' : '');
-        
-        $comment_form_args = array(
-            'title_reply' => '<i class="fas fa-broadcast-tower mr-2 text-tecGold"></i>Transmit Your Signal',
+          $comment_form_args = array(
+            'title_reply' => '<i class="icon-broadcast-tower"></i>Transmit Your Signal',
             'title_reply_to' => 'Respond to %s',
             'cancel_reply_link' => 'Cancel Transmission',
             'label_submit' => 'Send Transmission',
-            'comment_field' => '<div class="comment-form-comment mb-6">
-                <label for="comment" class="block text-white font-bold mb-2">Your Message <span class="text-tecGold">*</span></label>
-                <textarea id="comment" name="comment" rows="6" aria-required="true" placeholder="Encode your transmission..." class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white resize-none"></textarea>
+            'comment_field' => '<div class="tec-comment-field">
+                <label for="comment" class="tec-form-label">Your Message <span class="tec-required">*</span></label>
+                <textarea id="comment" name="comment" rows="6" aria-required="true" placeholder="Encode your transmission..." class="tec-textarea"></textarea>
             </div>',
             'fields' => array(
-                'author' => '<div class="comment-form-author mb-6">
-                    <label for="author" class="block text-white font-bold mb-2">Agent ID ' . ($req ? '<span class="text-tecGold">*</span>' : '') . '</label>
-                    <input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" placeholder="Your callsign..." class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white"' . $aria_req . ' />
+                'author' => '<div class="tec-form-field">
+                    <label for="author" class="tec-form-label">Agent ID ' . ($req ? '<span class="tec-required">*</span>' : '') . '</label>
+                    <input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" placeholder="Your callsign..." class="tec-input"' . $aria_req . ' />
                 </div>',
-                'email' => '<div class="comment-form-email mb-6">
-                    <label for="email" class="block text-white font-bold mb-2">Secure Channel ' . ($req ? '<span class="text-tecGold">*</span>' : '') . '</label>
-                    <input id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" placeholder="your.channel@astradigital.ocean" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white"' . $aria_req . ' />
+                'email' => '<div class="tec-form-field">
+                    <label for="email" class="tec-form-label">Secure Channel ' . ($req ? '<span class="tec-required">*</span>' : '') . '</label>
+                    <input id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" placeholder="your.channel@astradigital.ocean" class="tec-input"' . $aria_req . ' />
                 </div>',
-                'url' => '<div class="comment-form-url mb-6">
-                    <label for="url" class="block text-white font-bold mb-2">Data Node</label>
-                    <input id="url" name="url" type="url" value="' . esc_attr($commenter['comment_author_url']) . '" placeholder="https://your.node.address" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:border-tecGold text-white" />
+                'url' => '<div class="tec-form-field">
+                    <label for="url" class="tec-form-label">Data Node</label>
+                    <input id="url" name="url" type="url" value="' . esc_attr($commenter['comment_author_url']) . '" placeholder="https://your.node.address" class="tec-input" />
                 </div>',
             ),
-            'class_submit' => 'bg-tecAccent hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition transform hover:scale-105',
-            'submit_button' => '<button type="submit" id="%2$s" class="%3$s"><i class="fas fa-satellite-dish mr-2"></i>%4$s</button>',
-            'comment_notes_before' => '<div class="comment-notes bg-tecDark/50 p-4 rounded-lg mb-6 border border-tecSecondary/20">
-                <i class="fas fa-shield-alt text-tecGold mr-2"></i>
-                <span class="text-gray-400 text-sm">Your transmission will be encrypted and verified before broadcast to the network.</span>
+            'class_submit' => 'tec-btn tec-btn-primary',
+            'submit_button' => '<button type="submit" id="%2$s" class="%3$s"><i class="icon-satellite-dish"></i>%4$s</button>',
+            'comment_notes_before' => '<div class="tec-comment-notes">
+                <i class="icon-shield-alt"></i>
+                <span class="tec-notes-text">Your transmission will be encrypted and verified before broadcast to the network.</span>
             </div>',
             'comment_notes_after' => '',
-            'class_form' => 'comment-form bg-tecPrimary/60 backdrop-blur-md rounded-xl p-8 border border-tecSecondary/30',
+            'class_form' => 'tec-comment-form',
             'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title text-2xl font-bold text-white mb-6 font-orbitron uppercase">',
             'title_reply_after' => '</h3>',
         );
