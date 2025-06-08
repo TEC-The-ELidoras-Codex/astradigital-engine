@@ -57,40 +57,42 @@ get_header(); ?>
                 </article>
             <?php endwhile; ?>
         </div>
-    </section>    <!-- Navigation -->
-    <section class="tec-page-navigation">
-        <div class="tec-container">
-            <div class="tec-nav-flex">
-                <div class="tec-nav-left">
+    </section>
+
+    <!-- Navigation -->
+    <section class="py-8 px-4 border-t border-tecSecondary/20">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <div class="text-left">
                     <?php
                     $prev_post = get_previous_post();
                     if ($prev_post): ?>
-                        <a href="<?php echo get_permalink($prev_post->ID); ?>" class="tec-nav-link">
-                            <i class="icon-chevron-left"></i>
+                        <a href="<?php echo get_permalink($prev_post->ID); ?>" class="inline-flex items-center text-tecGold hover:text-white transition">
+                            <i class="fas fa-chevron-left mr-2"></i>
                             <div>
-                                <div class="tec-nav-label">Previous</div>
-                                <div class="tec-nav-title"><?php echo esc_html($prev_post->post_title); ?></div>
+                                <div class="text-sm text-gray-400">Previous</div>
+                                <div class="font-bold"><?php echo esc_html($prev_post->post_title); ?></div>
                             </div>
                         </a>
                     <?php endif; ?>
                 </div>
                 
-                <div class="tec-nav-center">
-                    <a href="<?php echo home_url(); ?>" class="tec-btn tec-btn-primary">
-                        <i class="icon-home"></i>Back to Hub
+                <div class="text-center">
+                    <a href="<?php echo home_url(); ?>" class="bg-tecAccent hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition">
+                        <i class="fas fa-home mr-2"></i>Back to Hub
                     </a>
                 </div>
                 
-                <div class="tec-nav-right">
+                <div class="text-right">
                     <?php
                     $next_post = get_next_post();
                     if ($next_post): ?>
-                        <a href="<?php echo get_permalink($next_post->ID); ?>" class="tec-nav-link">
-                            <div class="tec-nav-content-right">
-                                <div class="tec-nav-label">Next</div>
-                                <div class="tec-nav-title"><?php echo esc_html($next_post->post_title); ?></div>
+                        <a href="<?php echo get_permalink($next_post->ID); ?>" class="inline-flex items-center text-tecGold hover:text-white transition">
+                            <div class="text-right">
+                                <div class="text-sm text-gray-400">Next</div>
+                                <div class="font-bold"><?php echo esc_html($next_post->post_title); ?></div>
                             </div>
-                            <i class="icon-chevron-right"></i>
+                            <i class="fas fa-chevron-right ml-2"></i>
                         </a>
                     <?php endif; ?>
                 </div>
