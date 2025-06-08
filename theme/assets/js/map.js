@@ -1,11 +1,14 @@
 /**
  * Interactive Map for The Elidoras Codex
- * Astradigital Ocean Map functionality
+ * Enhanced Astradigital Ocean Map functionality with faction integration
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize the map
     initAstradigitalMap();
+    
+    // Check for faction highlighting from navigation
+    checkFactionHighlighting();
 });
 
 /**
@@ -246,13 +249,156 @@ function getElementCenter(element) {
 }
 
 /**
- * Show details for a selected region
+ * Check for pending faction highlighting from cross-navigation
  */
-function showRegionDetails(regionId) {
+function checkFactionHighlighting() {
+    const highlightFaction = sessionStorage.getItem('highlightFaction');
+    if (highlightFaction) {
+        setTimeout(() => {
+            highlightFactionTerritories(highlightFaction);
+            sessionStorage.removeItem('highlightFaction');
+            showMapIntegrationStatus(`Highlighting ${getFactionName(highlightFaction)} territories`);
+        }, 1500); // Wait for map to load
+    }
+}
+
+/**
+ * Highlight specific faction territories on the map
+ */
+function highlightFactionTerritories(factionId) {
+    // Territory mappings from the JSON data
+    const factionTerritories = {
+        'magmasox': ['magmasox-waters', 'shadowban-triangle', 'gpt-islands'],
+        'kaznak': ['the-34-highways', 'missing-35th-route'],
+        'tec': ['tec-waters'],
+        'killjoy': ['underground-blockchain-pathways'],
+        'no-names-anon': ['slkrode'],
+        'east-middle-company': ['linux-volcanic-archipelago']
+    };
+    
+    const territories = factionTerritories[factionId] || [];
+    
+    // Clear previous highlights
+    clearAllHighlights();
+    
+    // Highlight faction territories
+    territories.forEach(territoryId => {
+        const territory = document.getElementById(territoryId);
+        if (territory) {
+            territory.classList.add('highlighted');
+            territory.classList.add(`faction-${factionId}-highlight`);
+            
+            // Add pulsing animation
+            territory.style.animation = 'territoryPulse 2s ease-in-out infinite';
+            
+            // Focus the view on the first territory
+            if (territory === document.getElementById(territories[0])) {
+                focusOnElement(territory);
+            }
+        }
+    });
+    
+    // Auto-clear highlights after 8 seconds
+    setTimeout(() => {
+        clearFactionHighlights(factionId);
+    }, 8000);
+}
+
+/**
+ * Clear all territory highlights
+ */
+function clearAllHighlights() {
+    document.querySelectorAll('.territory.highlighted').forEach(territory => {
+        territory.classList.remove('highlighted');
+        territory.style.animation = '';
+        // Remove faction-specific highlight classes
+        territory.classList.forEach(className => {
+            if (className.includes('-highlight')) {
+                territory.classList.remove(className);
+            }
+        });
+    });
+}
+
+/**
+ * Clear highlights for a specific faction
+ */
+function clearFactionHighlights(factionId) {
+    document.querySelectorAll(`.faction-${factionId}-highlight`).forEach(territory => {
+        territory.classList.remove('highlighted');
+        territory.classList.remove(`faction-${factionId}-highlight`);
+        territory.style.animation = '';
+    });
+}
+
+/**
+ * Focus the map view on a specific element
+ */
+function focusOnElement(element) {
+    const bbox = element.getBBox();
+    const mapSvg = document.querySelector('#astradigital-map svg');
+    
+    if (mapSvg && bbox) {
+        const centerX = bbox.x + bbox.width / 2;
+        const centerY = bbox.y + bbox.height / 2;
+        
+        // Calculate transform to center the element
+        const mapRect = mapSvg.getBoundingClientRect();
+        const translateX = (mapRect.width / 2) - centerX;
+        const translateY = (mapRect.height / 2) - centerY;
+        
+        // Apply transform with animation
+        mapSvg.style.transition = 'transform 1s ease-in-out';
+        mapSvg.style.transform = `translate(${translateX}px, ${translateY}px) scale(1.2)`;
+        
+        // Reset after highlighting period
+        setTimeout(() => {
+            mapSvg.style.transform = 'translate(0px, 0px) scale(1)';
+        }, 6000);
+    }
+}
+
+/**
+ * Get faction display name
+ */
+function getFactionName(factionId) {
+    const factionNames = {
+        'magmasox': 'MAGMASOX',
+        'kaznak': 'Kaznak Voyagers',
+        'tec': 'The Elidoras Codex',
+        'killjoy': 'Killjoy Collective',
+        'no-names-anon': 'No Names Anonymous',
+        'east-middle-company': 'East Middle Company'
+    };
+    return factionNames[factionId] || factionId;
+}
+
+/**
+ * Show map integration status message
+ */
+function showMapIntegrationStatus(message) {
+    let statusDiv = document.querySelector('.map-integration-status');
+    if (!statusDiv) {
+        statusDiv = document.createElement('div');
+        statusDiv.className = 'map-integration-status';
+        document.body.appendChild(statusDiv);
+    }
+    
+    statusDiv.textContent = message;
+    statusDiv.classList.add('active');
+    
+    setTimeout(() => {
+        statusDiv.classList.remove('active');
+    }, 3000);
+}
+
+/**
+ * Enhanced region details with faction information
+ */
+function enhancedShowRegionDetails(regionId) {
     fetch('../data/astradigital-map.json')
         .then(response => response.json())
         .then(data => {
-            // Find the region data
             const region = data.regions.find(r => r.id === regionId);
             
             if (region) {
@@ -267,27 +413,52 @@ function showRegionDetails(regionId) {
                 detailsTitle.textContent = region.name;
                 detailsDescription.textContent = region.description;
                 
-                // Set a default image for regions
-                detailsImage.src = '../theme/assets/images/map/backgrounds/region-default.jpg';
-                detailsImage.alt = region.name;
+                // Determine controlling faction
+                const controllingFaction = getRegionControllingFaction(regionId);
+                if (controllingFaction) {
+                    const faction = data.factions.find(f => f.id === controllingFaction);
+                    if (faction) {
+                        detailsFaction.innerHTML = `
+                            <h4>Controlled by:</h4>
+                            <div class="faction-control-info">
+                                <span class="faction-name" style="color: ${faction.color}">${faction.name}</span>
+                                <p class="faction-desc">${faction.shortDescription}</p>
+                                <button class="view-faction-btn" onclick="navigateToFaction('${faction.id}')">
+                                    View Faction Details
+                                </button>
+                            </div>
+                        `;
+                    }
+                }
                 
-                // Clear previous faction and connection details
-                detailsFaction.innerHTML = '';
-                detailsConnections.innerHTML = '';
-                
-                // Show connected regions
+                // Enhanced connections display
                 if (region.connections && region.connections.length > 0) {
                     const connectionsTitle = document.createElement('h4');
                     connectionsTitle.textContent = 'Connected Regions:';
                     detailsConnections.appendChild(connectionsTitle);
                     
                     const connectionsList = document.createElement('ul');
+                    connectionsList.className = 'connections-list';
                     
                     region.connections.forEach(connectedId => {
                         const connectedRegion = data.regions.find(r => r.id === connectedId);
                         if (connectedRegion) {
                             const listItem = document.createElement('li');
-                            listItem.textContent = connectedRegion.name;
+                            listItem.className = 'connection-item';
+                            
+                            const connectedFaction = getRegionControllingFaction(connectedId);
+                            const factionColor = connectedFaction ? 
+                                data.factions.find(f => f.id === connectedFaction)?.color || '#ffffff' : '#ffffff';
+                            
+
+                            listItem.innerHTML = `
+                                <span class="connection-name" style="border-left: 3px solid ${factionColor}">
+                                    ${connectedRegion.name}
+                                </span>
+                                <button class="nav-to-region" onclick="highlightRegion('${connectedId}')">
+                                    Navigate →
+                                </button>
+                            `;
                             connectionsList.appendChild(listItem);
                         }
                     });
@@ -305,37 +476,53 @@ function showRegionDetails(regionId) {
 }
 
 /**
- * Show details for a selected location marker
+ * Get the controlling faction for a region
  */
-function showLocationDetails(locationId) {
-    // This is a simplified example - in a real implementation, you would have location data
-    // For demonstration, we'll show some placeholder content
+function getRegionControllingFaction(regionId) {
+    const factionTerritories = {
+        'magmasox-waters': 'magmasox',
+        'shadowban-triangle': 'magmasox',
+        'gpt-islands': 'magmasox',
+        'the-34-highways': 'kaznak',
+        'missing-35th-route': 'kaznak',
+        'tec-waters': 'tec',
+        'underground-blockchain-pathways': 'killjoy',
+        'slkrode': 'no-names-anon',
+        'linux-volcanic-archipelago': 'east-middle-company'
+    };
     
-    const detailsPanel = document.getElementById('details-panel');
-    const detailsTitle = document.getElementById('details-title');
-    const detailsDescription = document.getElementById('details-description');
-    const detailsImage = document.getElementById('details-image');
-    const detailsFaction = document.getElementById('details-faction');
-    const detailsConnections = document.getElementById('details-connections');
-    
-    // Convert the location ID to a readable name
-    const locationName = locationId
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-    
-    // Update the details panel content
-    detailsTitle.textContent = locationName;
-    detailsDescription.textContent = `This is a point of interest in the Astradigital Ocean. More detailed information about ${locationName} would be shown here.`;
-    
-    // Set a default image for locations
-    detailsImage.src = '../theme/assets/images/map/backgrounds/location-default.jpg';
-    detailsImage.alt = locationName;
-    
-    // Clear previous faction and connection details
-    detailsFaction.innerHTML = '';
-    detailsConnections.innerHTML = '';
-    
-    // Show the details panel
-    detailsPanel.classList.add('active');
+    return factionTerritories[regionId] || null;
 }
+
+/**
+ * Navigate to faction details page
+ */
+function navigateToFaction(factionId) {
+    sessionStorage.setItem('highlightFaction', factionId);
+    window.location.href = '../index.html#factions';
+}
+
+/**
+ * Highlight a specific region
+ */
+function highlightRegion(regionId) {
+    clearAllHighlights();
+    
+    const region = document.getElementById(regionId);
+    if (region) {
+        region.classList.add('highlighted');
+        region.style.animation = 'territoryPulse 2s ease-in-out infinite';
+        focusOnElement(region);
+        
+        // Show region details
+        enhancedShowRegionDetails(regionId);
+        
+        setTimeout(() => {
+            region.classList.remove('highlighted');
+            region.style.animation = '';
+        }, 5000);
+    }
+}
+
+// Override the original showRegionDetails function
+window.showRegionDetails = enhancedShowRegionDetails;

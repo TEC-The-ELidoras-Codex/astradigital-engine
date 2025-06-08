@@ -113,15 +113,314 @@ body.page-template-page-astradigital {
     color: var(--astra-text);
 }
 
-/* Responsive adjustments */
+/* Enhanced Faction Card Styling */
+.faction-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.stat-item {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+}
+
+.stat-item::before {
+    content: "▶";
+    color: var(--astra-highlight);
+    margin-right: 0.5rem;
+    font-size: 0.7rem;
+}
+
+.faction-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.faction-map-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--astra-accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.faction-map-btn:hover {
+    background-color: transparent;
+    border-color: var(--astra-accent);
+    color: var(--astra-accent);
+}
+
+/* Enhanced Character Card Styling */
+.character-title {
+    font-size: 0.9rem;
+    color: var(--astra-highlight);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.character-description {
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+/* Faction-specific character tags */
+.faction-tag {
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tec-tag {
+    background-color: var(--faction-tec);
+    color: var(--astra-background);
+}
+
+.magmasox-tag {
+    background-color: var(--faction-magmasox);
+    color: white;
+}
+
+.kaznak-tag {
+    background-color: var(--faction-kaznak);
+    color: white;
+}
+
+.killjoy-tag {
+    background-color: var(--faction-killjoy);
+    color: white;
+}
+
+.nna-tag {
+    background-color: var(--faction-no-names-anon);
+    color: var(--astra-background);
+}
+
+.emc-tag {
+    background-color: var(--faction-east-middle-company);
+    color: var(--astra-background);
+}
+
+/* Character card faction-based borders */
+.character-card[data-faction="tec"] {
+    border-left: 3px solid var(--faction-tec);
+}
+
+.character-card[data-faction="magmasox"] {
+    border-left: 3px solid var(--faction-magmasox);
+}
+
+.character-card[data-faction="kaznak"] {
+    border-left: 3px solid var(--faction-kaznak);
+}
+
+.character-card[data-faction="killjoy"] {
+    border-left: 3px solid var(--faction-killjoy);
+}
+
+.character-card[data-faction="no-names-anon"] {
+    border-left: 3px solid var(--faction-no-names-anon);
+}
+
+.character-card[data-faction="east-middle-company"] {
+    border-left: 3px solid var(--faction-east-middle-company);
+}
+
+/* Interactive character hover effects */
+.character-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.character-card:hover .character-avatar img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Map Navigation Integration */
+.map-nav-btn {
+    background: linear-gradient(135deg, var(--astra-secondary), var(--astra-primary));
+    color: var(--astra-text);
+    border: 1px solid var(--astra-highlight);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 120px;
+    justify-content: center;
+}
+
+.map-nav-btn:hover {
+    background: linear-gradient(135deg, var(--astra-primary), var(--astra-secondary));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 201, 240, 0.3);
+}
+
+.character-map-btn {
+    background: linear-gradient(135deg, var(--faction-tec), var(--astra-secondary));
+    font-size: 0.8rem;
+}
+
+/* Territory Highlighting Animation */
+@keyframes territoryPulse {
+    0%, 100% { 
+        stroke-width: 2;
+        stroke: var(--astra-highlight);
+        opacity: 0.8;
+    }
+    50% { 
+        stroke-width: 4;
+        stroke: var(--astra-primary);
+        opacity: 1;
+    }
+}
+
+.territory.highlighted {
+    stroke: var(--astra-highlight);
+    stroke-width: 3;
+    filter: drop-shadow(0 0 8px var(--astra-highlight));
+}
+
+/* Procedural Asset Styling */
+.faction-logo img, .character-portrait img {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.faction-logo img:hover, .character-portrait img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Enhanced Faction Card Integration */
+.faction-card {
+    position: relative;
+    overflow: visible;
+}
+
+.faction-card .map-nav-btn {
+    position: absolute;
+    bottom: -15px;
+    right: 15px;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.faction-card:hover .map-nav-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Character Profile Enhancement */
+.character-profile .map-nav-btn {
+    margin: 10px auto 0;
+    display: block;
+    width: fit-content;
+}
+
+/* Territory Visualization Enhancements */
+.territory-overlay {
+    pointer-events: none;
+}
+
+.territory-region {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.5s ease;
+    background: radial-gradient(circle, transparent 30%, currentColor 70%);
+}
+
+.territory-region.active {
+    opacity: 0.3;
+    animation: territoryExpand 3s ease-out;
+}
+
+@keyframes territoryExpand {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+}
+
+/* Responsive Design for Map Integration */
 @media (max-width: 768px) {
-    .hero-section .page-title {
-        font-size: 2.5rem;
+    .map-nav-btn {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        min-width: 100px;
     }
     
-    .faction-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    .faction-card .map-nav-btn {
+        position: static;
+        opacity: 1;
+        transform: none;
+        margin-top: 15px;
+        margin-bottom: 0;
     }
+    
+    .character-map-btn {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+}
+
+/* Asset Loading States */
+.faction-logo img[src*="data:"], .character-portrait img[src*="data:"] {
+    border: 2px solid var(--astra-highlight);
+    box-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+}
+
+/* Map Integration Status Indicator */
+.map-integration-status {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--astra-secondary);
+    color: var(--astra-text);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.map-integration-status.active {
+    opacity: 1;
+    animation: statusPulse 2s ease-in-out;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }
 
 /* Header Area */
@@ -222,6 +521,13 @@ body.page-template-page-astradigital {
     position: absolute;
     top: 0;
     left: 0;
+    background: linear-gradient(45deg, 
+        var(--astra-background) 0%, 
+        rgba(26, 43, 77, 0.8) 25%, 
+        rgba(44, 135, 197, 0.6) 50%, 
+        rgba(76, 201, 240, 0.4) 75%, 
+        var(--astra-background) 100%);
+    animation: oceanFlow 20s ease-in-out infinite;
 }
 
 .interactive-elements {
@@ -400,6 +706,66 @@ body.page-template-page-astradigital {
     background-color: #ff8c94;
 }
 
+/* Character Profile Modal */
+.character-profile-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-modal {
+    max-width: 600px;
+}
+
+.character-header {
+    flex: 1;
+}
+
+.character-faction-title {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+.detail-section {
+    margin-bottom: 1.5rem;
+}
+
+.detail-section h4 {
+    color: var(--astra-highlight);
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(76, 201, 240, 0.3);
+    padding-bottom: 0.3rem;
+}
+
+.abilities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.abilities-list li {
+    padding: 0.5rem 0.8rem;
+    margin-bottom: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    border-left: 3px solid var(--astra-secondary);
+}
+
+.abilities-list li::before {
+    content: "⚡";
+    margin-right: 0.5rem;
+    color: var(--astra-highlight);
+}
+
 /* Footer Area */
 .astra-footer {
     margin-top: 3rem;
@@ -437,4 +803,588 @@ body.page-template-page-astradigital {
     text-align: center;
     font-size: 0.8rem;
     color: rgba(255,255,255,0.5);
+}
+
+/* Interactive Ocean Elements */
+.interactive-point {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--astra-highlight);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    animation: pulse 2s infinite;
+    transition: all 0.3s ease;
+}
+
+.interactive-point:hover {
+    transform: scale(1.5);
+    box-shadow: 0 0 20px var(--astra-highlight);
+}
+
+.interactive-point .point-label {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.interactive-point:hover .point-label {
+    opacity: 1;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 201, 240, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 201, 240, 0);
+    }
+}
+
+/* Territory Visualization */
+.territory-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.territory-region {
+    position: absolute;
+    border: 2px solid;
+    border-radius: 50%;
+    opacity: 0.3;
+    transition: all 0.5s ease;
+}
+
+.territory-region.active {
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+
+/* Faction-specific enhancements */
+#faction-tec .faction-logo {
+    background-color: rgba(77, 238, 234, 0.2);
+}
+
+#faction-tec .faction-name {
+    color: var(--faction-tec);
+}
+
+#faction-killjoy .faction-logo {
+    background-color: rgba(140, 82, 255, 0.2);
+}
+
+#faction-killjoy .faction-name {
+    color: var(--faction-killjoy);
+}
+
+#faction-no-names-anon .faction-logo {
+    background-color: rgba(61, 230, 134, 0.2);
+}
+
+#faction-no-names-anon .faction-name {
+    color: var(--faction-no-names-anon);
+}
+
+#faction-east-middle-company .faction-logo {
+    background-color: rgba(255, 215, 0, 0.2);
+}
+
+#faction-east-middle-company .faction-name {
+    color: var(--faction-east-middle-company);
+}
+
+/* Faction Details Modal */
+.faction-details-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--astra-background);
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--astra-text);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.faction-desc {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.faction-details {
+    margin-bottom: 2rem;
+}
+
+.detail-item {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.detail-item strong {
+    color: var(--astra-highlight);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--astra-secondary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--astra-highlight);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--astra-text);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Performance Optimization Styles */
+.lazy-load {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lazy-load.loaded {
+    opacity: 1;
+}
+
+.bg-loaded {
+    transition: background-image 0.3s ease;
+}
+
+.cached-asset {
+    border: 2px solid #28a745;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
+}
+
+.generated-asset {
+    border: 2px solid var(--astra-highlight);
+    box-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+}
+
+.placeholder-asset {
+    opacity: 0.7;
+    filter: grayscale(50%);
+}
+
+/* Loading animations */
+@keyframes assetLoad {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.asset-loading {
+    animation: assetLoad 0.3s ease forwards;
+}
+
+/* Performance indicator */
+.performance-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-family: monospace;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.performance-indicator.visible {
+    opacity: 1;
+}
+
+/* Content Migration Panel Styles - Enhanced from content-migrator.js */
+#migration-panel {
+    font-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+}
+
+.migration-panel-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.migration-panel-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.migration-panel-content::-webkit-scrollbar-thumb {
+    background: var(--astra-highlight, #4deeea);
+    border-radius: 4px;
+}
+
+.migration-panel-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(77, 238, 234, 0.8);
+}
+
+.status-item {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-item:last-child {
+    border-bottom: none;
+}
+
+/* SEO Optimization Indicator */
+.seo-indicator {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--astra-secondary, #2c87c5);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.seo-indicator.visible {
+    opacity: 1;
+}
+
+.seo-indicator.optimized {
+    background: #28a745;
+}
+
+.seo-indicator.warning {
+    background: #ffc107;
+    color: #000;
+}
+
+.seo-indicator.error {
+    background: #dc3545;
+}
+
+/* Enhanced Asset States */
+img[data-faction], img[data-character] {
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+img[data-faction]:hover, img[data-character]:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+/* Optimized Animation Performance */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Content loading states */
+.content-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.content-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(77, 238, 234, 0.2),
+        transparent
+    );
+    animation: contentLoadSweep 1.5s infinite;
+}
+
+@keyframes contentLoadSweep {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Cache status indicators */
+.cache-status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.cache-status.cached {
+    background: #28a745;
+}
+
+.cache-status.generated {
+    background: var(--astra-highlight, #4deeea);
+}
+
+.cache-status.loading {
+    background: #ffc107;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Performance metrics display */
+.performance-metrics {
+    position: fixed;
+    bottom: 60px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #4deeea;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 0.75rem;
+    min-width: 200px;
+    border: 1px solid var(--astra-highlight, #4deeea);
+    display: none;
+    z-index: 9997;
+}
+
+.performance-metrics.visible {
+    display: block;
+}
+
+.performance-metrics .metric {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(77, 238, 234, 0.2);
+}
+
+.performance-metrics .metric:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.performance-metrics .metric .value {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.performance-metrics .metric .value.good {
+    color: #28a745;
+}
+
+.performance-metrics .metric .value.warning {
+    color: #ffc107;
+}
+
+.performance-metrics .metric .value.error {
+    color: #dc3545;
+}
+
+/* Migration progress animations */
+.progress-bar {
+    position: relative;
+}
+
+.progress-fill {
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: progressShimmer 2s infinite;
+}
+
+@keyframes progressShimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Schema markup indicator */
+.schema-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(140, 82, 255, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    z-index: 9996;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.schema-indicator.visible {
+    opacity: 1;
+}
+
+.schema-indicator::before {
+    content: '📊';
+    margin-right: 5px;
+}
+
+/* Enhanced responsive design for performance tools */
+@media (max-width: 768px) {
+    .performance-indicator,
+    .seo-indicator,
+    .schema-indicator {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+    
+    .performance-metrics {
+        min-width: 150px;
+        font-size: 0.65rem;
+    }
+    
+    #migration-panel {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .migration-buttons {
+        grid-template-columns: 1fr;
+    }
 }

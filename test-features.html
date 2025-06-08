@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astradigital Engine - Enhanced Features Test</title>
+    <link rel="stylesheet" href="theme/style.css">
+    <link rel="stylesheet" href="theme/assets/css/astradigital.css">
+    <link rel="stylesheet" href="theme/assets/css/map.css">
+    <style>
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid var(--astra-highlight);
+            border-radius: 10px;
+            background: rgba(10, 14, 23, 0.8);
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .test-item {
+            padding: 15px;
+            background: var(--astra-secondary);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .asset-preview {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 10px auto;
+            display: block;
+            border: 2px solid var(--astra-highlight);
+            border-radius: 8px;
+        }
+        
+        .feature-demo {
+            margin: 10px 0;
+        }
+        
+        .status-indicator {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin: 5px;
+        }
+        
+        .status-success {
+            background: var(--faction-no-names-anon);
+            color: black;
+        }
+        
+        .status-warning {
+            background: var(--faction-east-middle-company);
+            color: black;
+        }
+        
+        .status-info {
+            background: var(--faction-tec);
+            color: black;
+        }
+    </style>
+</head>
+<body class="page-template-astradigital">
+    <header class="site-header">
+        <nav class="main-navigation">
+            <div class="nav-brand">
+                <h1>The Elidoras Codex</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theme/map.html">Map</a></li>
+                <li><a href="#factions" data-nav-target="factions">Factions</a></li>
+                <li><a href="#characters" data-nav-target="characters">Characters</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        <div class="astradigital-container">
+            <section class="hero-section">
+                <h1 class="page-title">Astradigital Engine - Enhanced Features</h1>
+                <p class="hero-description">Testing all the new interactive features, asset generation, and map integration.</p>
+                <div class="status-indicator status-success">✓ Asset Generation Active</div>
+                <div class="status-indicator status-info">🗺️ Map Integration Ready</div>
+                <div class="status-indicator status-warning">⚡ Interactive Features Loaded</div>
+            </section>
+
+            <!-- Asset Generation Test -->
+            <section class="test-section">
+                <h2>Procedural Asset Generation</h2>
+                <p>Testing automatic generation of faction logos and character portraits:</p>
+                
+                <div class="test-grid">
+                    <div class="test-item">
+                        <h3>MAGMASOX</h3>
+                        <img class="asset-preview" data-faction="magmasox" src="placeholder.png" alt="MAGMASOX Logo" onerror="handleAssetError(this, 'faction', 'magmasox')">
+                        <p>Corporate Titans</p>
+                    </div>
+                    <div class="test-item">
+                        <h3>Kaznak Voyagers</h3>
+                        <img class="asset-preview" data-faction="kaznak" src="placeholder.png" alt="Kaznak Logo" onerror="handleAssetError(this, 'faction', 'kaznak')">
+                        <p>Digital Rebels</p>
+                    </div>
+                    <div class="test-item">
+                        <h3>The Elidoras Codex</h3>
+                        <img class="asset-preview" data-faction="tec" src="placeholder.png" alt="TEC Logo" onerror="handleAssetError(this, 'faction', 'tec')">
+                        <p>Beacon of Freedom</p>
+                    </div>
+                    <div class="test-item">
+                        <h3>Killjoy Collective</h3>
+                        <img class="asset-preview" data-faction="killjoy" src="placeholder.png" alt="Killjoy Logo" onerror="handleAssetError(this, 'faction', 'killjoy')">
+                        <p>Chaos Agents</p>
+                    </div>
+                    <div class="test-item">
+                        <h3>No Names Anonymous</h3>
+                        <img class="asset-preview" data-faction="no-names-anon" src="placeholder.png" alt="No Names Logo" onerror="handleAssetError(this, 'faction', 'no-names-anon')">
+                        <p>Digital Phantoms</p>
+                    </div>
+                    <div class="test-item">
+                        <h3>East Middle Company</h3>
+                        <img class="asset-preview" data-faction="east-middle-company" src="placeholder.png" alt="EMC Logo" onerror="handleAssetError(this, 'faction', 'east-middle-company')">
+                        <p>Corporate Pirates</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Character Portraits Test -->
+            <section class="test-section">
+                <h2>Character Portrait Generation</h2>
+                <p>Testing procedural character portrait creation:</p>
+                
+                <div class="test-grid">
+                    <div class="test-item">
+                        <h3>MOSTW</h3>
+                        <img class="asset-preview" data-character="mostw" src="placeholder.png" alt="MOSTW Portrait" onerror="handleAssetError(this, 'character', 'mostw')">
+                        <p>MAGMASOX Authority</p>
+                    </div>
+                    <div class="test-item">
+                        <h3>Nova Starchart</h3>
+                        <img class="asset-preview" data-character="nova-starchart" src="placeholder.png" alt="Nova Portrait" onerror="handleAssetError(this, 'character', 'nova-starchart')">
+                        <p>Kaznak Navigator</p>
+                    </div>
+                    <div class="test-item">
+                        <h3>Void Disruptor</h3>
+                        <img class="asset-preview" data-character="void-disruptor" src="placeholder.png" alt="Void Portrait" onerror="handleAssetError(this, 'character', 'void-disruptor')">
+                        <p>Killjoy Agent</p>
+                    </div>
+                    <div class="test-item">
+                        <h3>[REDACTED]</h3>
+                        <img class="asset-preview" data-character="redacted" src="placeholder.png" alt="Redacted Portrait" onerror="handleAssetError(this, 'character', 'redacted')">
+                        <p>Anonymous Operative</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Map Integration Test -->
+            <section class="test-section">
+                <h2>Map Integration Features</h2>
+                <p>Testing cross-navigation between factions and map territories:</p>
+                
+                <div class="feature-demo">
+                    <h3>Faction Territory Navigation</h3>
+                    <button class="map-nav-btn" onclick="navigateToMapTerritory('magmasox')">🗺️ View MAGMASOX Territory</button>
+                    <button class="map-nav-btn" onclick="navigateToMapTerritory('kaznak')">🗺️ View Kaznak Territory</button>
+                    <button class="map-nav-btn" onclick="navigateToMapTerritory('tec')">🗺️ View TEC Territory</button>
+                </div>
+                
+                <div class="feature-demo">
+                    <h3>Character Home Territories</h3>
+                    <button class="map-nav-btn character-map-btn" onclick="navigateToMapTerritory('magmasox')">🗺️ MOSTW's Domain</button>
+                    <button class="map-nav-btn character-map-btn" onclick="navigateToMapTerritory('kaznak')">🗺️ Nova's Routes</button>
+                    <button class="map-nav-btn character-map-btn" onclick="navigateToMapTerritory('killjoy')">🗺️ Void's Chaos Zone</button>
+                </div>
+            </section>
+
+            <!-- Interactive Features Test -->
+            <section class="test-section">
+                <h2>Interactive Ocean Visualization</h2>
+                <div class="astra-ocean-visual">
+                    <div class="ocean-backdrop"></div>
+                    <div class="interactive-elements">
+                        <!-- Interactive points will be added dynamically -->
+                    </div>
+                    <div class="floating-particles">
+                        <!-- Particles will be generated automatically -->
+                    </div>
+                    <div class="territory-overlay">
+                        <!-- Territory highlights will appear here -->
+                    </div>
+                </div>
+                <p>Click the buttons above to see territory highlighting in action!</p>
+            </section>
+
+            <!-- Faction Cards with Enhanced Features -->
+            <section id="factions" class="test-section">
+                <h2>Enhanced Faction Cards</h2>
+                <div class="faction-grid">
+                    <!-- Faction cards will be populated from JSON data -->
+                </div>
+            </section>
+
+            <!-- Character Profiles -->
+            <section id="characters" class="test-section">
+                <h2>Enhanced Character Profiles</h2>
+                <div class="character-grid">
+                    <!-- Character profiles will be populated from JSON data -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2025 The Elidoras Codex - Enhanced Astradigital Engine</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal containers -->
+    <div id="faction-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="faction-modal-body">
+                <!-- Faction details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="character-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="character-modal-body">
+                <!-- Character details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="theme/assets/js/asset-generator.js"></script>
+    <script src="theme/assets/js/astradigital.js"></script>
+    <script src="theme/assets/js/main.js"></script>
+    <script>
+        // Enhanced asset error handling for testing
+        function handleAssetError(img, type, id) {
+            console.log(`Generating ${type} asset for ${id}...`);
+            
+            if (window.AstradigitalAssetGenerator) {
+                const generator = new AstradigitalAssetGenerator();
+                
+                if (type === 'faction') {
+                    img.src = generator.generateFactionLogo(id);
+                } else if (type === 'character') {
+                    img.src = generator.generateCharacterPortrait(id);
+                }
+                
+                img.classList.add('generated-asset');
+                console.log(`✓ Generated ${type} asset for ${id}`);
+            } else {
+                console.error(`Asset generator not available for ${type}: ${id}`);
+            }
+        }
+
+        // Test the enhanced navigation
+        function navigateToMapTerritory(factionId) {
+            console.log(`Navigating to ${factionId} territory...`);
+            
+            // Show temporary visual feedback
+            showTestFeedback(`Navigating to ${factionId.toUpperCase()} territory on map!`);
+            
+            // Store faction for highlighting
+            sessionStorage.setItem('highlightFaction', factionId);
+            
+            // In a real implementation, this would navigate to map.html
+            // For testing, we'll just show the territory overlay
+            if (typeof highlightFactionTerritory === 'function') {
+                highlightFactionTerritory(factionId);
+            }
+        }
+
+        function showTestFeedback(message) {
+            const feedback = document.createElement('div');
+            feedback.className = 'map-integration-status active';
+            feedback.textContent = message;
+            document.body.appendChild(feedback);
+            
+            setTimeout(() => {
+                feedback.remove();
+            }, 3000);
+        }
+
+        // Load faction and character data for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate faction cards
+            fetch('data/astradigital-map.json')
+                .then(response => response.json())
+                .then(data => {
+                    const factionGrid = document.querySelector('#factions .faction-grid');
+                    const characterGrid = document.querySelector('#characters .character-grid');
+                    
+                    // Create faction cards
+                    data.factions.forEach(faction => {
+                        const factionCard = document.createElement('div');
+                        factionCard.className = 'faction-card';
+                        factionCard.setAttribute('data-faction', faction.id);
+                        factionCard.style.borderColor = faction.color;
+                        
+                        factionCard.innerHTML = `
+                            <div class="faction-header">
+                                <div class="faction-logo">
+                                    <img data-faction="${faction.id}" src="placeholder.png" 
+                                         alt="${faction.name} Logo" 
+                                         onerror="handleAssetError(this, 'faction', '${faction.id}')">
+                                </div>
+                                <h3 class="faction-name" style="color: ${faction.color}">${faction.name}</h3>
+                            </div>
+                            <div class="faction-content">
+                                <p class="faction-description">${faction.shortDescription}</p>
+                                <div class="faction-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">Territory:</span>
+                                        <span class="stat-value">${faction.territory.split(',')[0].trim()}</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">Leader:</span>
+                                        <span class="stat-value">${faction.leader}</span>
+                                    </div>
+                                </div>
+                                <div class="faction-actions">
+                                    <button class="faction-btn" onclick="showFactionDetails('${faction.id}')">
+                                        View Details
+                                    </button>
+                                    <button class="map-nav-btn" onclick="navigateToMapTerritory('${faction.id}')">
+                                        🗺️ View Territory
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        factionGrid.appendChild(factionCard);
+                    });
+                    
+                    // Create test character cards
+                    const characters = [
+                        { id: 'mostw', name: 'MOSTW', faction: 'magmasox', title: 'Supreme Authority' },
+                        { id: 'nova-starchart', name: 'Nova Starchart', faction: 'kaznak', title: 'Master Navigator' },
+                        { id: 'void-disruptor', name: 'Void Disruptor', faction: 'killjoy', title: 'Chaos Agent' },
+                        { id: 'redacted', name: '[REDACTED]', faction: 'no-names-anon', title: 'Anonymous Operative' }
+                    ];
+                    
+                    characters.forEach(character => {
+                        const faction = data.factions.find(f => f.id === character.faction);
+                        const characterCard = document.createElement('div');
+                        characterCard.className = 'character-card';
+                        characterCard.setAttribute('data-character', character.id);
+                        
+                        characterCard.innerHTML = `
+                            <div class="character-portrait">
+                                <img data-character="${character.id}" src="placeholder.png" 
+                                     alt="${character.name} Portrait" 
+                                     onerror="handleAssetError(this, 'character', '${character.id}')">
+                            </div>
+                            <div class="character-info">
+                                <h3 class="character-name">${character.name}</h3>
+                                <p class="character-title">${character.title}</p>
+                                <div class="character-faction" style="color: ${faction?.color}">
+                                    ${faction?.name}
+                                </div>
+                                <button class="character-btn" onclick="showCharacterDetails('${character.id}')">
+                                    View Profile
+                                </button>
+                                <button class="map-nav-btn character-map-btn" onclick="navigateToMapTerritory('${character.faction}')">
+                                    🗺️ Home Territory
+                                </button>
+                            </div>
+                        `;
+                        
+                        characterGrid.appendChild(characterCard);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading test data:', error);
+                });
+        });
+    </script>
+</body>
+</html>
