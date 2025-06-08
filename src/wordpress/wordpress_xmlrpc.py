@@ -90,6 +90,19 @@ class WordPressXMLRPC:
             logger.error(f"Failed to get WordPress posts: {e}")
             return []
     
+    def get_recent_posts(self, num_posts: int = 5) -> List[Dict[str, Any]]:
+        """
+        Get recent posts from the WordPress site.
+        This is an alias for get_posts() for backward compatibility.
+        
+        Args:
+            num_posts: Number of posts to retrieve
+            
+        Returns:
+            List of posts
+        """
+        return self.get_posts(num_posts)
+    
     def create_post(self, title: str, content: str, categories: List[str] = None,
                   tags: List[str] = None, status: str = "draft") -> Dict[str, Any]:
         """
@@ -151,6 +164,35 @@ class WordPressXMLRPC:
                 
         except Exception as e:
             logger.error(f"Error creating WordPress post: {e}")
+            return {"success": False, "error": str(e)}
+    
+    def delete_post(self, post_id: int) -> Dict[str, Any]:
+        """
+        Delete a post from the WordPress site.
+        
+        Args:
+            post_id: ID of the post to delete
+            
+        Returns:
+            Dictionary indicating success/failure
+        """
+        if not self.client:
+            logger.error("WordPress XML-RPC client not initialized")
+            return {"success": False, "error": "XML-RPC client not initialized"}
+            
+        try:
+            # Delete the post
+            result = self.client.wp.deletePost("", self.username, self.password, post_id)
+            
+            if result:
+                logger.info(f"Deleted WordPress post with ID {post_id}")
+                return {"success": True, "post_id": post_id}
+            else:
+                logger.error(f"Failed to delete WordPress post with ID {post_id}")
+                return {"success": False, "error": "Failed to delete post"}
+                
+        except Exception as e:
+            logger.error(f"Error deleting WordPress post: {e}")
             return {"success": False, "error": str(e)}
     
     def upload_media(self, file_path: str, name: Optional[str] = None) -> Dict[str, Any]:

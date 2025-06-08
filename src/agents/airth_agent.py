@@ -75,12 +75,14 @@ class AirthAgent(BaseAgent):
         # Configuration for AWS timer storage (only relevant if timers are actively used with AWS)
         # self.use_aws_timers = self.config.get("aws", {}).get("use_timer_storage", False)
         # self.aws_region = self.config.get("aws", {}).get("region", "us-east-1")
+          # Initialize LLM client attribute first
+        self.llm_client = None
         
         # LLM client (OpenAI) is initialized by BaseAgent's _initialize_llm method
         # We might need to pass specific LLM provider info if BaseAgent supports multiple
         # For now, assuming BaseAgent's _initialize_llm handles OpenAI if OPENAI_API_KEY is set.
-        if not self.llm_client and OPENAI_AVAILABLE: # Check if BaseAgent initialized it
-            self.logger.warning("LLM client (OpenAI) was not initialized by BaseAgent. AirthAgent will attempt to initialize.")
+        if OPENAI_AVAILABLE: # Check if OpenAI is available
+            self.logger.info("Initializing LLM client for AirthAgent.")
             self._initialize_llm() # Call Airth's own _initialize_llm as a fallback or primary
 
     def _initialize_llm(self) -> None:

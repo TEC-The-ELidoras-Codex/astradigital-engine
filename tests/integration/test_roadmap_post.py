@@ -94,78 +94,72 @@ except ImportError as e:
 
 def test_roadmap_posting():
     """Test Airth's ability to post a roadmap article to WordPress"""
-    print("\n🔄 Initializing Airth agent...")
+    print("\n🔄 Initializing Airth agent...")    # Initialize Airth agent with proper config path
+    config_path = Path(__file__).parent.parent.parent / "config" / "config.yaml"
+    airth = AirthAgent(str(config_path))
+    print("✅ Airth agent initialized successfully.")
     
-    try:
-        # Initialize Airth agent
-        airth = AirthAgent()
-        print("✅ Airth agent initialized successfully.")
+    # Get post status from arguments
+    post_status = "publish" if args.publish else "draft"
+    print(f"🔄 Will create article as: {post_status}")
+    
+    # Define a simple roadmap for testing
+    test_roadmap = """
+    The TEC AI Employee Suite: Test Roadmap
+    
+    Phase 1: Development Foundation
+    - Complete Docker environment setup
+    - Implement WordPress posting functionality
+    - Fix security issues with API keys
+    
+    Phase 2: Enhanced Features
+    - Add analytics capabilities
+    - Implement multi-agent collaboration
+    - Create advanced memory systems
+    
+    Phase 3: User Experience
+    - Develop intuitive admin interfaces
+    - Create user customization options
+    - Deploy cross-platform support
+    """
+    
+    print("\n🔄 Generating and posting roadmap article...")
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    test_roadmap = f"Test Roadmap - {timestamp}\n\n{test_roadmap}"
+    
+    # Call Airth's method to create and post the article
+    result = airth.create_wordpress_article_about_roadmap(test_roadmap, post_status)
+    
+    if result.get("success"):
+        print("\n✅ Roadmap article posted successfully!")
+        print(f"   Title: {result.get('title')}")
+        if 'wp_response' in result and 'post_id' in result['wp_response']:
+            print(f"   Post ID: {result['wp_response']['post_id']}")
+        print(f"   Status: {post_status}")
+        print(f"   Keywords: {', '.join(result.get('keywords', []))}")
+        print("\n✅ Summary: Airth's WordPress posting functionality is working correctly!")
         
-        # Get post status from arguments
-        post_status = "publish" if args.publish else "draft"
-        print(f"🔄 Will create article as: {post_status}")
+        # Print WordPress admin link
+        wp_url = os.getenv("WP_URL", "").replace("/xmlrpc.php", "")
+        if wp_url and 'wp_response' in result and 'post_id' in result['wp_response']:
+            admin_url = f"{wp_url}/wp-admin/post.php?post={result['wp_response']['post_id']}&action=edit"
+            print(f"\n📝 View/Edit in WordPress Admin: {admin_url}")
         
-        # Define a simple roadmap for testing
-        test_roadmap = """
-        The TEC AI Employee Suite: Test Roadmap
-        
-        Phase 1: Development Foundation
-        - Complete Docker environment setup
-        - Implement WordPress posting functionality
-        - Fix security issues with API keys
-        
-        Phase 2: Enhanced Features
-        - Add analytics capabilities
-        - Implement multi-agent collaboration
-        - Create advanced memory systems
-        
-        Phase 3: User Experience
-        - Develop intuitive admin interfaces
-        - Create user customization options
-        - Deploy cross-platform support
-        """
-        
-        print("\n🔄 Generating and posting roadmap article...")
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        test_roadmap = f"Test Roadmap - {timestamp}\n\n{test_roadmap}"
-        
-        # Call Airth's method to create and post the article
-        result = airth.create_wordpress_article_about_roadmap(test_roadmap, post_status)
-        
-        if result.get("success"):
-            print("\n✅ Roadmap article posted successfully!")
-            print(f"   Title: {result.get('title')}")
-            if 'wp_response' in result and 'post_id' in result['wp_response']:
-                print(f"   Post ID: {result['wp_response']['post_id']}")
-            print(f"   Status: {post_status}")
-            print(f"   Keywords: {', '.join(result.get('keywords', []))}")
-            print("\n✅ Summary: Airth's WordPress posting functionality is working correctly!")
-            
-            # Print WordPress admin link
-            wp_url = os.getenv("WP_URL", "").replace("/xmlrpc.php", "")
+        if post_status == "publish":
             if wp_url and 'wp_response' in result and 'post_id' in result['wp_response']:
-                admin_url = f"{wp_url}/wp-admin/post.php?post={result['wp_response']['post_id']}&action=edit"
-                print(f"\n📝 View/Edit in WordPress Admin: {admin_url}")
-            
-            if post_status == "publish":
-                if wp_url and 'wp_response' in result and 'post_id' in result['wp_response']:
-                    post_url = f"{wp_url}/?p={result['wp_response']['post_id']}"
-                    print(f"🌐 View Published Post: {post_url}")
-                else:
-                    print("✅ Article published! Visit your WordPress site to view it.")
+                post_url = f"{wp_url}/?p={result['wp_response']['post_id']}"
+                print(f"🌐 View Published Post: {post_url}")
             else:
-                print("✅ Article saved as draft. Log into WordPress admin to review and publish.")
-                
-            return True
+                print("✅ Article published! Visit your WordPress site to view it.")
         else:
-            print(f"\n❌ Failed to post roadmap article: {result.get('error')}")
-            if 'details' in result:
-                print(f"   Details: {result.get('details')}")
-            return False
-    except Exception as e:
-        logger.exception("Error during roadmap posting test")
-        print(f"\n❌ Error during roadmap posting test: {str(e)}")
-        return False
+            print("✅ Article saved as draft. Log into WordPress admin to review and publish.")
+            
+        assert True, "Roadmap article posted successfully"
+    else:
+        print(f"\n❌ Failed to post roadmap article: {result.get('error')}")
+        if 'details' in result:
+            print(f"   Details: {result.get('details')}")
+        assert False, f"Failed to post roadmap article: {result.get('error', 'Unknown error')}"
 
 if __name__ == "__main__":
     print("==== WordPress Roadmap Article Posting Test ====")

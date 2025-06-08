@@ -218,8 +218,7 @@ class WordPressAgent(BaseAgent):
             
             if response and response.status_code == 200:
                 categories_from_wp = response.json()
-                
-                # Update the category IDs - ensuring all fetched categories are added/updated
+                  # Update the category IDs - ensuring all fetched categories are added/updated
                 for category_wp in categories_from_wp:
                     slug = category_wp.get("slug")
                     if slug: # Ensure slug is not None or empty
@@ -236,7 +235,7 @@ class WordPressAgent(BaseAgent):
             self.logger.error(f"Error retrieving categories: {e}")
             return []
             
-    def create_post(self, title_or_data: Union[str, Dict[str, Any]], content: Optional[str] = None, 
+    def create_post(self, title: Union[str, Dict[str, Any]], content: Optional[str] = None, 
                    category: str = "uncategorized", 
                    tags: List[str] = None,
                    status: str = "draft") -> Dict[str, Any]:
@@ -258,11 +257,11 @@ class WordPressAgent(BaseAgent):
             })
         
         Args:
-            title_or_data: Either the post title (str) or a dictionary with all post details
-            content: The post content HTML (only used if title_or_data is a string)
-            category: The category slug to post to (only used if title_or_data is a string)
-            tags: The tags to apply to the post (only used if title_or_data is a string)
-            status: Publication status (draft, publish, etc.) (only used if title_or_data is a string)
+            title: Either the post title (str) or a dictionary with all post details
+            content: The post content HTML (only used if title is a string)
+            category: The category slug to post to (only used if title is a string)
+            tags: The tags to apply to the post (only used if title is a string)
+            status: Publication status (draft, publish, etc.) (only used if title is a string)
             
         Returns:
             Dictionary with post status and details
@@ -276,10 +275,10 @@ class WordPressAgent(BaseAgent):
             return {"success": False, "error": "WordPress credentials not configured"}
         
         # Handle two different calling styles
-        if isinstance(title_or_data, dict):
+        if isinstance(title, dict):
             # Style 2: Dictionary parameter contains all the post details
-            post_data = title_or_data.copy()  # Make a copy to avoid modifying the original
-            title = post_data.get('title', '')
+            post_data = title.copy()  # Make a copy to avoid modifying the original
+            title_str = post_data.get('title', '')
             
             # Handle categories conversion from strings to IDs if needed
             if 'categories' in post_data and post_data['categories']:
@@ -291,23 +290,23 @@ class WordPressAgent(BaseAgent):
                     
                     cat_id = self.categories.get(cat_name_or_slug)
                     if cat_id is None:
-                        self.logger.info(f"Category \'{cat_name_or_slug}\' not in cache. Refreshing categories.")
+                        self.logger.info(f"Category '{cat_name_or_slug}' not in cache. Refreshing categories.")
                         self.get_categories() # Refresh cache
                         cat_id = self.categories.get(cat_name_or_slug)
                             
                     if cat_id:
                         category_ids.append(cat_id)
-                        self.logger.debug(f"Converted category \'{cat_name_or_slug}\' to ID {cat_id}")
+                        self.logger.debug(f"Converted category '{cat_name_or_slug}' to ID {cat_id}")
                     else:
-                        self.logger.warning(f"Category \'{cat_name_or_slug}\' not found even after refresh. Make sure it exists in WordPress with the exact slug.")
+                        self.logger.warning(f"Category '{cat_name_or_slug}' not found even after refresh. Make sure it exists in WordPress with the exact slug.")
                 
                 if category_ids:
                     post_data['categories'] = category_ids
                 else:
-                    self.logger.warning(f"No valid category IDs found for input: {post_data.get('categories')}. Attempting to use \'uncategorized\'.")
+                    self.logger.warning(f"No valid category IDs found for input: {post_data.get('categories')}. Attempting to use 'uncategorized'.")
                     uncategorized_id = self.categories.get("uncategorized")
                     if uncategorized_id is None: # Try refreshing if not found in cache
-                        self.logger.info("Fallback category \'uncategorized\' not in cache. Refreshing categories.")
+                        self.logger.info("Fallback category 'uncategorized' not in cache. Refreshing categories.")
                         self.get_categories()
                         uncategorized_id = self.categories.get("uncategorized")
 
@@ -315,7 +314,7 @@ class WordPressAgent(BaseAgent):
                         post_data['categories'] = [uncategorized_id]
                         self.logger.info(f"Using uncategorized (ID: {uncategorized_id}) as fallback.")
                     else:
-                        self.logger.warning("Fallback category \'uncategorized\' also not found or has no ID. Post will be sent without category information or assigned to WordPress default.")
+                        self.logger.warning("Fallback category 'uncategorized' also not found or has no ID. Post will be sent without category information or assigned to WordPress default.")
                         if 'categories' in post_data: # It was originally present
                            del post_data['categories'] # Remove it to avoid API error
             
@@ -336,7 +335,7 @@ class WordPressAgent(BaseAgent):
                     post_data['tags'] = tag_ids
         else:
             # Style 1: Separate parameters
-            title = title_or_data
+            title_str = title
             
             # Get category ID
             category_id = self.categories.get(category)
@@ -359,7 +358,7 @@ class WordPressAgent(BaseAgent):
             
             # Prepare the post data
             post_data = {
-                "title": title,
+                "title": title_str,
                 "content": content,
                 "status": status
             }
@@ -372,7 +371,8 @@ class WordPressAgent(BaseAgent):
             if tag_ids:
                 post_data["tags"] = tag_ids
             
-        try:            # Create the post
+        try:
+            # Create the post
             url = f"{self.api_base_url}/posts"
             response = self._try_multiple_auth_methods("POST", url, post_data)
             
@@ -381,7 +381,7 @@ class WordPressAgent(BaseAgent):
                 post_id = response_data.get("id")
                 post_url = response_data.get("link")
                 post_status = response_data.get("status", status)
-                post_title = response_data.get("title", {}).get("rendered", title)
+                post_title = response_data.get("title", {}).get("rendered", title_str)
                 
                 if post_id:
                     self.logger.info(f"Created post with ID {post_id}: {post_title}")
@@ -390,7 +390,7 @@ class WordPressAgent(BaseAgent):
                     response_data["success"] = True
                     return response_data
                 else:
-                    self.logger.error(f"Failed to create post: {title}")
+                    self.logger.error(f"Failed to create post: {title_str}")
                     return {"success": False, "error": "Failed to get post ID from response"}
             else:
                 status_code = response.status_code if response else "No response"
@@ -403,6 +403,8 @@ class WordPressAgent(BaseAgent):
                 }
                 
         except Exception as e:
+            self.logger.error(f"Error creating post: {e}")
+            return {"success": False, "error": str(e)}
             self.logger.error(f"Error creating post: {e}")
             return {"success": False, "error": str(e)}
     

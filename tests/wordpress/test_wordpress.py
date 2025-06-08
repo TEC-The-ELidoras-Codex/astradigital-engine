@@ -72,52 +72,48 @@ except ImportError as e:
 def test_wordpress_connection():
     """Test the WordPress connection and create a test draft post"""
     print("\n🔄 Testing WordPress connection...")
-    try:
-        wp_agent = WordPressAgent()
+    wp_agent = WordPressAgent()
+    # Test categories retrieval
+    print("🔄 Testing category retrieval...")
+    categories = wp_agent.get_categories()
+    if categories:
+        print(f"✅ Successfully retrieved {len(categories)} categories.")
+        for category in categories:
+            category_id = category.get("id")
+            category_name = category.get("name")
+            print(f"   - {category_name} (ID: {category_id})")
+    else:
+        print("⚠️ No categories returned, but connection might still be valid.")
         
-        # Test categories retrieval
-        print("🔄 Testing category retrieval...")
-        categories = wp_agent.get_categories()
-        if categories:
-            print(f"✅ Successfully retrieved {len(categories)} categories.")
-            for category_id, category_name in categories.items():
-                print(f"   - {category_name} (ID: {category_id})")
-        else:
-            print("⚠️ No categories returned, but connection might still be valid.")
-            
-        # Create test draft post
-        print("\n🔄 Creating test draft post...")
-        test_title = "Test Post from TEC Office Suite"
-        test_content = """
-        <p>This is a test post created by the TEC Office WordPress Test Script.</p>
-        <p>If you see this post in your WordPress drafts, your WordPress integration is working correctly!</p>
-        """
-        
-        post_data = {
-            'title': test_title,
-            'content': test_content,
-            'status': 'draft',  # Always create as draft for testing
-            'categories': [1],  # Default uncategorized
-            'tags': ['test']
-        }
-        
-        result = wp_agent.create_post(post_data)
-        
-        if result.get('success'):
-            print(f"✅ Test post created successfully!")
-            print(f"   Post ID: {result.get('post_id')}")
-            print(f"   Title: {result.get('title')}")
-            print(f"   Status: {result.get('status', 'draft')}")
-            print("\n✅ WordPress integration is working correctly!")
-            print("   You should see a test post in your WordPress drafts.")
-        else:
-            print(f"❌ Failed to create test post: {result.get('error', 'Unknown error')}")
-    except Exception as e:
-        logger.exception("WordPress test failed")
-        print(f"❌ WordPress test failed: {str(e)}")
-        return False
+    # Create test draft post
+    print("\n🔄 Creating test draft post...")
+    test_title = "Test Post from TEC Office Suite"
+    test_content = """
+    <p>This is a test post created by the TEC Office WordPress Test Script.</p>
+    <p>If you see this post in your WordPress drafts, your WordPress integration is working correctly!</p>
+    """
     
-    return result.get('success', False)
+    post_data = {
+        'title': test_title,
+        'content': test_content,
+        'status': 'draft',  # Always create as draft for testing
+        'categories': [1],  # Default uncategorized
+        'tags': ['test']
+    }
+    
+    result = wp_agent.create_post(post_data)
+    
+    if result.get('success'):
+        print(f"✅ Test post created successfully!")
+        print(f"   Post ID: {result.get('post_id')}")
+        print(f"   Title: {result.get('title')}")
+        print(f"   Status: {result.get('status', 'draft')}")
+        print("\n✅ WordPress integration is working correctly!")
+        print("   You should see a test post in your WordPress drafts.")
+        assert True, "WordPress connection and post creation successful"
+    else:
+        print(f"❌ Failed to create test post: {result.get('error', 'Unknown error')}")
+        assert False, f"Failed to create test post: {result.get('error', 'Unknown error')}"
 
 if __name__ == "__main__":
     print("==== WordPress Integration Test ====")

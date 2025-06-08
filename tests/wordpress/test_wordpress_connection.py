@@ -24,7 +24,7 @@ load_test_env()
 
 # Import the WordPress components
 try:
-    from src.wordpress import test_wordpress_connection
+    from src.wordpress import test_wordpress_connection as check_wordpress_connection
     from src.wordpress.wordpress_xmlrpc import WordPressXMLRPC
     from src.agents.wp_poster import WordPressAgent
     WORDPRESS_MODULES_LOADED = True
@@ -32,89 +32,68 @@ except ImportError as e:
     logger.error(f"Failed to import WordPress modules: {e}")
     WORDPRESS_MODULES_LOADED = False
 
-def test_connection() -> Dict[str, Any]:
+def test_connection():
     """Test the basic WordPress connection."""
     if not WORDPRESS_MODULES_LOADED:
-        return {"success": False, "error": "WordPress modules not loaded"}
-        
-    try:
-        logger.info("Testing WordPress connection...")
-        result = test_wordpress_connection()
-        logger.info(f"Connection test result: {result['success']}")
-        return result
-    except Exception as e:
-        logger.error(f"Error testing WordPress connection: {e}")
-        return {"success": False, "error": str(e)}
+        pytest.skip("WordPress modules not loaded")
+    
+    logger.info("Testing WordPress connection...")
+    result = check_wordpress_connection()
+    logger.info(f"Connection test result: {result['success']}")
+    assert result['success'], f"WordPress connection failed: {result.get('error', 'Unknown error')}"
 
 def test_create_post(title: str = "TEC WordPress Test Post", 
                     content: str = "<p>This is a test post from the TEC WordPress integration.</p>",
-                    draft: bool = True) -> Dict[str, Any]:
+                    draft: bool = True):
     """Test creating a post in WordPress."""
     if not WORDPRESS_MODULES_LOADED:
-        return {"success": False, "error": "WordPress modules not loaded"}
+        pytest.skip("WordPress modules not loaded")
         
-    try:
-        # Use the WordPress agent for creating posts
-        logger.info("Creating test post using WordPressAgent...")
-        agent = WordPressAgent(os.path.join('config'))
+    # Use the WordPress agent for creating posts
+    logger.info("Creating test post using WordPressAgent...")
+    agent = WordPressAgent(os.path.join('config'))
+    
+    # Status should be 'draft' for testing purposes
+    status = "draft" if draft else "publish"
+    
+    # Create the post
+    result = agent.create_post(
+        title=title,
+        content=content,
+        category="uncategorized",
+        tags=["test", "tec-integration"],
+        status=status
+    )
+    
+    if result.get("success"):
+        logger.info(f"Successfully created post with ID {result.get('post_id')}")
+    else:
+        logger.error(f"Failed to create post: {result.get('error')}")
         
-        # Status should be 'draft' for testing purposes
-        status = "draft" if draft else "publish"
-        
-        # Create the post
-        result = agent.create_post(
-            title=title,
-            content=content,
-            category="uncategorized",
-            tags=["test", "tec-integration"],
-            status=status
-        )
-        
-        if result.get("success"):
-            logger.info(f"Successfully created post with ID {result.get('post_id')}")
-        else:
-            logger.error(f"Failed to create post: {result.get('error')}")
-            
-        return result
-    except Exception as e:
-        logger.error(f"Error creating test post: {e}")
-        return {"success": False, "error": str(e)}
+    assert result.get("success"), f"Failed to create post: {result.get('error', 'Unknown error')}"
 
-def test_xmlrpc_connection() -> Dict[str, Any]:
+def test_xmlrpc_connection():
     """Test the XML-RPC connection to WordPress."""
     if not WORDPRESS_MODULES_LOADED:
-        return {"success": False, "error": "WordPress modules not loaded"}
+        pytest.skip("WordPress modules not loaded")
         
-    try:
-        logger.info("Testing WordPress XML-RPC connection...")
-        wp = WordPressXMLRPC()
+    logger.info("Testing WordPress XML-RPC connection...")
+    wp = WordPressXMLRPC()
+    
+    # Test connection
+    connected = wp.is_connected()
+    
+    if connected:
+        logger.info(f"Successfully connected to {wp.site_url}")
         
-        # Test connection
-        connected = wp.is_connected()
+        # Try to get recent posts as additional test
+        posts = wp.get_posts(1)
+        posts_retrieved = len(posts) > 0
         
-        if connected:
-            logger.info(f"Successfully connected to {wp.site_url}")
-            
-            # Try to get recent posts as additional test
-            posts = wp.get_posts(1)
-            posts_retrieved = len(posts) > 0
-            
-            return {
-                "success": True,
-                "site_url": wp.site_url,
-                "posts_retrieved": posts_retrieved,
-                "message": "XML-RPC connection successful"
-            }
-        else:
-            logger.error("Failed to connect via XML-RPC")
-            return {
-                "success": False,
-                "site_url": wp.site_url,
-                "message": "XML-RPC connection failed"
-            }
-    except Exception as e:
-        logger.error(f"Error testing XML-RPC connection: {e}")
-        return {"success": False, "error": str(e)}
+        assert True, "XML-RPC connection successful"
+    else:
+        logger.error("Failed to connect via XML-RPC")
+        assert False, f"XML-RPC connection failed to {wp.site_url}"
 
 def print_test_result(name: str, result: Dict[str, Any]) -> None:
     """Print a formatted test result."""

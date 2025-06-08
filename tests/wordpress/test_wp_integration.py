@@ -15,7 +15,7 @@ logger = logging.getLogger("TEC.Test.WordPress")
 
 # Try to import WordPress components
 try:
-    from src.wordpress import test_wordpress_connection
+    from src.wordpress import test_wordpress_connection as check_wordpress_connection
     from src.wordpress.wordpress_xmlrpc import WordPressXMLRPC
     from src.agents.wp_poster import WordPressAgent
 except ImportError as e:
@@ -27,9 +27,9 @@ class TestWordPressConnection:
     
     def test_connection(self, wordpress_config):
         """Test basic WordPress connection."""
-        result = test_wordpress_connection()
+        result = check_wordpress_connection()
         assert result["success"] is True
-        assert "connected_to" in result
+        assert "site_url" in result
     
     def test_xmlrpc_connection(self, wordpress_config):
         """Test WordPress XML-RPC connection."""
@@ -42,11 +42,12 @@ class TestWordPressConnection:
         posts = wp.get_recent_posts(5)
         assert isinstance(posts, list)
         # Even if there are no posts, it should return an empty list, not fail
-        
+    
     @pytest.mark.parametrize("post_status", ["draft"])
     def test_create_post(self, wordpress_config, sample_post_data, post_status):
         """Test creating a post in WordPress."""
-        agent = WordPressAgent(os.path.join('config'))
+        config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'config', 'config.yaml')
+        agent = WordPressAgent(config_path)
         
         sample_post_data["status"] = post_status
         
@@ -59,14 +60,15 @@ class TestWordPressConnection:
         )
         
         assert result["success"] is True
-        assert "post_id" in result
-        assert isinstance(result["post_id"], int)
+        assert "id" in result
+        assert isinstance(result["id"], int)
         
         # Clean up - delete the post
         wp = WordPressXMLRPC()
-        wp.delete_post(result["post_id"])
+        wp.delete_post(result["id"])
 
 # Skip all tests in this module if WordPress credentials are not configured
 def pytest_configure(config):
     if not os.getenv('WP_SITE_URL') or not os.getenv('WP_USERNAME') or not os.getenv('WP_PASSWORD'):
         pytest.skip("WordPress credentials not configured", allow_module_level=True)
+
