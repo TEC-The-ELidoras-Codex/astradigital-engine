@@ -1,0 +1,32 @@
+{
+  "news_automation": {
+    "description": "Automated news processing and content generation",
+    "steps": [
+      "fetch_news",
+      "process_content",
+      "publish_article"
+    ],
+    "schedule": "daily",
+    "enabled": true
+  },
+  "content_creation": {
+    "description": "Manual content creation workflow",
+    "steps": [
+      "generate_content",
+      "review",
+      "publish"
+    ],
+    "schedule": "manual",
+    "enabled": true
+  },
+  "system_maintenance": {
+    "description": "Regular system health checks and maintenance",
+    "steps": [
+      "health_check",
+      "cleanup",
+      "backup"
+    ],
+    "schedule": "weekly",
+    "enabled": true
+  }
+}
