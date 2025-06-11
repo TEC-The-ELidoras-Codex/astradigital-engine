@@ -18,7 +18,7 @@ REQUIREMENTS = [
     "pytest>=7.0.0",
     "pytest-cov>=4.1.0", 
     "pytest-mock>=3.10.0",
-    "python-dotenv>=1.0.0",
+    "python-dotenv>=1.0.0",rr
     "requests>=2.28.0",
     "python-wordpress-xmlrpc>=2.3.0",
 ]

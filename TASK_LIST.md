@@ -12,7 +12,7 @@
 - [x] Create basic JavaScript functionality (astradigital.js)
 - [x] Set up template parts for reusable components
 - [ ] Add responsive design for mobile/tablet
-- [ ] Create interactive ocean background
+- [x] Create interactive ocean background
 - [ ] Implement faction selector UI
 - [ ] Add character browsing functionality
 

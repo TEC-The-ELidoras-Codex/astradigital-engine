@@ -7,6 +7,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize the Astradigital Ocean experience
     initAstradigital();
+    // Initialize the interactive ocean background
+    initInteractiveOcean();
 });
 
 /**
@@ -1018,4 +1020,268 @@ function drawHexagon(ctx, x, y, size) {
     }
     
     ctx.closePath();
+}
+
+/**
+ * Interactive Ocean Background System
+ * Creates an animated, immersive ocean experience
+ */
+function initInteractiveOcean() {
+    console.log('Initializing Interactive Ocean Background...');
+    
+    // Create ocean canvas
+    const oceanCanvas = createOceanCanvas();
+    if (!oceanCanvas) return;
+    
+    const ctx = oceanCanvas.getContext('2d');
+    const oceanData = {
+        waves: [],
+        particles: [],
+        depth: 0,
+        time: 0,
+        mouseX: 0,
+        mouseY: 0
+    };
+    
+    // Initialize ocean elements
+    initWaves(oceanData);
+    initParticles(oceanData);
+    
+    // Start animation loop
+    animateOcean(ctx, oceanCanvas, oceanData);
+    
+    // Add mouse interaction
+    setupOceanInteraction(oceanCanvas, oceanData);
+    
+    console.log('Interactive Ocean Background initialized!');
+}
+
+/**
+ * Create the ocean canvas element
+ */
+function createOceanCanvas() {
+    const existingCanvas = document.getElementById('ocean-canvas');
+    if (existingCanvas) {
+        existingCanvas.remove();
+    }
+    
+    const canvas = document.createElement('canvas');
+    canvas.id = 'ocean-canvas';
+    canvas.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+        background: linear-gradient(180deg, #0a1428 0%, #1a365d 50%, #2d5a87 100%);
+    `;
+    
+    // Set canvas resolution
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    // Insert before main content
+    const body = document.body;
+    body.insertBefore(canvas, body.firstChild);
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+    
+    return canvas;
+}
+
+/**
+ * Initialize wave system
+ */
+function initWaves(oceanData) {
+    for (let i = 0; i < 5; i++) {
+        oceanData.waves.push({
+            amplitude: 20 + Math.random() * 30,
+            frequency: 0.01 + Math.random() * 0.02,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.02 + Math.random() * 0.03,
+            y: window.innerHeight * 0.3 + i * 50,
+            opacity: 0.1 + Math.random() * 0.3
+        });
+    }
+}
+
+/**
+ * Initialize particle system for digital effects
+ */
+function initParticles(oceanData) {
+    for (let i = 0; i < 100; i++) {
+        oceanData.particles.push({
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            size: Math.random() * 3 + 1,
+            speedX: (Math.random() - 0.5) * 0.5,
+            speedY: (Math.random() - 0.5) * 0.5,
+            opacity: Math.random() * 0.5,
+            color: `hsl(${180 + Math.random() * 60}, 70%, ${50 + Math.random() * 30}%)`,
+            life: Math.random() * 1000 + 500
+        });
+    }
+}
+
+/**
+ * Main ocean animation loop
+ */
+function animateOcean(ctx, canvas, oceanData) {
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Update time
+    oceanData.time += 1;
+    
+    // Draw waves
+    drawWaves(ctx, oceanData);
+    
+    // Draw particles
+    drawParticles(ctx, oceanData);
+    
+    // Draw depth effects
+    drawDepthEffects(ctx, oceanData);
+    
+    // Continue animation
+    requestAnimationFrame(() => animateOcean(ctx, canvas, oceanData));
+}
+
+/**
+ * Draw animated waves
+ */
+function drawWaves(ctx, oceanData) {
+    oceanData.waves.forEach(wave => {
+        ctx.beginPath();
+        ctx.globalAlpha = wave.opacity;
+        ctx.strokeStyle = '#4fd1c7';
+        ctx.lineWidth = 2;
+        
+        // Update wave phase
+        wave.phase += wave.speed;
+        
+        // Draw wave
+        for (let x = 0; x < ctx.canvas.width; x += 5) {
+            const y = wave.y + Math.sin(x * wave.frequency + wave.phase) * wave.amplitude;
+            if (x === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        
+        ctx.stroke();
+    });
+    
+    ctx.globalAlpha = 1;
+}
+
+/**
+ * Draw animated particles
+ */
+function drawParticles(ctx, oceanData) {
+    oceanData.particles.forEach((particle, index) => {
+        // Update particle position
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+        particle.life--;
+        
+        // Respawn particle if life is over or out of bounds
+        if (particle.life <= 0 || particle.x < 0 || particle.x > ctx.canvas.width || 
+            particle.y < 0 || particle.y > ctx.canvas.height) {
+            particle.x = Math.random() * ctx.canvas.width;
+            particle.y = Math.random() * ctx.canvas.height;
+            particle.life = Math.random() * 1000 + 500;
+        }
+        
+        // Draw particle
+        ctx.beginPath();
+        ctx.globalAlpha = particle.opacity;
+        ctx.fillStyle = particle.color;
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+    
+    ctx.globalAlpha = 1;
+}
+
+/**
+ * Draw depth and atmosphere effects
+ */
+function drawDepthEffects(ctx, oceanData) {
+    // Create depth gradient
+    const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+    gradient.addColorStop(0, 'rgba(10, 20, 40, 0)');
+    gradient.addColorStop(0.5, 'rgba(26, 54, 93, 0.1)');
+    gradient.addColorStop(1, 'rgba(45, 90, 135, 0.3)');
+    
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    
+    // Add floating data fragments
+    for (let i = 0; i < 10; i++) {
+        const x = (oceanData.time * 0.5 + i * 100) % (ctx.canvas.width + 50);
+        const y = 100 + Math.sin(oceanData.time * 0.01 + i) * 50;
+        
+        ctx.beginPath();
+        ctx.globalAlpha = 0.3;
+        ctx.fillStyle = '#00ffff';
+        ctx.font = '12px monospace';
+        ctx.fillText('◦', x, y);
+        ctx.fillText('◇', x + 20, y + 10);
+        ctx.fillText('○', x + 40, y + 5);
+    }
+    
+    ctx.globalAlpha = 1;
+}
+
+/**
+ * Setup mouse interaction with ocean
+ */
+function setupOceanInteraction(canvas, oceanData) {
+    canvas.style.pointerEvents = 'auto';
+    
+    canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        oceanData.mouseX = e.clientX - rect.left;
+        oceanData.mouseY = e.clientY - rect.top;
+        
+        // Create ripple effect at mouse position
+        createRipple(oceanData, oceanData.mouseX, oceanData.mouseY);
+    });
+    
+    canvas.addEventListener('click', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Create larger ripple on click
+        createRipple(oceanData, x, y, true);
+    });
+}
+
+/**
+ * Create ripple effect
+ */
+function createRipple(oceanData, x, y, isClick = false) {
+    const size = isClick ? 10 : 5;
+    const count = isClick ? 15 : 5;
+    
+    for (let i = 0; i < count; i++) {
+        oceanData.particles.push({
+            x: x + (Math.random() - 0.5) * 20,
+            y: y + (Math.random() - 0.5) * 20,
+            size: size + Math.random() * 5,
+            speedX: (Math.random() - 0.5) * 2,
+            speedY: (Math.random() - 0.5) * 2,
+            opacity: 0.8,
+            color: isClick ? '#00ffff' : '#4fd1c7',
+            life: 100 + Math.random() * 100
+        });
+    }
 }
