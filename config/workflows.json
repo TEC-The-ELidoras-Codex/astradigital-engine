@@ -1,32 +1,111 @@
 {
+  "daily_content_automation": {
+    "description": "Full daily content generation & publishing pipeline",
+    "steps": [
+      "system_health_check",
+      "fetch_news", 
+      "generate_news_content",
+      "generate_original_content",
+      "publish_to_wordpress",
+      "store_data"
+    ],
+    "schedule": "daily",
+    "enabled": true,
+    "error_handling": "continue",
+    "max_retries": 2,
+    "parameters": {
+      "max_age": 1,
+      "max_topics": 3,
+      "content_type": "article"
+    }
+  },
   "news_automation": {
     "description": "Automated news processing and content generation",
     "steps": [
       "fetch_news",
-      "process_content",
-      "publish_article"
+      "generate_news_content", 
+      "publish_to_wordpress"
     ],
     "schedule": "daily",
-    "enabled": true
+    "enabled": true,
+    "error_handling": "retry",
+    "max_retries": 3
   },
-  "content_creation": {
-    "description": "Manual content creation workflow",
+  "original_content_creation": {
+    "description": "Generate original TEC lore & faction content",
     "steps": [
-      "generate_content",
-      "review",
-      "publish"
+      "airth_personality_response",
+      "generate_original_content",
+      "collaborative_content",
+      "publish_to_wordpress",
+      "store_data"
     ],
     "schedule": "manual",
-    "enabled": true
+    "enabled": true,
+    "error_handling": "stop",
+    "max_retries": 2,
+    "parameters": {
+      "content_type": "lore",
+      "topic": "Astradigital Ocean faction dynamics"
+    }
   },
   "system_maintenance": {
     "description": "Regular system health checks and maintenance",
     "steps": [
-      "health_check",
-      "cleanup",
-      "backup"
+      "system_health_check",
+      "cleanup_old_data", 
+      "backup_data",
+      "analyze_metrics"
     ],
-    "schedule": "weekly",
-    "enabled": true
+    "schedule": "weekly", 
+    "enabled": true,
+    "error_handling": "continue",
+    "max_retries": 1,
+    "parameters": {
+      "days_old": 30
+    }
+  },
+  "clickup_integration": {
+    "description": "Sync with ClickUp tasks and create content",
+    "steps": [
+      "fetch_clickup_tasks",
+      "generate_original_content",
+      "publish_to_wordpress", 
+      "update_clickup_status"
+    ],
+    "schedule": "manual",
+    "enabled": true,
+    "error_handling": "retry",
+    "max_retries": 2
+  },
+  "multi_agent_collaboration": {
+    "description": "Advanced multi-agent content collaboration",
+    "steps": [
+      "airth_personality_response",
+      "tecbot_analysis",
+      "collaborative_content",
+      "publish_to_wordpress",
+      "publish_to_local",
+      "store_data"
+    ],
+    "schedule": "manual",
+    "enabled": true,
+    "error_handling": "continue",
+    "max_retries": 2,
+    "parameters": {
+      "collaboration_type": "strategic_planning"
+    }
+  },
+  "emergency_recovery": {
+    "description": "Emergency system recovery and diagnostics",
+    "steps": [
+      "system_health_check",
+      "backup_data",
+      "cleanup_old_data"
+    ],
+    "schedule": "manual",
+    "enabled": true,
+    "error_handling": "continue",
+    "max_retries": 1
   }
 }
